@@ -1,0 +1,43 @@
+<HTML>
+	<HEAD>
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+		<META content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+		<META NAME="keywords" CONTENT="Koran Islam book Mohamed memorizing Quran Koraan Quraan reciting">
+		<link rel="StyleSheet" href="defaultstyle.css?v=10">
+		<link rel="StyleSheet" href="keyboard.css?v=20090214">
+
+		<script type="text/javascript" src="js/common/ScriptLoader.js?v=20090214"></script>
+
+		<script language="javascript">
+
+		window.onload = function()
+		{
+			ScriptLoader.addDefinitions ( {
+
+				DefineJClass:		"js/common/jclass.js?v=20090214",
+				Utils:				"js/common/utils.js?20090214",
+				JCSpinEdit:			"class_spinbox.js?v=20080812",
+				JCDragDrop:			"js/common/JCDragDrop.js?v=20080812"
+				
+			} );
+
+			ScriptLoader.loadNewPackage( [
+					"DefineJClass",
+					"Utils",
+					"JCSpinEdit",
+					"JCDragDrop"
+				], function(){
+					Utils.setupCrossBrowser();
+					InitDocObjects();
+				}
+			);
+		}
+		</script>
+</HEAD>
+<BODY>
+
+<div mClass=JCSpinEdit value="10" max="50" min="5"></div>
+
+</BODY>
+</HTML>

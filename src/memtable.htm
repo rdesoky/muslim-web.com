@@ -1,0 +1,252 @@
+<HTML>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+
+<script src="http://www.ratteb.com/js.js" Language="JavaScript" Type="Text/JavaScript"></script>
+
+<script language="JavaScript" src="lib.js?v=20080812"></script>
+<script language="JavaScript" src="qlib.js?v=20080813"></script>
+<script language="JavaScript" src="tlib.js?v=20080817"></script>
+<script language="JavaScript" src="menu.js?v=20080817"></script>
+<script src="http://stats.muslim-web.com/cgi-bin/counter.pl" language="vbscript"></script>
+<title>
+ما تحفظ  من القرآن الكريم
+</title>
+<STYLE type="text/css">
+	A           { TEXT-DECORATION:none }
+	A:link		{ color:#003399; }
+	A:visited	{ color:#003399; }
+	A:hover		{ color:red;}
+	td          {FONT-SIZE:8pt;FONT-FAMILY:tahoma}
+	body        {FONT-SIZE:10pt;FONT-FAMILY:tahoma}
+	input       {FONT-FAMILY:Tahoma;FONT-SIZE:9px; HEIGHT:20;width:70}
+</STYLE>
+
+<script language="JavaScript">
+
+QueryToCookies();
+
+//if(window!=top){top.location=document.location.href;}
+
+window.name = "quran";
+
+function ac(suraNo,ayaNo)
+{
+	window.open("a.htm" + 
+				"?s=" + suraNo + 
+				"&a=" + ayaNo , 
+				"aya", 
+				"scrollbars=no,resizable=no,menubar=no,toolbar=no,location=no,width=260,height=180" );
+}
+
+</script>
+</head>
+
+<body dir=rtl bgcolor=#dcdcb6 style="behavior:url('#default#download');margin:2px">
+
+<table cellspacing=1 width=100%>
+<tr>
+	<td bgcolor=gray>
+		<table cellspacing=1  width=100%>
+		<tr>
+			<td bgcolor=#efefde align=center><a href="ie.php" target=_top>&nbsp;الصفحة الرئيسية&nbsp;</a>
+			</td>
+			<td bgcolor=#efefde align=center>&nbsp;<a href=memorize.htm>جدول التحفيظ</a>&nbsp;
+			</td>
+			<td bgcolor=#efefde align=center>&nbsp;<b><font color=red>الآيات المحفوظة</font></b>&nbsp;
+			</td>
+			<td bgcolor=#efefde align=center><a href=bendtable.htm target=_top>&nbsp;الآيات تحت الحفظ&nbsp;</a>
+			</td>
+			<td bgcolor=#efefde align=center><a href="javascript:openControlPanel()" target=_top>&nbsp;تسجيل بيانات الحفظ&nbsp;</a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+
+<center><b>
+ما حفظت من القرآن الكريم
+</b></center>
+
+<table cellspacing=1 width=100%>
+<tr>
+	<td bgcolor=gray>
+		<table cellspacing=1   width=100%>
+
+<script language="JavaScript">
+
+var	gSuraNo ;
+var	gFromAya;
+var	gToAya  ;
+
+memorized = readCookie("mem");
+uncompressed = uncompressMem(memorized);
+
+mem_suras     = memorized.split('$');
+uncompressed_suras     = uncompressed.split('$');
+
+for(s=1;s<mem_suras.length;s++)
+{
+	sura = mem_suras[s];
+
+	if(sura.length)
+	{
+		var nAyaCount = uncompressed_suras[s].split('|').length;
+		document.write(
+			"<tr>" + 
+				"<td bgcolor=#efefde NOWRAP valign=top>" + 
+					"<a href=sura.htm?aya=" + toStringEx(s,3) + "><b>" + s + " " + gSuraNames[s] + "</b></a>&nbsp;" + 
+					"(" + nAyaCount +  " " + AyaPostFix(nAyaCount) + ")" + 
+				"</td>" + 
+				"<td bgcolor=white valign=top width=100%>"
+			);
+
+		mem_ayat = sura.split('|');
+
+		for(a=0;a<mem_ayat.length;a++)
+		{
+			range=mem_ayat[a].split(',');
+			if(range.length>1)
+			{
+				document.write("(<a onmouseover='showText(" + s + "," + range[0] + "," + range[1] + ")' onmouseout='hideText()' href=sura.htm?aya=" + toStringEx(s,3) + toStringEx( parseInt(range[0],10),3) + ">من الآية "+range[0]+ " إلى الآية "  + range[1]+"</a>) ");
+			}
+			else
+			{
+				document.write("(<a onmouseover='showText(" + s + "," + range[0] + "," + range[0] + ")' onmouseout='hideText()' href=sura.htm?aya=" + toStringEx(s,3) + toStringEx( parseInt(range[0],10),3) + ">الآية "+range[0]+"</a>) ");
+			}
+		}
+		document.write("</td></tr>");
+	}
+}
+
+function AyaPostFix(nCount)
+{
+	if(nCount > 2 && nCount<11)
+		return "آيات";
+	else
+		return "آية";
+}
+
+function showText(sura, fromAya, toAya )
+{
+	var ypos = event.y + document.body.scrollTop - event.offsetY + 15;
+	var xpos = event.x - 325;
+
+	idSuraPreview.style.left = xpos > 0 ? xpos:0;
+	idSuraPreview.style.top = ypos;
+	
+	ShowElement("idSuraPreview", 1000);
+
+	if ( gSuraNo == sura && gFromAya== fromAya && gToAya == toAya )
+		return;
+
+	gSuraNo = sura;
+	gFromAya= fromAya;
+	gToAya  = toAya;
+	
+	if(toAya > fromAya + 10)
+		toAya = fromAya + 10;
+	
+	idSuraPreviewText.innerHTML = "تحميل...";
+	
+	var sURL = "http://cgi.muslim-web.com/cgi-bin/get_sura_text.pl" + 
+			"?s=" + (sura-1).toString() + 
+			"&f=" + fromAya + 
+			"&t=" + toAya;
+
+	LoadData( sURL, "onGetSuraTextResponse(gDataResponse)", true);
+
+}
+
+function onGetSuraTextResponse(data)
+{
+	idSuraPreviewText.innerHTML = ConvertCP1256ToUnicode(data);
+}
+
+
+function hideText()
+{
+	HideElement("idSuraPreview", 1000);
+}
+
+function recite(nReciter)
+{
+	var aReciters = Array(33,19);
+	openReciter("http://cgi.muslim-web.com/cgi-bin/recite.pl?s=" + gSuraNo + "&f=" + gFromAya + "&t=" + gToAya + "&r=" + nReciter, gSuraNo, aReciters[nReciter]);
+}
+
+function exercise(maxAyat)
+{
+	HideElement("idSuraPreview", 0);
+	
+	var fromAya = gFromAya -1;
+	var toAya = gToAya - 1;
+	var sText ;
+
+	if( maxAyat && (toAya - fromAya) > maxAyat )
+	{
+		toAya = fromAya + maxAyat;
+		var aAyat = idSuraPreviewText.innerText.split(")");
+
+		sText = "";
+
+		for ( var i=0;i<maxAyat; i++ )
+			sText += aAyat[i] + ")";
+	}
+	else
+	{
+		sText = idSuraPreviewText.innerText;
+	}
+
+	window.showModalDialog( "exercise2.htm", 
+							"sura=" + (gSuraNo -1).toString() + 
+							"&aya=" + fromAya.toString() + 
+							"&toaya=" + toAya.toString() + 
+							"&text=" + sText ,  
+							"dialogHeight:500px; dialogWidth:600px; dialogTop: px; dialogLeft: px; edge: Raised; center: Yes; help: Yes; resizable: Yes; status: No;scroll: Yes" );
+	
+}
+
+</script>
+		</table>
+	</td>
+</tr>
+</table>
+
+<div id=idSuraPreview 
+	align=right 
+	onmouseover="ShowElement('idSuraPreview')" 
+	onmouseout="HideElement('idSuraPreview',1000)"
+	style="position:absolute;display:none;background:#FFFFCC;border:solid 1px gray;">
+	<div style="background:silver;padding:1px;">
+		<input type=button onclick="recite(0)" value="تلاوة الحصري">
+		<input type=button onclick="recite(1)" value="تلاوة الحذيفي">
+		<input type=button onclick="exercise(10)" value="مراجعة الحفظ">
+	</div>
+
+	<div id=idSuraPreviewText style="overflow-y:scroll;width:300px;height:152px;padding:3px;color:green;">
+	</div>
+</div>
+
+
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;
+<script Language="JavaScript" Type="Text/JavaScript">
+	_rid = 16486;
+	_rd = "muslim-web.com";
+	_rs = 0;
+	_rz = 0;
+	try{
+		if( document.domain.indexOf("dev") == -1 || document.domain.indexOf("new") == -1)
+		{
+			_rfunction(_rid, _rd, _rs, _rz);
+		}
+	}
+	catch(e)
+	{
+	}
+</script>
+
+
+</body>
+</html>
