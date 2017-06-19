@@ -150,7 +150,7 @@ $suraCellWidth = 140;
 						></div>
 						<div id="SearchResultsRoot" style="display:none"></div>
 					</td>
-					<td><span class="checkTitle" id="cHelp">Help</span></td>
+					<td style="display:none"><span class="checkTitle" id="cHelp">Help</span></td>
 					<td>
 						<div style="max-height: 18px;overflow:hidden">
 						<a name="fb_share" id="FBShare"
@@ -182,10 +182,10 @@ $suraCellWidth = 140;
 				<div id="TopMenuItems">
 					<span id="RecentReciters"></span>
 					<div class="inline">
-						<span class="help_anchor h_left" >
-							<span class="h_frame">Audio controls</span>
-							<span class="h_arrow"></span>
-						</span>
+						<!--<span class="help_anchor h_left" >-->
+							<!--<span class="h_frame">Audio controls</span>-->
+							<!--<span class="h_arrow"></span>-->
+						<!--</span>-->
 						<table id="AudioControls" cellspacing="0" cellspadding="0" style="display:none">
 						<tr>
 							<td id="PlayerStatus"></td>
@@ -225,10 +225,10 @@ $suraCellWidth = 140;
 						</span
 						><span tid="mem" pid="MemReport" class="left_align">
 							<?= $Str['mem_percent']?>: <span id="idMemorized">0</span>%<br/>
-							<span class="help_anchor h_bottom">
-								<span class="h_frame">Memory Report</span>
-								<span class="h_arrow"></span>
-							</span>
+							<!--<span class="help_anchor h_bottom">-->
+								<!--<span class="h_frame">Memory Report</span>-->
+								<!--<span class="h_arrow"></span>-->
+							<!--</span>-->
 						</span
 						><span tid="exercise" pid="Trainer">
 							<?= $Str['writing_exercise'] ?>
@@ -332,10 +332,10 @@ $suraCellWidth = 140;
 					<div onclick='QViewer.nextSura()' class='arrowBtn left'></div>
 					<div id='idPageViewAudio'></div>
 					<div class="inline">
-						<span class="help_anchor h_top">
-							<span class="h_frame">Memorization Chart</span>
-							<span class="h_arrow"></span>
-						</span>
+						<!--<span class="help_anchor h_top">-->
+							<!--<span class="h_frame">Memorization Chart</span>-->
+							<!--<span class="h_arrow"></span>-->
+						<!--</span>-->
 						<div id="AyatChart"></div>
 					</div>
 					<div id="SelectionViewer"><?= GetStr("selection_help") ?></div>
@@ -544,7 +544,8 @@ $suraCellWidth = 140;
 				<div id="LoginProgress" style="color:green;display:none"><?= $Str['contacting_db'] ?>..</div>
 			</div>
 		</div>
-		<div id="flashContent">
+		<div id="flashContent"></div>
+        <div>
 			<a href='http://www.adobe.com/go/getflashplayer'>
 				<img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' />
 			</a>
