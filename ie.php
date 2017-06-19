@@ -1,0 +1,560 @@
+<?php
+include( "qlib.php" );
+#$UserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; InfoPath.2) chromeframe/5.0.366.4";
+#$UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)";
+
+$UserAgent = $_SERVER['HTTP_USER_AGENT'];
+$Browser = GetBrowserInfo( $UserAgent );
+$IsIE = ( $Browser['Name'] == "msie" );
+$IEver = $Browser['Version'];
+$IsOldIE = ($IsIE && $IEver < 8);
+
+if( $IsIE == false ){#firefox or chrom
+	Header( "HTTP/1.1 301 Moved Permanently" );
+	Header( "Location: /" );
+	exit();
+}
+
+header("Expires: Sun, 19 Aug 2012 05:00:00 GMT");
+#header("Cache-Control: max-age=0, s-maxage=0, no-cache, no-store"); // HTTP/1.1
+
+?>
+<HTML>
+	<HEAD>
+		<!-- META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" -->
+		<META content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<TITLE>The Holy Quran - القرآن الكريم - Koran Kareem</TITLE></HEAD>
+		<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+		<META NAME="keywords" CONTENT="Koran Islam book Mohamed memorizing Quran Koraan Quraan reciting">
+		<link rel="StyleSheet" href="defaultstyle.css?v=10">
+		<script language="javascript">
+
+		function onLoadScriptFile(){
+			if(document.getElementById("idProgress") && idProgress.increment ){
+				idProgress.increment();
+			}
+		}
+
+		function onJClassLoaded(eScript)
+		{
+			if(eScript.readyState == "complete")
+			{
+				JClassInit( [idProgress,ImageLoader] );
+			}
+		}
+
+function JCImageLoader()
+{
+	this.image = new Image();
+	this.image.onerror = this.image.onload = new Function( this.sID + ".onImageLoaded()" );
+	this.download = function( onDownload )
+	{
+		if(onDownload){
+			this.m_onload = onDownload;
+		}
+		this.arrImages    = this.m_images.split(",");
+		this.progressView = document.getElementById( this.m_progress );
+		this.imageIndex = 0;
+		this.loadCurrImage();
+	};
+
+	this.showCurrent = function(){
+		if(this.progressView){
+			this.progressView.setTotal( this.arrImages.length );
+			this.progressView.setCurrent(this.imageIndex);
+		}
+	};
+
+	this.loadCurrImage = function(){
+		var sBase = this.m_base ? this.m_base : "";
+		this.image.src = sBase + this.arrImages[this.imageIndex];
+	};
+
+	this.onImageLoaded = function()
+	{
+		this.imageIndex ++;
+		this.showCurrent();
+		if( this.imageIndex < this.arrImages.length ){
+			window.setTimeout( this.sID + ".loadCurrImage()" );
+		}else{
+			window.setTimeout( this.m_onload , 1 );
+		}
+	};
+}
+
+	function JCProgressView()
+	{
+		this.mViewWidth		= this.m_view_width ? this.m_view_width : "150px";
+		this.mBorderColor	= this.m_border_color ? this.m_border_color : "gray";
+		this.mProgressColor = this.m_progress_color ? this.m_progress_color : "silver";
+
+		this.toString = function(){
+			return	"<div dir=LTR style='width:" + this.mViewWidth + ";border:solid 1px " + this.mBorderColor + ";text-align:left;padding:2px'>" + 
+						"<div id=" + this.sID + "ProgressBar style='width:0%;background:" + this.mProgressColor + "' >" + 
+							"<div style='position:absolute;width:" + this.mViewWidth + "' align=center><span id=" + this.sID + "ProgressValue>0</span>%</div>&nbsp;" + 
+						"</div>" + 
+					"</div>";
+		};
+		
+		this.progressValue = function(){
+			return document.getElementById( this.sID + "ProgressValue" );
+		};
+
+		this.progressBar = function(){
+			return document.getElementById( this.sID + "ProgressBar" );
+		};
+
+		this.setProgress = function( nProgress ){
+			this.progressValue().innerHTML = Math.floor( nProgress );
+			this.progressBar().style.width = nProgress + "%";
+		};
+
+		this.setTotal = function(nTotal){
+			this.m_total = nTotal;
+		};
+
+		this.setCurrent = function(nCurrent){
+			this.mCurrent = nCurrent;
+
+			if( this.m_total > 0) {
+				this.setProgress( nCurrent * 100 / parseInt(this.m_total) );
+			}
+		};
+
+		this.increment = function()
+		{
+			this.mCurrent = this.mCurrent ? parseInt( this.mCurrent ) : 0;
+			this.setCurrent(this.mCurrent + 1);
+		};
+	}
+		</script>
+</HEAD>
+<BODY bgColor="#efefe7" dir="rtl" onload="InitPage()" leftmargin="3" rightmargin="3" topmargin="3" bottommargin="30" 
+style="overflow-y:scroll">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id=MasterTable>
+<tr>
+	<td valign="top" style="padding-left:3px;" id=LeftMenu>
+
+		<div style="width:176px;padding-bottom:3px">
+			<div onclick="toggleView()" align="center" 
+				style="background-image:url(/images/bg_caption.gif);background-repeat:repeat-x;cursor:hand;color:green;height:44px;xborder:solid 2px silver;Font-Family:Traditional Arabic;font-size:26px;font-weight:bold;">
+				القرآن  الكريم
+			</div>
+		</div>		
+		<div style="width:176px;border:solid 1px silver;padding:3px;height:30px">
+
+			<div mClass=JCShowHideSwitcher m_target_element=idRecitersPanel id=ReciterListToggler mOnShow="InsertListFilters()">
+				تلاوة:&nbsp;<span id=idReciter style="xfont-weight:bold;Font-Family:Arabic Transparent;font-size:18px;color:navy"></span>
+			</div>
+			<div id=idRecitersPanel style="display:none">
+				<div id=ListFilters style="padding-bottom:4px;"></div>
+				<div id=idReciterList style="border-bottom:dotted 1px silver;background:white"></div>
+				<div id="idReciterHelp"">
+					الروايات:<br>
+					حفص عن عاصم<br>
+					* ورش عن نافع<br>
+					** قالون عن نافع<br>
+					*** السوسي عن أبي عمرو<br>
+					****الدوري عن أبي عمرو
+				</div>
+			</div>
+		</div>
+		<div style='padding-top:3px;width:100%'>
+			<div style="border:solid 1px silver;width:100%" >
+				<div style="padding:3px;font-weight:bold;" mClass=JCShowHideSwitcher m_target_element=SearchPanel mOnShow="SearchForm.SearchText.focus()">إبحث في الآيات</div>
+				<table border="0" width="100%" id=SearchPanel style="xdisplay:none">
+				<form target="search" action="search.htm" xonsubmit="return doSearch(0);" name="SearchForm">
+				<tr>
+					<td valign="top">
+						<input type="text" name="SearchText" id="idSearchText" style="width:110px">
+					</td>
+					<td valign="bottom">
+						<input onclick="SearchForm.submit()" style="cursor:hand" type="image" border="0" src="images/search.gif" align="absmiddle" width="24" height="23"><br>
+						<input type="reset" value="مسح">
+					</td>
+				</tr>
+				</form>
+				</table>
+			</div>
+		</div>
+		
+		<div style="padding-top:3px;padding-bottom:3px;width:100%">
+			<div id="idLogin" style="border:solid 1px silver;padding:3px;width:100%">
+				<div id="CurrentUserInfo" style="display:none;width:100%">
+					<div	id="UserInfoSwitcher" 
+							mClass="JCShowHideSwitcher" 
+							m_target_element="CurrentUserInfoButtons">
+						المستخدم الحالي:
+						<span id="CurrentUserName" style="font-weight:bold"></span>
+					</div>
+					<div id="CurrentUserInfoButtons" style="display:none;width:100%">
+						<table width="100%" cellspacing="0" cellpadding="0" border="0">
+						<tr>
+							<td width=50%><input style='width:100%' type=button onclick='ShowUserLogin(true);' value='مستخدم آخر' ></td>
+							<td width=50%><input style='width:100%' type=button onclick='ShowNewUser(true);LoginPanelSwitcher.doShow();' value='مستخدم جديد' ></td>
+						</tr>
+						</table>
+						<input style='width:100%' type=button onclick="Logout()" value="خـــروج" >
+					</div>
+				</div>
+
+				<div id=LoginPanel>
+					<div id=LoginPanelSwitcher mClass=JCShowHideSwitcher m_target_element=LoginFormPanel mOnShow="idLoginForm.lname.focus()" style="font-weight:bold">دخول وتسجيل الأعضاء</div>
+					<div id=LoginFormPanel style="display:none;padding:4px"">
+						<div style='display:none'>
+							<form id=idLoginForm onsubmit="return onLoginSubmit(this)">
+						</div>
+						<div><span style='width:65px'>اسم الدخول</span><input name=lname type=edit style='width:92px'></div>
+						<div><span style='width:65px'>كلمة السر</span><input name=pw type=password style='width:92px'></div>
+						<div><input name=newuser type=checkbox onclick="toggleNewUser(this.checked)">تسجيل عضو جديد</div>
+						<div id=idEmail style='display:none'>
+							<input name=keepdata type=checkbox> سجل بيانات التحفيظ الحالية
+							<div><span style='width:65px'>بريد اليكتروني</span><input name=email type=edit style='width:92px'></div>
+						</div>
+						<div align=left style='padding-top:3px'>
+							<input type=submit id=idBtnLogin value='دخول' style='width:75px'>
+							<input id=idCancelLogin type=button value='الغاء' style='width:75px;display:none' onclick='javascript:ShowUserInfo()'>
+						</div>
+						<div style='display:none'>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div id=LoginProgress style="color:green;display:none">جاري الإتصال بقاعدة البيانات..</div>
+			</div>
+		</div>
+
+		<div style="padding-bottom:4px;width:100%">
+			<div style="border:dashed 1px silver;padding:3px;width:100%;">
+				<div style="width:100%;padding-bottom:5px;color:blue">ساهم في نشر الموقع</div>
+				<center>
+				<!-- AddThis				`Button BEGIN -->
+				<script type="text/javascript">
+				//addthis_pub             = 'YOUR-ACCOUNT-ID'; 
+				//addthis_logo            = 'http://www.addthis.com/images/yourlogo.png';
+				//addthis_logo_background = 'EFEFFF';
+				//addthis_logo_color      = '666699';
+				//addthis_brand           = 'Your Site';
+				//addthis_options         = 'facebook, myspace, google, favorites, email, delicious, live, more';
+					addthis_pub  = 'kobool';
+					addthis_options         = "facebook, delicious, stumbleupon, google, myspace, live, more";
+				</script>
+				<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', 'http:/' + '/quran.muslim-web.com/share.php?v=3', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button1-share.gif" width="125" height="16" border="0" alt="" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+				<!-- AddThis Button END -->
+				</center>
+			</div>
+		</div>
+
+		<div style="border:solid 1px silver;padding:3px;width:100%">
+			<div mClass=JCShowHideSwitcher m_target_element=AdsFrame xmOnShow="RotateAd()" >اعلانـــــــــــات</div>
+			<div id=AdsFrame style="width:100%;text-align:center">
+
+				<table width=100%>
+					<tr>
+						<td id=idKoboolAd style="padding:2px;border:solid 2px #CCCCCC;background:#FFFFCC">
+							<div align=center >
+								<a href='http://www.kobool.com' target=_blank style="font-weight:bold;">
+								<div>هل تريد أن تحصن نفسك؟</div>
+								<div style="font-size:14px;color:brown">موقع (قبــول) للزواج</div>
+								<div>من شبكة المسلم</div>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<!-- tr><td id=idMenuItem align=center ><a href="http://www.qaaaf.org/" target=_blank><img src="ads/qaaaf.org.ad2.gif" width=150 height=60 border=0></a></td></tr -->
+					<tr><td style="xbackground:silver;text-align:center;padding:2px"><!-- include file="google_160x600.html"--></td></tr>
+				</table>
+
+				<!-- include file="ads/google_160x90.html" -->
+			</div>			
+		</div>
+	</td>
+	<td width="100%" valign="top" id=MainIndex >
+		<div style="font-size:11px;">
+			<table width="100%" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="100%" style="height:24px">&nbsp;
+					<?
+					if( $IsOldIE ){
+						echo "لاستخدام النسخة الجديدة من الموقع, يجب تحديث متصفح انترنت اكسبلورر الى النسخة 8 أو استخدام آخر اصدار من متصفح فاير فوكس أو جوجل كروم أو سفاري";
+					}
+					else{
+						echo "<a href='/new.php'>اضغط هنا</a>&nbsp;لاستخدام النسخة الجديدة من الموقع";
+					}
+					?>
+				</td>
+				<td>
+					<iframe src="http://www.facebook.com/plugins/like.php?href=http://quran.muslim-web.com/&layout=button_count&amp;show_faces=false&amp;width=200&amp;action=like&amp;colorscheme=dark" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:120px; height:21px;float:left;"></iframe>
+				</td>
+			</tr>
+			</table>
+		</div>
+
+		<div style="width:100%;padding-bottom:3px;">
+			<table width=100% cellspacing=0 cellpadding=0 id=TopMenu>
+			<tr>
+				<td id="idMenuItem" ><a href="javascript:openTrainer()">	مدرب الحفظ</a></td>
+				<td id="idMenuItem" ><a href="javascript:openControlPanel()">تسجيل الحفظ	</a></td>
+				<td id="idMenuItem" width=150>
+					<div style="position:absolute"><a href="memtable.htm" target=_top>الآيات المحفوظة </a>
+						<span id="idMemorized"></span>
+					</div>
+					<div id="idMemChart" style="z-index:-1;border:solid 1px silver;background:#FFFFCC;width:0px"></div>
+				</td>
+				<td id="idMenuItem" ><a href="bendtable.htm" target=_top>الآيات تحت الحفظ </a></td>
+				<td  NOWRAP id="idMenuItem"><a href="memorize.htm" target=_top>مخطط الآيات</a></td>
+				<td id="idMenuItem" ><a href="javascript:window.external.addFavorite('http://quran.muslim-web.com',' muslim-web.com - القرآن الكريم - شبكة المسلم')">اضف الى المفضلة</a>
+				</td>
+			</tr>
+			</table>
+		</div>
+
+		<div id="CriticalMsg" style="display:none;padding:2px;color:red;font-weight:bold;background:white" align=center><!--Message--></div>
+
+		<div id=idResults style="display:none;"><div id=idStatus></div></div>
+		
+		<div style="background:#B6C2B4;padding:2px;width:100%;">
+			
+			<table id="IndexCaption" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+			<tr>
+				<td width="100%" style="padding:1px">
+					<input class=ActivePageButton 
+						style="width:70px;height:18px" 
+						type=button value="فهرس السور" 
+						onclick="ClosePageView()" 
+						id=idBtnShowIndex>&nbsp;
+					<input class=PageButton 
+						style="width:70px;height:18px" 
+						type=button 
+						value="عرض الصفحات" 
+						onclick="ShowPages(-1)" 
+						id=idBtnShowPages>&nbsp;
+					<span id="idRecentReciters" 
+						style="color:green;padding-top:4px;padding-bottom:4px"></span>&nbsp;
+					<span id="idRecentSuras"></span>&nbsp;
+					<span id=idPageMarks></span>
+				</td>
+				<td >
+					<table id="ColorChart" border="0" cellspacing="1" cellpadding="2" ID="Table3">
+					<tr>
+						<td bgcolor="#CEDEDE" align="center" NOWRAP>مكية</td>
+						<td bgcolor="#EFEFE7" align="center" NOWRAP>مدنية</td>
+						<td bgcolor="#FFFFCC" align="center" NOWRAP>نسبة الحفظ</td>
+					</tr>
+					</table>
+				</td>
+			</tr>
+			</table>
+
+			<div id=idQuranIndex align=center style="width:100%">
+			<!-- Index goes here -->
+				<div style="height:400px;background:#EFEFE7;padding:20px">
+					<div style="font-size:20px;color:silver;font-weight:bold;padding-bottom:10px" id=WaitingMsg>تحميل البرنامج .. فضلا الإنتظار</div>
+					<div mClass=JCImageLoader id=ImageLoader m_progress="idProgress" m_base="images/" m_images="asterix_gray.gif,expand_down.gif,collapse_up.gif,down.gif,noon2.jpg,speaker3.gif,next.gif,disk2.gif,open_book.gif,yes.gif" m_onload="GetIndex()">
+						<div mClass=JCProgressView m_total=10 id=idProgress>&nbsp;</div>
+					</div>
+					<div style="color:gray;padding-top:5px">اذا حدث خطأ أو توقف التحميل مدة طويلة فضلا إضغط على زر F5 لإعادة انشاء الصفحة.</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Page View -->
+		<div style="padding-top:3px;text-align:center">
+			<table cellspacing=0 cellpadding=0 
+				scroll="0" 
+				id=idPageViews 
+				sura_number="1"
+				style="border:solid 1px silver;display:none;background:#FFFFCC;xfilter:progid:DXImageTransform.Microsoft.Shadow(color='#666666', Direction=135, Strength=3)"
+				>
+			<tr>
+				<td valign=top onclick="FocusPage()">
+					<div><input id=idBtnPageMark class=PageButton style='width:64px' type=button value='ضع علامة' onclick='TogglePageMark();ShowPageMarks()'></div>
+					<div id=idPageSpin></div>
+					<div id=idPages style="xborder:solid 1px silver" width=100% valign=top>&nbsp;</div>
+					&nbsp;	
+					<div><input id=idBtnToggleResolution class=PageButton style='width:64px' type=button value='' onclick='ToggleResolution()'></div>
+
+				</td>
+				<td  valign=top onmousewheel="return WheelScrollPages()" align=center onclick="FocusPage()">
+					<table width=200 cellspacing=0 cellpadding=0>
+					<tr>
+						<td id=idPageChapter NOWRAP></td>
+						<td width=100% style="height:15px">&nbsp;</td>
+						<td id=idPageSuraName NOWRAP></td>
+					</tr>
+					</table>
+
+					<div id=idPageViewFrame	 onkeydown="return OnPageKeyPress()" onkeypress="return OnPageKeyPress()" TABINDEX=0 style="background-image:url(images/r_page.jpg);background-repeat:repeat-y;width:266px" align=left
+					><img id=idPageView page_number="0" side="0" 
+						onselectstart="StopDragging()" 
+						onmousedown="StartDrag(0)"
+						onmousemove="Drag(0)"
+						onmouseup="EndDrag(0)"
+						onclick="gotoSide(0)" 
+						style='border:solid 1px silver;border-right:solid 1px gray;border-bottom:solid 1px gray;' src='/images/space.gif' 
+						height=401 ></div>
+
+					<table width=100%>
+					<tr>
+						<td NOWRAP align=right style='cursor:hand' onclick='PrevPage()'><img src=images/prev.gif border=0> صفحة سابقة</td>
+						<td width=100% style='height:16px;cursor:hand' align=center>&nbsp;<span id=idPageNo ></span>
+						</td>
+					</tr>
+					</table>
+				</td>
+				<td valign=top onmousewheel="return WheelScrollPages()" align=center onclick="FocusPage()">
+					<table width=200 cellspacing=0 cellpadding=0 >
+					<tr>
+						<td id=idPageChapter NOWRAP></td>
+						<td width=100% style="height:15px">&nbsp;</td>
+						<td id=idPageSuraName NOWRAP></td>
+					</tr>
+					</table>
+				
+					<div id=idPageViewFrame onkeydown="return OnPageKeyPress()" onkeypress="return OnPageKeyPress()" TABINDEX=0 style="background-image:url(images/l_page.jpg);background-repeat:repeat-y;width:266px" align=right
+					><img id=idPageView page_number="0" side="1" 
+						onselectstart="StopDragging()" 
+						onmousedown="StartDrag(1)"
+						onmousemove="Drag(1)"
+						onmouseup="EndDrag(1)"
+						onclick="gotoSide(1)" 
+						style='border:solid 1px silver;border-bottom:solid 1px gray;' src='/images/space.gif' 
+						height=401 ></div>
+					<table width=100% >
+					<tr>
+						<td width=100% style='height:16px;cursor:hand' align=center><span id="idPageNo"></span>&nbsp;</td>
+						<td NOWRAP align=left style='cursor:hand' onclick='NextPage()'>صفحة تالية <img src=images/next.gif border=0></td>
+					</tr>
+					</table>
+				</td>
+				<!-- vertical index -->
+				<td valign=top>
+					<select id=idSelectVerticalIndex style="width:70px;font-size:9px" onchange="onChangeVerticalIndex()">
+						<option>الأجزاء</option>
+						<option>السور</option>
+						<option>السور أبجديا</option>
+					</select>
+					<div id=idVerticalIndex style="overflow-y:auto;height:430px" selectedIndex=-1 onclick="FocusPage()"></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=4 align=center style="color:brown">لقلب الصفحات قم بسحبها أفقيا في اتجاه المنتصف بواسطة الماوس أو استخدم عجلة الماوس <br>أو لوحة المفاتيح  (مفاتيح الحركة للإنتقال بين الصفحات و أضف Ctrl للإنتقال بين السور).</td>
+			</tr>
+			</table>
+		</div>
+	</td>
+</tr> 
+</table> 
+
+<!-- {Text Ads -->
+		<div style="width:100%;padding-top:5px;border:solid 1px silver" id="FooterAds" style="display:none">
+			<table>
+			<tr>
+				<td width="100%" mClass="JCShowHideSwitcher" m_target_element="FooterAdsPanel">	إعلانات:</td>
+				<td><!--include file="ratteb.html"--></td>
+			</tr>
+			</table>
+			<div id="FooterAdsPanel" >
+				<table width=100%>
+				<!-- tr -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.islamsites.net" target=_blank>دليل المواقع الإسلامية</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.mobily.ws" target=_blank>رسائل جوال SMS</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.el3b.com" target=_blank>العاب</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.el3b.com/cat-18.html" target=_blank>العاب باربي</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.q77q.com" target=_blank>العاب فلاش</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://vb.el3b.com/f28" target=_blank>ماسنجر</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.el3b.com/cat-16.html" target=_blank>العاب أطفال</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.uparab.com" target=_blank>مركز التحميل العربي</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.ryadh-quran.net" target=_blank>رياض القرآن</a></td -->
+				<!-- /tr -->
+				<tr>
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.hqw7.com" target=_blank>عالم القرآن الكريم</a></td-->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.nesrsoft.com" target=_blank>المساعد الصوتي للجوال</a></td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.alaseeef.com/vb" target=_blank>شبكة الأسيف</a><td -->
+					<!-- td id=idMenuItem align=center width=20%><a href="http://www.f99f.com" target=_blank>games</a></td -->
+					<td id=idMenuItem align=center width=20%><a href=quran_ads.html style="color:gray" target=_blank>ضع إعلانك هنا</a></td>
+					<td id=idMenuItem align=center width=20%><a href=quran_ads.html style="color:gray" target=_blank>ضع إعلانك هنا</a></td>
+					<td id=idMenuItem align=center width=20%><a href=quran_ads.html style="color:gray" target=_blank>ضع إعلانك هنا</a></td>
+					<td id=idMenuItem align=center width=20%><a href=quran_ads.html style="color:gray" target=_blank>ضع إعلانك هنا</a></td>
+					<td id=idMenuItem align=center width=20%><a href=quran_ads.html style="color:gray" target=_blank>ضع إعلانك هنا</a></td>
+					<!-- td id=idMenuItem align=center width=25%><a href=quran_ads.html style="color:gray" target=_blank>ضع إعلانك هنا</a></td -->
+				</tr>
+				</table>
+				<div style="padding-top:15px;padding-bottom:15px;text-align:center;display:none">
+					<!-- include file="google_728x90.html"-->
+				</div>
+			</div>
+		</div>
+		&nbsp;
+		<table width=100%>
+		<tr>
+		<td valign=top width=25%>
+			<div >
+				<div style="color:green;font-weight:bold">للإستماع إلى التلاوة:</div>
+				يجب تنزيل و تثبيت البرنامج المجاني&nbsp;
+				<a target="_blank" href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">Real&nbsp;
+					Player</a><br>
+				إذا لم يتوفر لديك هذا البرنامج &nbsp;
+				<a target="_blank" href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">
+				اضغط هنا</a>&nbsp;للحصول عليه
+			</div>
+		</td>
+		<td  valign=top width=25%>
+			<div style="color:green;font-weight:bold">التلاوات القرآنية مقدمة من:</div>
+			<div >
+				طريق الإسلام:<a target="_blank" href="http://www.islamway.com">islamway.com</a><br>
+				موقع الإسلام:<a target="_blank" href="http://www.al-islam.com">al-islam.com</a><br>
+				الشبكة الإسلامية:<a target="_blank" href="http://www.islamweb.net">islamweb.net</a>
+			</div>
+		</td>
+		<td  valign=top width=25%>
+			<div style="color:green;font-weight:bold">التفسير يعرض من:</div>
+			<div >
+				المرتل: reciter.org
+			</div>
+		</td>
+		<td valign=top width=25%>
+			<div style="color:green;font-weight:bold">برامج اسلامية مجانية:</div>
+			<div >
+				<a target=_blank href="http://www.kortasoft.com/symbian/mathan/s60/default.htm?ref=muslim-web">
+				المؤذن للتليفون المحمول
+				</a>
+			</div>
+		</td>
+		</tr>
+		</table>
+
+		<div id=AlterBookmarks style="padding-top:10px;display:none">
+			<div style="padding:2px;font-size:11px;background:#FFFFCC;color:brown;text-align:center;border:dotted 1px silver">
+			اذا لم تفتح هذه الصفحة مستقبلا استخدم العنوان: <a href="javascript:AddFav1()"><b>www.muslim-web.com</b></a>&nbsp;أو&nbsp;<a href="javascript:AddFav2()"><b>www2.muslim-web.com</b></a>&nbsp;بدلا من&nbsp;quran.muslim-web.com.<br>
+			اضغط بالماوس لإضافته الى التفضيلات
+			</div>
+		</div>
+
+		<div align="center" style="padding-top:20px;">
+				لإرسال أي ملاحظات أو التنبيه عن أخطاء استخدم هذا البريد الإلكتروني 
+				<A href="mailto:webmaster@muslim-web.com">
+					webmaster@muslim-web.com</A><br>
+				<font color="#008000">لاتنسونا بالدعاء</font>
+		</div>
+
+<!-- }Ads -->
+
+</BODY>
+	<script onreadystatechange="onJClassLoaded(this)" language="JavaScript" src="jclass_1.0.1.js"></script>
+	<script language="JavaScript" src="lib.js?v=20080812"></script>
+	<script language="JavaScript" src="qlib.js?v=20100411"></script>
+	<script language="JavaScript" src="tlib.js?v=20080817"></script>
+	<script language="JavaScript" src="xml_loader.js?v=20080812"></script>
+	<script language="JavaScript" src="home.js?v=20080816"></script>
+	<script language="JavaScript" src="class_akeys.js?v=20080812"></script>
+	<script language="JavaScript" src="class_spinbox.js?v=20080812"></script>
+	<script language="JavaScript" src="JCSuraCell.js?v=20080812"></script>
+	<script language="JavaScript" src="JCShowHideSwitcher.js?v=20080812"></script>
+	<script language="JavaScript" src="JCSuraViewer.js?v=20080812"></script>
+	<!-- script language="JavaScript" src="adlib.js?v=1"></script -->
+	<script language="JavaScript" src="JCDragDrop.js?v=20080812"></script>
+
+	<script src="http://cgi.muslim-web.com/cgi-bin/counter.pl" language="vbscript"></script>
+</HTML>

@@ -267,7 +267,7 @@
 
 #LangSwitcher{
 	position:absolute;	
-	top:24px;
+	top:3px;
 	padding:2px;
 	font-weight:bold;
 }
@@ -1406,4 +1406,20 @@ span
 
 #AudioControls td>span{
 	vertical-align: middle;
+}
+
+#GooglePlayBadge{
+	position: absolute;
+	top:26px;
+	right:0;
+	width:125px;
+}
+
+*:lang(ar) #GooglePlayBadge{
+	left:0;
+	right:auto;
+}
+
+#GooglePlayBadge img{
+	width:100%;
 }

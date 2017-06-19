@@ -113,10 +113,16 @@ $suraCellWidth = 140;
 	</head>
 
 	<body lang="<?=$lang?>" class="xhelp_on">
-		<div id="LangSwitcher" class="href" onclick="SwitchLang('<?=$lang?>')"><?php echo ( $lang == "ar" ) ? $Str['english'] : $Str['arabic']; 
-		?>&nbsp;</div>
+		<div id="LangSwitcher" class="href" onclick="SwitchLang('<?=$lang?>')"><?php echo ( $lang == "ar" ) ? $Str['english'] : $Str['arabic'];
+		?></div>
 
-		<table id="TopPanel" cellpadding="0" class="collapsed">
+        <div id="GooglePlayBadge">
+            <a href="https://play.google.com/store/apps/details?id=com.muslim_web.quran"
+                    ><img src="images/google-play-badge.png" alt="get it on Google Play"/></a>
+        </div>
+
+
+        <table id="TopPanel" cellpadding="0" class="collapsed">
 		<tr>
 			<td class="top_logo" id="TopLogo" >
 				<div class="site_title"><?= $Str['holy_quran'] ?></div>
@@ -257,7 +263,7 @@ $suraCellWidth = 140;
 							<div>من شبكة المسلم</div>
 						</div>
 						<? /*include('side_ads.php');*/ ?>
-					</div>			
+					</div>
 				</div>
 
 				<div class="sideBox">
@@ -272,7 +278,8 @@ $suraCellWidth = 140;
 						المرتل: <b>reciter.org</b>
 					</div>
 				</div>
-			</div>
+
+            </div>
 			<div id="Trainer" style="display:none;">
 				<? include("exercise.php") ?>
 			</div>
