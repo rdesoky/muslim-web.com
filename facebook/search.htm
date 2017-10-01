@@ -1,0 +1,89 @@
+<HTML>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1256">
+<title>البحث في آيات القرآن الكريم</title>
+<STYLE type="text/css">
+	A           { TEXT-DECORATION:none }
+	A:link		{ color:#003399; }
+	A:visited	{ color:#003399; }
+	A:hover		{ color:brown; xFONT-WEIGHT:bolder;}
+	td          {FONT-SIZE=11px;FONT-FAMILY=tahoma}
+	body        {FONT-SIZE=9pt;FONT-FAMILY=tahoma}
+	input,textarea	       {FONT-FAMILY:Tahoma;FONT-SIZE:12px;}
+	select      {FONT-FAMILY:Tahoma;FONT-SIZE:12px; COLOR:green; width=120;}
+	.toolbar_button{color:#003399;padding:1px;padding-left:3px;padding-right:3px;border-top:solid 2px white;
+	border-left:solid 2px white;border-bottom:solid 2px silver;	border-right:solid 2px silver;cursor:hand;
+	background:#E4EBCD;	height:20px;vertical-align:middle;text-align:center;font-size:10px}
+</STYLE>
+<script language="JavaScript" src="lib.js?v=8"></script>
+<script language="JavaScript" src="qlib.js?v=11"></script>
+<script language="JavaScript" src="class_akeys.js?v=2"></script>
+</head>
+<body dir=rtl bgcolor=#dcdcb6 leftmargin=4 topmargin=3 onload="onBodyLoad()">
+<script language=javascript>
+	document.write ( "<" + "img id=idAyaPic style='border-top:solid 2px white;border-left:solid 2px white;border-bottom:solid 2px gray;border-right:solid 2px gray;display:none;position:absolute;left:4px;top:4px;filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=80)' src='images/wait.gif'>" );
+</script>
+<p align=center><b>البحث في آيات القرآن الكريم</b></p>
+
+<form	method=get 
+		action="search.htm" 
+		name=SearchForm 
+		xonsubmit="return onSearch(this);" 
+		style="border:dotted 1px gray;padding:2px;">
+
+<table>
+<tr>
+	<td valign=top	>
+ابحث عن:
+	</td>
+	<td valign=top>
+	<span  onmousemove="ShowElement('idKeyboard',200);" onmouseout="HideElement('idKeyboard',600)">
+	<div>
+		<input type=edit id=idSearchText name=SearchText size="30">
+		<!--textarea type=edit rows=1 COLS=30 id=idSearchText xstyle="width:160px" WRAP=off></textarea-->
+	</div>
+		<script language=javascript>new CKeyboard("idSearchText", arabic_keys, "onSearch(SearchForm)")</script>
+	</span>
+	</td>
+	<td valign=top >
+		<input type=submit value="ابحث"> 
+		<input type=reset value="جديد">
+	</td>
+	<td valign=top style="cursor:default;padding-top:4px;padding-bottom:4px;color:green" onmouseover="ShowElement('idCommon',500)" onmouseout="HideElement('idCommon',500)">
+		امثلة لعبارات للبحث
+		<img src=http://quran.muslim-web.com/images/next.gif>
+		<div id=idCommon NOWRAP style="background:white;position:absolute;display:none;border:1px solid gray;width:80px;padding:2px">
+			<script language=javascript>
+				var samples= new Array(
+				"محمد",
+				"عيسى",
+				"عيسى ابن مريم",
+				"ان في ذلك",
+				"انه هو",
+				"ان الله",
+				"إلا قليل",
+				"لآيات",
+				"لآية",
+				"لهم اجرهم عند ربهم"
+				);
+				for (i=0; i<samples.length; i++)
+				{
+					document.write("<a href=\"javascript:onCommonSelect('" + samples[i] + "')\">" + samples[i] + "<br>");
+				}
+			</script>
+		</div> 
+	
+	</td>
+</tr>
+
+</table>
+</form>
+<div id=idResults style="background:#efefde;padding:3px;border-top:white 1px solid;border-left:white 1px solid;border-bottom:gray 1px solid;border-right:gray 1px solid; font-family:tahoma; font-size:12px"><div id=idStatus></div>
+&nbsp;
+</div>
+</BODY>
+</HTML>
+
+<script language="JavaScript" src="navigator.js?v=1"></script>
+<script language="JavaScript" src="xml_loader.js?v=1"></script>
+<script language="JavaScript" src="search.js?v=1"></script>

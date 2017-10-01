@@ -1,0 +1,12 @@
+DirectoryIndex index.shtml index.html index.php
+Order deny,allow
+Deny from all
+allow from all
+Options +ExecCGI Includes
+
+ExpiresByType image/gif "Now"  
+ExpiresByType image/jpeg "Now"  
+ExpiresByType text/html "Now"
+ExpiresByType text/xml "access plus 90 day"
+ExpiresByType text/css "Now"
+ExpiresByType application/x-javascript "Now"

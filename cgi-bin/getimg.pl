@@ -15,7 +15,7 @@ if( open IMAGE_FILE, "< " . $img )
 {
 	binmode IMAGE_FILE;
 
-	print "Content-Type: image/${ext};\n";
+	print "Content-Type: image/${ext}\n";
 	print "Expires: $expiry\n";
 	print "\n";
 
