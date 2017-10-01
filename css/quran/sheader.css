@@ -148,11 +148,11 @@ body{
 
 *[lang=ar] .home_link{
 	padding-right:20px;
-	background:url(/images/home.gif) right no-repeat;
+	background:url(../../images/home.gif) right no-repeat;
 }
 *[lang=en] .home_link{
 	padding-left:20px;
-	background:url(/images/home.gif) left no-repeat;
+	background:url(../../images/home.gif) left no-repeat;
 }
 
 

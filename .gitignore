@@ -1,0 +1,9 @@
+hpages/*.jpg
+pages/*.gif
+pages/Thumbs.db
+hpages/Thumbs.db
+pages/Thumbs.db
+hpages/Picasa.ini
+pg_map/pm_*.json
+qtext/*
+.vstags

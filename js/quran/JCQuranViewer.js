@@ -8,6 +8,10 @@ var gHighResolution	= 0;
 var gPageWidth		= 264;
 var gPageHeight		= 402;
 
+function imgBase(){
+	return gImgHost || "";
+}
+
 var vKeys = vK = {
 	space: 32,
 	home:36,
@@ -644,7 +648,7 @@ var QViewer = {
 	gotoPageText:function( pageNum ){
 		var sura = QData.pagesInfo[pageNum-1].s;
 		//var aya  = QData.pagesInfo[nPage-1].a;
-		window.location.href = "/sura/?s=" + sura + "&p=" + (pageNum).toString() ;
+		window.location.href = "sura/?s=" + sura + "&p=" + (pageNum).toString() ;
 	},
 
 	gotoPage:function( pageNum, bReload )
@@ -679,7 +683,7 @@ var QViewer = {
 			DU.removeClass("idPageViewFrame_" + inactiveSide, "wait");
 
 			_E("idPageViewFrame_" + inactiveSide).innerHTML= "<img id=idPageView_" + inactiveSide + 
-				" src='/images/space.gif' " + 
+				" src='" + imgBase() + "images/space.gif' " + 
 				" side='" + inactiveSide + "' " +
 				" />";
 
@@ -970,8 +974,8 @@ var QViewer = {
 	},
 	
 	updateResolution:function(){
-		gHighResolution = parseInt( getCookie( "hr", "0" ), 10 );
-		_E("ZoomButton").src = "/images/zoom-" + ( gHighResolution ? "out":"in" ) + ".gif";
+		gHighResolution = parseInt( getCookie( "hr", "1" ), 10 );
+		_E("ZoomButton").src = imgBase() + "images/zoom-" + ( gHighResolution ? "out":"in" ) + ".gif";
 		gPageWidth	= gHighResolution ? 290 : 264;
 
 		if(gHighResolution){

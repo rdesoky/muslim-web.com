@@ -31,7 +31,7 @@ var PageMp3Player = {
 			name:"QPlayer"
 		};
 		swfobject.embedSWF(
-			"/player.swf", 
+			"player.swf", 
 			"flashContent", // element to replace
 			"110", // width
 			"24", // height

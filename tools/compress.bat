@@ -1,0 +1,2 @@
+jscompress.pl %1 ..\%1
+

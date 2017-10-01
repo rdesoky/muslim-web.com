@@ -15,7 +15,7 @@ if( $IsOldIE ){
 	exit();
 }
 
-header("Expires: Sun, 19 Aug 2012 05:00:00 GMT");
+header("Expires: Sun, 19 Aug 2012 05:00:00 GMT");//expires in the past for guranteed refreshment
 #header("Cache-Control: max-age=0, s-maxage=0, no-cache, no-store"); // HTTP/1.1
 
 $lang = DetectLang();
@@ -23,10 +23,9 @@ include( $lang . "_strings.php" );
 include( "filesver.php" );
 
 $suraCellWidth = 140;
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 
-<html host="$host">
+<html host="<?=$host?>">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=8" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
@@ -45,7 +44,7 @@ $suraCellWidth = 140;
 		<link type="text/css" rel="stylesheet" href="<?=$FV['chelp_css']?>"/>
 
 		<script type="text/javascript" src="<?=$FV['ScriptLoader']?>"></script>
-		<?php if( $_SERVER['HTTP_HOST'] == "cgi.muslim-web.com" ){
+		<? if( $_SERVER['HTTP_HOST'] == "localhost" ){
 			echo "<script type='text/javascript' src='http://localhost/js/quran/MapEditor.js'></script>";
 		}?>
 
@@ -87,17 +86,17 @@ $suraCellWidth = 140;
 					function(){
 						Utils.setupCrossBrowser();
 						HomePage.init();
-						<?php if( $host != "local" ){?>
+						<? if( $host != "local" ){?>
 							LoadJSON(CGIBase + 'counter.js.pl?p=main');
-							setTimeout( 
-								function(){
-									_E("FBShare").innerHTML = _S.spread_site + "&nbsp;&gt;&nbsp;";
-									ScriptLoader.loadJScript("http://static.ak.fbcdn.net/connect.php/js/FB.Share");
-									_E("FBLike").src="http://www.facebook.com/plugins/like.php?href=http://quran.muslim-web.com/&layout=button_count&amp;show_faces=false&amp;width=120&amp;action=like&amp;colorscheme=dark";
-								},
-								10
-							);
-						<?}?>
+							// setTimeout( 
+							// 	function(){
+							// 		_E("FBShare").innerHTML = _S.spread_site + "&nbsp;&gt;&nbsp;";
+							// 		ScriptLoader.loadJScript("http://static.ak.fbcdn.net/connect.php/js/FB.Share");
+							// 		_E("FBLike").src="http://www.facebook.com/plugins/like.php?href=http://quran.muslim-web.com/&layout=button_count&amp;show_faces=false&amp;width=120&amp;action=like&amp;colorscheme=dark";
+							// 	},
+							// 	10
+							// );
+						<? }?>
 					} 
 				);
 			}
@@ -106,17 +105,24 @@ $suraCellWidth = 140;
 			var gPageMapVersion=<?=$PageMapVersion?>;
 			var gPagesServer= "<?=$qpages_host?>"; 
 			var gTafBase = "<?=$tafseer_base?>";
-			var gImgHost = "<?=$img_host?>";
+			var gImgHost = "";
+			var gAppRoot = "<?=$app_root?>";
 			var gLang = "<?=$lang ?>";
 
 		</script>
 	</head>
 
 	<body lang="<?=$lang?>" class="xhelp_on">
-		<div id="LangSwitcher" class="href" onclick="SwitchLang('<?=$lang?>')"><?php echo ( $lang == "ar" ) ? $Str['english'] : $Str['arabic']; 
-		?>&nbsp;</div>
+		<div id="LangSwitcher" class="href" onclick="SwitchLang('<?=$lang?>')"><?= ( $lang == "ar" ) ? $Str['english'] : $Str['arabic'];
+		?></div>
 
-		<table id="TopPanel" cellpadding="0" class="collapsed">
+        <div id="GooglePlayBadge">
+            <a href="https://play.google.com/store/apps/details?id=com.muslim_web.quran"
+                    ><img src="images/google-play-badge.png" alt="get it on Google Play"/></a>
+        </div>
+
+
+        <table id="TopPanel" cellpadding="0" class="collapsed">
 		<tr>
 			<td class="top_logo" id="TopLogo" >
 				<div class="site_title"><?= $Str['holy_quran'] ?></div>
@@ -133,7 +139,7 @@ $suraCellWidth = 140;
 					<td id="TopMenuSearch">
 						<form id="SearchForm">
 							<?=$Str['search']?>:
-							<input type="text" mClass="JCKeyboard" id="SearchKeyword" name="keyword" size="10"/><input type="image" src="<?=$img_host?>/images/search.gif" class="btnSearch"/>
+							<input type="text" mClass="JCKeyboard" id="SearchKeyword" name="keyword" size="10"/><input type="image" src="images/search.gif" class="btnSearch"/>
 						</form>
 					</td>
 					<td id="SearchTabsRoot"><div mClass="JCTabs" 
@@ -144,7 +150,7 @@ $suraCellWidth = 140;
 						></div>
 						<div id="SearchResultsRoot" style="display:none"></div>
 					</td>
-					<td><span class="checkTitle" id="cHelp">Help</span></td>
+					<td style="display:none"><span class="checkTitle" id="cHelp">Help</span></td>
 					<td>
 						<div style="max-height: 18px;overflow:hidden">
 						<a name="fb_share" id="FBShare"
@@ -176,10 +182,10 @@ $suraCellWidth = 140;
 				<div id="TopMenuItems">
 					<span id="RecentReciters"></span>
 					<div class="inline">
-						<span class="help_anchor h_left" >
-							<span class="h_frame">Audio controls</span>
-							<span class="h_arrow"></span>
-						</span>
+						<!--<span class="help_anchor h_left" >-->
+							<!--<span class="h_frame">Audio controls</span>-->
+							<!--<span class="h_arrow"></span>-->
+						<!--</span>-->
 						<table id="AudioControls" cellspacing="0" cellspadding="0" style="display:none">
 						<tr>
 							<td id="PlayerStatus"></td>
@@ -215,14 +221,14 @@ $suraCellWidth = 140;
 						><span 
 							tid="pages" 
 							pid="idPageViews"
-						><img src="<?=$img_host?>/images/read.gif"/>&nbsp;<?= $Str['pages'] ?>
+						><img src="images/read.gif"/>&nbsp;<?= $Str['pages'] ?>
 						</span
 						><span tid="mem" pid="MemReport" class="left_align">
 							<?= $Str['mem_percent']?>: <span id="idMemorized">0</span>%<br/>
-							<span class="help_anchor h_bottom">
-								<span class="h_frame">Memory Report</span>
-								<span class="h_arrow"></span>
-							</span>
+							<!--<span class="help_anchor h_bottom">-->
+								<!--<span class="h_frame">Memory Report</span>-->
+								<!--<span class="h_arrow"></span>-->
+							<!--</span>-->
 						</span
 						><span tid="exercise" pid="Trainer">
 							<?= $Str['writing_exercise'] ?>
@@ -257,7 +263,7 @@ $suraCellWidth = 140;
 							<div>من شبكة المسلم</div>
 						</div>
 						<? /*include('side_ads.php');*/ ?>
-					</div>			
+					</div>
 				</div>
 
 				<div class="sideBox">
@@ -272,7 +278,8 @@ $suraCellWidth = 140;
 						المرتل: <b>reciter.org</b>
 					</div>
 				</div>
-			</div>
+
+            </div>
 			<div id="Trainer" style="display:none;">
 				<? include("exercise.php") ?>
 			</div>
@@ -308,8 +315,8 @@ $suraCellWidth = 140;
 			<div id="idPageViews" mClass="JCQuranViewer" style="display:none;">
 				<div id="SuraBar">
 					<div id="SuraTools">
-						<input type="image" id="ZoomButton" src="<?=$img_host?>/images/space.gif"
-						/><input type="image" id="ShowTextBtn" src="<?=$img_host?>/images/noon2.jpg" onclick="QViewer.openSuraText()"
+						<input type="image" id="ZoomButton" src="images/space.gif"
+						/><input type="image" id="ShowTextBtn" src="images/noon2.jpg" onclick="QViewer.openSuraText()"
 						/>
 					</div>
 					<div id="PagesViewControls">
@@ -325,10 +332,10 @@ $suraCellWidth = 140;
 					<div onclick='QViewer.nextSura()' class='arrowBtn left'></div>
 					<div id='idPageViewAudio'></div>
 					<div class="inline">
-						<span class="help_anchor h_top">
-							<span class="h_frame">Memorization Chart</span>
-							<span class="h_arrow"></span>
-						</span>
+						<!--<span class="help_anchor h_top">-->
+							<!--<span class="h_frame">Memorization Chart</span>-->
+							<!--<span class="h_arrow"></span>-->
+						<!--</span>-->
 						<div id="AyatChart"></div>
 					</div>
 					<div id="SelectionViewer"><?= GetStr("selection_help") ?></div>
@@ -360,7 +367,7 @@ $suraCellWidth = 140;
 								<table class="pageFooter" id="PageFooter_1">
 								<tr>
 									<td id="LeftNavCell" class="pageNavigator">
-										<img src='<?=$img_host?>/images/next.gif' border='0'/> <?= $Str['next'] ?>
+										<img src='images/next.gif' border='0'/> <?= $Str['next'] ?>
 									</td>
 									<td style='width:100%;height:16px;text-align:center'>
 										<span class='playBtn res' title="<?= $Str['recite_page'] ?>" onclick="QViewer.reciteSide(1)"></span>&nbsp;
@@ -390,7 +397,7 @@ $suraCellWidth = 140;
 										<span id="idPageNo_0"></span>
 									</td>
 									<td id="RightNavCell" class="pageNavigator">
-										<?= $Str['prev'] ?> <img src="<?=$img_host?>/images/prev.gif" border="0"/>
+										<?= $Str['prev'] ?> <img src="images/prev.gif" border="0"/>
 									</td>
 								</tr>
 								</table>
@@ -435,7 +442,7 @@ $suraCellWidth = 140;
 												<span onclick="TafPage.decrement()" class="arrowBtn right"></span
 												><span id="TafAyaCell"><span class="href" onclick="TafPage.gotoAyaPage()" id="TafAya"></span></span
 												><span onclick="TafPage.increment()" class="arrowBtn left"></span
-												><span class="tafBtn" id="OpenTafBtn"><img src="<?=$img_host?>/images/new_window.jpg"/></span>
+												><span class="tafBtn" id="OpenTafBtn"><img src="images/new_window.jpg"/></span>
 											</div>
 										</td>
 									</tr>
@@ -537,12 +544,12 @@ $suraCellWidth = 140;
 				<div id="LoginProgress" style="color:green;display:none"><?= $Str['contacting_db'] ?>..</div>
 			</div>
 		</div>
-		<div id="flashContent">
+		<div id="flashContent"></div>
+        <!-- <div>
 			<a href='http://www.adobe.com/go/getflashplayer'>
 				<img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' />
 			</a>
-		</div>
+		</div> -->
 
 	</body>
 </html>
-

@@ -1,0 +1,460 @@
+.anchor{
+	position:relative;
+}
+
+#flashContent{
+	display:none;
+}
+#QPlayer{
+	width:240px;
+	height:24px;
+}
+
+.fake_combobox{
+	padding:2px;
+	border:solid 1px silver;
+	background-image:url(../images/drop_down.gif);
+	background-repeat:no-repeat;
+}
+
+.fake_combobox:hover{
+	background-color:white;
+	border-color:gray;
+}
+
+*[lang=ar] .fake_combobox{
+	padding-left:14px;
+	background-position:left;
+}
+
+*[lang=en] .fake_combobox{
+	padding-right:14px;
+	background-position:right;
+}
+
+.left_align, *[lang=ar] .right_align{
+	text-align:left;
+}
+
+.right_align, *[lang=ar] .left_align{
+	text-align:right;
+}
+
+.checkbox_title, .inline_title{
+	vertical-align:top;
+	padding-top:2px;
+}
+
+.checkbox_title:hover{
+	text-decoration:underline;
+}
+.popupMsg{
+	padding:10px;
+	text-align:center;
+	min-height:60px;
+	font-size:13px;
+}
+span, div, td{
+	cursor:default;
+}
+body[lang=ar]{
+	direction:rtl;
+}
+
+input[type=edit]{
+	border:0px;
+}
+
+.silver_bg{
+	background:silver;
+}
+
+.gray_bg{
+	background:gray;
+}
+
+
+.box{
+	border:solid 1px black;
+}
+
+.white_bg{
+	background:white;
+}
+
+.raised{
+	position:relative;
+	top:-6px;
+	left:-6px;
+}
+
+.wallpaper{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+.trans{
+	/*IE*/
+	filter:alpha(opacity=50);
+	/*Firefox, Chrom*/
+	opacity:0.5;
+}
+
+#ScreenBlocker{
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+
+	background:black;
+	/*IE*/
+	filter:alpha(opacity=30);
+	/*Firefox, Chrom*/
+	opacity:0.3;
+	z-index:5000;
+}
+
+.popup_title_text{
+	color:white;
+	font-weight:bold;
+	padding:2px;
+	display:inline-block;
+}
+.popup_title, .popup_title_text{
+	background:gray;
+	cursor:move;
+}
+.popup{
+	position:fixed;
+	top:200px;
+	left:200px;
+	z-index:5001;
+}
+
+.popupClient{
+	background:white;
+	width:240px;
+	padding:6px;
+}
+.closeBtn{
+}
+.button{
+	background:#DDDDDD;
+	border:solid 1px;
+	border-color:white gray gray white;
+	color:black;
+	padding: 2px 5px 2px 5px;
+	cursor:default;
+	white-space:nowrap;
+}
+.button:hover{
+	background:#EEEEEE;
+	border-color:gray white white gray;
+}
+
+.translation_frame{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+#MouseValues{
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:120px;
+	border:solid 1px black;
+	background:yellow;
+	font-family: Courier New;
+}
+
+#HelpBox{
+	position:fixed;
+	padding:4px;
+	padding-bottom:0px;
+	bottom:0px;
+	left:3px;
+	border:solid 1px gray;
+	border-bottom:none;
+	background-color:#FFFFDD;
+	width:170px;
+	z-index:1000;
+}
+
+#HelpTitle{
+	font-weight:bold;
+	padding-bottom:2px;
+}
+
+#HelpFrame{
+	padding:2px;
+	background:white;
+}
+
+.helpTopic{
+}
+
+.litePadding{
+	padding:2px;
+}
+
+#SuraLayout td{
+	vertical-align:top;
+}
+
+#TafHeader
+{
+	width:280px;
+	text-align:center;
+	padding-bottom:2px;
+}
+#TafHeader select
+{
+}
+
+#TafseerData{
+	width:280px;
+	overflow:auto;
+	background:#FFFFEE;
+}
+
+#TafseerData *{
+	font-size:13px;
+	font-family:Tahoma;
+	line-height:20px;
+}
+
+#QuranViewer
+{
+	position:absolute;
+	direction:ltr;
+	left:18px;
+	border-collapse:collapse;
+}
+
+.pageImage{
+	width:264px;
+	height:402px;
+	border:solid 1px;
+	border-color:white gray gray white;
+}
+
+.active .pageImage
+{
+	border-color:maroon;
+}
+
+#QuranViewer td
+{
+	text-align:center;
+	padding:0px;
+}
+
+.pageHeader{
+	text-align:center;
+	width:265px;
+}
+
+
+.leftSide{
+	background: silver url(../images/l_page.jpg) repeat-y;
+	height:403px;
+}
+
+.rightSide{
+	background: silver url(../images/r_page.jpg) repeat-y;
+	height:403px;
+}
+
+.wait{
+	background: white url(../images/wait.gif) no-repeat center;
+}
+
+
+#LeftWait, #RightWait{
+	position:absolute;
+}
+
+.hidden
+{
+	display:none;
+}
+
+.memChart
+{
+	background:#FFFFCC;
+	white-space:nowrap;
+	font-size:10px;
+}
+
+.arrowBtn{
+	display:inline-block;
+	width:16px;
+	height:18px;
+	cursor:pointer;
+	background-repeat:no-repeat;
+	background-position:center;
+	vertical-align:middle;
+}
+
+.arrowBtn:hover{
+	/*background-color:#CFE6A6;*/
+	background-color:silver;
+}
+
+.arrowBtn.down{
+	background-image:url(../images/down.gif);
+}
+
+*[lang=ar] .arrowBtn.left, .arrowBtn.right{
+	background-image:url(../images/next.gif);
+}
+
+*[lang=ar] .arrowBtn.right, .arrowBtn.left{
+	background-image:url(../images/prev.gif)
+}
+
+
+.playBtn
+{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	background:url(../images/speaker.gif) no-repeat;
+	vertical-align:middle;
+	cursor:pointer;
+}
+.playBtn:hover
+{
+	background:url(../images/listen.gif) no-repeat;
+}
+
+.saveBtn
+{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	background:url(../images/disk.gif) no-repeat;
+	text-decoration:none;
+	vertical-align:middle;
+	cursor:pointer;
+}
+.saveBtn:hover
+{
+	background:url(../images/save.gif) no-repeat;
+}
+
+*
+{
+	font-size:11px ;
+	font-family:Tahoma;
+}
+A{
+	text-decoration: none;
+}
+.href, A:link{
+	color:#003399;
+}
+A:visited{
+	color:#003399;
+}
+.href:hover, A:hover{
+	color:maroon;
+	text-decoration: underline;
+	cursor:pointer;
+}
+
+select
+{
+	color:#555555;
+}
+
+form
+{
+	margin-bottom:0px;
+	margin-top:0px;
+}
+
+*[tid]
+{
+	background:transparent;
+	font-size:11px;
+	border:solid 1px;
+	border-color:White Silver Silver white;
+	border-bottom:none;
+	padding:0px 6px 0px 6px;
+}
+*[tid].sel,*[tid].sel:hover
+{
+	cursor:default;
+	border-right:none;
+	border-color:gray white white gray;
+	background:#E0E0E0;
+}
+*[tid]:hover
+{
+	cursor:pointer;
+	background:white;
+}
+
+.commandcell
+{
+	color: #555555;
+	font-size:11px;
+	border: solid 1px;
+	border-color: gray White White gray;
+}
+/*
+.MenuItem{
+	padding:2px;
+	border:solid 1px;
+	border-color:white Silver Silver white;
+	font-family: Tahoma;
+	font-size: 11px;
+	white-space:nowrap;
+}
+*/
+.imposed{
+	border:solid 1px;
+	border-color:white Silver Silver white;
+}
+
+#idSubMenuItem {
+	padding:1px;
+	padding-right:22px;
+	border:solid 2px;
+	border-color:White silver Silver White;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	height:20px;
+}
+
+/*#idPagesChart	{font-family:tahoma;font-size:10px;line-height: 15px; }*/
+#idBending		{font-family:tahoma;color:orange;font-size:10px;font-weight:bolder;}
+#idMemorized	{font-family:tahoma;color:green;font-size:10px;font-weight:bolder;}
+#idNotMemorized	{font-family:tahoma;color:#999999;font-size:10px;font-weight:bolder;}
+
+.sMenu{
+	border-left:solid 1px black;
+	border-right:solid 1px black;
+	border-bottom:solid 1px black;
+	background:white;
+}
+
+.menu_item
+{
+	cursor:pointer;
+	padding:2px;
+	border-bottom:solid 1px white;
+	background:#F0F0F0;
+	color:navy;
+}
+
+.menu_item:hover
+{
+	background:#CFE6A6;
+}
+

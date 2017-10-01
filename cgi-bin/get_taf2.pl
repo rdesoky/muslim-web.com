@@ -21,30 +21,54 @@ my $file = $fileName[0];
 
 $filename =~ s/\d+\.html/$sura\/$file/;
 
-if( open FILE_HANDLE, "< " . $filename )
-{
-#	binmode FILE_HANDLE;
+my $html = "";
+my $title = "";
 
-	print qq{Content-Type: text/html;
+print qq{Content-Type: text/html;
 Expires: $expiry;
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">};
+};
 
-	while(<FILE_HANDLE>){
+if( open FILE_HANDLE, "< " . $filename )
+{
+    while(<FILE_HANDLE>){
 		$line = $_;
-		$line =~ s/\<head\>/\<head\><link rel=\"StyleSheet\" href=\"\/tafseer\.css\.php\"\/\>/gi;
-		$line =~ s/ border\=1 width\=100\%/ width\=\"100\%\"/gi;
+        #substitute existing tags
+		#$line =~ s/\<head\>/\<head\><link rel=\"StyleSheet\" href=\"\/tafseer\.css\.php\"\/\>/gi;
+		#$line =~ s/ border\=1 width\=100\%/ width\=\"100\%\"/gi;
+        $line =~ s/border\=1//gi;
 		$line =~ s/ align\=right dir\=rtl//gi;
-		$line =~ s/utf-8/windows-1256/gi;
+		#$line =~ s/utf-8/windows-1256/gi;
 		Encode::from_to( $line, "utf-8", "cp1256" );
 		$line =~ s/[\xF0-\xFF]//gi;#remove tashkeel
-		print $line;
+		#print $line;
+        $html .= $line;
 	}
 
 	close FILE_HANDLE;
+    
+    $html =~ s/<html.?>|<\/html>//gi; #remove html tags
+    $html =~ s/<body.?>|<\/body>//gi; #remove body tags
+    $html =~ s/color=#0000FF/color="#0000FF"/gi;#fix color attributes
+    $html =~ /<title>(.+)<\/title>/i;
+    $title = "$1";
+    $html =~ s/<head.*\/head>//gi; #remove head content
 }
 else{
-	print "Content-Type: text/html;\n\n";
-	print "Tafseer Not Found";
+	$html = "Tafseer Not Found";
 }
+
+print qq{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="StyleSheet" href="tafseer.css.php"/>
+        <meta name="viewport" content="width=device-width"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1256"/>
+        <title>${title}</title>
+    </head>
+    <body dir="rtl">
+    ${html}
+    </body>
+    </html>
+};

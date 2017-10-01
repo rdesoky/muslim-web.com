@@ -22,7 +22,7 @@
 .fake_combobox{
 	padding:2px;
 	border:solid 1px silver;
-	background-image:url(/images/drop_down.gif);
+	background-image:url(../../images/drop_down.gif);
 	background-repeat:no-repeat;
 }
 
@@ -279,17 +279,17 @@ input[type="button"]{
 
 
 .leftSide{
-	background: silver url(/images/l_page.jpg) repeat-y;
+	background: silver url(../../images/l_page.jpg) repeat-y;
 	height:403px;
 }
 
 .rightSide{
-	background: silver url(/images/r_page.jpg) repeat-y;
+	background: silver url(../../images/r_page.jpg) repeat-y;
 	height:403px;
 }
 
 .wait{
-	background: white url(/images/wait.gif) no-repeat center;
+	background: white url(../../images/wait.gif) no-repeat center;
 }
 
 
@@ -325,15 +325,15 @@ input[type="button"]{
 }
 
 .arrowBtn.down{
-	background-image:url(/images/down.gif);
+	background-image:url(../../images/down.gif);
 }
 
 *:lang(ar) .arrowBtn.left, .arrowBtn.right{
-	background-image:url(/images/next.gif);
+	background-image:url(../../images/next.gif);
 }
 
 *:lang(ar) .arrowBtn.right, .arrowBtn.left{
-	background-image:url(/images/prev.gif)
+	background-image:url(../../images/prev.gif)
 }
 
 
@@ -342,34 +342,34 @@ input[type="button"]{
 	display:inline-block;
 	width:16px;
 	height:16px;
-	/*background:url(/images/speaker.gif) no-repeat;*/
-	background:url(/images/rg_play_btn.png) no-repeat;
-	/*background:url(/images/play_btn.png) no-repeat;*/
+	/*background:url(../../images/speaker.gif) no-repeat;*/
+	background:url(../../images/rg_play_btn.png) no-repeat;
+	/*background:url(../../images/play_btn.png) no-repeat;*/
 	vertical-align:middle;
 	cursor:pointer;
 }
 .playBtn:hover,.playBtn.res:hover
 {
-	/*background:url(/images/listen.gif) no-repeat;*/
+	/*background:url(../../images/listen.gif) no-repeat;*/
 	background-color: rgb(190,220,180);
 }
 
 .playBtn.res{
-	background-image:url(/images/rg_play_btn2.png);
+	background-image:url(../../images/rg_play_btn2.png);
 }
 .saveBtn
 {
 	display:inline-block;
 	width:16px;
 	height:16px;
-	background:url(/images/disk.gif) no-repeat;
+	background:url(../../images/disk.gif) no-repeat;
 	text-decoration:none;
 	vertical-align:middle;
 	cursor:pointer;
 }
 .saveBtn:hover
 {
-	background:url(/images/save.gif) no-repeat;
+	background:url(../../images/save.gif) no-repeat;
 }
 
 *
@@ -485,7 +485,7 @@ form
 }
 
 .checkTitle{
-	background-image: url(/images/checkbox_off.gif);
+	background-image: url(../../images/checkbox_off.gif);
 	background-repeat: no-repeat;
 	padding:3px 0px 3px 14px;
 	cursor: default;
@@ -496,7 +496,7 @@ form
 	background-position: right;
 }
 .checkTitle[checked="1"], .checkTitle.checked{
-	background-image: url(/images/checkbox_on.gif);
+	background-image: url(../../images/checkbox_on.gif);
 }
 .checkTitle:hover{
 	background-color:#DDD;

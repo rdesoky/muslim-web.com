@@ -1,0 +1,135 @@
+<HTML>
+	<head>
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+		<script src="http://cgi.muslim-web.com/cgi-bin/counter.pl" language="vbscript"></script>
+		<title>القرآن الكريم</title>
+		<script language="JavaScript" src="lib.js?v=20080812"></script>
+		<script type="text/javascript" language="JavaScript">
+
+			var ayaVal = parameter("aya","001");
+			var sura = ayaVal.substring(0,3);
+			var aya = ayaVal.length>5 ? ayaVal.substring(3,6) : "001";
+			var nAya = parseInt(aya,10);
+			var nSura = parseInt(sura,10);
+
+			if(navigator.userAgent.indexOf("MSIE") == -1){
+				//window.location.replace("sura/?s=" + nSura + "&a=" + nAya);	
+				window.location.replace("/");	
+			}
+		</script>
+		<script language="JavaScript" src="jclass_1.0.1.js"></script>
+		<script language="JavaScript" src="qlib.js?v=20080813"></script>
+		<script language="JavaScript" src="tlib.js?v=20080817"></script>
+		<script language="JavaScript">
+
+//QueryToCookies();
+
+//var gTafseerBaseURL = "http://ixweb.muslim-web.com/cgi-bin/get_taf.pl?/tafseer/";
+var gTafseerBaseURL = "http://www.egylist.com/quran/get_taf2.pl?/quran/tafseer/";
+
+//if(window!=top){top.location=document.location.href;}
+
+function updateFrame()
+{
+	//if(window!=top)	{
+	//	top.location=document.location.href;
+	//	return;
+	//}
+
+	window.frames["header"].document.location.href= "sheader.htm?aya=" + sura + aya;
+
+	mytitle = "القرآن الكريم - سورة " 
+			+ gSuraNames[parseInt(sura,10)];
+
+	if(ayaVal.length>3)	{
+		mytitle += " - آية" + nAya;
+	}
+
+	document.title = mytitle;
+
+	//window.frames("side").location.href= "side_index.htm";
+	//SideFrame.location.href = "side_index.htm";
+	window.frames["side"].document.location.href = "side_index.htm";
+
+	sura_page = "qtext/sura_" + sura + ".shtml";
+
+	if (nAya>0) 
+		sura_page += "#" + nAya;
+
+	else if (parameter("page"))
+		sura_page += "#p" + parameter("page");
+	
+
+	//window.frames("main").location=sura_page;
+	//SuraFrame.location.href =sura_page;
+	window.frames["main"].document.location.href =sura_page;
+}
+
+window.name = "quran";
+var bShowTafseer = true;
+
+function ShowTafseer( sura, aya, sFolder )
+{
+	var sURL = gTafseerBaseURL + sFolder + "/" + toStringEx(sura, 3) + toStringEx(aya,3) + ".html";
+	//window.frames("taf_header").SetAyaNo(sura, aya);
+	//window.frames("taf_header").SetTafseer(sFolder);
+
+	TafHeaderFrame.SetAyaNo(sura, aya);
+	TafHeaderFrame.SetTafseer(sFolder);
+
+	//window.frames("taf").location = sURL;
+	TafFrame.location.href = sURL;
+
+	if( bShowTafseer ){
+		bShowTafseer = false;
+		idBody.cols = "30%,*,100";
+	}
+}
+
+function SetRTLDirection()
+{
+	//window.frames("taf").document.body.style.direction = "RTL";
+	//window.frames("taf").document.body.style.margin = "0px";
+	//window.frames("taf").document.body.style.background = "#FFFFCC";
+	if(TafFrame.document) {
+		TafFrame.document.body.style.direction = "RTL";
+		TafFrame.document.body.style.margin = "0px";
+		TafFrame.document.body.style.background = "#FFFFCC";
+	}
+
+	//window.frames("taf").document.body.style.fontFamily = "Traditional Arabic";
+	//window.frames("taf").document.body.style.fontSize = "8px";
+}
+
+function HideTafseer()
+{
+	idBody.cols = "0,*,100";
+	bShowTafseer = true;
+}
+
+</script>
+</head>
+
+<frameset rows="64,*" BORDER="0" frameborder="0" onload="javascript:updateFrame()">
+
+
+	<frame name="header" id=HeaderFrame resize="no" SCROLLING="NO">
+	<frameset cols="0,*,100" BORDER=0 frameborder="0" id=idBody>
+		
+		<frameset rows="24,*" FRAMEBORDER="NO">
+			<frame name="taf_header" id=TafHeaderFrame src="taf_header.htm" FRAMEBORDER="NO" SCROLLING="NO">
+			<frame name="taf" id=TafFrame FRAMEBORDER="NO">
+		</frameset>
+
+		<frameset rows="*,16" FRAMEBORDER="NO">
+			<!-- frame name="toolbar" FRAMEBORDER="NO" src="toolbar.html"/ -->
+			<frame name="main" id=SuraFrame FRAMEBORDER="YES"/>
+			<frame src="text_warning.html" id=WarningFrame FRAMEBORDER="NO"/>
+		</frameset>
+		
+		<frame name="side" id=SideFrame resize="no" >
+	</frameset>
+</frameset>
+
+</HTML>

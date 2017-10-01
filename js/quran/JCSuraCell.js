@@ -13,13 +13,13 @@ var JCQuranIndex = DefineJClass( {
 						"<table cid='actions' class='cell_actions' cellpadding=0 style='visibility:hidden;'><tr>"+
 							"<td style='width:" + (suraCellWidth - 56).toString() + "px'>&nbsp;</td>"+
 							"<td>" + 
-								"<img cid='showpage' class='suraAction' src='/images/read.gif' title='" + _S.read_quran_book + "'>"+ 
+								"<img cid='showpage' class='suraAction' src='images/read.gif' title='" + _S.read_quran_book + "'>"+ 
 							"</td>"+
 							"<td>" + 
-								"<img cid='showtext' class='suraAction' src='/images/noon2.jpg' title='" + _S.display_sura_text + "'>"+ 
+								"<img cid='showtext' class='suraAction' src='images/noon2.jpg' title='" + _S.display_sura_text + "'>"+ 
 							"</td>"+
 							"<td>" + 
-								"<img cid='recite' class='suraAction' src='/images/speaker3.gif' title='" + _S.recite + "'>" + 
+								"<img cid='recite' class='suraAction' src='images/speaker3.gif' title='" + _S.recite + "'>" + 
 							"</td>"+
 						"</tr></table>"+
 						"<div cid='menu' class='suraMenu' style='visibility:hidden'></div>"+
@@ -210,7 +210,7 @@ function JCMenuItem()
 		DU.copyAttr(this, {bullet:""} );
 		this.internalText = this.innerHTML;
 		if(this.bullet.length){
-			this.innerHTML = "<span style='text-align:center;width:18px'><img src=/images/" + this.bullet + "></span>" + 
+			this.innerHTML = "<span style='text-align:center;width:18px'><img src=images/" + this.bullet + "></span>" + 
 								this.innerHTML;
 		}
 	};

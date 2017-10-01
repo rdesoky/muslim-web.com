@@ -245,10 +245,13 @@ function setCookie(name, value, bPermanent)
 		RemoveCookie(name);
 		return;
 	}
-	if (bPermanent)
-		document.cookie = name + "=" + escape(value) + "; path=/; expires=Fri, 31 Dec 2017 23:59:59 GMT;";
-	else
+	if (bPermanent){
+		var tenYearsAhead = new Date( (new Date()).getTime() + 1000 * 60 * 60 * 24 * 365 * 10 );
+		document.cookie = name + "=" + escape(value) + "; path=/; expires=" + tenYearsAhead.toGMTString() + ";";
+	}
+	else{
 		document.cookie = name + "=" + escape(value) + "; path=/;";
+	}
 }
 function writeCookie(name, value, bPermanent)
 {

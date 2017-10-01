@@ -911,7 +911,7 @@ function CreateVolumeBar( sID, listenerContext ){
 		width:"14px",
 		height:"12px",
 		verticalAlign:"middle",
-		backgroundImage:"url(/images/common/volume_speaker.gif)",
+		backgroundImage:"url(images/common/volume_speaker.gif)",
 		backgroundRepeat:"no-repeat"
 	});
 	var eBg = eRoot.appendChild( document.createElement("span") );
@@ -921,7 +921,7 @@ function CreateVolumeBar( sID, listenerContext ){
 		width:"24px",
 		height:"12px",
 		verticalAlign:"middle",
-		backgroundImage:"url(/images/common/volume_bg.gif)",
+		backgroundImage:"url(images/common/volume_bg.gif)",
 		backgroundRepeat:"no-repeat"
 	});
 
@@ -931,7 +931,7 @@ function CreateVolumeBar( sID, listenerContext ){
 		width:"24px",
 		height:"12px",
 		//verticalAlign:"middle",
-		backgroundImage:"url(/images/common/volume_scale.gif)",
+		backgroundImage:"url(images/common/volume_scale.gif)",
 		backgroundRepeat:"no-repeat"
 	});
 

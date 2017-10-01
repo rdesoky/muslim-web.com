@@ -1,0 +1,50 @@
+	td
+	{
+		FONT-FAMILY:Traditional Arabic;
+		FONT-SIZE:22px;
+	}
+	#idHelpPanel{
+		FONT-FAMILY:Tahoma;
+		FONT-SIZE:45px;
+		FONT-WEIGHT:bold;
+		color:red;
+	}
+	#idDescription, select{
+		FONT-FAMILY:Tahoma;
+		FONT-SIZE:13px;
+		xborder-bottom:dotted 1px gray
+	}
+	#idInstructions{
+		FONT-FAMILY:Tahoma;
+		FONT-SIZE:12px;
+		padding-top:8px;
+		color:gray;
+	}
+	input{
+		FONT-FAMILY:Arabic Transparent;
+		FONT-SIZE:18px;
+		FONT-WEIGHT:bold;
+	}
+	#idAyaDisplay {
+		FONT-FAMILY:Traditional Arabic;
+		FONT-SIZE:26px;
+		FONT-WEIGHT:bold;
+		border-top:solid gray 1px;
+		border-left:solid gray 1px;
+		border-right:solid gray 1px;
+		color:green;
+		padding:3px;
+	}
+	#idAyaHeader {
+		FONT-FAMILY:Traditional Arabic;
+		FONT-SIZE:26px;
+		xFONT-WEIGHT:bold;
+		color:brown;
+	}
+
+	#idScoreBoard{
+		FONT-FAMILY:Tahoma;
+		FONT-SIZE:11px;
+		border:solid gray 1px;
+		padding:4px;
+	}

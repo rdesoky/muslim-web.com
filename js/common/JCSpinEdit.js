@@ -210,12 +210,12 @@ var InstallSpin = function( eText, min, max ){
 		if(intervals[id]){
 			clearInterval( intervals[id]);
 			intervals[id] = 0;
-			spinImage.setAttribute("src", "/images/spin_btns.gif" );
+			spinImage.setAttribute("src", "images/spin_btns.gif" );
 		}
 	};
 	upArea.onmousedown = function(e){
 		startUp();
-		spinImage.setAttribute("src", "/images/spin_btns_up.gif" );
+		spinImage.setAttribute("src", "images/spin_btns_up.gif" );
 	};
 	upArea.onmouseup = upArea.onmouseout = function(e){
 		stopInterval( "up" );
@@ -223,7 +223,7 @@ var InstallSpin = function( eText, min, max ){
 
 	downArea.onmousedown = function(e){
 		startDown();
-		spinImage.setAttribute("src", "/images/spin_btns_down.gif" )
+		spinImage.setAttribute("src", "images/spin_btns_down.gif" )
 	};
 	downArea.onmouseup = downArea.onmouseout = function(e){
 		stopInterval( "down" );
@@ -249,7 +249,7 @@ var InstallSpin = function( eText, min, max ){
 		padding:"0px"
 	} );
 
-	spinImage.setAttribute("src", "/images/spin_btns.gif" )
+	spinImage.setAttribute("src", "images/spin_btns.gif" )
 	eText.onchange = function(e){
 		var max = parseInt(this.getAttribute("max"),10);
 		var min = parseInt(this.getAttribute("min"),10);

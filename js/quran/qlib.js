@@ -1,3 +1,7 @@
+function appRoot(){
+	return gAppRoot || "";
+}
+
 function GetChapterProgress( nChapter, nPageNo )
 {
 	var startPage = QData.parts[nChapter].p;
@@ -90,7 +94,7 @@ function openReciter( url, suraNum, reciter_id, pageNum )
 	}
 
 	openReciter.wnd = window.open(
-		"/reciter.php?auto=0&url=" + escape(url) + "&sura=" + suraNum + "&reciter=" + reciter_id + (pageNum? "&pg=" + pageNum : "" ), 
+		appRoot() + "reciter.php?auto=0&url=" + escape(url) + "&sura=" + suraNum + "&reciter=" + reciter_id + (pageNum? "&pg=" + pageNum : "" ), 
 		"telawa", 
 		"width=340,height=200,centerscreen=yes,menubar=no,toolbar=no,location=no,re,resizable=yes"
 	);

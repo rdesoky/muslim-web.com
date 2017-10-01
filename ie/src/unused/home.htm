@@ -1,0 +1,383 @@
+<HTML>
+	<HEAD>
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+		<META content="text/html; charset=windows-1256" http-equiv="Content-Type">
+		<TITLE>Holy Quran Index</TITLE>
+		<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+		<META NAME="keywords" CONTENT="Koran Islam book Mohamed memorizing Quran Koraan Quraan reciting">
+		<link rel="StyleSheet" href="defaultstyle.css?v=4">
+</HEAD>
+<BODY bgColor="#efefe7" dir="rtl" onload="InitPage()" leftmargin="3" rightmargin="3" topmargin="3" bottommargin="30" 
+style="overflow-y:scroll">
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" id=MasterTable>
+	<tr>
+		<td valign="top" style="padding-left:3px;" id=LeftMenu>
+
+			<table border="0" cellspacing="0" cellpadding="0" onclick="toggleView()">
+			<tr>
+				<td><img src="images/border_right.jpg" width="29" height="118"></td>
+				<td width="100%" background="images/border_pattern.jpg" style="cursor:hand">
+					<div align="center" style="Font-Family:Traditional Arabic;font-size:21px;font-weight:bold;">القرآن  الكريم</div>
+				</td>
+				<td><img src="images/border_left.jpg" width="29" height="118"></td>
+			</tr>
+			</table>
+			
+			<div style="width:168px;border:solid 1px silver;padding:3px;">
+
+				<div mClass=JCShowHideSwitcher mTargetElement=idRecitersPanel id=ReciterListToggler mOnShow="InsertListFilters()">
+					تلاوة:&nbsp;<span id=idReciter style="xfont-weight:bold;Font-Family:Arabic Transparent;font-size:18px;color:navy"></span>
+				</div>
+				<div id=idRecitersPanel style="display:none">
+					<div id=ListFilters style="padding-bottom:4px;"></div>
+					<div id=idReciterList style="border-bottom:dotted 1px silver;background:white"></div>
+					<div id="idReciterHelp"">
+						الروايات:<br>
+						حفص عن عاصم<br>
+						* ورش عن نافع<br>
+						** قالون عن نافع<br>
+						*** السوسي عن أبي عمرو<br>
+						****الدوري عن أبي عمرو
+					</div>
+				</div>
+			</div>
+			<div style='padding-top:3px;width:100%'>
+				<div style="border:solid 1px silver;width:100%" >
+					<div style="padding:3px;font-weight:bold;" mClass=JCShowHideSwitcher mTargetElement=SearchPanel mOnShow="SearchForm.SearchText.focus()">البحث في الآيات</div>
+					<table border="0" width="100%" id=SearchPanel style="display:none">
+					<form target="search" action="search.htm" xonsubmit="return doSearch(0);" name="SearchForm">
+					<tr>
+						<td valign="top">
+							<input type="text" name="SearchText" id="idSearchText" style="width:110px">
+						</td>
+						<td valign="bottom">
+							<input onclick="SearchForm.submit()" style="cursor:hand" type="image" border="0" src="images/search.gif" align="absmiddle" width="24" height="23"><br>
+							<input type="reset" value="مسح">
+						</td>
+					</tr>
+					</form>
+					</table>
+				</div>
+			</div>
+			
+			<div style='padding-top:3px;padding-bottom:3px;'>
+				<div id="idLogin" style="border:solid 1px silver;padding:3px;">
+					<div id=CurrentUserInfo style="display:none">
+						<div id=UserInfoSwitcher mClass=JCShowHideSwitcher mTargetElement=CurrentUserInfoButtons >المستخدم الحالي: <span id=CurrentUserName style='font-weight:bold'></span></div>
+						<div id=CurrentUserInfoButtons style="display:none;width:100%">
+							<table width=160 cellspacing=0 cellpadding=0 border=0>
+							<tr>
+								<td width=50%><input style='width:100%' type=button onclick='ShowUserLogin(true);' value='مستخدم آخر' ></td>
+								<td width=50%><input style='width:100%' type=button onclick='ShowNewUser(true);LoginPanelSwitcher.doShow();' value='مستخدم جديد' ></td>
+							</tr>
+							</table>
+							<input style='width:100%' type=button onclick='Logout()' value='خـــروج' >
+						</div>
+					</div>
+
+					<div id=LoginPanel>
+						<div id=LoginPanelSwitcher mClass=JCShowHideSwitcher mTargetElement=LoginFormPanel mOnShow="idLoginForm.lname.focus()" style="font-weight:bold">دخول وتسجيل الأعضاء</div>
+						<div id=LoginFormPanel style="display:none;padding:4px"">
+							<div style='display:none'>
+								<form id=idLoginForm onsubmit="return onLoginSubmit(this)">
+							</div>
+							<div><span style='width:65px'>اسم الدخول</span><input name=lname type=edit style='width:92px'></div>
+							<div><span style='width:65px'>كلمة السر</span><input name=pw type=password style='width:92px'></div>
+							<div><input name=newuser type=checkbox onclick="toggleNewUser(this.checked)">تسجيل عضو جديد</div>
+							<div id=idEmail style='display:none'>
+								<input name=keepdata type=checkbox> سجل بيانات التحفيظ الحالية
+								<div><span style='width:65px'>بريد اليكتروني</span><input name=email type=edit style='width:92px'></div>
+							</div>
+							<div align=left style='padding-top:3px'>
+								<input type=submit id=idBtnLogin value='دخول' style='width:75px'>
+								<input id=idCancelLogin type=button value='الغاء' style='width:75px;display:none' onclick='javascript:ShowUserInfo()'>
+							</div>
+							<div style='display:none'>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div id=LoginProgress style="color:green;display:none">جاري الإتصال بقاعدة البيانات..</div>
+				</div>
+			</div>
+
+			<div style="border:solid 1px silver;padding:3px;">
+				<div mClass=JCShowHideSwitcher mTargetElement=AdsFrame xmOnShow="RotateAd()" >إعلانات تجارية</div>
+				<div id=AdsFrame>
+					<div id=idKoboolAd style='padding-top:3px;padding-bottom:3px'>
+						<div id="idMenuItem" style="background:#FFFFCC" align=center >
+							<a href='http://www.kobool.com/?lang=ar' target=_blank style="font-weight:bold;">
+							<div>هل تريد أن تحصن نفسك؟</div>
+							<div style="font-size:14px;color:brown">موقع (قبــول) للزواج</div>
+							<div>من شبكة المسلم</div>
+							</a>
+						</div>
+					</div>
+					<div style="background:white" align=center><a href="quran_ads.html" target=_top>(ضع إعلانك هنا)</a></div>
+					<div id=idAdFrame align=center style="height:600px"></div>
+				</div>		
+			</div>
+		</td>
+		<td width="100%" valign="top" id=MainIndex >
+			<div align="center" style="Font-Family:Traditional Arabic;font-size:16px;background-image:url(/images/bg_caption.gif);background-repeat:repeat-x;">
+				<img border="0" src="images/aya_key_r.gif?v=1" align="absmiddle" width="11" height="22">
+					&nbsp;<span style='cursor:hand' onclick="onSelectPageMark(28)">شَهْرُ رَمَضَانَ الَّذِيَ أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَى وَالْفُرْقَانِ</span>&nbsp;
+				<img border="0" src="images/aya_key_l.gif?v=1" align="absmiddle" width="11" height="22">
+			</div>
+
+			<div style="width:100%;padding-bottom:3px;">
+				<table width=100% cellspacing=0 cellpadding=0 id=TopMenu>
+				<tr>
+					<td id="idMenuItem" ><a href="javascript:openTrainer()">	مدرب الحفظ</a></td>
+					<td id="idMenuItem" ><a href="javascript:openControlPanel()">تسجيل الحفظ	</a></td>
+					<td id="idMenuItem" width=150>
+						<div style="position:absolute"><a href="memtable.htm" target=_top>الآيات المحفوظة </a>
+							<span id="idMemorized"></span>
+						</div>
+						<div id="idMemChart" style="z-index:-1;border:solid 1px silver;background:#FFFFCC;width:0px"></div>
+					</td>
+					<td id="idMenuItem" ><a href="bendtable.htm" target=_top>الآيات تحت الحفظ </a></td>
+					<td  NOWRAP id="idMenuItem"><a href="memorize.htm" target=_top>مخطط الآيات</a></td>
+					<td id="idMenuItem" ><a href="javascript:window.external.addFavorite('http://quran.muslim-web.com',' muslim-web.com - القرآن الكريم - شبكة المسلم')">اضف الى المفضلة</a>
+					</td>
+				</tr>
+				</table>
+			</div>
+
+			<div id="CriticalMsg" style="display:none;padding:2px;color:red;font-weight:bold;background:white" align=center><!--Message--></div>
+
+			<div id=idResults style="display:none;"><div id=idStatus></div></div>
+			
+			<div style="background:#B6C2B4;padding:2px;width:100%;">
+				
+				<table id="IndexCaption" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+				<tr>
+					<td width="100%" style="padding:1px">
+						<input class=ActivePageButton 
+							style="width:70px;height:18px" 
+							type=button value="فهرس السور" 
+							onclick="ClosePageView()" 
+							id=idBtnShowIndex>&nbsp;
+						<input class=PageButton 
+							style="width:70px;height:18px" 
+							type=button 
+							value="عرض الصفحات" 
+							onclick="ShowPages(-1)" 
+							id=idBtnShowPages>&nbsp;
+						<span id="idRecentReciters" 
+							style="color:green;padding-top:4px;padding-bottom:4px"></span>&nbsp;
+						<span id="idRecentSuras"></span>&nbsp;
+						<span id=idPageMarks></span>
+					</td>
+					<td >
+						<table id="ColorChart" border="0" cellspacing="1" cellpadding="2" ID="Table3">
+						<tr>
+							<td bgcolor="#CEDEDE" align="center" NOWRAP>مكية</td>
+							<td bgcolor="#EFEFE7" align="center" NOWRAP>مدنية</td>
+							<td bgcolor="#FFFFCC" align="center" NOWRAP>نسبة الحفظ</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+	
+				<div id=idQuranIndex align=center style="width:100%">
+				<!-- Index goes here -->
+					<div style="height:116px;background:#EFEFE7;padding:20px">
+						<div style="font-size:20px;color:silver;font-weight:bold;padding-bottom:10px" id=WaitingMsg>تحميل البرنامج .. فضلا الإنتظار</div>
+						<div mClass=JCImageLoader id=ImageLoader idProgress=idProgress imageBase="images/" aImages="asterix_gray.gif,expand_down.gif,collapse_up.gif,down.gif,noon2.jpg,speaker3.gif,next.gif,disk2.gif,open_book.gif,yes.gif" OnDownload="GetIndex()">
+							<div mClass=JCProgressView mTotal=8 id=idProgress>&nbsp;</div>
+						</div>
+						<div style="color:gray;padding-top:5px">اذا حدث خطأ أو توقف التحميل مدة طويلة فضلا إضغط على زر F5 لإعادة انشاء الصفحة.</div>
+					</div>
+				</div>
+			</div>
+			
+<!-- Page View -->
+			<div style="padding-top:3px;text-align:center">
+				<table cellspacing=0 cellpadding=0 
+					scroll="0" 
+					id=idPageViews 
+					sura_number="1"
+					style="border:solid 1px silver;display:none;background:#FFFFCC;xfilter:progid:DXImageTransform.Microsoft.Shadow(color='#666666', Direction=135, Strength=3)"
+					onclick="FocusPage()">
+				<tr>
+					<td valign=top>
+						<div><input id=idBtnPageMark class=PageButton style='width:64px' type=button value='ضع علامة' onclick='TogglePageMark();ShowPageMarks()'></div>
+						<div id=idPageSpin></div>
+						<div id=idPages style="xborder:solid 1px silver" width=100% valign=top>&nbsp;</div>
+						&nbsp;	
+						<div><input id=idBtnToggleResolution class=PageButton style='width:64px' type=button value='' onclick='ToggleResolution()'></div>
+
+					</td>
+					<td  valign=top onmousewheel="return WheelScrollPages()" align=center>
+						<table width=200 cellspacing=0 cellpadding=0>
+						<tr>
+							<td id=idPageChapter NOWRAP></td>
+							<td width=100% style="height:15px">&nbsp;</td>
+							<td id=idPageSuraName NOWRAP></td>
+						</tr>
+						</table>
+
+						<div id=idPageViewFrame	 onkeydown="return OnPageKeyPress()" onkeypress="return OnPageKeyPress()" TABINDEX=0 style="background-image:url(images/r_page.jpg);background-repeat:repeat-y;width:266px" align=left
+						><img id=idPageView page_number="0" side="0" 
+							onselectstart="StopDragging()" 
+							onmousedown="StartDrag(0)"
+							onmousemove="Drag(0)"
+							onmouseup="EndDrag(0)"
+							onclick="gotoSide(0)" 
+							style='border:solid 1px silver;border-right:solid 1px gray;border-bottom:solid 1px gray;' src='/images/space.gif' 
+							height=401 ></div>
+
+						<table width=100%>
+						<tr>
+							<td NOWRAP align=right style='cursor:hand' onclick='PrevPage()'><img src=images/prev.gif border=0> صفحة سابقة</td>
+							<td width=100% style='height:16px;cursor:hand' align=center>&nbsp;<span id=idPageNo ></span>
+							</td>
+						</tr>
+						</table>
+					</td>
+					<td valign=top onmousewheel="return WheelScrollPages()" align=center>
+						<table width=200 cellspacing=0 cellpadding=0 >
+						<tr>
+							<td id=idPageChapter NOWRAP></td>
+							<td width=100% style="height:15px">&nbsp;</td>
+							<td id=idPageSuraName NOWRAP></td>
+						</tr>
+						</table>
+					
+						<div id=idPageViewFrame onkeydown="return OnPageKeyPress()" onkeypress="return OnPageKeyPress()" TABINDEX=0 style="background-image:url(images/l_page.jpg);background-repeat:repeat-y;width:266px" align=right
+						><img id=idPageView page_number="0" side="1" 
+							onselectstart="StopDragging()" 
+							onmousedown="StartDrag(1)"
+							onmousemove="Drag(1)"
+							onmouseup="EndDrag(1)"
+							onclick="gotoSide(1)" 
+							style='border:solid 1px silver;border-bottom:solid 1px gray;' src='/images/space.gif' 
+							height=401 ></div>
+						<table width=100% >
+						<tr>
+							<td width=100% style='height:16px;cursor:hand' align=center><span id="idPageNo"></span>&nbsp;</td>
+							<td NOWRAP align=left style='cursor:hand' onclick='NextPage()'>صفحة تالية <img src=images/next.gif border=0></td>
+						</tr>
+						</table>
+					</td>
+					<!-- vertical index -->
+					<td valign=top>
+						<select id=idSelectVerticalIndex style="width:70px;font-size:9px" onchange="onChangeVerticalIndex()">
+							<option>الأجزاء</option>
+							<option>السور</option>
+							<option>السور أبجديا</option>
+						</select>
+						<div id=idVerticalIndex style="overflow-y:auto;height:400px" selectedIndex=-1></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=4 align=center style="color:brown">لقلب الصفحات قم بسحبها أفقيا في اتجاه المنتصف بواسطة الماوس أو استخدم عجلة الماوس <br>أو لوحة المفاتيح  (مفاتيح الحركة للإنتقال بين الصفحات و أضف Ctrl للإنتقال بين السور).</td>
+				</tr>
+				</table>
+			</div>
+<!-- Page View -->
+
+<!-- {Ads -->
+			<div style="padding-top:20px;padding-bottom:10px;" id=FooterAds>
+				<div style="border:solid 1px silver">
+					<span mClass=JCShowHideSwitcher mTargetElement=GoogleFooter style="padding:3px;">إعلانات تجارية&nbsp;</span>
+					<span style="background:white"><a href="quran_ads.html"  target=_top>(ضع إعلانك هنا)</a></span>
+					<div id=GoogleFooter align=center style="height:90px">
+<!--
+						<script type="text/javascript">
+						google_ad_client = "pub-0784395403030784";
+						google_ad_width = 728;
+						google_ad_height = 90;
+						google_ad_format = "728x90_as";
+						google_ad_type = "text";
+						google_ad_channel ="5638516723";
+						google_color_border = "F2F5E6";//"BACCA6";
+						google_color_bg = "F2F5E6";
+						google_color_link = "000080";
+						google_color_url = "008000";
+						google_color_text = "000000";
+						google_page_url = "http://quran.muslim-web.com/"
+						</script>
+						<script type="text/javascript"
+						  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+-->	
+					</div>
+				</div>
+			</div>
+			<table width=100%>
+			<tr>
+			<td valign=top width=25%>
+				للإستماع إلى التلاوة يجب تنزيل و تثبيت البرنامج المجاني
+				<a target="_blank" href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">Real 
+					Player</a><br>
+				إذا لم يتوفر لديك هذا البرنامج 
+				<a target="_blank" href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">
+				اضغط هنا</a> للحصول عليه
+			</td>
+			<td  valign=top width=25%>
+				<div align=center style="color:green;font-weight:bold">التلاوات القرآنية مقدمة من:</div>
+				<div id="idMenuItem">
+					موقع الإسلام:<a target="_blank" href="http://www.al-islam.com">al-islam.com</a><br>
+					الشبكة الإسلامية:<a target="_blank" href="http://www.islamweb.net">islamweb.net</a><br>
+					طريق الإسلام:<a target="_blank" href="http://www.islamway.com">islamway.com</a>
+				</div>
+			</td>
+			<td  valign=top width=25%>
+				<div align=center style="color:green;font-weight:bold">التفسير يعرض من:</div>
+				<div id="idMenuItem">
+					المرتل:<a target="_blank" href="http://www.reciter.org">reciter.org</a>
+				</div>
+			</td>
+			<td valign=top width=25%>
+				<div align=center style="color:green;font-weight:bold">برامج اسلامية مجانية</div>
+				<div id=idMenuItem>
+					<a target=_blank href="http://www.kortasoft.com/symbian/mathan/s60/default.htm?ref=muslim-web">
+					المؤذن للتليفون المحمول
+					</a>
+				</div>
+			</td>
+			</tr>
+			</table>
+
+			<div id=AlterBookmarks style="padding-top:10px;">
+				<div style="padding:2px;font-size:11px;background:#FFFFCC;color:brown;text-align:center;border:dotted 1px silver">
+				اذا لم تفتح هذه الصفحة مستقبلا استخدم العنوان: <a href="javascript:AddFav1()"><b>www.muslim-web.com</b></a>&nbsp;أو&nbsp;<a href="javascript:AddFav2()"><b>www2.muslim-web.com</b></a>&nbsp;بدلا من&nbsp;quran.muslim-web.com.<br>
+				اضغط بالماوس لإضافته الى التفضيلات
+				</div>
+			</div>
+
+			<div align="center" style="padding-top:20px;">
+					لإرسال أي ملاحظات أو التنبيه عن أخطاء استخدم هذا البريد الإلكتروني 
+					<A href="mailto:webmaster@muslim-web.com">
+						webmaster@muslim-web.com</A><br>
+					<font color="#008000">لاتنسونا بالدعاء</font>
+			</div>
+
+<!-- }Ads -->
+
+		</td>
+	</tr> 
+	</table> 
+
+</BODY>
+	<script language="JavaScript" src="JCFactory.js?v=1"></script>
+	<script language="JavaScript" src="lib.js?v=8"></script>
+	<script language="JavaScript" src="qlib.js?v=20080813"></script>
+	<script language="JavaScript" src="tlib.js?v=2"></script>
+	<script language="JavaScript" src="xml_loader.js?v=1"></script>
+	<script language="JavaScript" src="home.js?v=32"></script>
+	<script language="JavaScript" src="class_akeys.js?v=2"></script>
+	<script language="JavaScript" src="class_spinbox.js?v=1"></script>
+	<script language="JavaScript" src="JCSuraCell.js?v=23"></script>
+	<script language="JavaScript" src="JCShowHideSwitcher.js?v=2"></script>
+	<script language="JavaScript" src="JCSuraViewer.js?v=8"></script>
+	<script language="JavaScript" src="adlib.js?v=1"></script>
+	<script language="JavaScript" src="JCDragDrop.js?v=1"></script>
+	<!-- script language="JavaScript" src="navigator.js"></script -->
+
+	<script src="http://stats.muslim-web.com/cgi-bin/counter.pl" language="vbscript"></script>
+</HTML>

@@ -1,3 +1,6 @@
+function imgBase(){
+	return gImgHost || "";
+}
 
 function JCSuraViewer()
 {
@@ -19,15 +22,15 @@ function JCSuraViewer()
 		this.nWidth = this.totalAyat * 2;
 		return "<div class='suraQViewer' style='position:absolute;'>" +
 					"<table cellspacing='0' cellpadding='0'><tr>" + 
-						"<td cid='prevBtn'><img src=/images/prev.gif width=8 height=9></td>" + 
-						"<td ><div cid='meter' style='width:" + this.nWidth + "px;background-image:url(/images/schart_bg.gif);background-repeat:repeat-x;'>&nbsp;</div></td>" + 
-						"<td cid='nextBtn'><img src=/images/next.gif width=8 height=9></td>" + 
+						"<td cid='prevBtn'><img src=" + imgBase() +  "images/prev.gif width=8 height=9></td>" + 
+						"<td ><div cid='meter' style='width:" + this.nWidth + "px;background-image:url(" + imgBase() +  "images/schart_bg.gif);background-repeat:repeat-x;'>&nbsp;</div></td>" + 
+						"<td cid='nextBtn'><img src=" + imgBase() +  "images/next.gif width=8 height=9></td>" + 
 					"</tr></table>" + 
 					"<div style='font-size:8px;white-space:nowrap:'>" + 
 						"<span cid='startAya' style='width:0px;' id=StartAya_" + this.sID + "></span>" + 
-						"<span DHorz=1 mClass='JCDragDrop' ondrop='" + this.sID + ".onDropStart()'><img border=0 src='/images/start_aya.gif?v=2' width=8 height=16 style='cursor:E-resize'></span>" + 
+						"<span DHorz=1 mClass='JCDragDrop' ondrop='" + this.sID + ".onDropStart()'><img border=0 src='" + imgBase() +  "images/start_aya.gif?v=2' width=8 height=16 style='cursor:E-resize'></span>" + 
 						"<span cid='ayatCount' style='width:8px'></span>" + 
-						"<span DHorz=1 mClass='JCDragDrop' ondrop='" + this.sID + ".onDropEnd()'><img border=0 src='/images/end_aya.gif?v=2' width=8 height=16 style='cursor:W-resize'></span>" + 
+						"<span DHorz=1 mClass='JCDragDrop' ondrop='" + this.sID + ".onDropEnd()'><img border=0 src='" + imgBase() +  "images/end_aya.gif?v=2' width=8 height=16 style='cursor:W-resize'></span>" + 
 					"</div>" +
 				"</div>" + 
 				"<div style='height:34px;background:silver;'></div>" + 
@@ -200,7 +203,7 @@ function JCSuraViewer()
 	};
 
 	this.showRange = function(start, end){
-		this.showText("<div align=center><img src=/images/wait.gif width=32 height=32></div>");
+		this.showText("<div align=center><img src=" + imgBase() +  "images/wait.gif width=32 height=32></div>");
 		LoadData( "http://cgi.muslim-web.com/cgi-bin/get_sura_text.pl?s=" + (this.suraNo-1) + 
 					"&f=" + start + "&t=" + end + "&p=1", 
 					"U.DOM('" + this.id + "').showText(gDataResponse)", 

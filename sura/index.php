@@ -8,12 +8,16 @@ include( "../strings.php" );
 
 
 $lang = DetectLang();
+$css_host = 
+$scr_host = 
+$str_host = 
+$img_host = 
+$cgi_base = $app_root = "../";
 
 include( "../".$lang."_strings.php" );
 include( "../filesver.php" );
 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 
 <html>
 	<head>
@@ -57,6 +61,7 @@ include( "../filesver.php" );
 			var gTafBase = "<?=$tafseer_base?>";
 			var gSuraTextHost = "<?=$stext_host?>";
 			var gImgHost = "<?=$img_host?>";
+			var gAppRoot = "<?=$app_root?>";
 			var gLang = "<?=$lang ?>";
 
 		</script>
@@ -67,7 +72,7 @@ include( "../filesver.php" );
 			<table cellspacing="1" id="SuraTopMenuTable">
 			<tr>
 				<td class="imposed">
-					<span class="home_link" onclick="window.location.href='/'"><?=GetStr("home")?></span>
+					<span class="home_link" onclick="window.location.href='../'"><?=GetStr("home")?></span>
 				</td>
 
 				<td class="imposed">
@@ -75,7 +80,7 @@ include( "../filesver.php" );
 					<tr>
 						<td id="idRecite">
 							<span class="playBtn" onclick="reciteSura()">&nbsp;</span>&nbsp;
-							<a class="saveBtn" onclick="reciteSura()" id="idSaveURL">&nbsp;</a>
+							<a class="saveBtn" id="idSaveURL">&nbsp;</a>
 						</td>
 						<td><div id="RecitersList">&nbsp;</div></td>
 					</tr>

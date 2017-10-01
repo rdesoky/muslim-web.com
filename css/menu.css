@@ -29,13 +29,13 @@
 
 
 .subMenu{
-	background-image:url(/images/arrow_right.gif);
+	background-image:url(../images/arrow_right.gif);
 	background-repeat:no-repeat;
 	background-position:right;
 }
 
 *[lang=ar] .subMenu{
-	background-image:url(/images/arrow_left.gif);
+	background-image:url(../images/arrow_left.gif);
 	background-repeat:no-repeat;
 	background-position:left;
 }

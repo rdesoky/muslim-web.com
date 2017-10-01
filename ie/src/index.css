@@ -1,0 +1,555 @@
+.menuItem
+{
+	cursor:pointer;
+	padding:2px;
+	border-top:solid 1px silver;
+	color:navy;
+}
+
+.menuItem:hover
+{
+	background:#CFE6A6;
+}
+
+#idLoginForm div
+{
+	white-space:nowrap;
+	padding-bottom:3px;
+	padding-top:3px;
+}
+
+#LoginFormPanel
+{
+	padding-top:10px;
+}
+.buttonsBar
+{
+	padding:2px;
+	text-align:left;
+}
+
+#idLoginForm div input[type="text"], #idLoginForm div input[type="password"]
+{
+	width:83px;
+}
+
+#idLoginForm input[type="submit"],
+#idLoginForm input[type="button"]
+{
+	width:60px;
+}
+
+#idLoginForm div span
+{
+	display:inline-block;
+	width:70px;
+}
+
+.pageNavigator
+{
+	white-space:nowrap;
+	cursor:default;
+}
+
+.pageNavigator:hover
+{
+	background:yellow;
+}
+
+.pageViewFrame
+{
+	background: url(/images/r_page.jpg) repeat-y;
+	text-align:left;
+	width:266px;
+}
+
+div[side="1"].pageViewFrame
+{
+	background: url(/images/l_page.jpg) repeat-y;
+	text-align:right;
+}
+
+#idPageViews[hres] .pageViewFrame
+{
+	background: url(/images/r_hpage.jpg) repeat-y;
+	width:292px;
+}
+
+#idPageViews[hres] div[side="1"].pageViewFrame
+{
+	background: url(/images/l_hpage.jpg) repeat-y;
+}
+
+#idPageView_0, #idPageView_1
+{
+	border:solid 1px;
+	border-color:white #444444 #444444 white;
+	src:url(/images/space.gif);
+}
+
+#idPageView_0.sel, #idPageView_1.sel
+{
+	border-style:dotted;
+	border-color: Maroon;
+}
+
+.pageViewFrame img
+{
+	width:264px;
+	height:402px;
+}
+
+#idPageViews[hres] .pageViewFrame img
+{
+	width:290px;
+	height:430px;
+}
+
+
+#idPages
+{
+	padding-bottom:5px;
+}
+
+#idPages .PageButton
+{
+	width:32px;
+}
+
+#PagesViewControls .PageButton
+{
+	width:64px;
+}
+
+#Reciters
+{
+	width:162px;
+}
+#idRecitersPanel
+{
+	position:absolute;
+	background:white;
+	width:160px;
+	z-index:2000;
+	border:solid 1px silver;
+	border-top:none;
+}
+
+#idReciterHelp
+{
+	padding:4px;
+	background:#FFFFDD;
+}
+
+#idReciterHelp div
+{
+	font-size:10px;
+}
+
+#idReciter
+{
+	font-size:11px;
+	color:navy;
+}
+
+#IndexCaption
+{
+}
+
+#idViewTabs {
+	vertical-align:bottom;
+	padding:0px;
+}
+
+#idViewTabs td
+{
+}
+
+#idViewTabs td[tid]
+{
+	font-size:13px;
+	background:#E0E0E0;
+}
+
+#idViewTabs td[tid]:hover
+{
+	background:yellow;
+}
+
+#idViewTabs td[tid].sel
+{
+	background:#B6C2B4;
+}
+
+#ColorChart
+{
+	background:silver;
+}
+
+#ColorChart td
+{
+	background:white;
+	border:none;
+}
+
+#SearchTool td
+{
+	border:none;
+	white-space:nowrap;
+}
+
+body{
+	background:#efefe7;
+	direction:rtl;
+	margin: 0px;
+	font-family:Tahoma;
+}
+span
+{
+	display:inline-block;
+}
+
+.suraMenu
+{
+	 position:absolute;
+	 padding-top:18px;
+	 border:solid 1px black;
+}
+#idVerticalIndex
+{
+	background:#E0E0E0;
+	padding-top:6px;
+}
+#idVerticalIndex td
+{
+	vertical-align:top;
+}
+.vIndexCell
+{
+	font-size:10px;
+	width:48px;
+	cursor:default;
+	border:solid 1px;
+	border-color:white Silver Silver white;
+}
+
+.vIndexCell div
+{
+	font-size:10px;
+}
+
+*[active].vIndexCell
+{
+	border-color:gray white white gray;
+	background:white;
+}
+
+.suraAction, .tinyBtn
+{
+	border:solid 1px;
+	border-color:silver gray gray silver;
+	background:white;
+	cursor:default;
+	text-align:center;
+}
+
+.suraAction:Hover, .tinyBtn:hover
+{
+	border-color:gray silver silver gray;
+	background:#FFFFCC;
+}
+
+
+.vIndexCell:hover
+{
+	cursor:default;
+	background:white;
+}
+
+#IndexPanel
+{
+	vertical-align:top;
+}
+
+#TopLogo
+{
+	background:url(/images/bg_caption.gif) repeat-x;
+	cursor:hand;
+	color:green;
+	width:64px;
+	font-size:13px;
+	font-weight:bold;	
+	text-align:center;
+	cursor:pointer;
+}
+
+.menuSpacer
+{
+	height:3px;
+}
+
+#LeftMenu
+{
+	padding: 0px 0px 0px 0px;
+	vertical-align:top;
+	width:180px;
+}
+#MainIndex
+{
+	vertical-align:top;
+	border-top:solid 4px #B6C2B4;
+
+}
+
+#ProgressPanel 
+{
+	background:#EFEFE7;
+	padding:20px;
+}
+
+#ProgressBar
+{
+	background:silver;
+	width:0px;
+}
+
+#ProgressText
+{
+	position:absolute;
+	width:200px;
+	text-align:center;
+}
+
+#ProgressBarPanel 
+{
+	direction:ltr;
+	width:200px;
+	border:solid 1px gray;
+	text-align:left;
+	padding:2px;
+}
+
+#WaitingMsg 
+{
+	font-size:20px;
+	color:silver;
+	font-weight:bold;
+	padding-bottom:10px;
+}
+
+#IndexTitle
+{
+	Font-Family:Traditional Arabic;
+	font-size:16px;
+	background-image:url(/images/bg_caption.gif);
+	background-repeat:repeat-x;
+	text-align:center;
+	height:28px;
+}
+
+#IndexTitle img
+{
+	vertical-align:middle;
+	width:11px;
+	height:22px;
+}
+
+#TopMenuPanel
+{
+	padding:0px 0px 3px 0px;
+}
+
+#TopMenuPanel Table
+{
+}
+
+#TopMenuPanel td
+{
+	border:solid 1px;
+	border-color:White silver Silver white;
+	padding:3px;
+}
+
+#idMemChart
+{
+	z-index:-1;
+	border:solid 1px silver;
+	background:#ffffcc;
+	height:14px;
+}
+
+#SearchBoxTitle {
+	font-weight:bold;
+}
+
+#CriticalMsg {
+	padding:2px;
+	color:red;
+	font-weight:bold;
+	background:white;
+	text-align:center;
+}
+
+#idPageViews
+{
+}
+
+.adframe
+{
+	border:solid 2px #E0E0E0;
+	padding:1px;
+}
+
+.quranIndex
+{
+}
+
+.indexColumn
+{
+	vertical-align:top;
+}
+
+#idQuranIndex .makki
+{
+	height:18px;
+	background:#cedede;
+	vertical-align:top;
+	border:solid 1px;
+	border-color:white silver silver white;
+}
+
+#idQuranIndex .madani
+{
+	height:18px;
+	background:#efefe7;
+	vertical-align:top;
+	border:solid 1px;
+	border-color:white silver silver white;
+}
+
+#idQuranIndex .makki:hover, #idQuranIndex .madani:hover
+{
+	border:solid 1px Black;
+}
+
+#idFooter
+{
+}
+
+#idFooter td
+{
+	width:25%;
+}
+
+#idFooter td div
+{
+	text-align:center;
+	font-weight:bold;
+	color:Green;
+}
+
+.sideBox
+{
+	padding:3px;
+	border:solid 1px silver;
+}
+
+#ReciterListToggler.sideBox
+{
+	white-space:nowrap;
+}
+
+#idFaceBookAd.sideBox
+{
+	padding:10px;
+	border-color:#3B5998;
+	text-align:center;
+}
+.sViewer
+{
+	width:174px;
+}
+
+#idRecentReciters
+{
+	color:green;
+}
+#idSubMenuItem {
+	padding:1px;
+	padding-right:22px;
+	border-top:solid 2px white;
+	border-bottom:solid 2px silver;
+	border-left:solid 2px white;
+	border-right:solid 2px silver;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	height:20px;
+}
+
+.PageButton{
+	color:#003399;
+	font-size:9px ;
+	font-family:Tahoma;
+	cursor:hand;
+	border: solid 1px;
+	border-color:white gray gray white;
+	padding: 0px 1px 0px 1px;
+	background:#dddddd;
+}
+
+.PageButton{
+	color:#003399;
+	font-size:9px ;
+	font-family:Tahoma;
+	cursor:hand;
+	border: solid 1px;
+	border-color:white gray gray white;
+	padding-left:1px;
+	padding-right:1px;
+	width:10px;
+	background:#dddddd;
+}
+
+.ActivePageButton{
+	color:#003399;
+	font-size:9px ;
+	font-family:Tahoma;
+	cursor:hand;
+	border: solid 1px;
+	border-color: gray white white gray;
+	padding-left:1px;
+	padding-right:1px;
+	background:silver;
+	width:10px;
+}
+
+.suraQViewer
+{
+	background:#CFE6A6;
+	padding:2px;
+	padding-bottom:0px;
+	border:solid 1px white;
+}
+
+.suraQViewerText
+{
+	background:#F0F0F0;
+	background-image:url(/images/bg_sviewer.gif);
+	background-repeat;repeat-x;
+	padding:2px;
+	height:100px;
+	color:green;
+}
+
+#idMenuItem, .MenuItem {
+	padding:2px;
+	border:solid 1px;
+	border-color: white Silver Silver White;
+	font-family: Tahoma;
+	font-size: 11px;
+	white-space:nowrap;
+	color:Black;
+	font-weight:normal;
+	vertical-align:top;
+}

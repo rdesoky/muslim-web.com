@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+<TITLE>Event Flags</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var HIST_LENGTH = 200; //Number of lines of history to show
+var histPos = -1; //Position in the history to start from -1 is the precondition
+var log = new Array(HIST_LENGTH); //The log of messages that have been generated
+var isLogInit = false; //For log initialization
+
+function setKeyEvent() {
+        if(document.javaPlug1.GetWantKeyboardEvents()) {
+                if(confirm("Keyboard events are currently sent.\n" +
+                    "Press OK to stop keyboard events from being sent.")) {
+                        document.javaPlug1.SetWantKeyboardEvents(false)
+                }
+        }
+        else {
+                if(confirm("Keyboard events are not currently sent.\n" +
+                    "Press OK to begin sending keyboard events.")) {
+                        document.javaPlug1.SetWantKeyboardEvents(true)
+                }
+        }
+}
+
+// Are keyboard events sent or not?
+
+function getKeyEvent() {
+        var flags, key
+        if(document.javaPlug1.GetWantKeyboardEvents()) {
+                alert("Keyboard events will be sent.")
+//                document.javaPlug1.OnKeyPress(flags, key)
+//                alert("It's " + flags + " and " + key + ".")
+        }
+        else {
+                alert("Keyboard events will not be sent.")
+        }
+}
+
+function setMouseEvent() {
+        if(document.javaPlug1.GetWantMouseEvents()) {
+                if(confirm("Mouse events are currently sent.\n" +
+                    "Press OK to stop mouse events from being sent.")) {
+                        document.javaPlug1.SetWantMouseEvents(false)
+                }
+        }
+        else {
+                if(confirm("Mouse events are not currently sent.\n" +
+                    "Press OK to begin sending mouse events.")) {
+                        document.javaPlug1.SetWantMouseEvents(true)
+                }
+        }
+}
+
+// Are mouse events sent or not?
+
+function getMouseEvent() {
+        if(document.javaPlug1.GetWantMouseEvents()) {
+                alert("Mouse events will be sent.")
+        }
+        else {
+                alert("Mouse events will not be sent.")
+        }
+}
+
+// Print the callbacks to the text box
+
+function logMsg(msg){
+    if(isLogInit == false){
+        initLog();
+        isLogInit = true;
+    }
+    histPos++;
+    if(histPos >= HIST_LENGTH){
+        histPos = 0;
+    }
+    //Add to the log
+    msg += '\n';
+    log[histPos] = msg;
+    outputLog(histPos);
+}    
+
+function initLog(){
+    for(var i = 0; i < HIST_LENGTH; i++){
+        log[i] = '';
+    }
+}
+
+function outputLog(pos){
+    //Output the log
+    var outLog = '';
+    for(var i = 0; i < HIST_LENGTH; i++){
+    	outLog += log[pos];
+    	pos--;
+    	if(pos <= 0){
+    	    pos = HIST_LENGTH - 1;
+    	}
+    }
+    document.form1.text1.value = outLog;
+}
+
+// Mouse callbacks
+
+function OnLButtonDown(flags, x, y){
+    logMsg('OnLButtonDown: '+ flags + ', ' + x + ', ' + y);
+}
+
+function OnLButtonUp(flags, x, y){
+    logMsg('OnLButtonUp: '+ flags + ', ' + x + ', ' + y);
+}
+
+function OnLButtonDblClk(flags, x, y){
+    logMsg('OnLButtonDblClk: '+ flags + ', ' + x + ', ' + y);
+}
+
+function OnRButtonDown(flags, x, y){
+    logMsg('OnRButtonDown: '+ flags + ', ' + x + ', ' + y);
+}
+
+function OnRButtonUp(flags, x, y){
+    logMsg('OnRButtonUp: '+ flags + ', ' + x + ', ' + y);
+}
+
+function OnRButtonDblClk(flags, x, y){
+    logMsg('OnRButtonDblClk: '+ flags + ', ' + x + ', ' + y);
+}
+
+function OnMouseMove(flags, x, y){
+    logMsg('OnMouseMove: '+ flags + ', ' + x + ', ' + y);
+}
+
+// -->
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="white">
+<P>This example embeds a file in a Web page and uses RealOne Player-style
+<BR>Play, Pause, and Stop buttons. Use the "events enabled" buttons to 
+<BR>determine if the keyboard or mouse events are enabled. Use the "set
+<BR>events" buttons to enable or disable events. This example only plays in
+<BR>in Netscape Navigator.</P>
+
+<!-- Embedded Display Window -->
+
+<TABLE><TR><TD>
+<EMBED  NAME=javaPlug1
+                SRC="test.rpm"
+		WIDTH=220 HEIGHT=180
+		CONSOLE=one
+		CONTROLS=ImageWindow
+                BACKGROUNDCOLOR=blue
+		CENTER=true
+		>
+
+<P><EMBED  NAME=playcontrol
+                SRC="test.rpm"
+                WIDTH=26 HEIGHT=26
+                CONSOLE=one
+                CONTROLS=PlayOnlyButton
+                >
+
+<EMBED  NAME=pausecontrol
+                SRC="test.rpm"
+                WIDTH=26 HEIGHT=26
+                CONSOLE=one
+                CONTROLS=PauseButton
+                >
+
+<EMBED  NAME=stopcontrol
+                SRC="test.rpm"
+                WIDTH=26 HEIGHT=26
+                CONSOLE=one
+                CONTROLS=StopButton
+                ></P></TD>
+
+<TD><form name='form1'><font size=2><textarea name="text1" rows="10" cols="50" wrap="soft">Callbacks will be listed here.</textarea></font>
+</form></TD></TR></TABLE>
+
+<!-- Form Buttons using JavaScript Controls-->
+
+<applet code="callback.class" width=0 height=0 name="callback_java" MAYSCRIPT></applet>
+
+
+<P></P>
+<FORM>
+<TABLE>
+<TR>
+<TD><INPUT TYPE="button" VALUE="Set Keyboard Events"
+        onClick="setKeyEvent()">
+<TD><INPUT TYPE="button" VALUE="Set Mouse Events"
+        onClick="setMouseEvent()">
+</TR>
+<TR>
+<TD><INPUT TYPE="button" VALUE="Keyboard Events Enabled?"
+        onClick="getKeyEvent()">
+<TD><INPUT TYPE="button" VALUE="Mouse Events Enabled?"
+        onClick="getMouseEvent()">
+</TR>
+</TABLE>
+</FORM>
+<P>Press <A HREF="events.txt">here</a> to display the source for this example.
+
+</BODY>
+</HTML>

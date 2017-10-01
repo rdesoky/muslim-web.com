@@ -1,5 +1,5 @@
 .help_on #cHelp.checkTitle{
-	background-image: url(/images/checkbox_on.gif);
+	background-image: url(../../images/checkbox_on.gif);
 }
 
 #Trainer{
@@ -267,7 +267,7 @@
 
 #LangSwitcher{
 	position:absolute;	
-	top:24px;
+	top:3px;
 	padding:2px;
 	font-weight:bold;
 }
@@ -671,7 +671,7 @@
 
 .pageViewFrame
 {
-	background: url(/images/r_page.jpg) repeat-y;
+	background: url(../../images/r_page.jpg) repeat-y;
 	text-align:left;
 	width:266px;
 	height:404px;
@@ -689,7 +689,7 @@
 {
 	width:292px;
 	height:432px;
-	background: url(/images/r_hpage.jpg) repeat-y;
+	background: url(../../images/r_hpage.jpg) repeat-y;
 }
 
 #idPageViews.hres .pageViewFrame img{
@@ -699,7 +699,7 @@
 
 div[side="1"].pageViewFrame
 {
-	background: url(/images/l_page.jpg) repeat-y;
+	background: url(../../images/l_page.jpg) repeat-y;
 	text-align:right;
 }
 
@@ -710,7 +710,7 @@ div[side="1"].pageViewFrame
 
 #idPageViews.hres div[side="1"].pageViewFrame
 {
-	background: url(/images/l_hpage.jpg) repeat-y;
+	background: url(../../images/l_hpage.jpg) repeat-y;
 }
 
 #idPageViews .pageViewFrame.mask,
@@ -725,7 +725,7 @@ div[side="1"].pageViewFrame.wait,
 #idPageViews.hres .pageViewFrame.wait,
 #idPageViews.hres div[side="1"].pageViewFrame.wait
 {
-	background: white url(/images/wait.gif) no-repeat center;
+	background: white url(../../images/wait.gif) no-repeat center;
 }
 
 #idPageView_0, #idPageView_1
@@ -934,7 +934,7 @@ span
 
 .top_logo
 {
-	background:url(/images/bg_caption.gif) repeat-x;
+	background:url(../../images/bg_caption.gif) repeat-x;
 	width:64px;
 	height:40px;
 	padding:2px;
@@ -1029,7 +1029,7 @@ span
 {
 	Font-Family:Traditional Arabic;
 	font-size:16px;
-	background-image:url(/images/bg_caption.gif);
+	background-image:url(../../images/bg_caption.gif);
 	background-repeat:repeat-x;
 	text-align:center;
 	height:28px;
@@ -1304,7 +1304,7 @@ span
 .suraQViewerText
 {
 	background:#F0F0F0;
-	background-image:url(/images/bg_sviewer.gif);
+	background-image:url(../../images/bg_sviewer.gif);
 	background-repeat:repeat-x;
 	overflow-y:auto;
 	height:100px;
@@ -1406,4 +1406,20 @@ span
 
 #AudioControls td>span{
 	vertical-align: middle;
+}
+
+#GooglePlayBadge{
+	position: absolute;
+	top:26px;
+	right:0;
+	width:125px;
+}
+
+*:lang(ar) #GooglePlayBadge{
+	left:0;
+	right:auto;
+}
+
+#GooglePlayBadge img{
+	width:100%;
 }

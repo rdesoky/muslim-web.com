@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<?php include( "sura_inc_header.php" ) ?>
+	</head>
+	<body>
+		<p>(56 - سورة الواقعة)</p>
+ 
+		<p><span class='pageButton'>
+				<span class='upBtn'>&nbsp;</span
+					><span pageNo="534">(ص 534)</span
+				><span class='dnBtn'>&nbsp;</span>
+			</span>
+			<span class='basm'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+		</p>
+
+		<p aya="1">
+			<span amenu='1'></span> إِذَا وَقَعَتِ الْوَاقِعَةُ&nbsp;
+			<span akey="1">(1)</span>
+		</p>
+
+			
+		<p aya="2">
+			<span amenu='2'></span>لَيْسَ لِوَقْعَتِهَا كَاذِبَةٌ&nbsp;
+			<span akey="2">(2)</span>
+		</p>
+
+			
+		<p aya="3">
+			<span amenu='3'></span>خَافِضَةٌ رَافِعَةٌ&nbsp;
+			<span akey="3">(3)</span>
+		</p>
+
+			
+		<p aya="4">
+			<span amenu='4'></span>إِذَا رُجَّتِ الْأَرْضُ رَجًّا&nbsp;
+			<span akey="4">(4)</span>
+		</p>
+
+			
+		<p aya="5">
+			<span amenu='5'></span>وَبُسَّتِ الْجِبَالُ بَسًّا&nbsp;
+			<span akey="5">(5)</span>
+		</p>
+
+			
+		<p aya="6">
+			<span amenu='6'></span>فَكَانَتْ هَبَاءً مُنْبَثًّا&nbsp;
+			<span akey="6">(6)</span>
+		</p>
+
+			
+		<p aya="7">
+			<span amenu='7'></span>وَكُنْتُمْ أَزْوَاجًا ثَلَاثَةً&nbsp;
+			<span akey="7">(7)</span>
+		</p>
+
+			
+		<p aya="8">
+			<span amenu='8'></span>فَأَصْحَابُ الْمَيْمَنَةِ مَا أَصْحَابُ الْمَيْمَنَةِ&nbsp;
+			<span akey="8">(8)</span>
+		</p>
+
+			
+		<p aya="9">
+			<span amenu='9'></span>وَأَصْحَابُ الْمَشْأَمَةِ مَا أَصْحَابُ الْمَشْأَمَةِ&nbsp;
+			<span akey="9">(9)</span>
+		</p>
+
+			
+		<p aya="10">
+			<span amenu='10'></span>وَالسَّابِقُونَ السَّابِقُونَ&nbsp;
+			<span akey="10">(10)</span>
+		</p>
+
+			
+		<p aya="11">
+			<span amenu='11'></span>أُولَٰئِكَ الْمُقَرَّبُونَ&nbsp;
+			<span akey="11">(11)</span>
+		</p>
+
+			
+		<p aya="12">
+			<span amenu='12'></span>فِي جَنَّاتِ النَّعِيمِ&nbsp;
+			<span akey="12">(12)</span>
+		</p>
+
+			
+		<p aya="13">
+			<span amenu='13'></span>ثُلَّةٌ مِنَ الْأَوَّلِينَ&nbsp;
+			<span akey="13">(13)</span>
+		</p>
+
+			
+		<p aya="14">
+			<span amenu='14'></span>وَقَلِيلٌ مِنَ الْآخِرِينَ&nbsp;
+			<span akey="14">(14)</span>
+		</p>
+
+			
+		<p aya="15">
+			<span amenu='15'></span>عَلَىٰ سُرُرٍ مَوْضُونَةٍ&nbsp;
+			<span akey="15">(15)</span>
+		</p>
+
+			
+		<p aya="16">
+			<span amenu='16'></span>مُتَّكِئِينَ عَلَيْهَا مُتَقَابِلِينَ&nbsp;
+			<span akey="16">(16)</span>
+		</p>
+
+			 
+		<p><span class='pageButton'>
+				<span class='upBtn'>&nbsp;</span
+					><span pageNo="535">(ص 535)</span
+				><span class='dnBtn'>&nbsp;</span>
+			</span>
+			
+		</p>
+
+		<p aya="17">
+			<span amenu='17'></span>يَطُوفُ عَلَيْهِمْ وِلْدَانٌ مُخَلَّدُونَ&nbsp;
+			<span akey="17">(17)</span>
+		</p>
+
+			
+		<p aya="18">
+			<span amenu='18'></span>بِأَكْوَابٍ وَأَبَارِيقَ وَكَأْسٍ مِنْ مَعِينٍ&nbsp;
+			<span akey="18">(18)</span>
+		</p>
+
+			
+		<p aya="19">
+			<span amenu='19'></span>لَا يُصَدَّعُونَ عَنْهَا وَلَا يُنْزِفُونَ&nbsp;
+			<span akey="19">(19)</span>
+		</p>
+
+			
+		<p aya="20">
+			<span amenu='20'></span>وَفَاكِهَةٍ مِمَّا يَتَخَيَّرُونَ&nbsp;
+			<span akey="20">(20)</span>
+		</p>
+
+			
+		<p aya="21">
+			<span amenu='21'></span>وَلَحْمِ طَيْرٍ مِمَّا يَشْتَهُونَ&nbsp;
+			<span akey="21">(21)</span>
+		</p>
+
+			
+		<p aya="22">
+			<span amenu='22'></span>وَحُورٌ عِينٌ&nbsp;
+			<span akey="22">(22)</span>
+		</p>
+
+			
+		<p aya="23">
+			<span amenu='23'></span>كَأَمْثَالِ اللُّؤْلُؤِ الْمَكْنُونِ&nbsp;
+			<span akey="23">(23)</span>
+		</p>
+
+			
+		<p aya="24">
+			<span amenu='24'></span>جَزَاءً بِمَا كَانُوا يَعْمَلُونَ&nbsp;
+			<span akey="24">(24)</span>
+		</p>
+
+			
+		<p aya="25">
+			<span amenu='25'></span>لَا يَسْمَعُونَ فِيهَا لَغْوًا وَلَا تَأْثِيمًا&nbsp;
+			<span akey="25">(25)</span>
+		</p>
+
+			
+		<p aya="26">
+			<span amenu='26'></span>إِلَّا قِيلًا سَلَامًا سَلَامًا&nbsp;
+			<span akey="26">(26)</span>
+		</p>
+
+			
+		<p aya="27">
+			<span amenu='27'></span>وَأَصْحَابُ الْيَمِينِ مَا أَصْحَابُ الْيَمِينِ&nbsp;
+			<span akey="27">(27)</span>
+		</p>
+
+			
+		<p aya="28">
+			<span amenu='28'></span>فِي سِدْرٍ مَخْضُودٍ&nbsp;
+			<span akey="28">(28)</span>
+		</p>
+
+			
+		<p aya="29">
+			<span amenu='29'></span>وَطَلْحٍ مَنْضُودٍ&nbsp;
+			<span akey="29">(29)</span>
+		</p>
+
+			
+		<p aya="30">
+			<span amenu='30'></span>وَظِلٍّ مَمْدُودٍ&nbsp;
+			<span akey="30">(30)</span>
+		</p>
+
+			
+		<p aya="31">
+			<span amenu='31'></span>وَمَاءٍ مَسْكُوبٍ&nbsp;
+			<span akey="31">(31)</span>
+		</p>
+
+			
+		<p aya="32">
+			<span amenu='32'></span>وَفَاكِهَةٍ كَثِيرَةٍ&nbsp;
+			<span akey="32">(32)</span>
+		</p>
+
+			
+		<p aya="33">
+			<span amenu='33'></span>لَا مَقْطُوعَةٍ وَلَا مَمْنُوعَةٍ&nbsp;
+			<span akey="33">(33)</span>
+		</p>
+
+			
+		<p aya="34">
+			<span amenu='34'></span>وَفُرُشٍ مَرْفُوعَةٍ&nbsp;
+			<span akey="34">(34)</span>
+		</p>
+
+			
+		<p aya="35">
+			<span amenu='35'></span>إِنَّا أَنْشَأْنَاهُنَّ إِنْشَاءً&nbsp;
+			<span akey="35">(35)</span>
+		</p>
+
+			
+		<p aya="36">
+			<span amenu='36'></span>فَجَعَلْنَاهُنَّ أَبْكَارًا&nbsp;
+			<span akey="36">(36)</span>
+		</p>
+
+			
+		<p aya="37">
+			<span amenu='37'></span>عُرُبًا أَتْرَابًا&nbsp;
+			<span akey="37">(37)</span>
+		</p>
+
+			
+		<p aya="38">
+			<span amenu='38'></span>لِأَصْحَابِ الْيَمِينِ&nbsp;
+			<span akey="38">(38)</span>
+		</p>
+
+			
+		<p aya="39">
+			<span amenu='39'></span>ثُلَّةٌ مِنَ الْأَوَّلِينَ&nbsp;
+			<span akey="39">(39)</span>
+		</p>
+
+			
+		<p aya="40">
+			<span amenu='40'></span>وَثُلَّةٌ مِنَ الْآخِرِينَ&nbsp;
+			<span akey="40">(40)</span>
+		</p>
+
+			
+		<p aya="41">
+			<span amenu='41'></span>وَأَصْحَابُ الشِّمَالِ مَا أَصْحَابُ الشِّمَالِ&nbsp;
+			<span akey="41">(41)</span>
+		</p>
+
+			
+		<p aya="42">
+			<span amenu='42'></span>فِي سَمُومٍ وَحَمِيمٍ&nbsp;
+			<span akey="42">(42)</span>
+		</p>
+
+			
+		<p aya="43">
+			<span amenu='43'></span>وَظِلٍّ مِنْ يَحْمُومٍ&nbsp;
+			<span akey="43">(43)</span>
+		</p>
+
+			
+		<p aya="44">
+			<span amenu='44'></span>لَا بَارِدٍ وَلَا كَرِيمٍ&nbsp;
+			<span akey="44">(44)</span>
+		</p>
+
+			
+		<p aya="45">
+			<span amenu='45'></span>إِنَّهُمْ كَانُوا قَبْلَ ذَٰلِكَ مُتْرَفِينَ&nbsp;
+			<span akey="45">(45)</span>
+		</p>
+
+			
+		<p aya="46">
+			<span amenu='46'></span>وَكَانُوا يُصِرُّونَ عَلَى الْحِنْثِ الْعَظِيمِ&nbsp;
+			<span akey="46">(46)</span>
+		</p>
+
+			
+		<p aya="47">
+			<span amenu='47'></span>وَكَانُوا يَقُولُونَ أَئِذَا مِتْنَا وَكُنَّا تُرَابًا وَعِظَامًا أَإِنَّا لَمَبْعُوثُونَ&nbsp;
+			<span akey="47">(47)</span>
+		</p>
+
+			
+		<p aya="48">
+			<span amenu='48'></span>أَوَآبَاؤُنَا الْأَوَّلُونَ&nbsp;
+			<span akey="48">(48)</span>
+		</p>
+
+			
+		<p aya="49">
+			<span amenu='49'></span>قُلْ إِنَّ الْأَوَّلِينَ وَالْآخِرِينَ&nbsp;
+			<span akey="49">(49)</span>
+		</p>
+
+			
+		<p aya="50">
+			<span amenu='50'></span>لَمَجْمُوعُونَ إِلَىٰ مِيقَاتِ يَوْمٍ مَعْلُومٍ&nbsp;
+			<span akey="50">(50)</span>
+		</p>
+
+			 
+		<p><span class='pageButton'>
+				<span class='upBtn'>&nbsp;</span
+					><span pageNo="536">(ص 536)</span
+				><span class='dnBtn'>&nbsp;</span>
+			</span>
+			
+		</p>
+
+		<p aya="51">
+			<span amenu='51'></span>ثُمَّ إِنَّكُمْ أَيُّهَا الضَّالُّونَ الْمُكَذِّبُونَ&nbsp;
+			<span akey="51">(51)</span>
+		</p>
+
+			
+		<p aya="52">
+			<span amenu='52'></span>لَآكِلُونَ مِنْ شَجَرٍ مِنْ زَقُّومٍ&nbsp;
+			<span akey="52">(52)</span>
+		</p>
+
+			
+		<p aya="53">
+			<span amenu='53'></span>فَمَالِئُونَ مِنْهَا الْبُطُونَ&nbsp;
+			<span akey="53">(53)</span>
+		</p>
+
+			
+		<p aya="54">
+			<span amenu='54'></span>فَشَارِبُونَ عَلَيْهِ مِنَ الْحَمِيمِ&nbsp;
+			<span akey="54">(54)</span>
+		</p>
+
+			
+		<p aya="55">
+			<span amenu='55'></span>فَشَارِبُونَ شُرْبَ الْهِيمِ&nbsp;
+			<span akey="55">(55)</span>
+		</p>
+
+			
+		<p aya="56">
+			<span amenu='56'></span>هَٰذَا نُزُلُهُمْ يَوْمَ الدِّينِ&nbsp;
+			<span akey="56">(56)</span>
+		</p>
+
+			
+		<p aya="57">
+			<span amenu='57'></span>نَحْنُ خَلَقْنَاكُمْ فَلَوْلَا تُصَدِّقُونَ&nbsp;
+			<span akey="57">(57)</span>
+		</p>
+
+			
+		<p aya="58">
+			<span amenu='58'></span>أَفَرَأَيْتُمْ مَا تُمْنُونَ&nbsp;
+			<span akey="58">(58)</span>
+		</p>
+
+			
+		<p aya="59">
+			<span amenu='59'></span>أَأَنْتُمْ تَخْلُقُونَهُ أَمْ نَحْنُ الْخَالِقُونَ&nbsp;
+			<span akey="59">(59)</span>
+		</p>
+
+			
+		<p aya="60">
+			<span amenu='60'></span>نَحْنُ قَدَّرْنَا بَيْنَكُمُ الْمَوْتَ وَمَا نَحْنُ بِمَسْبُوقِينَ&nbsp;
+			<span akey="60">(60)</span>
+		</p>
+
+			
+		<p aya="61">
+			<span amenu='61'></span>عَلَىٰ أَنْ نُبَدِّلَ أَمْثَالَكُمْ وَنُنْشِئَكُمْ فِي مَا لَا تَعْلَمُونَ&nbsp;
+			<span akey="61">(61)</span>
+		</p>
+
+			
+		<p aya="62">
+			<span amenu='62'></span>وَلَقَدْ عَلِمْتُمُ النَّشْأَةَ الْأُولَىٰ فَلَوْلَا تَذَكَّرُونَ&nbsp;
+			<span akey="62">(62)</span>
+		</p>
+
+			
+		<p aya="63">
+			<span amenu='63'></span>أَفَرَأَيْتُمْ مَا تَحْرُثُونَ&nbsp;
+			<span akey="63">(63)</span>
+		</p>
+
+			
+		<p aya="64">
+			<span amenu='64'></span>أَأَنْتُمْ تَزْرَعُونَهُ أَمْ نَحْنُ الزَّارِعُونَ&nbsp;
+			<span akey="64">(64)</span>
+		</p>
+
+			
+		<p aya="65">
+			<span amenu='65'></span>لَوْ نَشَاءُ لَجَعَلْنَاهُ حُطَامًا فَظَلْتُمْ تَفَكَّهُونَ&nbsp;
+			<span akey="65">(65)</span>
+		</p>
+
+			
+		<p aya="66">
+			<span amenu='66'></span>إِنَّا لَمُغْرَمُونَ&nbsp;
+			<span akey="66">(66)</span>
+		</p>
+
+			
+		<p aya="67">
+			<span amenu='67'></span>بَلْ نَحْنُ مَحْرُومُونَ&nbsp;
+			<span akey="67">(67)</span>
+		</p>
+
+			
+		<p aya="68">
+			<span amenu='68'></span>أَفَرَأَيْتُمُ الْمَاءَ الَّذِي تَشْرَبُونَ&nbsp;
+			<span akey="68">(68)</span>
+		</p>
+
+			
+		<p aya="69">
+			<span amenu='69'></span>أَأَنْتُمْ أَنْزَلْتُمُوهُ مِنَ الْمُزْنِ أَمْ نَحْنُ الْمُنْزِلُونَ&nbsp;
+			<span akey="69">(69)</span>
+		</p>
+
+			
+		<p aya="70">
+			<span amenu='70'></span>لَوْ نَشَاءُ جَعَلْنَاهُ أُجَاجًا فَلَوْلَا تَشْكُرُونَ&nbsp;
+			<span akey="70">(70)</span>
+		</p>
+
+			
+		<p aya="71">
+			<span amenu='71'></span>أَفَرَأَيْتُمُ النَّارَ الَّتِي تُورُونَ&nbsp;
+			<span akey="71">(71)</span>
+		</p>
+
+			
+		<p aya="72">
+			<span amenu='72'></span>أَأَنْتُمْ أَنْشَأْتُمْ شَجَرَتَهَا أَمْ نَحْنُ الْمُنْشِئُونَ&nbsp;
+			<span akey="72">(72)</span>
+		</p>
+
+			
+		<p aya="73">
+			<span amenu='73'></span>نَحْنُ جَعَلْنَاهَا تَذْكِرَةً وَمَتَاعًا لِلْمُقْوِينَ&nbsp;
+			<span akey="73">(73)</span>
+		</p>
+
+			
+		<p aya="74">
+			<span amenu='74'></span>فَسَبِّحْ بِاسْمِ رَبِّكَ الْعَظِيمِ&nbsp;
+			<span akey="74">(74)</span>
+		</p>
+
+			
+		<p aya="75">
+			<span amenu='75'></span><span class=ps>۞</span> فَلَا أُقْسِمُ بِمَوَاقِعِ النُّجُومِ&nbsp;
+			<span akey="75">(75)</span>
+		</p>
+
+			
+		<p aya="76">
+			<span amenu='76'></span>وَإِنَّهُ لَقَسَمٌ لَوْ تَعْلَمُونَ عَظِيمٌ&nbsp;
+			<span akey="76">(76)</span>
+		</p>
+
+			 
+		<p><span class='pageButton'>
+				<span class='upBtn'>&nbsp;</span
+					><span pageNo="537">(ص 537)</span
+				><span class='dnBtn'>&nbsp;</span>
+			</span>
+			
+		</p>
+
+		<p aya="77">
+			<span amenu='77'></span>إِنَّهُ لَقُرْآنٌ كَرِيمٌ&nbsp;
+			<span akey="77">(77)</span>
+		</p>
+
+			
+		<p aya="78">
+			<span amenu='78'></span>فِي كِتَابٍ مَكْنُونٍ&nbsp;
+			<span akey="78">(78)</span>
+		</p>
+
+			
+		<p aya="79">
+			<span amenu='79'></span>لَا يَمَسُّهُ إِلَّا الْمُطَهَّرُونَ&nbsp;
+			<span akey="79">(79)</span>
+		</p>
+
+			
+		<p aya="80">
+			<span amenu='80'></span>تَنْزِيلٌ مِنْ رَبِّ الْعَالَمِينَ&nbsp;
+			<span akey="80">(80)</span>
+		</p>
+
+			
+		<p aya="81">
+			<span amenu='81'></span>أَفَبِهَٰذَا الْحَدِيثِ أَنْتُمْ مُدْهِنُونَ&nbsp;
+			<span akey="81">(81)</span>
+		</p>
+
+			
+		<p aya="82">
+			<span amenu='82'></span>وَتَجْعَلُونَ رِزْقَكُمْ أَنَّكُمْ تُكَذِّبُونَ&nbsp;
+			<span akey="82">(82)</span>
+		</p>
+
+			
+		<p aya="83">
+			<span amenu='83'></span>فَلَوْلَا إِذَا بَلَغَتِ الْحُلْقُومَ&nbsp;
+			<span akey="83">(83)</span>
+		</p>
+
+			
+		<p aya="84">
+			<span amenu='84'></span>وَأَنْتُمْ حِينَئِذٍ تَنْظُرُونَ&nbsp;
+			<span akey="84">(84)</span>
+		</p>
+
+			
+		<p aya="85">
+			<span amenu='85'></span>وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْكُمْ وَلَٰكِنْ لَا تُبْصِرُونَ&nbsp;
+			<span akey="85">(85)</span>
+		</p>
+
+			
+		<p aya="86">
+			<span amenu='86'></span>فَلَوْلَا إِنْ كُنْتُمْ غَيْرَ مَدِينِينَ&nbsp;
+			<span akey="86">(86)</span>
+		</p>
+
+			
+		<p aya="87">
+			<span amenu='87'></span>تَرْجِعُونَهَا إِنْ كُنْتُمْ صَادِقِينَ&nbsp;
+			<span akey="87">(87)</span>
+		</p>
+
+			
+		<p aya="88">
+			<span amenu='88'></span>فَأَمَّا إِنْ كَانَ مِنَ الْمُقَرَّبِينَ&nbsp;
+			<span akey="88">(88)</span>
+		</p>
+
+			
+		<p aya="89">
+			<span amenu='89'></span>فَرَوْحٌ وَرَيْحَانٌ وَجَنَّتُ نَعِيمٍ&nbsp;
+			<span akey="89">(89)</span>
+		</p>
+
+			
+		<p aya="90">
+			<span amenu='90'></span>وَأَمَّا إِنْ كَانَ مِنْ أَصْحَابِ الْيَمِينِ&nbsp;
+			<span akey="90">(90)</span>
+		</p>
+
+			
+		<p aya="91">
+			<span amenu='91'></span>فَسَلَامٌ لَكَ مِنْ أَصْحَابِ الْيَمِينِ&nbsp;
+			<span akey="91">(91)</span>
+		</p>
+
+			
+		<p aya="92">
+			<span amenu='92'></span>وَأَمَّا إِنْ كَانَ مِنَ الْمُكَذِّبِينَ الضَّالِّينَ&nbsp;
+			<span akey="92">(92)</span>
+		</p>
+
+			
+		<p aya="93">
+			<span amenu='93'></span>فَنُزُلٌ مِنْ حَمِيمٍ&nbsp;
+			<span akey="93">(93)</span>
+		</p>
+
+			
+		<p aya="94">
+			<span amenu='94'></span>وَتَصْلِيَةُ جَحِيمٍ&nbsp;
+			<span akey="94">(94)</span>
+		</p>
+
+			
+		<p aya="95">
+			<span amenu='95'></span>إِنَّ هَٰذَا لَهُوَ حَقُّ الْيَقِينِ&nbsp;
+			<span akey="95">(95)</span>
+		</p>
+
+			
+		<p aya="96">
+			<span amenu='96'></span>فَسَبِّحْ بِاسْمِ رَبِّكَ الْعَظِيمِ&nbsp;
+			<span akey="96">(96)</span>
+		</p>
+
+			
+	</body>
+</html>

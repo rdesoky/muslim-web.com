@@ -1,0 +1,21 @@
+<meta http-equiv="refresh" content="0;url=/"/>
+<html>
+<head>
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<title>The Holy Quran - القرآن الكريم</title>
+</head>
+<body>
+
+<p>The Holy Quran - القرآن الكريم</p>
+عرض القرآن الكريم بشكل مصحف المدينة المنورة.<br/>
+امكانية البحث في نص القرآن الكريم.<br/>
+الإستماع الى تلاوة القرآن الكريم بصوت عشرات مشاهير القراء.<br/>
+عرض أربع تفسيرات لكل آية وترجمة التفسير لأكثر من لغة أجنبية.<br/>
+مدرب لتحفيظ القرآن.<br/>
+
+
+<div style="display:none">
+	<img src="images/quran.gif">
+</div>
+</body>
+</html>

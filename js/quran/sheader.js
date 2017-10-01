@@ -5,11 +5,11 @@ var gAyaNo;
 var gSuraNo;
 
 function GotoPrevSura(){
-	window.location.href="/sura/?s=" + (gSuraNo-1).toString();
+	window.location.href="sura/?s=" + (gSuraNo-1).toString();
 }
 
 function GotoNextSura(){
-	window.location.href="/sura/?s=" + (gSuraNo+1).toString();
+	window.location.href="sura/?s=" + (gSuraNo+1).toString();
 }
 
 function DisplaySuraHeaderInfo()

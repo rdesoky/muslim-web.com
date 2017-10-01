@@ -445,12 +445,12 @@ function JumpToPage( nPage )
 {
 	if( nPage < gFirstPage ){
 		if(gSuraNo>1){
-			window.top.location.href = "/sura/?s=" + (gSuraNo-1).toString() + "&p=" + nPage;
+			window.top.location.href = "?s=" + (gSuraNo-1).toString() + "&p=" + nPage;
 		}
 	}
 	else if( nPage > gLastPage ){
 		if(gSuraNo<114){
-			window.top.location.href = "/sura/?s=" + (gSuraNo+1).toString() + "&p=" + nPage;
+			window.top.location.href = "?s=" + (gSuraNo+1).toString() + "&p=" + nPage;
 		}
 	}
 	else{

@@ -198,7 +198,7 @@ function copyTextRange(suraNum, start_aya, end_aya)
 		}
 	}
 
-	CopyWindow = window.open("/copy_text.html", "copy_qtext", "width=500,height=400,centerscreen=yes,menubar=yes,toolbar=no,location=no,resizable=yes");
+	CopyWindow = window.open("copy_text.html", "copy_qtext", "width=500,height=400,centerscreen=yes,menubar=yes,toolbar=no,location=no,resizable=yes");
 
 	if( CopyWindow ){
 		CopyWindow.focus();

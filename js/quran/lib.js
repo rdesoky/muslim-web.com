@@ -249,7 +249,9 @@ function filterQuery(filter)
 }
 function setCookie(name,value)
 {
-	document.cookie = name + "=" + value + "; path=/; expires=Mon, 31 Dec 2013 23:59:59 GMT;";
+	var tenYearsAhead = new Date( (new Date()).getTime() + 1000 * 60 * 60 * 24 * 365 * 10 );
+
+	document.cookie = name + "=" + value + "; path=/; expires=" + tenYearsAhead.toGMTString() + ";";
 	//TODO: check the problem with frames alert( "[" + name + ":" + value + "]" + document.cookie );
 }
 
@@ -691,5 +693,5 @@ function IsChildOf( oChild, oParent )
 }
 
 function SwitchLang( sCurrLang ){
-	window.location.replace( "/?lang=" + ( ( sCurrLang == "ar" ) ? "en" : "ar" ) );
+	window.location.replace( "?lang=" + ( ( sCurrLang == "ar" ) ? "en" : "ar" ) );
 }

@@ -1,0 +1,322 @@
+/////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) Network Associates Corporation
+// Virus Scan Online Spinbox class
+/////////////////////////////////////////////////////////////////////////////////
+// Author: Ramy Eldesoky
+// Created: 3/3/2003
+/////////////////////////////////////////////////////////////////////////////////
+// To use this class, the web page folder should contain the following images:
+// spin_btns.gif, spin_btns_up.gif, spin_btns_down.gif
+/////////////////////////////////////////////////////////////////////////////////
+try{ onLoadScriptFile(); } catch(e){};
+
+
+var gSpinControls = [];
+//////////////////////////////////////////
+// Constructing the object
+//////////////////////////////////////////
+function McDhtmlSpin( min, max, increment, formElement, sName )
+{
+	this.handle  = gSpinControls.length;
+	gSpinControls[gSpinControls.length] = this;
+
+	this.max		= max;
+	this.min		= min;
+	this.increment	= increment;
+	this.hInterval	= null;
+	this.hTimeout	= null;
+	this.value		= min;
+
+
+////// Defining the methods
+	this.toString	= McDhtmlSpin_toString;
+	this.write		= McDhtmlSpin_write;
+	this.setValue	= McDhtmlSpin_setValue;
+	this.getValue	= McDhtmlSpin_getValue;
+	this.getEditBox	= McDhtmlSpin_getEditBox;
+	this.getImage	= McDhtmlSpin_getImage;
+	this.enable		= McDhtmlSpin_enable;
+	this.isDisabled = McDhtmlSpin_idDisabled;
+	this.formElement= formElement;
+	this.sName = sName;
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function McDhtmlSpin_getEditBox()
+{
+	var spinBox;
+	
+	if (this.formElement)
+		spinBox = this.formElement.idSpinBoxEdit;
+	else
+		spinBox = idSpinBoxEdit;
+
+	if(spinBox)
+	{
+		if (spinBox.length)
+		{// array
+			for (i=0;i<spinBox.length;i++)
+			{
+				if(spinBox[i].handle == this.handle)
+					return spinBox[i];
+			}
+		}
+		else
+		{// only one spinbox
+			if (this.handle == spinBox.handle)
+				return document.getElementById(spinBox.id);
+		}
+	}
+	
+	return null; // not yet added to the document 
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function McDhtmlSpin_getImage()
+{
+	var spinBoxImage;
+	
+	if (this.formElement)
+		spinBoxImage = this.formElement.idSpinBoxImage;
+	else
+		spinBoxImage = idSpinBoxImage;
+
+	if(spinBoxImage)
+	{
+		if (spinBoxImage.length)
+		{// array
+			for (i=0;i<spinBoxImage.length;i++)
+			{
+				if(spinBoxImage[i].handle == this.handle)
+				{
+					return spinBoxImage[i];
+				}
+			}
+		}
+		else
+		{// only one spinbox
+			if (this.handle == spinBoxImage.handle)
+				return spinBoxImage;
+		}
+	}
+	return null; // not yet added to the document 
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function McDhtmlSpin_setValue(value)
+{
+	var editBox = this.getEditBox();
+	
+	this.value = value;
+	
+	if (editBox)
+	{
+		editBox.value = value.toString(10);
+		if(editBox.onchange)
+			editBox.onchange();
+		return true;
+	}
+	
+	return false;
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function McDhtmlSpin_getValue()
+{
+	var editBox = this.getEditBox();
+	
+	if (editBox)
+	{
+		if (editBox.value.length > 0)
+			return ( this.value = parseInt(editBox.value,10) );
+		else
+			return 0;
+	}
+	
+	return this.value;
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function onSpinMouseOut(handle)
+{
+	//alert(handle);
+	onSpinMouseUp(handle);
+	event.srcElement.style.background="";
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function onUpSpinMouseDown(handle)
+{
+	if (gSpinControls[handle].isDisabled())
+		return;
+	onSpinUp(handle);
+	gSpinControls[handle].getImage().src = "images/spin_btns_up.gif";
+	gSpinControls[handle].hTimeout = window.setTimeout("beginSpinUp(" + handle + ")", 500);
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function onDownSpinMouseDown(handle)
+{
+	if (gSpinControls[handle].isDisabled())
+		return;
+	onSpinDown(handle);
+	gSpinControls[handle].getImage().src = "images/spin_btns_down.gif";
+	gSpinControls[handle].hTimeout = window.setTimeout("beginSpinDown(" + handle + ")", 500);
+}
+//////////////////////////////////////////
+function beginSpinUp(handle)
+{
+	gSpinControls[handle].hInterval = window.setInterval("onSpinUp(" + handle + ")", 100);
+}
+//////////////////////////////////////////
+function beginSpinDown(handle)
+{
+	gSpinControls[handle].hInterval = window.setInterval("onSpinDown(" + handle + ")", 100);
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function onSpinMouseUp(handle)
+{
+	gSpinControls[handle].getImage().src = "images/spin_btns.gif";
+
+	if (gSpinControls[handle].hTimeout)
+	{
+		window.clearTimeout (gSpinControls[handle].hTimeout);
+		gSpinControls[handle].hTimeout = null;
+	}
+
+	if (gSpinControls[handle].hInterval)
+	{
+		window.clearInterval (gSpinControls[handle].hInterval);
+		gSpinControls[handle].hInterval = null;
+	}
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function onSpinBoxKeyPress(handle)
+{
+
+	if (event.keyCode >= 48 && event.keyCode <= 57 )
+		return true;//mumeric values
+	else
+		return false;//none mumeric values (don't propagate this event)
+}
+//////////////////////////////////////////
+//
+//////////////////////////////////////////
+function onSpinBoxKeyDown(handle)
+{
+	if(38 == event.keyCode)// key up
+	{
+		onSpinUp(handle);
+	}
+	else if(40 == event.keyCode) // key down
+	{
+		onSpinDown(handle);
+	}
+}
+//////////////////////////////////////////
+// returns the HTML contents 
+//////////////////////////////////////////
+function McDhtmlSpin_toString()
+{
+	return	"<span id=idSpinBoxSpan handle=" + this.handle + 
+			" style='font-size:6px;border:solid 1px #7F9DB9;xheight:10px;'>" + 
+				"<input type=editbox id=idSpinBoxEdit " + " value='" + this.value + "' handle=" + this.handle + 
+				" name=" + this.sName + " " +
+				" onkeydown ='javascript:return onSpinBoxKeyDown(" + this.handle + ")' " + 
+				" onkeypress='javascript:return onSpinBoxKeyPress(" + this.handle + ")' " + 
+				" onchange='javascript:return onSpinBoxChange(" + this.handle + ")' " + 
+				" style='height:15px;border:solid 0px orange;font-size:11px;width:25px' xsize=3 >" +
+				"<map name='spinMap" + this.handle + "' >" + 
+				"<area shape=rectangle COORDS=\"0,0,15,8\" " + 
+				"   onmouseup    =\"onSpinMouseUp(" + this.handle + ")\" " + 
+				"   onmousedown  =\"onUpSpinMouseDown(" + this.handle + ")\" " + 
+				"   onmouseout   =\"onSpinMouseOut(" + this.handle + ")\" " + 
+				">" +
+				"<area shape=rectangle COORDS=\"0,8,15,16\" " + 
+				"   onmouseup    =\"onSpinMouseUp(" + this.handle + ")\" " + 
+				"   onmousedown  =\"onDownSpinMouseDown(" + this.handle + ")\" " + 
+				"   onmouseout   =\"onSpinMouseOut(" + this.handle + ")\" " + 
+				">" +
+				"</map>" + 
+				"<img id=idSpinBoxImage handle=" + this.handle + " border=0 src=images/spin_btns.gif style='cursor:hand;background:silver;vertical-align:bottom;' usemap=#spinMap" + this.handle + " >" +
+			"</span>";
+}
+//////////////////////////////////////////
+// Writes the contents
+//////////////////////////////////////////
+function McDhtmlSpin_write()
+{
+	document.write (this.toString());
+}
+//////////////////////////////////////////
+function onSpinUp(handle)
+{
+	var curr_value = gSpinControls[handle].getValue();
+
+	if ((curr_value + gSpinControls[handle].increment) > gSpinControls[handle].max)
+		curr_value = gSpinControls[handle].max;
+	else if((curr_value + gSpinControls[handle].increment) < gSpinControls[handle].min)
+		curr_value = gSpinControls[handle].min;
+	else
+		curr_value += gSpinControls[handle].increment;
+
+	gSpinControls[handle].setValue(curr_value);	
+}
+//////////////////////////////////////////
+function onSpinDown(handle)
+{
+	var curr_value = gSpinControls[handle].getValue();
+
+	if ((curr_value - gSpinControls[handle].increment) > gSpinControls[handle].max)
+		curr_value = gSpinControls[handle].max;
+	else if((curr_value - gSpinControls[handle].increment) < gSpinControls[handle].min)
+		curr_value = gSpinControls[handle].min;
+	else
+		curr_value -= gSpinControls[handle].increment;
+
+	gSpinControls[handle].setValue(curr_value);	
+}
+//////////////////////////////////////////
+function McDhtmlSpin_enable(bEnable)
+{
+	var editBox = this.getEditBox();
+	
+	if(editBox)
+	{
+		editBox.disabled = (bEnable == true) ? false:true;
+		editBox.style.background = (bEnable == true) ? "" : "#CCCCCC";
+	}
+}
+function onSpinBoxChange(handle)
+{
+	var curr_value = gSpinControls[handle].getValue();
+
+	if (curr_value > gSpinControls[handle].max)
+		gSpinControls[handle].setValue(gSpinControls[handle].max);
+	
+	if (curr_value < gSpinControls[handle].min )
+		gSpinControls[handle].setValue(gSpinControls[handle].min);
+
+	return true;
+}
+
+function McDhtmlSpin_idDisabled()
+{
+	var editBox = this.getEditBox();
+	
+	if (editBox.disabled || editBox.isDisabled)
+		return true;
+	
+	return false;
+}

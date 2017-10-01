@@ -1,0 +1,497 @@
+<HTML>
+
+<head>
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1256">
+
+<title>تفسير القرآن الكريم</title>
+
+
+<script language="JavaScript">
+
+<!--
+
+function toStringEx(value,length) {
+	var theString;
+	theString = value.toString(10);
+	while( theString.length < length)
+	{
+		theString = "0" + theString;
+	}
+	return theString;
+}
+
+function changeTafseer()
+{
+	url = new String;
+	url = window.location.href;
+
+	ayaIndex = url.indexOf("aya=");
+	sura = url.substring(ayaIndex+4,ayaIndex+7)
+	aya = url.substring(ayaIndex+7,ayaIndex+10)
+
+	taf = document.selectTafseer.tafseerList.value
+	window.parent.location="t.htm?taf="+ taf +"&aya=" + sura + aya;
+	document.cookie="taf=" + taf + "_taf;expires=Mon, 31 Dec 2006 23:59:59 GMT;";
+}
+
+////////////////////////////////
+
+	url = new String;
+
+	url = window.location.href;
+
+	ayaIndex = url.indexOf("aya=");
+
+	sura = url.substring(ayaIndex+4,ayaIndex+7)
+
+	aya = url.substring(ayaIndex+7,ayaIndex+10)
+
+	ayaNo  = parseInt(aya,10);
+	suraNo = parseInt(sura,10);
+
+	taf = "KATHEER";
+
+
+	tafIndex = url.indexOf("taf=");
+
+
+	if (tafIndex >= 0 )
+	{
+		taf = url.substring(tafIndex+4,ayaIndex-1)
+	}
+
+
+
+// array creation function
+
+function createArray(n) {
+
+	this.length = n;
+
+	return this;
+}
+
+
+// create month and day arrays
+
+var sura_name = new createArray(114);
+
+// set the months in the array
+
+sura_name[0]="nothing";
+sura_name[1]="الفاتحة";
+sura_name[2]="البقرة";
+sura_name[3]="ال عمران";
+sura_name[4]="النساء";
+sura_name[5]="المائدة";
+sura_name[6]="الانعام";
+sura_name[7]="الاعراف";
+sura_name[8]="الانفال";
+sura_name[9]="التوبة";
+sura_name[10]="يونس";
+sura_name[11]="هود";
+sura_name[12]="يوسف";
+sura_name[13]="الرعد";
+sura_name[14]="ابراهيم";
+sura_name[15]="الحجر";
+sura_name[16]="النحل";
+sura_name[17]="الاسراء;"
+sura_name[18]="الكهف";
+sura_name[19]="مريم";
+sura_name[20]="طه";
+sura_name[21]="الانبياء";
+sura_name[22]="الحج";
+sura_name[23]="المؤمنون";
+sura_name[24]="النور";
+sura_name[25]="الفرقان";
+sura_name[26]="الشعراء";
+sura_name[27]="النمل";
+sura_name[28]="القصص";
+sura_name[29]="العنكبوت";
+sura_name[30]="الروم";
+sura_name[31]="لقمان";
+sura_name[32]="السجدة";
+sura_name[33]="الاحزاب";
+sura_name[34]="سبا";
+sura_name[35]="فاطر";
+sura_name[36]="يس";
+sura_name[37]="الصافات";
+sura_name[38]="صاد";
+sura_name[39]="الزمر";
+sura_name[40]="غافر";
+sura_name[41]="فصلت";
+sura_name[42]="الشورى";
+sura_name[43]="الزخرف";
+sura_name[44]="الدخان";
+sura_name[45]="الجاثية";
+sura_name[46]="الاحقاف";
+sura_name[47]="محمد";
+sura_name[48]="الفتح";
+sura_name[49]="الحجرات";
+sura_name[50]="ق";
+sura_name[51]="الذاريات";
+sura_name[52]="الطور";
+sura_name[53]="النجم";
+sura_name[54]="القمر";
+sura_name[55]="الرحمن";
+sura_name[56]="الواقعة";
+sura_name[57]="الحديد";
+sura_name[58]="المجادلة";
+sura_name[59]="الحشر";
+sura_name[60]="الممتحنة";
+sura_name[61]="الصف";
+sura_name[62]="الجمعة";
+sura_name[63]="المنافقون";
+sura_name[64]="التغابن";
+sura_name[65]="الطلاق";
+sura_name[66]="التحريم";
+sura_name[67]="الملك";
+sura_name[68]="القلم";
+sura_name[69]="الحاقة";
+sura_name[70]="المعارج";
+sura_name[71]="نوح";
+sura_name[72]="الجن";
+sura_name[73]="المزمل";
+sura_name[74]="المدثر";
+sura_name[75]="القيامة";
+sura_name[76]="الانسان";
+sura_name[77]="المرسلات";
+sura_name[78]="النبا";
+sura_name[79]="النازعات";
+sura_name[80]="عبس";
+sura_name[81]="التكوير";
+sura_name[82]="الانفطار";
+sura_name[83]="المطففين";
+sura_name[84]="الانشقاق";
+sura_name[85]="البروج";
+sura_name[86]="الطارق";
+sura_name[87]="الاعلى";
+sura_name[88]="الغاشية";
+sura_name[89]="الفجر";
+sura_name[90]="البلد";
+sura_name[91]="الشمس";
+sura_name[92]="الليل";
+sura_name[93]="الضحى";
+sura_name[94]="الشرح";
+sura_name[95]="التين";
+sura_name[96]="العلق";
+sura_name[97]="القدر";
+sura_name[98]="البينة";
+sura_name[99]="الزلزلة";
+sura_name[100]="العاديات";
+sura_name[101]="القارعة";
+sura_name[102]="التكاثر";
+sura_name[103]="العصر";
+sura_name[104]="الهمزة";
+sura_name[105]="الفيل";
+sura_name[106]="قريش";
+sura_name[107]="الماعون";
+sura_name[108]="الكوثر";
+sura_name[109]="الكافرون";
+sura_name[110]="النصر";
+sura_name[111]="المسد";
+sura_name[112]="الاخلاص";
+sura_name[113]="الفلق";
+sura_name[114]="الناس";
+
+
+VerseNoInSoura = new Array(115)
+VerseNoInSoura[1] = 7
+VerseNoInSoura[2] = 286
+VerseNoInSoura[3] = 200
+VerseNoInSoura[4] = 176
+VerseNoInSoura[5] = 120
+VerseNoInSoura[6] = 165
+VerseNoInSoura[7] = 206
+VerseNoInSoura[8] = 75
+VerseNoInSoura[9] = 129
+
+VerseNoInSoura[10] = 109
+VerseNoInSoura[11] = 123
+VerseNoInSoura[12] = 111
+VerseNoInSoura[13] = 43
+VerseNoInSoura[14] = 52
+VerseNoInSoura[15] = 99
+VerseNoInSoura[16] = 128
+VerseNoInSoura[17] = 111
+VerseNoInSoura[18] = 110
+VerseNoInSoura[19] = 98
+
+VerseNoInSoura[20] = 135
+VerseNoInSoura[21] = 112
+VerseNoInSoura[22] = 78
+VerseNoInSoura[23] = 118
+VerseNoInSoura[24] = 64
+VerseNoInSoura[25] = 77
+VerseNoInSoura[26] = 227
+VerseNoInSoura[27] = 93
+VerseNoInSoura[28] = 88
+VerseNoInSoura[29] = 69
+
+VerseNoInSoura[30] = 60
+VerseNoInSoura[31] = 34
+VerseNoInSoura[32] = 30
+VerseNoInSoura[33] = 73
+VerseNoInSoura[34] = 54
+VerseNoInSoura[35] = 45
+VerseNoInSoura[36] = 83
+VerseNoInSoura[37] = 182
+VerseNoInSoura[38] = 88
+VerseNoInSoura[39] = 75
+
+VerseNoInSoura[40] = 85
+VerseNoInSoura[41] = 54
+VerseNoInSoura[42] = 53
+VerseNoInSoura[43] = 89
+VerseNoInSoura[44] = 59
+VerseNoInSoura[45] = 37
+VerseNoInSoura[46] = 35
+VerseNoInSoura[47] = 38
+VerseNoInSoura[48] = 29
+VerseNoInSoura[49] = 18
+
+VerseNoInSoura[50] = 45
+VerseNoInSoura[51] = 60
+VerseNoInSoura[52] = 49
+VerseNoInSoura[53] = 62
+VerseNoInSoura[54] = 55
+VerseNoInSoura[55] = 78
+VerseNoInSoura[56] = 96
+VerseNoInSoura[57] = 29
+VerseNoInSoura[58] = 22
+VerseNoInSoura[59] = 24
+
+VerseNoInSoura[60] = 13
+VerseNoInSoura[61] = 14
+VerseNoInSoura[62] = 11
+VerseNoInSoura[63] = 11
+VerseNoInSoura[64] = 18
+VerseNoInSoura[65] = 12
+VerseNoInSoura[66] = 12
+VerseNoInSoura[67] = 30
+VerseNoInSoura[68] = 52
+VerseNoInSoura[69] = 52
+
+VerseNoInSoura[70] = 44
+VerseNoInSoura[71] = 28
+VerseNoInSoura[72] = 28
+VerseNoInSoura[73] = 20
+VerseNoInSoura[74] = 56
+VerseNoInSoura[75] = 40
+VerseNoInSoura[76] = 31
+VerseNoInSoura[77] = 50
+VerseNoInSoura[78] = 40
+VerseNoInSoura[79] = 46
+
+VerseNoInSoura[80] = 42
+VerseNoInSoura[81] = 29
+VerseNoInSoura[82] = 19
+VerseNoInSoura[83] = 36
+VerseNoInSoura[84] = 25
+VerseNoInSoura[85] = 22
+VerseNoInSoura[86] = 17
+VerseNoInSoura[87] = 19
+VerseNoInSoura[88] = 26
+VerseNoInSoura[89] = 30
+
+VerseNoInSoura[90] = 20
+VerseNoInSoura[91] = 15
+VerseNoInSoura[92] = 21
+VerseNoInSoura[93] = 11
+VerseNoInSoura[94] = 8
+VerseNoInSoura[95] = 8
+VerseNoInSoura[96] = 19
+VerseNoInSoura[97] = 5
+VerseNoInSoura[98] = 8
+VerseNoInSoura[99] = 8
+
+VerseNoInSoura[100] = 11
+VerseNoInSoura[101] = 11
+VerseNoInSoura[102] = 8
+VerseNoInSoura[103] = 3
+VerseNoInSoura[104] = 9
+VerseNoInSoura[105] = 5
+VerseNoInSoura[106] = 4
+VerseNoInSoura[107] = 7
+VerseNoInSoura[108] = 3
+VerseNoInSoura[109] = 6
+
+VerseNoInSoura[110] = 3
+VerseNoInSoura[111] = 5
+VerseNoInSoura[112] = 4
+VerseNoInSoura[113] = 5
+VerseNoInSoura[114] = 6
+
+
+//-->
+
+</script>
+
+
+</head>
+
+<body bgColor=#dcdcb6 dir=rtl leftmargin='0' topmargin='0'>
+<STYLE type="text/css">
+	select{
+		FONT-FAMILY:Tahoma;
+		FONT-SIZE:9pt;
+		WIDTH:75;
+	}
+	body{
+		FONT-FAMILY:Tahoma;
+		FONT-SIZE:9pt;
+	}
+	td{
+		FONT-FAMILY:Tahoma;
+		FONT-SIZE:7pt;
+	}
+	A{
+		TEXT-DECORATION:none
+	}
+	A:link		{ 
+		color:#003399; 
+	}
+	A:visited	{ 
+		color:#003399; 
+	}
+	A:hover		{ 
+		color:red;
+	}
+	
+</STYLE>
+<table cellspacing=1 align=right>
+<tr>
+<td bgcolor=gray>
+	<table cellspacing=1  >
+	<tr>
+		<td bgcolor=#efefde align=center NOWRAP><a href=index.htm target=_top>&nbsp;الفهرس&nbsp;</a>
+		</td>
+		<td bgcolor=#efefde align=center NOWRAP><a href=memtable.htm target=_top>&nbsp;الآيات المحفوظة&nbsp;</a>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor=#efefde align=center NOWRAP>&nbsp;<a href=memorize.htm target=_top>جدول التحفيظ</a>&nbsp;
+		</td>
+		<td bgcolor=#efefde align=center NOWRAP><a href=bendtable.htm target=_top>&nbsp;الآيات تحت الحفظ&nbsp;</a>
+		</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+
+<table cellspacing=1 align=left>
+<tr>
+<td bgcolor=gray>
+	<table cellspacing=1  >
+	<tr>
+		<td bgcolor=#efefde align=center NOWRAP>&nbsp;
+			<script language="JavaScript">
+			<!--
+			document.write("<a href='http://quran.al-islam.com/Quran2/Recite/CRecite_g2.asp?s="+ suraNo + "&f="+ayaNo+"&t=10&Reciter=0' >")
+			//-->
+			</script>
+			تلاوة الحصري
+			</a>&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor=#efefde align=center NOWRAP>&nbsp;
+			<script language="JavaScript">
+			<!--
+			document.write("<a href='http://quran.al-islam.com/Quran2/Recite/CRecite_g2.asp?s="+ suraNo + "&f="+ayaNo+"&t=10&Reciter=1' >")
+			//-->
+			</script>
+			تلاوة الحذيفي
+			</a>&nbsp;
+		</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+
+<table cellspacing=1 align=left>
+<tr>
+<td bgcolor=gray>
+	<table cellspacing=1  >
+<script language="JavaScript">
+<!--
+
+if (ayaNo > 1){
+	document.write("<tr><td NOWRAP  bgcolor=#efefde><a target=_top href=t.htm?taf="+taf+"&aya="+sura+toStringEx(ayaNo-1,3) +"><img src=prev.gif border=0></a> الآية السابقة</td></tr>");
+}
+
+if (ayaNo > 0 && ayaNo < VerseNoInSoura[suraNo] )
+{
+	document.write("<tr><td NOWRAP  bgcolor=#efefde>الآية التالية <a href=t.htm?taf="+ taf +"&aya=" + sura + toStringEx(ayaNo+1,3) + " target=_top><img src=next.gif border=0 ></a></td></tr>");
+}
+//-->
+</script>
+
+	</table>
+</td>
+</tr>
+</table>
+<center>
+
+<form name=selectTafseer>
+تفسير
+
+<select onchange="changeTafseer()" name=tafseerList>
+<script language="JavaScript">
+<!--
+if (taf=="KATHEER")
+	document.write("<option value=KATHEER SELECTED>إبن كثير</option>")
+else
+	document.write("<option value=KATHEER>إبن كثير</option>")
+
+if (taf=="TABARY")
+	document.write("<option SELECTED value=TABARY>الطبري</option>")
+else
+	document.write("<option value=TABARY>الطبري</option>")
+
+if (taf=="GALALEEN")
+	document.write("<option SELECTED value=GALALEEN>الجلالين</option>")
+else
+	document.write("<option value=GALALEEN>الجلالين</option>")
+
+if (taf=="KORTOBY")
+	document.write("<option SELECTED value=KORTOBY>القرطبي</option>")
+else
+	document.write("<option value=KORTOBY>القرطبي</option>")
+
+//-->
+
+</script>
+</select>
+
+وترجمة آية رقم
+
+
+<script language="JavaScript">
+<!--
+
+document.write( " (" + ayaNo + ") " );
+document.write( "من سورة " );
+document.write( "<b>" + sura_name[suraNo] + "</b>" );
+
+
+//-->
+</script>
+<br>
+<script language="JavaScript">
+<!--
+document.write("<a href=sura.htm?aya=" + sura + aya + " target=_top>")
+//-->
+</script>
+<font size=1>رجوع إلى النص</font>
+</a>
+
+</form>
+</center>
+</body>
+
+</HTML>
+

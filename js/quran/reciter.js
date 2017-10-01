@@ -163,5 +163,5 @@ function GotoSura( suraNum ){
 	}catch(e){
 	}
 
-	window.open("/sura/?s=" + suraNum, "quran").focus();
+	window.open("sura/?s=" + suraNum, "quran").focus();
 }
