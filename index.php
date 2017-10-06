@@ -186,6 +186,15 @@ $suraCellWidth = 140;
 							<!--<span class="h_frame">Audio controls</span>-->
 							<!--<span class="h_arrow"></span>-->
 						<!--</span>-->
+						<div id="GetFlash">
+							<a href='http://www.adobe.com/go/getflashplayer'>
+								<img 
+									src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' 
+									alt='Get Adobe Flash player' 
+								/>
+							</a>
+						</div>
+						
 						<table id="AudioControls" cellspacing="0" cellspadding="0" style="display:none">
 						<tr>
 							<td id="PlayerStatus"></td>
@@ -270,13 +279,13 @@ $suraCellWidth = 140;
 					<div>التلاوات والتفسير من:</div>
 					<div>
 						<a target="_blank" href="http://www.versebyversequran.com">everyayah.com</a><br>
-						طريق الإسلام:<a target="_blank" href="http://www.islamway.com">islamway.com</a><br>
+						<!-- طريق الإسلام:<a target="_blank" href="http://www.islamway.com">islamway.com</a><br>
 						موقع الإسلام:<a target="_blank" href="http://www.al-islam.com">al-islam.com</a><br>
-						الشبكة الإسلامية:<a target="_blank" href="http://www.islamweb.net">islamweb.net</a>
+						الشبكة الإسلامية:<a target="_blank" href="http://www.islamweb.net">islamweb.net</a> -->
 					</div>
-					<div>
+					<!-- <div>
 						المرتل: <b>reciter.org</b>
-					</div>
+					</div> -->
 				</div>
 
             </div>
@@ -545,11 +554,6 @@ $suraCellWidth = 140;
 			</div>
 		</div>
 		<div id="flashContent"></div>
-        <!-- <div>
-			<a href='http://www.adobe.com/go/getflashplayer'>
-				<img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' />
-			</a>
-		</div> -->
 
 	</body>
 </html>

@@ -32,7 +32,7 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1,
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdul_basit_murattal",
 			actv:"(1114)"
 		},
@@ -223,7 +223,7 @@ var RecitersInfo = {
 	},
 	hozefee:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "huthayfi",
 			actv:"(1114)"
 		},
@@ -311,7 +311,7 @@ var RecitersInfo = {
 	},
 	menshawee:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "muhammad_siddeeq_al-minshaawee",
 			actv:"(1114)"
 		},
@@ -324,6 +324,11 @@ var RecitersInfo = {
 		rw:1
 	},
 	tablawee:{
+		suraAudio:{
+			server: "egylist",
+			rkey: "mohammad_altablawi",
+			actv:"(1114)"
+		},
 		ayaAudio:{
 			server: "everyayah",
 			rkey: "Mohammad_al_Tablaway_128kbps"
@@ -333,13 +338,18 @@ var RecitersInfo = {
 		rw:1
 	},
 	mah_ban:{
+		suraAudio:{
+			server: "egylist",
+			rkey: "mahmood_ali_albana",
+			actv:"(1114)"
+		},		
 		url:"http://egylist.com/quran/mah_ban/s%1%.rm",
 		actv:"(1114)",
 		rw:1
 	},
 	hosaree:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "mahmood_khaleel_al-husaree",
 			actv:"(1114)"
 		},
@@ -373,6 +383,11 @@ var RecitersInfo = {
 		rw:1
 	},
 	Mu_sma:{
+		suraAudio:{
+			server: "egylist",
+			rkey: "mostafa_ismaeel",
+			actv:"(1114)"
+		},
 		//ayaAudio:{
 		//	server: "everyayah",
 		//	rkey: "Mustafa_Ismail_48kbps"
@@ -467,8 +482,17 @@ var AudioServers = {
 		download: "http://www.everyayah.com/data/{rkey}/"
 	},
 
-	quranicaudio: {
+	egylist: {
 		cross_domains: true,
+		mtype: 1,//1: mp3, 2:real
+		provider: "quranicaudio.com",
+		link:"http://www.egylist.com/quran/mp3/{rkey}/{sura3}.mp3",
+		website: "http://quran.muslim-web.com",
+		download: "http://www.egylist.com/quran/mp3/{rkey}/{sura3}.mp3"
+	},
+	
+	quranicaudio: {
+		cross_domains: false,
 		mtype: 1,//1: mp3, 2:real
 		provider: "quranicaudio.com",
 		link:"http://download.quranicaudio.com/quran/{rkey}/{sura3}.mp3",
@@ -477,7 +501,7 @@ var AudioServers = {
 	},
 
 	quranicaudio_complete: {
-		cross_domains: true,
+		cross_domains: false,
 		mtype: 1,//1: mp3, 2:real
 		provider: "quranicaudio.com",
 		link:"http://download.quranicaudio.com/quran/{rkey}/complete/{sura3}.mp3",

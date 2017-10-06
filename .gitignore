@@ -4,6 +4,7 @@ pages/Thumbs.db
 hpages/Thumbs.db
 pages/Thumbs.db
 hpages/Picasa.ini
-pg_map/pm_*.json
 qtext/*
 .vstags
+pg_map_old/*.json
+.idea/workspace.xml

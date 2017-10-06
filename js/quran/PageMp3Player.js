@@ -54,6 +54,7 @@ var PageMp3Player = {
 		_E("VolumeCtrl").setVolume(this.obj.getConfig().volume);
 		_E("VolumeCtrl").setMute(this.obj.getConfig().mute);
 		DU.show("AudioControls");
+		DU.hide("GetFlash");
 	},
 	
 	playQuranPart:function(partNum){
@@ -312,7 +313,7 @@ function getFlexApp(appName)
 	}
 }
 	
-
+//Called by Flash Plugin 
 function playerReady( obj ){
 	setTimeout(
 		function(){
@@ -321,7 +322,7 @@ function playerReady( obj ){
 		1 
 	);
 };
-
+//called by Flash Plugin
 function VolumeTracker(obj) {
 	_E("VolumeCtrl").setVolume( obj.percentage );
 }

@@ -1,3 +1,3 @@
 <?php
-$host = "local";
+$host = "localhost";
 ?>

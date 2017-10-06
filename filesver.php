@@ -45,9 +45,9 @@ function FileDate( $path ){
 }
 
 function FileVerParam( $path, $delmtr = "?"){
-	if($_SERVER["SERVER_NAME"] == "localhost"){
-		return "";
-	}
+	// if($_SERVER["SERVER_NAME"] == "localhost"){
+	// 	return "";
+	// }
 	return $delmtr . "v=" . FileDate($path);
 }
 
