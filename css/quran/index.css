@@ -12,12 +12,13 @@
 #AudioControls{
 	display:inline-table;
 	border:solid 1px silver;
-	background:#DDDDDD;
+	background: #FFF;
 	vertical-align:middle;
 	border-collapse:separate;
+	border-radius: 3px;
 }
 #AudioControls td{
-	background:white;
+	/* background:white; */
 	/*padding:0px 2px 0px 2px;*/
 	/*height:20px;*/
 	vertical-align:middle;
@@ -802,10 +803,10 @@ div[side="1"].pageViewFrame.wait,
 {
 	height:24px;
 	background:#DDDDDD;
-	border-radius: 4px 4px 0px 0px;
+	border-radius: 8px 8px 0px 0px;
 	min-width: 64px;
 	text-align: center;
-	line-height: 20px;
+	line-height: 24px;
 }
 
 #idViewTabs img{
@@ -953,11 +954,20 @@ span
 	font-family:Arabic Transparent;
 	font-size:16px;
 	font-weight:bold;	
-	margin-bottom:2px;
+	padding:8px;
 }
 
 #TopPanel{
 	width:100%;
+}
+
+#TopLogo audio{
+	width:100px;
+	visibility:hidden;
+}
+
+#TopLogo audio[src]{
+	visibility:visible;
 }
 
 #UserInfoPanel{
@@ -1192,6 +1202,10 @@ span
 #idRecentReciters
 {
 	color:green;
+}
+
+#idRecentSuras select{
+	width:100%;
 }
 #idSubMenuItem {
 	padding:1px;

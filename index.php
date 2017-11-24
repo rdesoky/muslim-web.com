@@ -126,8 +126,11 @@ $suraCellWidth = 140;
         <table id="TopPanel" cellpadding="0" class="collapsed">
 		<tr>
 			<td class="top_logo" id="TopLogo" >
-				<div class="site_title"><?= $Str['holy_quran'] ?></div>
-				<div style="direction:ltr;font-size:10px"><?=GetStr("site_url")?></div>
+				<div id="SiteTitle" class="site_title"><?= $Str['holy_quran'] ?></div>
+				<!-- <div style="direction:ltr;font-size:10px"><?=GetStr("site_url")?></div> -->
+				<audio id="AudioPlayerElement" controls="controls">
+					Browser doesn't support audio
+				</audio>						
 			</td>
 			<td id="Header">
 				<table id="TopMenu">
@@ -198,8 +201,9 @@ $suraCellWidth = 140;
 						
 						<table id="AudioControls" cellspacing="0" cellspadding="0" style="display:none">
 						<tr>
+							<td >&nbsp;<a id="PlayerSura" onClick="QViewer.onclickSuraTitle(PlayList.current.sura)"></a></td>
 							<td id="PlayerStatus"></td>
-							<td><input type="button" id="BtnPlay" disabled value="&gt;"
+							<td><input type="button" id="BtnPlay" onClick="AudioPlayer.play(true);" value="&gt;"
 								/><input type="button" id="BtnStop" disabled onclick="AudioPlayer.stop()" value="<?=GetStr('finish')?>"/>
 							</td>
 							<td id="VolumeCtrl"></td>
@@ -217,9 +221,9 @@ $suraCellWidth = 140;
 							</td>
 						</tr>
 						</table>
+						<span id="RandomPlayLink" style="display:none" class="href" onclick="ISura.reciteRandom()"><?= GetStr("rand_sura") ?></span>
+
 					</div>
-					&nbsp;
-					<span id="RandomPlayLink" style="display:none" class="href" onclick="ISura.reciteRandom()"><?= GetStr("rand_sura") ?></span>
 				</div>
 				<table id="ControlBar" cellpadding="0">
 				<tr>
@@ -249,8 +253,8 @@ $suraCellWidth = 140;
 						<span onclick="QViewer.onClickReview(this)" id="MemReviewTitle" class="checkTitle">
 							<?= $Str['mem_review'] ?>
 						</span>&nbsp;
-						<span id="idPageMarks">&nbsp;</span>&nbsp;
-						<span id="idRecentSuras">&nbsp;</span>&nbsp;
+						<span id="idPageMarks">&nbsp;</span>
+						<span id="idRecentSuras">&nbsp;</span>
 					</td>
 				</tr>
 				</table>
@@ -460,7 +464,6 @@ $suraCellWidth = 140;
 									<div id='TafText'><div class="litePadding"><?= $Str['taf_prompt'] ?></div></div>
 								</div>
 							</div>
-							<div id="Editor"></div>
 						</div>
 					</td>
 				</tr>
@@ -555,10 +558,6 @@ $suraCellWidth = 140;
 			</div>
 		</div>
 		<!-- <div id="flashContent"></div> -->
-		<audio id="AudioPlayerElement">
-			<source id="AudioSource" src=""></source>
-			Browser doesn't support audio
-		</audio>
 
 	</body>
 </html>

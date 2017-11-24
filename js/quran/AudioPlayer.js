@@ -18,9 +18,12 @@ var AudioPlayer = {
 				//AudioPlayer.obj.sendEvent("volume", newVol);
 			}
 		});
+
 		this.obj = _E("AudioPlayerElement");
+
 		_E("VolumeCtrl").setVolume(Math.floor(this.obj.volume * 100));
 		_E("VolumeCtrl").setMute(this.obj.muted);
+
 		DU.show("AudioControls");
 		
 		this.obj.addEventListener("ended",function(){
@@ -44,34 +47,6 @@ var AudioPlayer = {
 			_E("PlayerStatus").innerHTML = "";
 		});
 
-
-		// function VolumeTracker(obj) {
-		// 	_E("VolumeCtrl").setVolume( obj.percentage );
-		// }
-		
-		// function MuteTracker(obj) {
-		// 	_E("VolumeCtrl").setMute( obj.state );
-		// }
-		
-		function stateTracker(obj) {
-			switch( obj.newstate ){
-				case "IDLE":
-				case "PLAYING":
-				case "PAUSED":
-					AudioPlayer.setState( obj.newstate );
-					break;
-				case "COMPLETED":
-					setTimeout(
-						function(){
-							AudioPlayer.onTrackFinish();
-						},
-						1 
-					);
-					break;
-			}
-			_E("PlayerStatus").innerHTML = AudioPlayer.statusIcons[obj.newstate] || "";
-		}
-			
 	},
 	
 	onPlayerReady:function(){
@@ -107,8 +82,9 @@ var AudioPlayer = {
 	
 	loadTrack:function(url){
 		//this.obj.sendEvent( "load", url );
-		_E("AudioSource").src = url;
+		_E("AudioPlayerElement").src = url;
 		this.obj.load();
+		_E("PlayerSura").innerHTML = gStrings.sura_names[ PlayList.current.sura - 1];
 	},
 
 	pause:function(){

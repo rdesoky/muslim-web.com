@@ -29,10 +29,6 @@ var HomePage = {
 			return false;
 		};
 
-		if( document.domain == "cgi.muslim-web.com" ){
-			DU.show("EditTab");
-		}
-
 		gMemPercent = AllSuraMemPercent();
 
 		InitDocObjects();
@@ -44,7 +40,8 @@ var HomePage = {
 		LoadTahfeez("Memorization.updateIndex()");	
 
 		IReciters.populate();
-		ISura.showRecent();
+		var lastSura = ISura.showRecent();
+		AudioPlayer.loadRange(0,{sura:lastSura});
 		this.showPageMarks();
 
 		var nBlinks = 4;
@@ -118,7 +115,7 @@ var HomePage = {
 			QViewer.focus();
 		};
 		_E("VerticalIndex").onclick = function(e){QViewer.focus();};
-		_E("TopLogo").onclick = function(e){
+		_E("SiteTitle").onclick = function(e){
 			if( _E("idViewTabs").getSelectedTab() == "index"){
 				_E("idViewTabs").onClickTab("pages");
 			}else{
@@ -644,28 +641,27 @@ var IMember = {
 var ISura = {
 	showRecent:function(){
 		var	lastSuras = readCookie("r_suras", "");
-
+		//populate recent suras
 		if( lastSuras.length > 0 )
 		{
-			var recentList = lastSuras.split(",");
+			var recentSuraList = lastSuras.split(",");
 
-			var sRecentList = "";
-		
-			for (i=0; i<recentList.length; i++)
-			{
-				if(recentList[i].length){
-					sRecentList += "<option value=" + recentList[i] + ">" + 
-										recentList[i] + " " + gStrings.sura_names[ parseInt(recentList[i],10) - 1 ] + 
-									"</option>";
+			if(recentSuraList.length>0){
+				var sRecentSuraList = "";
+				
+				for (i=0; i<recentSuraList.length; i++){
+					if(recentSuraList[i].length){
+						sRecentSuraList += 
+							"<option value=" + recentSuraList[i] + ">" + 
+								recentSuraList[i] + " " + gStrings.sura_names[ parseInt(recentSuraList[i],10) - 1 ] + 
+							"</option>";
+					}
 				}
-			}
-
-			if (sRecentList.length > 0)
-			{
+				
 				_E("idRecentSuras").innerHTML = 
-					"<select id='idRecentSurasList' style='width:120px'>" + 
+					"<select id='idRecentSurasList'>" + 
 						"<option>" + _S.recently_played + "..." + "</option>" + 
-						sRecentList + 
+						sRecentSuraList + 
 					"</select>";
 				
 				_E("idRecentSurasList").onchange = function(e)
@@ -673,11 +669,17 @@ var ISura = {
 					var suraNum = parseInt(this.value,10);
 					QViewer.gotoSura(suraNum);
 					U.pushToCookieArray("r_suras", suraNum, 10);
-					window.setTimeout(function(){ISura.showRecent()},1);
+					window.setTimeout(ISura.showRecent.bind(ISura),1);
 					QViewer.focus();
+					// AudioPlayer.stop();
+					// AudioPlayer.loadRange(0,{sura:suraNum});
 				};
+				
+				return parseInt(recentSuraList[0],10);
 			}
 		}
+		
+		return 0;//
 	},
 
 	reciteRandom:function(){
@@ -719,6 +721,7 @@ var ISura = {
 
 		AudioPlayer.stop(true);
 		
+		//Fallback to Real Player popup
 		var url = GetAudioURL(selReciter, suraNum);
 		openReciter( url, suraNum , selReciter);
 		
