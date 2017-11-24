@@ -392,8 +392,8 @@ function SaveCurrentReciter( index )
 
 function openReciter( url, sura_index, reciter_index )
 {
-//	window.open (url, "telawa", "width=480,height=120");
-//	window.focus();
+	window.open (url, "telawa", "width=480,height=120");
+	window.focus();
 
 	SaveCurrentReciter( reciter_index );
 	PushToRecentSuras( sura_index );
@@ -402,9 +402,9 @@ function openReciter( url, sura_index, reciter_index )
 		ShowFavoriteReciters();
 	}
 
-	var newWindow = window.open ("/reciter.htm?auto=1&url=" + escape(url) + "&sura=" + sura_index + "&reciter=" + reciter_index, 
-								"telawa", "width=340,height=200");
-	newWindow.focus();
+	// var newWindow = window.open ("/reciter.htm?auto=1&url=" + escape(url) + "&sura=" + sura_index + "&reciter=" + reciter_index, 
+	// 							"telawa", "width=340,height=200");
+	// newWindow.focus();
 }
 
 function LoadRecitersList( idReciter )

@@ -24,6 +24,9 @@ var GetAudioURL = function( reciterID, suraNum, ayaNum ){
 };
 
 var ReciterName = function(id){
+	if(RecitersInfo[id]===undefined){
+		return "?? " + _S.reciters[id];
+	}
 	return _S.reciters[id] + ( RecitersInfo[id].ayaAudio != undefined ? "*" : "" );
 };
 
@@ -79,9 +82,14 @@ var RecitersInfo = {
 	},
 	ibr_kd:{
 		on:true,
+		suraAudio:{
+			server: "quranicaudio",
+			rkey: "ibrahim_al_akhdar",
+			actv:"(1114)"
+		},		
 		ayaAudio:{
 			server: "everyayah",
-			rkey: "Ibrahim_Akhdar"//"Ibrahim_Akhdar_32kbps"
+			rkey: "Ibrahim_Akhdar_32kbps"
 		},
 		audio: {
 			egylist_real:{
@@ -160,16 +168,16 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	abdulbarymoh:{
-		url:"http://egylist.com/quran/abdulbarymoh/%2%.rm",
-		actv:"(1114)",
-		rw:1
-	},
-	abdelkhaleq:{
-		url:"http://quran.islamway.com/quran3/77/%2%.rm",
-		actv:"(1114)",
-		rw:1
-	},
+	// abdulbarymoh:{
+	// 	url:"http://egylist.com/quran/abdulbarymoh/%2%.rm",
+	// 	actv:"(1114)",
+	// 	rw:1
+	// },
+	// abdelkhaleq:{
+	// 	url:"http://quran.islamway.com/quran3/77/%2%.rm",
+	// 	actv:"(1114)",
+	// 	rw:1
+	// },
 	Alkhayyat:{
 		suraAudio:{
 			server: "quranicaudio",
@@ -181,6 +189,11 @@ var RecitersInfo = {
 		rw:1
 	},
 	matrood:{
+		suraAudio:{
+			server: "quranicaudio",
+			rkey: "abdullah_matroud",
+			actv:"(1114)"
+		},		
 		url:"http://quran.islamway.com/quran3/91/%2%.rm",
 		actv:"(1114)",
 		rw:1
@@ -199,11 +212,11 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	abasfar_tgw:{
-		url:"http://quran.islamway.com/quran3/208/%2%.rm",
-		actv:"(144)(070)",
-		rw:1
-	},
+	// abasfar_tgw:{
+	// 	url:"http://quran.islamway.com/quran3/208/%2%.rm",
+	// 	actv:"(144)(070)",
+	// 	rw:1
+	// },
 	alqasem:{
 		suraAudio:{
 			server: "quranicaudio",
@@ -214,16 +227,16 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	mobbdee:{
-		url:"http://quran.islamway.com/quran3/95/%2%.rm",
-		actv:"(1114)",
-		rw:1
-	},
-	kanakree:{
-		url:"http://egylist.com/quran/kanakree/s%1%.rm",
-		actv:"(1114)",
-		rw:1
-	},
+	// mobbdee:{
+	// 	url:"http://quran.islamway.com/quran3/95/%2%.rm",
+	// 	actv:"(1114)",
+	// 	rw:1
+	// },
+	// kanakree:{
+	// 	url:"http://egylist.com/quran/kanakree/s%1%.rm",
+	// 	actv:"(1114)",
+	// 	rw:1
+	// },
 	abd_wad:{
 		suraAudio:{
 			server: "quranicaudio",
@@ -251,6 +264,11 @@ var RecitersInfo = {
 		rw:1
 	},
 	Alsoweasy:{
+		suraAudio:{
+			server: "egylist",
+			rkey: "ali_hajjaj_alsouasi",
+			actv:"(1114)"
+		},
 		url:"http://egylist.com/quran/Alsoweasy/s%1%.rm",
 		actv:"(1114)",
 		rw:1
@@ -265,16 +283,16 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	Zak_Dag:{
-		url:"http://egylist.com/quran/Zak_Dag/s%1%.rm",
-		actv:"(1114)",
-		rw:1
-	},
-	tarek_ibr:{
-		url:"http://quran.islamway.com/quran3/68/%2%.rm",
-		actv:"11110(153)0100(152)",
-		rw:1
-	},
+	// Zak_Dag:{
+	// 	url:"http://egylist.com/quran/Zak_Dag/s%1%.rm",
+	// 	actv:"(1114)",
+	// 	rw:1
+	// },
+	// tarek_ibr:{
+	// 	url:"http://quran.islamway.com/quran3/68/%2%.rm",
+	// 	actv:"11110(153)0100(152)",
+	// 	rw:1
+	// },
 	m_ayoub:{
 		suraAudio:{
 			server: "quranicaudio",
@@ -304,11 +322,11 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	mrefaat:{
-		url:"http://quran.islamway.com/quran3/134/%2%.rm",
-		actv:"(017)11(035)1(016)110111(07)1(011)(110)(08)",
-		rw:1
-	},
+	// mrefaat:{
+	// 	url:"http://quran.islamway.com/quran3/134/%2%.rm",
+	// 	actv:"(017)11(035)1(016)110111(07)1(011)(110)(08)",
+	// 	rw:1
+	// },
 	ma_kar:{
 		suraAudio:{
 			server: "quranicaudio",
@@ -319,11 +337,11 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	mbuzeed:{
-		url:"http://egylist.com/quran/mbuzeed/s%1%.rm",
-		actv:"(1114)",
-		rw:1
-	},
+	// mbuzeed:{
+	// 	url:"http://egylist.com/quran/mbuzeed/s%1%.rm",
+	// 	actv:"(1114)",
+	// 	rw:1
+	// },
 	menshawee:{
 		on:true,
 		suraAudio:{
@@ -380,11 +398,11 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	hosaree_edu:{
-		url:"http://quran.islamway.com/quran3/211/%2%.rm",
-		actv:"1000(1110)",
-		rw:1
-	},
+	// hosaree_edu:{
+	// 	url:"http://quran.islamway.com/quran3/211/%2%.rm",
+	// 	actv:"1000(1110)",
+	// 	rw:1
+	// },
 	affassi:{
 		on:true,
 		suraAudio:{
@@ -445,41 +463,46 @@ var RecitersInfo = {
 		actv:"(1114)",
 		rw:1
 	},
-	koshee:{
-		url:"http://egylist.com/quran/koshee/s%1%.rm",
-		actv:"(1114)",
-		rw:2
-	},
+	// koshee:{
+	// 	url:"http://egylist.com/quran/koshee/s%1%.rm",
+	// 	actv:"(1114)",
+	// 	rw:2
+	// },
 	baset_wa:{
+		suraAudio:{
+			server: "quranicaudio",
+			rkey: "abdulbaset_warsh",
+			actv:"(1114)"
+		},
 		url:"http://quran.islamway.com/quran3/179/%2%.rm",
 		actv:"(1114)",
 		rw:2
 	},
-	hosaree_wa:{
-		url:"http://egylist.com/quran/hosaree/w/s%1%.rm",
-		actv:"(1114)",
-		rw:2
-	},
-	Gharbi:{
-		url:"http://egylist.com/quran/Gharbi/s%1%.rm",
-		actv:"(1114)",
-		rw:2
-	},
-	dukalli:{
-		url:"http://egylist.com/quran/dukalli/s%1%.rm",
-		actv:"(1114)",
-		rw:3
-	},
-	sunaynaqal:{
-		url:"http://egylist.com/quran/sunaynaqal/%2%.rm",
-		actv:"(055)(159)",
-		rw:3
-	},
-	Abdulrashid:{
-		url:"http://egylist.com/quran/Abdulrashid/s%1%.rm",
-		actv:"(17)(0107)",
-		rw:4
-	},
+	// hosaree_wa:{
+	// 	url:"http://egylist.com/quran/hosaree/w/s%1%.rm",
+	// 	actv:"(1114)",
+	// 	rw:2
+	// },
+	// Gharbi:{
+	// 	url:"http://egylist.com/quran/Gharbi/s%1%.rm",
+	// 	actv:"(1114)",
+	// 	rw:2
+	// },
+	// dukalli:{
+	// 	url:"http://egylist.com/quran/dukalli/s%1%.rm",
+	// 	actv:"(1114)",
+	// 	rw:3
+	// },
+	// sunaynaqal:{
+	// 	url:"http://egylist.com/quran/sunaynaqal/%2%.rm",
+	// 	actv:"(055)(159)",
+	// 	rw:3
+	// },
+	// Abdulrashid:{
+	// 	url:"http://egylist.com/quran/Abdulrashid/s%1%.rm",
+	// 	actv:"(17)(0107)",
+	// 	rw:4
+	// },
 	hosaree_doray:{
 		suraAudio:{
 			server: "quranicaudio",
@@ -490,10 +513,11 @@ var RecitersInfo = {
 		//url:"http://quran.islamway.com/quran3/192/%2%.rm",
 		//actv:"0(17)(0106)",
 		rw:5
-	},
-	khaalid_al_qahtaanee:{
-
 	}
+	// ,
+	// khaalid_al_qahtaanee:{
+
+	// }
 };
 
 var AudioServers = {

@@ -299,7 +299,7 @@ var IReciters = {
 
 		for (i=0; i<recentList.length; i++)
 		{
-			if(recentList[i].length){
+			if(recentList[i].length && RecitersInfo[recentList[i]]!==undefined){
 				sRecentList += "<option value=" + recentList[i] + ">" + 
 									ReciterName(recentList[i]) + 
 								"</option>";
