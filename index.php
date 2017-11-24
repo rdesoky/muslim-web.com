@@ -58,8 +58,9 @@ $suraCellWidth = 140;
 				ScriptLoader.loadScripts ( {
 						gStrings:			"<?=$FV['gStrings']?>",
 						MemApp:				"<?=$FV['MemApp']?>",
-						swfobject:			"<?=$FV['swfobject']?>",
-						PageMp3Player:		"<?=$FV['PageMp3Player']?>",
+						//swfobject:			"<?=$FV['swfobject']?>",
+						//PageMp3Player:		"<?=$FV['PageMp3Player']?>",
+						AudioPlayer:		"<?=$FV['AudioPlayer']?>",
 						Utils:				"<?=$FV['utils']?>",
 						DefineJClass:		"<?=$FV['jclass']?>",
 						QData:				"<?=$FV['qdata']?>",
@@ -186,7 +187,7 @@ $suraCellWidth = 140;
 							<!--<span class="h_frame">Audio controls</span>-->
 							<!--<span class="h_arrow"></span>-->
 						<!--</span>-->
-						<div id="GetFlash">
+						<div id="GetFlash" style="display:none">
 							<a href='http://www.adobe.com/go/getflashplayer'>
 								<img 
 									src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' 
@@ -199,10 +200,10 @@ $suraCellWidth = 140;
 						<tr>
 							<td id="PlayerStatus"></td>
 							<td><input type="button" id="BtnPlay" disabled value="&gt;"
-								/><input type="button" id="BtnStop" disabled onclick="PageMp3Player.stop()" value="<?=GetStr('finish')?>"/>
+								/><input type="button" id="BtnStop" disabled onclick="AudioPlayer.stop()" value="<?=GetStr('finish')?>"/>
 							</td>
 							<td id="VolumeCtrl"></td>
-							<td id="SyncOption"><span class="checkTitle" id="SyncCheck" checked="1" onclick="PageMp3Player.syncAudio(1)"><?=GetStr("view")?>&nbsp;&nbsp;</span>
+							<td id="SyncOption"><span class="checkTitle" id="SyncCheck" checked="1" onclick="AudioPlayer.syncAudio(1)"><?=GetStr("view")?>&nbsp;&nbsp;</span>
 							</td>
 							<td id="ReciteTillEnd"><span class="checkTitle" id="ReciteTillEndCheck" onclick="_TA(this,'checked')"><?=GetStr("ReciteTillEnd")?>&nbsp;&nbsp;</span>
 							</td>
@@ -473,7 +474,7 @@ $suraCellWidth = 140;
 				<td>
 					<span class="href" onclick="HomePage.showHelp()"><?= GetStr('help') ?></span>
 				</td>
-				<td> | <a href="http://www.facebook.com/apps/application.php?id=6254142583" target="_blank"><?= $Str['guest_page'] ?></a></td>
+				<td> | <a href="https://www.facebook.com/quran.hafiz.page" target="_blank"><?= $Str['guest_page'] ?></a></td>
 				<td id="FeedbackInfo"> | 
 					<span><?=$Str['footer_note']?>
 						<A href="mailto:webmaster@muslim-web.com">webmaster@muslim-web.com</A>
@@ -553,7 +554,11 @@ $suraCellWidth = 140;
 				<div id="LoginProgress" style="color:green;display:none"><?= $Str['contacting_db'] ?>..</div>
 			</div>
 		</div>
-		<div id="flashContent"></div>
+		<!-- <div id="flashContent"></div> -->
+		<audio id="AudioPlayerElement">
+			<source id="AudioSource" src=""></source>
+			Browser doesn't support audio
+		</audio>
 
 	</body>
 </html>

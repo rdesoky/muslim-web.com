@@ -71,6 +71,7 @@ $FV = array (
 
 	'MemApp'			=>	CacheURL($scr_host . "js/quran/exercise.js"),
 	'PageMp3Player'		=>	CacheURL($scr_host . "js/quran/PageMp3Player.js"),
+	'AudioPlayer'		=>	CacheURL($scr_host . "js/quran/AudioPlayer.js"),
 	'PageMap'			=>	CacheURL($scr_host . "js/quran/PageMap.js"),
 	'JCQuranViewer'		=>	CacheURL($scr_host . "js/quran/JCQuranViewer.js"),
 	'qsearch'			=>	CacheURL($scr_host . "js/quran/qsearch.js"),

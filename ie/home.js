@@ -147,7 +147,7 @@ function FillReciters()
 	var sHTML = "";
 
 	for( var index=0; index < gReciterNames.length; index++ ){
-		sHTML += "<div mClass=JCMenuItem onclick='onSelectReciter(" + index + ")'>" + gReciterNames[index] + "</div>";
+		sHTML += "<span mClass=JCMenuItem onclick='onSelectReciter(" + index + ")'>" + gReciterNames[index] + "</span>";
 	}
 
 	idReciterList.innerHTML = sHTML;

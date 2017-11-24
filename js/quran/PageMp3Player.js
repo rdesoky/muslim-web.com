@@ -1,6 +1,6 @@
 var PageMp3Player = {
-	obj:null,
-	playCount:1,
+	obj:null,//Shockwave Flash (swf) object reference
+	playCount:1,//default repeat count
 	lastState:"IDLE",
 	statusIcons:{
 		PLAYING:"<img style='height:16px;width:16px;' src='images/equalizer4.gif'/>",
@@ -30,6 +30,8 @@ var PageMp3Player = {
 			id:"QPlayer",
 			name:"QPlayer"
 		};
+
+		//swfobject is a global reference to an object created in swfobject.js
 		swfobject.embedSWF(
 			"player.swf", 
 			"flashContent", // element to replace

@@ -29,6 +29,7 @@ var ReciterName = function(id){
 
 var RecitersInfo = {
 	baset:{
+		on:true,
 		actv:"(1114)",
 		rw:1,
 		suraAudio:{
@@ -59,6 +60,7 @@ var RecitersInfo = {
 		}
 	},
 	baset_tgw:{
+		on:true,
 		suraAudio:{
 			server: "quranicaudio",
 			rkey: "abdulbaset_mujawwad",
@@ -76,9 +78,10 @@ var RecitersInfo = {
 		rw:1
 	},
 	ibr_kd:{
+		on:true,
 		ayaAudio:{
 			server: "everyayah",
-			rkey: "Ibrahim_Akhdar_32kbps"
+			rkey: "Ibrahim_Akhdar"//"Ibrahim_Akhdar_32kbps"
 		},
 		audio: {
 			egylist_real:{
@@ -123,6 +126,16 @@ var RecitersInfo = {
 		rw:1
 	},
 	noaenee:{
+		on:true,
+		ayaAudio:{
+			server: "everyayah",
+			rkey: "Ahmed_Neana_128kbps"
+		},		
+		suraAudio:{
+			server: "egylist",
+			rkey: "ahmad_nauina",
+			actv:"(1114)"
+		},		
 		url:"http://egylist.com/quran/noaenee/s%1%.rm",
 		actv:"(1114)",
 		rw:1
@@ -222,6 +235,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	hozefee:{
+		on:true,
 		suraAudio:{
 			server: "egylist",
 			rkey: "huthayfi",
@@ -276,6 +290,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	mjebreel:{
+		on:true,
 		suraAudio:{
 			server: "quranicaudio_complete",
 			rkey: "muhammad_jibreel",
@@ -310,6 +325,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	menshawee:{
+		on:true,
 		suraAudio:{
 			server: "egylist",
 			rkey: "muhammad_siddeeq_al-minshaawee",
@@ -324,6 +340,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	tablawee:{
+		on:true,
 		suraAudio:{
 			server: "egylist",
 			rkey: "mohammad_altablawi",
@@ -338,6 +355,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	mah_ban:{
+		on:true,
 		suraAudio:{
 			server: "egylist",
 			rkey: "mahmood_ali_albana",
@@ -348,6 +366,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	hosaree:{
+		on:true,
 		suraAudio:{
 			server: "egylist",
 			rkey: "mahmood_khaleel_al-husaree",
@@ -367,6 +386,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	affassi:{
+		on:true,
 		suraAudio:{
 			server: "quranicaudio",
 			rkey: "mishaari_raashid_al_3afaasee",
@@ -383,6 +403,7 @@ var RecitersInfo = {
 		rw:1
 	},
 	Mu_sma:{
+		on:true,
 		suraAudio:{
 			server: "egylist",
 			rkey: "mostafa_ismaeel",
@@ -469,6 +490,9 @@ var RecitersInfo = {
 		//url:"http://quran.islamway.com/quran3/192/%2%.rm",
 		//actv:"0(17)(0106)",
 		rw:5
+	},
+	khaalid_al_qahtaanee:{
+
 	}
 };
 
@@ -492,7 +516,7 @@ var AudioServers = {
 	},
 	
 	quranicaudio: {
-		cross_domains: false,
+		cross_domains: true,
 		mtype: 1,//1: mp3, 2:real
 		provider: "quranicaudio.com",
 		link:"http://download.quranicaudio.com/quran/{rkey}/{sura3}.mp3",
@@ -501,7 +525,7 @@ var AudioServers = {
 	},
 
 	quranicaudio_complete: {
-		cross_domains: false,
+		cross_domains: true,
 		mtype: 1,//1: mp3, 2:real
 		provider: "quranicaudio.com",
 		link:"http://download.quranicaudio.com/quran/{rkey}/complete/{sura3}.mp3",

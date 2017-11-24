@@ -4,10 +4,10 @@
 //};
 var Mp3Player={
 	play:function(){
-		PageMp3Player.play(true);
+		AudioPlayer.play(true);
 	},
 	stop:function(){
-		PageMp3Player.stop();
+		AudioPlayer.stop();
 	},
 	hide:function(flag){
 	},
@@ -16,7 +16,7 @@ var Mp3Player={
 	setAya:function(suraNum, ayaNum){
 		//_E("SyncCheck").checked = false;
 		_SA("SyncCheck","checked");
-		PageMp3Player.loadRange(1, {sura:int(suraNum), aya:int(ayaNum)}, {sura:int(suraNum), aya:int(ayaNum)} );
+		AudioPlayer.loadRange(1, {sura:int(suraNum), aya:int(ayaNum)}, {sura:int(suraNum), aya:int(ayaNum)} );
 	}
 };
 

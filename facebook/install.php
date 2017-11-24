@@ -10,5 +10,5 @@ $appsecret = '7d450618c6389f17640743f6756b86f3';
 $facebook = new Facebook($appapikey, $appsecret);
 
 $user_id = $facebook->require_install();
-unset $facebook;
+// unset $facebook;
 ?>

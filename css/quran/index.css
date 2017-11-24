@@ -28,8 +28,8 @@
 	vertical-align: middle;
 }
 
-#idPageViewAudio{
-}
+/* #idPageViewAudio{
+} */
 
 #BtnPlay{
 	width:30px;
@@ -72,19 +72,20 @@
 	color:green;
 }
 
-#MemReviewTitle{
-	/*cursor:pointer;*/
-	/*background-color:#DDDDDD;*/
-	/*border:solid 1px;*/
-	/*border-color: white silver silver white;*/
-	/*padding:2px 4px;*/
-}
+/* #MemReviewTitle{
+	cursor:pointer;
+	background-color:#DDDDDD;
+	border:solid 1px;
+	border-color: white silver silver white;
+	padding:2px 4px;
+} */
 
-#MemReviewTitle.checked{
-	/*background:gray;*/
-	/*color:white;*/
-	/*border-color: silver white white silver;*/
-}
+/* #MemReviewTitle.checked{
+	background:gray;
+	color:white;
+	border-color: silver white white silver;
+} */
+
 #SelectionViewer{
 	height:18px;
 	vertical-align:top;
@@ -263,9 +264,10 @@
 	background:#AAAAAA;
 }
 
-#AyatChart{
-	/*border:solid 1px silver;*/
-}
+/* #AyatChart{
+	border:solid 1px silver;
+} */
+
 #AyatChart .mem_chart{
 	width:320px;
 }
@@ -787,9 +789,9 @@ div[side="1"].pageViewFrame.wait,
 	/*width:160px;*/
 }
 
-#IndexCaption
+/* #IndexCaption
 {
-}
+} */
 
 #idViewTabs {
 	vertical-align:bottom;
@@ -1052,9 +1054,9 @@ span
 	padding:0px 0px 3px 0px;
 }
 
-#TopMenuPanel Table
+/* #TopMenuPanel Table
 {
-}
+} */
 
 #TopMenuPanel td
 {
@@ -1083,9 +1085,9 @@ span
 	text-align:center;
 }
 
-#idPageViews
+/* #idPageViews
 {
-}
+} */
 
 .adframe
 {
@@ -1093,9 +1095,9 @@ span
 	padding:1px;
 }
 
-.quranIndex
+/* .quranIndex
 {
-}
+} */
 
 .indexColumn
 {
@@ -1266,10 +1268,10 @@ span
 {
 	display:block;
 }
-#PagesViewControls .PageButton
+/* #PagesViewControls .PageButton
 {
-	/*width:100px;*/
-}
+	width:100px;
+} */
 #PagesViewControls>*{
 	vertical-align: top;
 }
@@ -1283,10 +1285,10 @@ span
 	text-align: right;
 }
 
-.sViewer
+/* .sViewer
 {
-	/*width:134px;*/
-}
+	width:134px;
+} */
 
 #PageButtons{
 	border-spacing:0px;

@@ -10,7 +10,7 @@ var HomePage = {
 	},
 	init:function(){
 		CK.remove("reciter,lpg,vi");
-		PageMp3Player.init();
+		AudioPlayer.init();
 		MemApp.init();
 		DU.mkVisible("RandomPlayLink");
 		
@@ -360,6 +360,7 @@ var IReciters = {
 	},
 
 	insertFilters:function(){
+		return;
 		if( this.filterd ){
 			return;
 		}
@@ -385,6 +386,9 @@ var IReciters = {
 		sHTML = "";
 		
 		for( var reciter in RecitersInfo ){
+			if (RecitersInfo[reciter].suraAudio === undefined){
+				continue;
+			}
 			if(sHTML.length){
 				sHTML += " ";
 			}
@@ -693,7 +697,7 @@ var ISura = {
 		}
 		var suraNum = nSura + 1;
 
-		if( !PageMp3Player.playRange(1, {sura:ToInt(suraNum),aya:1}, { sura:ToInt(suraNum), aya:QData.sura_info[nSura] }) ){
+		if( !AudioPlayer.playRange(1, {sura:ToInt(suraNum),aya:1}, { sura:ToInt(suraNum), aya:QData.sura_info[nSura] }) ){
 			this.recite(nSura);
 		}
 	},
@@ -707,13 +711,13 @@ var ISura = {
 		
 		if( RecitersInfo[selReciter].suraAudio 
 			&& AudioServers[RecitersInfo[selReciter].suraAudio.server].cross_domains == true ) {
-			if(	PageMp3Player.playRange( 0, {sura:suraNum, aya:1} ) ){
+			if(	AudioPlayer.playRange( 0, {sura:suraNum, aya:1} ) ){
 				this.pushToRecent(suraNum);
 				return;
 			}
 		}
 
-		PageMp3Player.stop(true);
+		AudioPlayer.stop(true);
 		
 		var url = GetAudioURL(selReciter, suraNum);
 		openReciter( url, suraNum , selReciter);
