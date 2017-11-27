@@ -275,6 +275,7 @@ var IReciters = {
 		if( this.initDone ){
 			return;
 		}
+		//save references to DOM elements
 		this.uiPanel = _E( "idRecitersPanel" );
 		this.recentReciters = _E("idRecentReciters");
 		this.initDone = true;
@@ -679,7 +680,7 @@ var ISura = {
 			}
 		}
 		
-		return 0;//
+		return 1;//
 	},
 
 	reciteRandom:function(){

@@ -523,7 +523,12 @@ $suraCellWidth = 140;
 					<input type="button" value="<?=GetStr("ok")?>" onclick="IMember.syncMemorization();"/>
 				</div>
 			</div>
-
+			<div id="CopyText">
+				<div><textarea id="CopyTextArea" style="width:100%;box-sizing:border-box;height:150px"></textarea></div>
+				<div class="buttonsBar">
+					<input type="button" value="<?=GetStr("copy_selected")?>" onclick="doCopyText();"/>
+				</div>
+			</div>
 			<div id="idRecitersPanel">
 				<div id="idRecentReciters"></div>
 				<div id="idListFilters" style="padding:2px;"></div>

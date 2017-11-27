@@ -190,38 +190,29 @@ var CopyWindow;
 
 function copyTextRange(suraNum, start_aya, end_aya)
 {
-	//alert("start:" + start + "; end:" + end );
-	if(CopyWindow){
-		try{
-			CopyWindow.close();
-		}catch(e){
-		}
-	}
-
-	CopyWindow = window.open("copy_text.html", "copy_qtext", "width=500,height=400,centerscreen=yes,menubar=yes,toolbar=no,location=no,resizable=yes");
-
-	if( CopyWindow ){
-		CopyWindow.focus();
-		LoadData( "http://cgi.muslim-web.com/cgi-bin/get_sura_text.pl?s=" + (suraNum-1).toString() + 
-					"&f=" + start_aya + "&t=" + end_aya, 
-					"openTextWindow(gDataResponse)", 
-					true);
+	LoadData( CGIBase + "get_sura_text.pl?s=" + (suraNum-1).toString() + 
+				"&f=" + start_aya + "&t=" + end_aya, 
+				"confirmCopy(gDataResponse)", 
+				true);
+}
+function confirmCopy(text){
+	var copyTextForm = confirmCopy.copyTextForm = confirmCopy.copyTextForm || _E("CopyText");
+	var copyTextArea = confirmCopy.copyTextArea = confirmCopy.copyTextArea || _E("CopyTextArea");
+	copyTextArea.value = text;
+	UI.openPopup("confirmCopy", copyTextForm,_S.copy_selected);
+}
+function doCopyText(){
+	var copyTextArea = _E("CopyTextArea");
+	var docRange = document.createRange();
+	docRange.selectNode(copyTextArea);
+	var selection = window.getSelection();
+	selection.removeAllRanges();
+	selection.addRange(docRange);
+	var success=document.execCommand('copy');
+	if(success){
+		selection.removeAllRanges();
+		UI.closePopup("confirmCopy");
 	}
 }
 
-function openTextWindow( sText ){
-	if( CopyWindow ){
-		if(CopyWindow.document.body){
-			CopyWindow.document.body.innerHTML = sText;
-			CopyWindow.focus();
-		}else{
-			window.setTimeout(
-				function(){
-					openTextWindow( sText );
-				}, 
-				1000 
-			);
-		}
-	}
-}
 

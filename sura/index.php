@@ -12,7 +12,7 @@ $css_host =
 $scr_host = 
 $str_host = 
 $img_host = 
-$cgi_base = $app_root = "../";
+$app_root = "../";
 
 include( "../".$lang."_strings.php" );
 include( "../filesver.php" );
@@ -32,6 +32,9 @@ include( "../filesver.php" );
 		<script type="text/javascript" src="<?=$FV['ScriptLoader']?>"></script>
 		<script type="text/javascript" src="http://cgi.muslim-web.com/cgi-bin/counter.js.pl?p=sura"></script>
 		<script type="text/javascript">
+
+			var JSLoaderBase = "<?=$js_loader_base?>",
+			CGIBase = "<?=$cgi_base?>";
 
 			window.onload=function()
 			{
@@ -155,5 +158,13 @@ include( "../filesver.php" );
 				<div id="TafseerData"><?=$Str["loading"]?>...</div>
 			</td>
 		</tr></table>
+		<div id="HiddenUI" style="display:none">
+			<div id="CopyText">
+				<div><textarea id="CopyTextArea" style="width:100%;box-sizing:border-box;height:150px"></textarea></div>
+				<div class="buttonsBar">
+					<input type="button" value="<?=GetStr("copy_selected")?>" onclick="doCopyText();"/>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
