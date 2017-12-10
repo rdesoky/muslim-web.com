@@ -82,8 +82,8 @@ include( "../filesver.php" );
 					<table cellspacing="0">
 					<tr>
 						<td id="idRecite">
-							<span class="playBtn" onclick="reciteSura()">&nbsp;</span>&nbsp;
-							<a class="saveBtn" id="idSaveURL">&nbsp;</a>
+							<span class="btn playBtn" onclick="reciteSura()">&nbsp;</span>&nbsp;
+							<!-- <a class="saveBtn" id="idSaveURL">&nbsp;</a> -->
 						</td>
 						<td><div id="RecitersList">&nbsp;</div></td>
 					</tr>

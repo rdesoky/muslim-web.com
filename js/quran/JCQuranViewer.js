@@ -947,14 +947,14 @@ var QViewer = {
 					_E("idPageNo_" + nSide).innerHTML= _S.page + "&nbsp;" + pageNum;
 					var partNum = QData.pagePart(pageNum) + 1;
 					_E("idPageChapter_" + nSide).innerHTML = 
-						"<span class='playBtn res' onclick='AudioPlayer.playQuranPart(" + partNum + ")' title='" + GS("recite_part") + "'></span> " +
+						"<span class='btn playBtn res' onclick='AudioPlayer.playQuranPart(" + partNum + ")' title='" + GS("recite_part") + "'></span> " +
 						"<span class='href' onclick='QViewer.onclickPartTitle(" + partNum.toString() + ")'>" + 
 							_S.part + "&nbsp;" + partNum.toString() + 
 						"</span>";
 					var suraNum = QData.pageSura(pageNum) + 1;
 					_E("idPageSuraName_" + nSide).innerHTML = 
-						"<span class='playBtn res' onclick='ISura.reciteByVerse(" + (suraNum-1).toString() + ")'  title='" + GS("recite_sura_vbv") + "'></span> " +
-						"<span class='playBtn' onclick='ISura.recite(" + (suraNum-1).toString() + ")' title='" + GS("recite_sura") + "'></span> " + 
+						"<span class='btn playBtn res' onclick='ISura.reciteByVerse(" + (suraNum-1).toString() + ")'  title='" + GS("recite_sura_vbv") + "'></span> " +
+						"<span class='btn playBtn' onclick='ISura.recite(" + (suraNum-1).toString() + ")' title='" + GS("recite_sura") + "'></span> " + 
 						"<span class='href' onclick='QViewer.onclickSuraTitle(" + suraNum.toString() + ")'>" + 
 							_S.sura_names[ suraNum-1 ] + 
 						"</span>";

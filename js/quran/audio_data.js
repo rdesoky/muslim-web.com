@@ -65,7 +65,7 @@ var RecitersInfo = {
 	baset_tgw:{
 		on:true,
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdulbaset_mujawwad",
 			actv:"(1114)"
 		},
@@ -83,7 +83,7 @@ var RecitersInfo = {
 	ibr_kd:{
 		on:true,
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "ibrahim_al_akhdar",
 			actv:"(1114)"
 		},		
@@ -115,7 +115,7 @@ var RecitersInfo = {
 	},
 	agmy:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "ahmed_ibn_3ali_al-3ajamy",
 			actv:"(1114)"
 		},
@@ -150,7 +150,7 @@ var RecitersInfo = {
 	},
 	aalkalbani:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "adel_kalbani",
 			actv:"(1114)"
 		},
@@ -160,7 +160,7 @@ var RecitersInfo = {
 	},
 	Althobeaty:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "thubaity",
 			actv:"(1114)"
 		},
@@ -180,7 +180,7 @@ var RecitersInfo = {
 	// },
 	Alkhayyat:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "khayat",
 			actv:"(1114)"
 		},
@@ -190,7 +190,7 @@ var RecitersInfo = {
 	},
 	matrood:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdullah_matroud",
 			actv:"(1114)"
 		},		
@@ -200,7 +200,7 @@ var RecitersInfo = {
 	},
 	abasfar:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdullaah_basfar",
 			actv:"(1114)"
 		},
@@ -219,7 +219,7 @@ var RecitersInfo = {
 	// },
 	alqasem:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdul_muhsin_alqasim",
 			actv:"(1114)"
 		},
@@ -239,7 +239,7 @@ var RecitersInfo = {
 	// },
 	abd_wad:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdulwadood_haneef",
 			actv:"(1114)"
 		},
@@ -265,7 +265,7 @@ var RecitersInfo = {
 	},
 	Alsoweasy:{
 		suraAudio:{
-			server: "egylist",
+			server: "quranicaudio",
 			rkey: "ali_hajjaj_alsouasi",
 			actv:"(1114)"
 		},
@@ -275,7 +275,7 @@ var RecitersInfo = {
 	},
 	alijaber:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdullaah_alee_jaabir",
 			actv:"(1114)"
 		},
@@ -295,7 +295,7 @@ var RecitersInfo = {
 	// },
 	m_ayoub:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "muhammad_ayyoob",
 			actv:"(1114)"
 		},
@@ -310,7 +310,7 @@ var RecitersInfo = {
 	mjebreel:{
 		on:true,
 		suraAudio:{
-			server: "quranicaudio_complete",
+			server: "egylist",
 			rkey: "muhammad_jibreel",
 			actv:"(1114)"
 		},
@@ -329,7 +329,7 @@ var RecitersInfo = {
 	// },
 	ma_kar:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "muhammad_abdulkareem",
 			actv:"(1114)"
 		},
@@ -406,7 +406,7 @@ var RecitersInfo = {
 	affassi:{
 		on:true,
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "mishaari_raashid_al_3afaasee",
 			actv:"(1114)"
 		},
@@ -437,7 +437,7 @@ var RecitersInfo = {
 	},
 	ghamdi:{
 		suraAudio:{
-			server: "quranicaudio_complete",
+			server: "egylist",
 			rkey: "sa3d_al-ghaamidi",
 			actv:"(1114)"
 		},
@@ -451,7 +451,7 @@ var RecitersInfo = {
 	},
 	h_refaae:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "rifai",
 			actv:"(1114)"
 		},
@@ -470,7 +470,7 @@ var RecitersInfo = {
 	// },
 	baset_wa:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "abdulbaset_warsh",
 			actv:"(1114)"
 		},
@@ -505,7 +505,7 @@ var RecitersInfo = {
 	// },
 	hosaree_doray:{
 		suraAudio:{
-			server: "quranicaudio",
+			server: "egylist",
 			rkey: "mahmood_khaleel_al-husaree_doori",
 			actv:"(1114)"
 		},

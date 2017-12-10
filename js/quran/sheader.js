@@ -71,7 +71,9 @@ function PopulateReciters()
 	var lang = window.gLang ? window.gLang : "ar";
 
 	for( var reciter in RecitersInfo ){
-		sHTML += "<option value='" + reciter + "'>" + _S.reciters[reciter] + "</option>";
+		if(RecitersInfo[reciter].hasOwnProperty("suraAudio")){
+			sHTML += "<option value='" + reciter + "'>" + _S.reciters[reciter] + "</option>";
+		}
 	}
 	_E("RecitersList").innerHTML = "<select id='idReciter'>" + 
 			sHTML + 
@@ -106,7 +108,7 @@ function initHeader()
 
 	_E("idReciter").value = lastReciter;
 
-	_E("idSaveURL").href = GetSaveURL();
+	//_E("idSaveURL").href = GetSaveURL();
 
 	ShowHideRecitingIcons();
 

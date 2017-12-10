@@ -127,8 +127,8 @@ $suraCellWidth = 140;
 		<tr>
 			<td class="top_logo" id="TopLogo" >
 				<div id="SiteTitle" class="site_title"><?= $Str['holy_quran'] ?></div>
-				<!-- <div style="direction:ltr;font-size:10px"><?=GetStr("site_url")?></div> -->
-				<audio id="AudioPlayerElement" controls="controls">
+				<div style="direction:ltr;font-size:10px"><?=GetStr("site_url")?></div>
+				<audio id="AudioPlayerElement">
 					Browser doesn't support audio
 				</audio>						
 			</td>
@@ -199,12 +199,12 @@ $suraCellWidth = 140;
 							</a>
 						</div>
 						
-						<table id="AudioControls" cellspacing="0" cellspadding="0" style="display:none">
+						<table id="AudioControls" cellspacing="0" class="idle" cellspadding="0" style="display:none">
 						<tr>
 							<td >&nbsp;<a id="PlayerSura" onClick="QViewer.onclickSuraTitle(PlayList.current.sura)"></a></td>
 							<td id="PlayerStatus"></td>
-							<td><input type="button" id="BtnPlay" onClick="AudioPlayer.play(true);" value="&gt;"
-								/><input type="button" id="BtnStop" disabled onclick="AudioPlayer.stop()" value="<?=GetStr('finish')?>"/>
+							<td><span tabIndex="0" id="BtnPlay" class="btn playBtn" onClick="AudioPlayer.play(true);"></span
+								> <span tabIndex="0" id="BtnStop" class="btn playStop" disabled onclick="AudioPlayer.stop()"></span>
 							</td>
 							<td id="VolumeCtrl"></td>
 							<td id="SyncOption"><span class="checkTitle" id="SyncCheck" checked="1" onclick="AudioPlayer.syncAudio(1)"><?=GetStr("view")?>&nbsp;&nbsp;</span>
@@ -235,7 +235,8 @@ $suraCellWidth = 140;
 						><span 
 							tid="pages" 
 							pid="idPageViews"
-						><img src="images/read.gif"/>&nbsp;<?= $Str['pages'] ?>
+							class="pages_tab"
+						><?= $Str['pages'] ?>
 						</span
 						><span tid="mem" pid="MemReport" class="left_align">
 							<?= $Str['mem_percent']?>: <span id="idMemorized">0</span>%<br/>
@@ -384,7 +385,7 @@ $suraCellWidth = 140;
 										<img src='images/next.gif' border='0'/> <?= $Str['next'] ?>
 									</td>
 									<td style='width:100%;height:16px;text-align:center'>
-										<span class='playBtn res' title="<?= $Str['recite_page'] ?>" onclick="QViewer.reciteSide(1)"></span>&nbsp;
+										<span class='btn playBtn res' title="<?= $Str['recite_page'] ?>" onclick="QViewer.reciteSide(1)"></span>&nbsp;
 										<span id="idPageNo_1" ></span>
 									</td>
 								</tr>
@@ -407,7 +408,7 @@ $suraCellWidth = 140;
 								<table class="pageFooter" id="PageFooter_0">
 								<tr>
 									<td style="text-align:center;width:100%;height:16px;">
-										<span class='playBtn res' title="<?= $Str['recite_page'] ?>" onclick="QViewer.reciteSide(0)"></span>&nbsp;
+										<span class='btn playBtn res' title="<?= $Str['recite_page'] ?>" onclick="QViewer.reciteSide(0)"></span>&nbsp;
 										<span id="idPageNo_0"></span>
 									</td>
 									<td id="RightNavCell" class="pageNavigator">

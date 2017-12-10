@@ -336,26 +336,51 @@ input[type="button"]{
 	background-image:url(../../images/prev.gif)
 }
 
-
-.playBtn
-{
+.btn{
 	display:inline-block;
-	width:16px;
+	width:24px;
 	height:16px;
-	/*background:url(../../images/speaker.gif) no-repeat;*/
-	background:url(../../images/rg_play_btn.png) no-repeat;
-	/*background:url(../../images/play_btn.png) no-repeat;*/
+	line-height: 14px;
 	vertical-align:middle;
+	text-align: center;
 	cursor:pointer;
+	border-radius: 5px;
+	box-sizing: border-box;
+	border:solid 1px;
+	color:gray;
+	border-color: gray;
 }
-.playBtn:hover,.playBtn.res:hover
+.playBtn::before{
+	content:'\25B7';
+}
+
+.playing .playBtn::before{
+	content:'\23F8';
+}
+
+.paused .playBtn{
+	color:white;
+	background-color:gray;
+}
+
+.playStop::before{
+	content:'\23F9';
+}
+
+.idle .playStop::before{
+	color:silver;
+}
+
+.btn:hover
 {
 	/*background:url(../../images/listen.gif) no-repeat;*/
 	background-color: rgb(190,220,180);
 }
 
 .playBtn.res{
-	background-image:url(../../images/rg_play_btn2.png);
+	/* background-image:url(../../images/rg_play_btn2.png); */
+	color:green;
+	border-color: green;
 }
 .saveBtn
 {

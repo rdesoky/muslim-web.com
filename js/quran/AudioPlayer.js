@@ -49,16 +49,16 @@ var AudioPlayer = {
 
 	},
 	
-	onPlayerReady:function(){
-		this.obj = getFlexApp("QPlayer");
-		this.obj.addModelListener("state","stateTracker");
-		this.obj.addControllerListener("volume","VolumeTracker");
-		this.obj.addControllerListener("mute","MuteTracker");
-		_E("VolumeCtrl").setVolume(this.obj.getConfig().volume);
-		_E("VolumeCtrl").setMute(this.obj.getConfig().mute);
-		DU.show("AudioControls");
-		DU.hide("GetFlash");
-	},
+	// onPlayerReady:function(){
+	// 	this.obj = getFlexApp("QPlayer");
+	// 	this.obj.addModelListener("state","stateTracker");
+	// 	this.obj.addControllerListener("volume","VolumeTracker");
+	// 	this.obj.addControllerListener("mute","MuteTracker");
+	// 	_E("VolumeCtrl").setVolume(this.obj.getConfig().volume);
+	// 	_E("VolumeCtrl").setMute(this.obj.getConfig().mute);
+	// 	DU.show("AudioControls");
+	// 	DU.hide("GetFlash");
+	// },
 	
 	playQuranPart:function(partNum){
 		var pInfo = QData.parts[partNum-1];
@@ -162,23 +162,26 @@ var AudioPlayer = {
 	setState:function( state ){
 		switch(state){
 		case "IDLE":
+			_E("AudioControls").className = "idle";
 			_E("BtnPlay").onclick = function(){
 				AudioPlayer.loadTrack( PlayList.getFirstTrack() );
 				AudioPlayer.play(true);
 			};
-			_E("BtnPlay").value = ">";
+			//_E("BtnPlay").value = ">";
 			_E("BtnPlay").disabled = false;
 			_E("BtnStop").disabled = true;
 			break;
 		case "PLAYING":
 		case "BUFFERING":
-			_E("BtnPlay").value = "||";
+			_E("AudioControls").className = "playing";
+//			_E("BtnPlay").value = "||";
 			_E("BtnPlay").onclick = function(){AudioPlayer.pause();};
 			_E("BtnPlay").disabled = false;
 			_E("BtnStop").disabled = false;
 			break;
 		case "PAUSED":
-			_E("BtnPlay").value = "|>";
+			_E("AudioControls").className = "paused";
+			//_E("BtnPlay").value = "|>";
 			_E("BtnPlay").onclick = function(){AudioPlayer.resume();};
 			_E("BtnPlay").disabled = false;
 			_E("BtnStop").disabled = false;

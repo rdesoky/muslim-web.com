@@ -158,23 +158,23 @@ var GetSuraMenu = function() {
 			],
 			info:{}
 		},
-		{	label: _S.recite_selected,	
-			menuPos:"side",
+		// {	label: _S.recite_selected,	
+		// 	menuPos:"side",
 			
-			menu:[
-				{	
-					label: _S.reciters.hosaree,
-					handler: "reciteSelected", 
-					info: { r:0 }
-				},
-				{	
-					label: _S.reciters.hozefee,
-					handler: "reciteSelected", 
-					info: { r:1 }
-				}
-			],
-			handler: "reciteSelected"
-		},
+		// 	menu:[
+		// 		{	
+		// 			label: _S.reciters.hosaree,
+		// 			handler: "reciteSelected", 
+		// 			info: { r:0 }
+		// 		},
+		// 		{	
+		// 			label: _S.reciters.hozefee,
+		// 			handler: "reciteSelected", 
+		// 			info: { r:1 }
+		// 		}
+		// 	],
+		// 	handler: "reciteSelected"
+		// },
 		{	label:_S.copy_selected,			handler:"copyText"	},
 		/*{	label: _S.exercise_selected",	handler:"openTrainer"	},*/
 		{

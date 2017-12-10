@@ -34,7 +34,7 @@
 } */
 
 #BtnPlay{
-	width:30px;
+	/* width:30px; */
 }
 
 #PlayerStatus{
@@ -358,7 +358,7 @@
 }
 
 #idReciterList .menu_item {
-	font-size:9px;
+	display: block;
 }
 #UserInfoSwitcher{
 	width:170px;
@@ -405,7 +405,7 @@
 #TopMenuItems{
 	border-top:solid 2px white;
 	padding:2px 0px;
-	height:22px;
+	/* height:22px; */
 }
 
 #TopMenuItems select{
@@ -1444,4 +1444,12 @@ span
 
 #GooglePlayBadge img{
 	width:100%;
+}
+#idReciterList{
+	height:260px;
+	overflow-y: scroll;
+}
+
+.pages_tab::before{
+	content:'\1F4D6  '
 }
