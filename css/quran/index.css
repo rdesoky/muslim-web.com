@@ -886,6 +886,7 @@ span
 	border:solid 1px;
 	border-color:white Silver Silver white;
 	font-size:9px;
+	position:relative;
 }
 
 *:lang(ar) .vIndexCell
@@ -900,6 +901,7 @@ span
 
 .vIndexCell div
 {
+	top:0;
 	font-size:10px;
 }
 
