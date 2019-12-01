@@ -8,3 +8,4 @@ qtext/*
 .vstags
 pg_map_old/*.json
 .idea
+.history

@@ -118,10 +118,13 @@ $suraCellWidth = 140;
 		?></div>
 
         <div id="GooglePlayBadge">
-            <a href="https://play.google.com/store/apps/details?id=com.muslim_web.quran"
-                    ><img src="images/google-play-badge.png" alt="get it on Google Play"/></a>
+            <a href="https://play.google.com/store/apps/details?id=com.muslim_web.quran" target="_blank"
+                    ><img id="GooglePlay" src="images/google-play-badge.png" alt="get it on Google Play"/></a>
+			<a href="https://itunes.apple.com/us/app/quran-hafiz/id1384358953?ls=1&mt=8" target="_blank"
+                    ><img id="AppStore" src="images/<?=$lang=='ar'?'Download_on_the_App_Store_Badge_AR_RGB_blk_102417.svg':'Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg'?>" 
+					alt="Download on the App Store"/>
+			</a>
         </div>
-
 
         <table id="TopPanel" cellpadding="0" class="collapsed">
 		<tr>
