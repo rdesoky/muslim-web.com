@@ -1434,7 +1434,7 @@ span
 	position: absolute;
 	top:26px;
 	right:0;
-	width:125px;
+	width:210px;
 }
 
 *:lang(ar) #GooglePlayBadge{
@@ -1443,7 +1443,8 @@ span
 }
 
 #GooglePlayBadge img{
-	width:100%;
+	width:100px;
+	height:40px;
 }
 #idReciterList{
 	height:260px;
