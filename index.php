@@ -136,6 +136,10 @@ $suraCellWidth = 140;
 				</audio>						
 			</td>
 			<td id="Header">
+				<div class="AnnouncementBar"><a href="https://rdesoky.github.com/quran" target="_blank">
+					اضغط هنا لتجربة النسخة الجديدة من الموقع. 
+					Click here to try the new version</a>
+				</div>
 				<table id="TopMenu">
 				<tr>
 					<td>

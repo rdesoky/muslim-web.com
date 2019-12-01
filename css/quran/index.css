@@ -1456,3 +1456,14 @@ span
 .pages_tab::before{
 	content:'\1F4D6  '
 }
+
+.AnnouncementBar{
+	background-color: rgb(255, 255, 173);
+	text-align: center;
+	font-weight: bold;
+	padding: 5px 60px 5px 5px;
+}
+
+*:lang(ar) .AnnouncementBar{
+	padding: 5px 5px 5px 60px;
+}
