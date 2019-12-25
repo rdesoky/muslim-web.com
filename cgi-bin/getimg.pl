@@ -26,6 +26,6 @@ if( open IMAGE_FILE, "< " . $img )
 	close IMAGE_FILE;
 }
 else{
-	print "Content-Type: text/plain;\n";
+	print "Content-Type: text/plain;\n\n";
 	print $img . " Not Found";
 }
