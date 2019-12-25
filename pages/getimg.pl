@@ -10,6 +10,7 @@ if( open IMAGE_FILE, "< " . $img )
 
 	print "Content-Type: image/gif;\n";
 	print "Cache-Control:max-age=7776000\n";
+	print "Expires: Tue, 1 Jan 2030 01:00:00 GMT\n";
 	print "\n";
 
 	while(<IMAGE_FILE>){
