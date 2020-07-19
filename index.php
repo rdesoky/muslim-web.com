@@ -136,7 +136,7 @@ $suraCellWidth = 140;
 				</audio>						
 			</td>
 			<td id="Header">
-				<div class="AnnouncementBar"><a href="https://rdesoky.github.com/quran" target="_blank">
+				<div class="AnnouncementBar"><a href="http://hafiz.muslim-web.com" target="_blank">
 					اضغط هنا لتجربة النسخة الجديدة من الموقع. 
 					Click here to try the new version</a>
 				</div>
