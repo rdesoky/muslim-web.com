@@ -1,18 +1,33 @@
 #!/usr/bin/perl
+use cPanelUserConfig;
 
 use CGI qw/:standard/;
 use DBI;
 use utf8;
+use Try::Tiny;
 
 my $table =  CGI::param("src") || "en_yusufali";
 my $sura = CGI::param("s") || "1";
 my $aya = CGI::param("a") || "1";
+my $taf = "";
 
 #my $expiry = time2str(time+60*60*24*30*12);
 #This script is set to run on egylist.com (Hosted at GoDaddy servers )
-my ($dbhost, $dbuser, $dbpass) = ( "egylistquranadm.db.5965197.hostedresource.com", "egylistquranadm", "Ali_1999");
-my $dbh = DBI->connect("DBI:mysql:database=$dbuser;host=$dbhost", $dbuser, $dbpass);
-my $taf = "";
+#my ($dbhost, $dbuser, $dbpass) = ( "egylistquranadm.db.5965197.hostedresource.com", "egylistquranadm", "Ali_1999");
+
+my ($dbhost, $dbuser, $database, $dbpass) = ( "localhost", "egylistquranadm",
+"egylistquranadm", "Ali_1999");
+
+#my ($dbhost, $dbuser, $dbpass) = ( "p3plcpnl0976.prod.phx3.secureserver.net", "egylistquranadm", "Ali_1999");
+
+# if(0){
+my $dbh;
+
+try{
+   $dbh = DBI->connect("DBI:mysql:database=$database;host=$dbhost", $dbuser, $dbpass );
+}catch{
+   $taf = ""; 
+};
 
 if($dbh){
 	$dbh->do("SET NAMES utf8");
@@ -46,7 +61,7 @@ if($dbh){
 
 	$dbh->disconnect;
 }
-
+# }
 #binmode STDOUT, ":utf8";
 
 print qq{Content-Type: text/html; charset=utf-8;
