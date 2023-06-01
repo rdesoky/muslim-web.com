@@ -10,28 +10,16 @@ package qutils;
 sub db_connect
 {
 	my $dbase = shift;
-
 	my $driver   = "mysql";
-
 	my $database = "quran";
-#	my $database = "desoky_quran";
 
-#	if ($dbase) {
-#		$database = $dbase;
-#		$database = "desoky_" . $dbase;
-#	}
-	
-#	my $host     = "mysql.mygisol.com";
-	my $host	 = "localhost";
-#	my $dbuser   = "desoky_root";
+	if ($dbase) {
+		$database = $dbase;
+	}
+
+	my $host	 = "kdb.cke80n8mnq0f.us-east-1.rds.amazonaws.com";
 	my $dbuser   = "root";
-#	my $host     = "localhost";
-#	my $dbuser   = "root";
 	my $dbpass   = "kobool_2004";
-
-	#my $host     = "localhost";
-	#my $dbuser   = "root";
-	#my $dbpass   = "";
 
 	my $dsn      = "DBI:$driver:database=$database;host=$host";
 

@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
+
 use qutils;
 
 print "Content-Type: application/xml; Cache-Control: NO-STORE;\n\n";

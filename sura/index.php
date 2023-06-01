@@ -30,7 +30,7 @@ include( "../filesver.php" );
 		<link type="text/css" rel="stylesheet" href="<?=$FV['sura_css']?>"/>
 		<link type="text/css" rel="stylesheet" href="<?=$FV['menu_css']?>"/>
 		<script type="text/javascript" src="<?=$FV['ScriptLoader']?>"></script>
-		<script type="text/javascript" src="http://cgi.muslim-web.com/cgi-bin/counter.js.pl?p=sura"></script>
+		<script type="text/javascript" src="/cgi-bin/counter.js.pl?p=sura"></script>
 		<script type="text/javascript">
 
 			var JSLoaderBase = "<?=$js_loader_base?>",

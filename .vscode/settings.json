@@ -1,2 +1,8 @@
 {
+  "files.exclude": {
+    "**/facebook/": true,
+    "**/ie/": true,
+    "**/unused/": true
+  },
+  "workbench.colorTheme": "Monokai"
 }

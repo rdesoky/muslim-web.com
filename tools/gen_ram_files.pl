@@ -1,9 +1,8 @@
 #!/usr/bin/perl
 
-my $base_url	   = "http://www.egylist.com/quran" ;
-#my $base_url	   = "http://www.egylist.com/quran/hosaree" ;
+my $base_url	   = "/" ;
 
-my $base_directory = "D:\\islamic\\audio.muslim-web.com" ;
+my $base_directory = "/var/www/html/muslim-web/audio" ;
 #my $base_directory = "D:\\islamic\\audio.muslim-web.com\\hosaree" ;
 #my $base_directory = "D:\\islamic\\quran.islamway.com" ;
 

@@ -98,18 +98,18 @@ var RecitersInfo = {
         rw: 1,
       },
     },
-    url: "http://egylist.com/quran/ibr_kd/s%1%.rm",
+    url: "/audio/ibr_kd/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
 
   abuzaid: {
-    url: "http://egylist.com/quran/abuzaid/s%1%.rm",
+    url: "/audio/abuzaid/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
   ah_sha: {
-    url: "http://egylist.com/quran/ah_sha/s%1%.rm",
+    url: "/audio/ah_sha/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -119,7 +119,7 @@ var RecitersInfo = {
       rkey: "ahmed_ibn_3ali_al-3ajamy",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/agmy/%2%.rm",
+    //url:"/audio/agmy/%2%.rm",
     ayaAudio: {
       server: "everyayah",
       rkey: "Ahmed_ibn_Ali_al-Ajamy_128kbps_ketaballah.net",
@@ -129,7 +129,7 @@ var RecitersInfo = {
     //	rkey: "Ahmed_ibn_Ali_al-Ajamy_64kbps_QuranExplorer.Com"
     //},
 
-    url: "http://egylist.com/quran/agmy/%2%.rm",
+    url: "/audio/agmy/%2%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -144,7 +144,7 @@ var RecitersInfo = {
       rkey: "ahmad_nauina",
       actv: "(1114)",
     },
-    url: "http://egylist.com/quran/noaenee/s%1%.rm",
+    url: "/audio/noaenee/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -154,7 +154,7 @@ var RecitersInfo = {
       rkey: "adel_kalbani",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/aalkalbani/s%1%.rm",
+    //url:"/audio/aalkalbani/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -164,12 +164,12 @@ var RecitersInfo = {
       rkey: "thubaity",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/Althobeaty/s%1%.rm",
+    //url:"/audio/Althobeaty/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
   // abdulbarymoh:{
-  // 	url:"http://egylist.com/quran/abdulbarymoh/%2%.rm",
+  // 	url:"/audio/abdulbarymoh/%2%.rm",
   // 	actv:"(1114)",
   // 	rw:1
   // },
@@ -184,7 +184,7 @@ var RecitersInfo = {
       rkey: "khayat",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/Alkhayyat/s%1%.rm",
+    //url:"/audio/Alkhayyat/s%1%.rm",
     actv: "(134)000(177)",
     rw: 1,
   },
@@ -208,7 +208,7 @@ var RecitersInfo = {
       server: "everyayah",
       rkey: "Abdullah_Basfar_32kbps",
     },
-    url: "http://egylist.com/quran/abasfar/s%1%.rm",
+    url: "/audio/abasfar/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -223,7 +223,7 @@ var RecitersInfo = {
       rkey: "abdul_muhsin_alqasim",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/alqasem/s%1%.rm",
+    //url:"/audio/alqasem/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -233,7 +233,7 @@ var RecitersInfo = {
   // 	rw:1
   // },
   // kanakree:{
-  // 	url:"http://egylist.com/quran/kanakree/s%1%.rm",
+  // 	url:"/audio/kanakree/s%1%.rm",
   // 	actv:"(1114)",
   // 	rw:1
   // },
@@ -243,7 +243,7 @@ var RecitersInfo = {
       rkey: "abdulwadood_haneef",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/abd_wad/s%1%.rm",
+    //url:"/audio/abd_wad/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -259,7 +259,7 @@ var RecitersInfo = {
       rkey: "Hudhaify_32kbps",
     },
     //url:"http://quran.islamway.com/quran3/99/%2%.rm",
-    //url:"http://egylist.com/quran/hozefee/s%1%.ram",
+    //url:"/audio/hozefee/s%1%.ram",
     actv: "(1114)",
     rw: 1,
   },
@@ -269,7 +269,7 @@ var RecitersInfo = {
       rkey: "ali_hajjaj_alsouasi",
       actv: "(1114)",
     },
-    url: "http://egylist.com/quran/Alsoweasy/s%1%.rm",
+    url: "/audio/Alsoweasy/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -279,12 +279,12 @@ var RecitersInfo = {
       rkey: "abdullaah_alee_jaabir",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/alijaber/s%1%.rm",
+    //url:"/audio/alijaber/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
   // Zak_Dag:{
-  // 	url:"http://egylist.com/quran/Zak_Dag/s%1%.rm",
+  // 	url:"/audio/Zak_Dag/s%1%.rm",
   // 	actv:"(1114)",
   // 	rw:1
   // },
@@ -318,7 +318,7 @@ var RecitersInfo = {
       server: "everyayah",
       rkey: "Muhammad_Jibreel_128kbps",
     },
-    //url:"http://egylist.com/quran/mjebreel/s%1%.rm",
+    //url:"/audio/mjebreel/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -333,12 +333,12 @@ var RecitersInfo = {
       rkey: "muhammad_abdulkareem",
       actv: "(1114)",
     },
-    //url:"http://egylist.com/quran/ma_kar/s%1%.rm",
+    //url:"/audio/ma_kar/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
   // mbuzeed:{
-  // 	url:"http://egylist.com/quran/mbuzeed/s%1%.rm",
+  // 	url:"/audio/mbuzeed/s%1%.rm",
   // 	actv:"(1114)",
   // 	rw:1
   // },
@@ -353,7 +353,7 @@ var RecitersInfo = {
       server: "everyayah",
       rkey: "Menshawi_16kbps",
     },
-    //url:"http://egylist.com/quran/menshawee/s%1%.rm",
+    //url:"/audio/menshawee/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -368,7 +368,7 @@ var RecitersInfo = {
       server: "everyayah",
       rkey: "Mohammad_al_Tablaway_128kbps",
     },
-    url: "http://egylist.com/quran/tablawee/s%1%.rm",
+    url: "/audio/tablawee/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -379,7 +379,7 @@ var RecitersInfo = {
       rkey: "mahmood_ali_albana",
       actv: "(1114)",
     },
-    url: "http://egylist.com/quran/mah_ban/s%1%.rm",
+    url: "/audio/mah_ban/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -394,7 +394,7 @@ var RecitersInfo = {
       server: "everyayah",
       rkey: "Husary_128kbps",
     },
-    url: "http://egylist.com/quran/hosaree/rm/s%1%.rm",
+    url: "/audio/hosaree/rm/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -431,7 +431,7 @@ var RecitersInfo = {
     //	server: "everyayah",
     //	rkey: "Mustafa_Ismail_48kbps"
     //},
-    url: "http://egylist.com/quran/Mu_sma/s%1%.rm",
+    url: "/audio/Mu_sma/s%1%.rm",
     actv: "(1114)",
     rw: 1,
   },
@@ -464,7 +464,7 @@ var RecitersInfo = {
     rw: 1,
   },
   // koshee:{
-  // 	url:"http://egylist.com/quran/koshee/s%1%.rm",
+  // 	url:"/audio/koshee/s%1%.rm",
   // 	actv:"(1114)",
   // 	rw:2
   // },
@@ -479,27 +479,27 @@ var RecitersInfo = {
     rw: 2,
   },
   // hosaree_wa:{
-  // 	url:"http://egylist.com/quran/hosaree/w/s%1%.rm",
+  // 	url:"/audio/hosaree/w/s%1%.rm",
   // 	actv:"(1114)",
   // 	rw:2
   // },
   // Gharbi:{
-  // 	url:"http://egylist.com/quran/Gharbi/s%1%.rm",
+  // 	url:"/audio/Gharbi/s%1%.rm",
   // 	actv:"(1114)",
   // 	rw:2
   // },
   // dukalli:{
-  // 	url:"http://egylist.com/quran/dukalli/s%1%.rm",
+  // 	url:"/audio/dukalli/s%1%.rm",
   // 	actv:"(1114)",
   // 	rw:3
   // },
   // sunaynaqal:{
-  // 	url:"http://egylist.com/quran/sunaynaqal/%2%.rm",
+  // 	url:"/audio/sunaynaqal/%2%.rm",
   // 	actv:"(055)(159)",
   // 	rw:3
   // },
   // Abdulrashid:{
-  // 	url:"http://egylist.com/quran/Abdulrashid/s%1%.rm",
+  // 	url:"/audio/Abdulrashid/s%1%.rm",
   // 	actv:"(17)(0107)",
   // 	rw:4
   // },
@@ -534,9 +534,12 @@ var AudioServers = {
     cross_domains: true,
     mtype: 1, //1: mp3, 2:real
     provider: "quranicaudio.com",
-    link: "http://www.egylist.com/quran/mp3/{rkey}/{sura3}.mp3",
-    website: "http://quran.muslim-web.com",
-    download: "http://www.egylist.com/quran/mp3/{rkey}/{sura3}.mp3",
+    // link: "/audio/mp3/{rkey}/{sura3}.mp3",
+    link: "https://download.quranicaudio.com/quran/{rkey}/{sura3}.mp3",
+    website: "https://quranicaudio.com",
+    // website: "http://quran.muslim-web.com",
+    // download: "/audio/mp3/{rkey}/{sura3}.mp3",
+    download: "http://www.everyayah.com/data/{rkey}/",
   },
 
   quranicaudio: {
@@ -583,6 +586,6 @@ var AudioServers = {
     mtype: 2,
     provider: "islamway",
     website: "http://www.islamway.com",
-    link: "http://egylist.com/quran/{rkey}/s{sura1}.rm",
+    link: "/audio/{rkey}/s{sura1}.rm",
   },
 };

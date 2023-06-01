@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
-use lib "/websites/quran.muslim-web.com/cgi-bin/";
+use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
+
 use qutils;
 
 my @reciters = ("hosary.txt", "hozaify.txt");
