@@ -27,10 +27,10 @@ if( $ENV{DOCUMENT_ROOT} ) {
 
 if($reciter eq "0") {
 	open FHANDLE, $doc_root . "/hosary.txt";
-	$url = "http://www.egylist.com/quran/RealHosary/";
+	$url = "/RealHosary/";
 }else{
 	open FHANDLE, $doc_root . "/hozaify.txt";
-	$url = "http://www.egylist.com/quran/RealHozaify/";
+	$url = "/RealHozaify/";
 }
 
 if(!$no_basm && $to_aya > $from_aya ) {

@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
 
 use qutils;
 
@@ -12,7 +13,7 @@ my $page = int( qutils::GetParam( "p", 0 ) );
 my $page_size = int( qutils::GetParam( "ps", 10 ) );
 my $start =  $page * $page_size ;
 
-my $search_text = qutils::GetParam( "s", "ÑÓæá Çááå" );
+my $search_text = qutils::GetParam( "s", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" );
 my $search_for  = ReplaceAmbChars($search_text);
 
 my $ret_info = { success=>0, total=>0, search_for=>$search_for, search_text=>$search_text, start=>$start, page_size=>$page_size, page=>$page };
@@ -75,12 +76,12 @@ sub ReplaceAmbChars
 
 	$sText =~ s/[\xF0-\xFF]//g; # remove TASHKEEL
 	$sText =~ s/\s+/ /g; # remove extra spaces
-#	$sText =~ s/æÇ /æ /g; # replace WAW GAMAA
+#	$sText =~ s/ï¿½ï¿½ /ï¿½ /g; # replace WAW GAMAA
 	$sText =~ s/[\x21-\x7F]//g; # remove symbols and latin
 	$sText =~ s/\xC2|\xC3|\xC5/\xC7/g; # replace ALEF
 	$sText =~ s/\xC9/\xE5/g; # replace HAA
 	$sText =~ s/\xC4|\xC6/\xC1/g; # replace HAMTHA
-	$sText =~ s/í/ì/g; # replace YAA
+	$sText =~ s/ï¿½/ï¿½/g; # replace YAA
 
 	return $sText;
 }

@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
 
 use CGI qw( :standard );
 require LWP::UserAgent;
@@ -8,7 +9,7 @@ use qutils;
 qutils::InitCGI();
 use Encode;
 
-my $url		 = qutils::GetParam( "url", "http://cgi.muslim-web.com/cgi-bin/search.pl" );
+my $url		 = qutils::GetParam( "url", "http://quran.muslim-web.com/cgi-bin/search.pl" );
 my $callback = qutils::GetParam( "callback", "" );
 
 my $expiry = time2str(time+60*60*24*30*12);

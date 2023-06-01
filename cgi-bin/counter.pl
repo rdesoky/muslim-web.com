@@ -2,6 +2,8 @@
 
 #use CGI qw( :standard );
 
+use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
+
 my $print_count;
 my $count_date;
 my $count = 0;

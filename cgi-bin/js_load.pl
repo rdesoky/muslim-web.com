@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
+# use lib dirname(__FILE__);
 
 use CGI qw( :standard );
 require LWP::UserAgent;
@@ -10,7 +12,7 @@ qutils::InitCGI();
 my $url		 = qutils::GetParam( "url", "" );
 
 if( not $url=~ m/^http\:/ ){
-	$url = "http://localhost/$url";
+	$url = "http://quran.muslim-web.com/$url";
 }
 my $callback = qutils::GetParam( "callback", "" );
 

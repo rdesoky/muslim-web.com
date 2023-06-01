@@ -1,0 +1,95 @@
+.actionBtn{
+	height:30px;
+	width:90px;
+}
+
+.gradientV {
+/* thanks to http://blog.fakedarren.com/2010/01/cross-browser-css-gradients/ */
+/* fallback (Opera) */
+	background: #EEEEEE;
+/* Chrome, Safari:*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#DDDDDD));
+/* Mozilla: */
+	background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+/* MSIE */
+	filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#FFFFFF', EndColorStr='#DDDDDD', GradientType=0);
+}
+
+#idAnswer{
+	padding:2px;
+	/*overflow:visible;*/
+	width:99%;
+	color:blue;
+}
+
+#FooterFrame{
+	border:solid 1px #DDDDDD;
+	border-radius: 6px;
+}
+
+#ActionTitle{
+	height:34px;
+}
+#QPlayer{
+/*	top: -30px;
+	position:absolute;*/
+}
+
+#QPlayer.visible{
+	position:static;
+}
+
+#Options span{
+	display:inline-block;
+	vertical-align:middle;
+}
+*{
+	font-family:tahoma;
+	font-size:12px;
+}
+
+#AyaNumberOption *{
+	vertical-align:middle;
+}
+
+a,a:link,a:visited{
+	text-decoration:none;
+	color:navy;
+	color:#3B5998;
+}
+
+a:hover{
+	text-decoration:underline;
+	color:#3B5998;
+}
+
+.small_title{
+	font-weight:bold;
+	font-size:12px;
+	color:black;
+}
+.aya_title, .aya_title a, .aya_title span
+{
+	font-size:16px;
+	color:maroon;
+	padding:3px;
+	display:inline-block;
+}
+
+.sub_title, .sub_title span{
+	font-weight:bold;
+	font-size:16px;
+}
+
+.aya_view, .aya_view span, .aya_view a{
+	font-family:Traditional Arabic;
+	font-size:26px;
+	font-weight:bold;
+}
+
+.counter{
+	font-size:23px;
+	font-weight:bold;
+	color:red;
+	font-family:Tahoma;
+}

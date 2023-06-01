@@ -235,9 +235,9 @@ function StartExercise()
 	idAction.value = "جاري تحميل الآية ...";
 	var sURL;
 	if(idSelectSura.selectedIndex){
-		sURL = "http://cgi.muslim-web.com/cgi-bin/get_aya.pl?" + sRnd + "&s=" + (idSelectSura.selectedIndex - 1).toString();
+		sURL = "/cgi-bin/get_aya.pl?" + sRnd + "&s=" + (idSelectSura.selectedIndex - 1).toString();
 	}else{
-		sURL = "http://cgi.muslim-web.com/cgi-bin/get_aya.pl?" + sRnd + "&min=" + min.toString() + "&max=" + max.toString();
+		sURL = "/cgi-bin/get_aya.pl?" + sRnd + "&min=" + min.toString() + "&max=" + max.toString();
 	}
 	LoadData( sURL, "onDownLoadDone(gDataResponse)", true);
 }
@@ -304,7 +304,7 @@ var sPlayer =
 "	<PARAM NAME='autostart' VALUE='" + sAutoStart + "'>" +
 "	<PARAM NAME='SHUFFLE' VALUE='0'>" +
 "	<PARAM NAME='PREFETCH' VALUE='0'>" +
-"	<PARAM NAME='SRC' VALUE='http://cgi.muslim-web.com/cgi-bin/recite.pl?s=" + nSuraNo.toString(10) + "&f=" + nAyaNo.toString(10) + "&Reciter=0'>" +
+"	<PARAM NAME='SRC' VALUE='/cgi-bin/recite.pl?s=" + nSuraNo.toString(10) + "&f=" + nAyaNo.toString(10) + "&Reciter=0'>" +
 "	<PARAM NAME='CONTROLS' VALUE='ControlPanel,StatusBar'>"+
 "	<PARAM NAME='CONSOLE' VALUE='Clip1'>"+
 "	<PARAM NAME='LOOP' VALUE='0'>"+

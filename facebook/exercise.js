@@ -6,7 +6,7 @@ var gTrTotal=0, gScore=0;
 var gSura;
 var gUserInfo = {};
 var gXmlLoader, xmlQuranData;
-var gCgiLocation = "http://cgi.muslim-web.com/cgi-bin";
+var gCgiLocation = "/cgi-bin";
 
 var key_map={
 	39:1591,	// '
@@ -415,8 +415,8 @@ function onDownLoadDone(data)
 	if(! gInfo.success )
 	{
 		ShowElement("idAyaDisplay");
-		SetHTML("idAyaDisplay", "<font COLOR=RED>ÞÇÚÏÉ ÇáÈíÇäÇÊ  ÛíÑ  ãÊÇÍÉ ÍÇáíÇ</font>");
-		//idAction.value = "ÇÚÏ ÇáãÍÇæáÉ";
+		SetHTML("idAyaDisplay", "<font COLOR=RED>ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½</font>");
+		//idAction.value = "ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 		idAction.focus();
 		return;
 	}
@@ -496,34 +496,6 @@ function composePlayerObject(sAutoStart, sDisplay)
 {
 return "";
 
-var nSuraNo = parseInt(gInfo.sura) + 1;
-var nAyaNo  = parseInt(gInfo.aya) + 1;
-
-var sPlayer =
-"<OBJECT classid='clsid:CFCDAA03-8BE4-11CF-B84B-0020AFBBCCFA' height=60 xid=idRealPlayer " +
-"	style='display:" + sDisplay + "' width=240 VIEWASTEXT>" +
-"	<PARAM NAME='_ExtentX' VALUE='7276'>" +
-"	<PARAM NAME='_ExtentY' VALUE='1588'>" +
-"	<PARAM NAME='autostart' VALUE='" + sAutoStart + "'>" +
-//"	<PARAM NAME='SHUFFLE' VALUE='0'>" +
-//"	<PARAM NAME='PREFETCH' VALUE='0'>" +
-"	<PARAM NAME='SRC' VALUE='http://quran.al-islam.com/Recite/Recite_g2.asp?s=" + nSuraNo.toString(10) + "&f=" + nAyaNo.toString(10) + "&t=65&Reciter=0'>" +
-"	<PARAM NAME='CONTROLS' VALUE='ControlPanel,StatusBar'>"+
-"	<PARAM NAME='CONSOLE' VALUE='Clip1'>"+
-//"	<PARAM NAME='LOOP' VALUE='0'>"+
-//"	<PARAM NAME='NUMLOOP' VALUE='0'>"+
-//"	<PARAM NAME='CENTER' VALUE='0'>"+
-//"	<PARAM NAME='MAINTAINASPECT' VALUE='0'>"+
-//"	<PARAM NAME='BACKGROUNDCOLOR' VALUE='#000000'>"+
-"</OBJECT>";
-
-//alert (sPlayer);
-if (sDisplay != "none")
-{
-	sPlayer += "&nbsp;<font size=2>ÇáÚÑÖ ÇáÕæÊí ãÞÏã ãä ãæÞÚ <a href=http://www.al-islam.com/ target=_blank>al-islam.com</a></font>";
-}
-
-return sPlayer;
 }
 ////////////////////////////////////////////////////////////////////
 //
