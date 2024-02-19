@@ -142,12 +142,12 @@ include( "../filesver.php" );
 						<option value=GALALEEN><?=$Str["galaleen"]?></option>
 						<option value=TABARY><?=$Str["tabary"]?></option>
 						<option value=KORTOBY><?=$Str["kortoby"]?></option>
-						<option value='ENGLISH'>English</option> 
-						<option value='FRENSH'>Français</option> 
-						<option value='GERMAN'>Deutsch</option> 
-						<option value='TURKISH'>Turkish</option> 
-						<option value='INDONEISAN'>Indoneisan</option> 
-						<option value='MALAYU'>Malayu</option> 
+						<option value='en_yusufali'>English</option>
+						<option value='fr_hamidullah'>Français</option>
+						<option value='de_bubenheim'>Deutsch</option>
+						<option value='tr_ozturk'>Turkish</option>
+						<option value='id_muntakhab'>Indoneisan</option>
+						<option value='ms_basmeih'>Malayu</option>
 					</select>
 					<span class="arrowBtn right" onclick="Tafseer.prevAya()"></span>
 					<span class="href" onclick="Tafseer.gotoAya()"><?=GetStr("aya")?>: <span id="TafAya">1</span></span>
