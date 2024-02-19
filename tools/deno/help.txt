@@ -1,0 +1,5 @@
+# To run the deno tools, you need to have the Deno runtime installed. You can install it using the following command:
+winget install deno
+
+# To run a tool, you can use the following command:
+deno run --allow-run <tool>.ts
