@@ -9,3 +9,7 @@ qtext/*
 pg_map_old/*.json
 .idea
 .history
+cgi-bin/tafseer
+**/taf/*
+**/tafseer/*
+**/.vscode/*
