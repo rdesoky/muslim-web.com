@@ -118,15 +118,15 @@ $suraCellWidth = 140;
 
 <body lang="<?= $lang ?>" class="xhelp_on">
 	<div id="LangSwitcher" class="href" onclick="SwitchLang('<?= $lang ?>')"><?= ($lang == "ar") ? $Str['english'] : $Str['arabic'];
-	?></div>
+		?></div>
 
 	<div id="GooglePlayBadge">
 		<a href="https://play.google.com/store/apps/details?id=com.muslim_web.quran" target="_blank"><img id="GooglePlay"
 				src="images/google-play-badge.png" alt="get it on Google Play" /></a>
-		<!-- <a href="https://itunes.apple.com/us/app/quran-hafiz/id1384358953?ls=1&mt=8" target="_blank"
-										><img id="AppStore" src="images/<?= $lang == 'ar' ? 'Download_on_the_App_Store_Badge_AR_RGB_blk_102417.svg' : 'Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' ?>" 
-					alt="Download on the App Store"/>
-			</a> -->
+		<a href="https://itunes.apple.com/us/app/quran-hafiz/id1384358953?ls=1&mt=8" target="_blank"><img id="AppStore"
+				src="images/<?= $lang == 'ar' ? 'Download_on_the_App_Store_Badge_AR_RGB_blk_102417.svg' : 'Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' ?>"
+				alt="Download on the App Store" />
+		</a>
 	</div>
 
 	<table id="TopPanel" cellpadding="0" class="collapsed">
@@ -247,7 +247,8 @@ $suraCellWidth = 140;
 						<td id="idViewTabs" mClass="JCTabs" changeHandler="onChangeView" pid="MainIndex"><span tid="index"
 								pid="idQuranIndex">
 								<?= $Str['index'] ?>
-							</span><span tid="pages" pid="idPageViews" class="pages_tab"><?= $Str['pages'] ?>
+							</span><span tid="pages" pid="idPageViews" class="pages_tab">
+								<?= $Str['pages'] ?>
 							</span><span tid="mem" pid="MemReport" class="left_align">
 								<?= $Str['mem_percent'] ?>: <span id="idMemorized">0</span>%<br />
 								<!--<span class="help_anchor h_bottom">-->
