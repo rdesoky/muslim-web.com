@@ -26,13 +26,6 @@ $filename =~ s/\d+\.html/$sura\/$file/;
 my $html = "";
 my $title = "";
 
-# binmode STDOUT, ":utf8";
-
-print qq{Content-Type: text/html;  charset=utf-8;
-Expires: $expiry;
-
-};
-
 
 if( open FILE_HANDLE, "< " . $filename )
 {
@@ -57,28 +50,24 @@ if( open FILE_HANDLE, "< " . $filename )
   $html =~ s/<html.?>|<\/html>//gi; #remove html tags
   $html =~ s/<body.?>|<\/body>//gi; #remove body tags
   $html =~ s/color=#0000FF/color="#0000FF"/gi;#fix color attributes
+  $html =~ s/type=2>/type="2">/gi;#fix type attributes
+  $html =~ s/width=100%/style="width:100%"/gi;#fix color attributes
   $html =~ /<title>(.+)<\/title>/i;
   $title = "$1";
   $html =~ s/<head.*\/head>//gi; #remove head content
 }
 else{
-	$html = "Tafseer Not Found ($filename)";
+	$html = "التفسير غير متاح لهذه الآية";
 }
 
 
-print qq{
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width"/>
-        <style>
-            *{font-size:12pt; line-height:14.5pt;}
-            body{direction:rtl; margin:0px; background:#FFFFEE; max-width:400px;}
-        </style>
-        <title>${title}</title>
-    </head>
-    <body dir="rtl">
-    ${html}
-    </body>
-    </html>
+print qq{Content-Type: text/html;  charset=utf-8;
+Expires: $expiry;
+
+<!DOCTYPE html>
+<html>
+  <body dir="rtl">
+  ${html}
+</body>
+</html>
 };

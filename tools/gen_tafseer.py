@@ -11,18 +11,24 @@ suraAyaCount = [
   11, 8, 8, 19, 5, 8, 8, 11, 11, 8, 3, 9, 5, 4, 7, 3, 6, 3, 5, 4, 5, 6,
 ]
 
-sources = ["KATHEER", "KORTOBY", "GALALEEN", "TABARY"]
+sources = [
+  "KATHEER", "KORTOBY", "GALALEEN", "TABARY", 
+  "en_yusufali" , "tr_ozturk", "fr_hamidullah", "de_bubenheim", "id_muntakhab", "ms_basmeih"
+]
 
 def main():
   for t in sources:
     for s in range(1, len(suraAyaCount) + 1):
       for a in range(1, suraAyaCount[s-1] + 1):
-        url = f'http://dev.muslim-web.com/cgi-bin/gen_taf.pl?/tafseer/{t}/{s:03}{a:03}.html'
+        if(t.find("_") == -1):
+          url = f'http://dev.muslim-web.com/cgi-bin/gen_taf.pl?/tafseer/{t}/{s:03}{a:03}.html'
+        else:
+          url = f'http://dev.muslim-web.com/cgi-bin/get_db_taf.pl?src={t}&s={s}&a={a}'
         response = requests.get(url)
         text = response.text
         print( text )
-        pathlib.Path(f'../taf/{t}/{s:03}').mkdir(parents=True, exist_ok=True)
-        with codecs.open(f'../taf/{t}/{s:03}/{a:03}.html', 'w', "utf-8") as f:
+        pathlib.Path(f'../../tafseer/{t}/{s:03}').mkdir(parents=True, exist_ok=True)
+        with codecs.open(f'../../tafseer/{t}/{s:03}/{a:03}.html', 'w', "utf-8") as f:
           f.write(text)
 
 if __name__ == '__main__':
