@@ -533,26 +533,27 @@ var Tafseer = {
   },
 
   getPageURL: function (sura, aya) {
-    if (this.isTafseer()) {
-      return (
-        gTafBase +
-        _E("SelTaf").value +
-        "/" +
-        sura.toStringEx(3) +
-        aya.toStringEx(3) +
-        ".html"
-      );
-    } else {
-      //return( "http://www.reciter.org/" + _E("SelTaf").value + "/" + sura.toStringEx(3) + aya.toStringEx(3) + ".html" );
-      return (
-        "/cgi-bin/get_db_taf.pl?src=" +
-        _E("SelTaf").value +
-        "&s=" +
-        sura +
-        "&a=" +
-        aya
-      );
-    }
+    // if (this.isTafseer()) {
+    return (
+      gTafBase +
+      _E("SelTaf").value +
+      "/" +
+      sura.toStringEx(3) +
+      "/" +
+      aya.toStringEx(3) +
+      ".html"
+    );
+    // } else {
+    //   //return( "http://www.reciter.org/" + _E("SelTaf").value + "/" + sura.toStringEx(3) + aya.toStringEx(3) + ".html" );
+    //   return (
+    //     "/cgi-bin/get_db_taf.pl?src=" +
+    //     _E("SelTaf").value +
+    //     "&s=" +
+    //     sura +
+    //     "&a=" +
+    //     aya
+    //   );
+    // }
   },
 
   loadAya: function (aya, source) {
