@@ -9,11 +9,12 @@ $PageMapVersion = "1";
 $img_host = isset($img_host) ? $img_host : "";
 $app_root = isset($app_root) ? $app_root : dirname($_SERVER["SCRIPT_NAME"] . "x");
 
-$tafseer_base = "cgi-bin/get_taf2.pl?/tafseer/";
+// $tafseer_base = "cgi-bin/get_taf2.pl?/tafseer/";
 $stext_host = "cgi-bin/js_get_html.pl?";
 
 $qpages_host = "/cgi-bin/getimg.pl?";
-$tafseer_base = "/cgi-bin/get_taf2.pl?/tafseer/";
+// $tafseer_base = "/cgi-bin/get_taf2.pl?/tafseer/";
+$tafseer_base = "https://tafseer.muslim-web.com/";
 $stext_host = "/cgi-bin/js_get_html.pl?";
 
 

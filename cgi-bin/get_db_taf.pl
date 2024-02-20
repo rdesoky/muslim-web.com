@@ -35,7 +35,7 @@ if($dbh){
 	if( int( $sth->execute($sura, $aya) ) ) 
 	{
 		if( $rec_info = $sth->fetchrow_hashref() ){
-			$taf = "<div class='aya_text'>" . $rec_info->{text} . "</div>";
+			$taf = qq{<div style="direction:rtl;font-weight:bold">$rec_info->{text}</div>};
 		}
 	}else{
 		$taf .= "quran_text (sura=$sura, aya=$aya) text not found<br/>";
@@ -49,7 +49,7 @@ if($dbh){
 	{
 		if( $rec_info = $sth->fetchrow_hashref() )
 		{
-			$taf .= "<div class='translation $table'>" . $rec_info->{text} . "</div>";
+			$taf .= "<div>" . $rec_info->{text} . "</div>";
 		}
 	}else{
 		$taf .= "$table (sura=$sura, aya=$aya) text not found<br/>";
@@ -65,16 +65,9 @@ if($dbh){
 #binmode STDOUT, ":utf8";
 
 print qq{Content-Type: text/html; charset=utf-8;
-Cache-Control: max-age=300
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-		<link rel="StyleSheet" href="/tafseer.css.php"/>
-	</head>
 	<body>
 	$taf
 	</body>
