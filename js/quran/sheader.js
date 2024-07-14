@@ -356,13 +356,13 @@ function changeSort() {
   SideIndex.sort = !SideIndex.sort;
 
   _E("CheckSort").checked = SideIndex.sort;
-  _E("idIndex").innerHTML = SideIndex.getHTML();
+  _E("idIndex").innerHTML = SideIndex.mGetHTML();
 }
 
 var SideIndex = {
   sort: false,
 
-  getHTML: function () {
+  mGetHTML: function () {
     var sHTML = "";
     var n, i;
 
@@ -407,7 +407,7 @@ var SideIndex = {
   },
 
   updateUI: function () {
-    _E("idIndex").innerHTML = this.getHTML();
+    _E("idIndex").innerHTML = this.mGetHTML();
   },
 };
 

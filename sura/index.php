@@ -55,7 +55,7 @@ include( "../filesver.php" );
 					},function(){
 						initHeader();
 						initPage();
-						_E("idIndex").innerHTML=SideIndex.getHTML();
+						_E("idIndex").innerHTML=SideIndex.mGetHTML();
 					}
 				);
 			}
