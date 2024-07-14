@@ -1208,7 +1208,7 @@ var VerticalIndex = {
         break;
       case "edit":
         Hover.hide();
-        _E("Editor").innerHTML = MapEditor.getHTML();
+        _E("Editor").innerHTML = MapEditor.mGetHTML();
         MapEditor.syncPage(QViewer.currPageNum);
     }
     return tid;
