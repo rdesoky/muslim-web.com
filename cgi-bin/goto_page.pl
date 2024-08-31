@@ -2,6 +2,9 @@
 
 use CGI qw( :standard );
 
+use File::Basename;
+use lib dirname(__FILE__);
+
 use qutils;
 
 my $page_number = qutils::GetParam("p", 1);

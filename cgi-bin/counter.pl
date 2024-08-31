@@ -2,7 +2,9 @@
 
 #use CGI qw( :standard );
 
-use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
+# use lib "/var/www/html/muslim-web/cgi-bin";#absolute path is required due to mod-perl environment
+use File::Basename;
+use lib dirname(__FILE__);
 
 my $print_count;
 my $count_date;

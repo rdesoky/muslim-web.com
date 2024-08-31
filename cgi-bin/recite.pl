@@ -1,6 +1,9 @@
 #!/usr/bin/perl
 
-use lib "/websites/quran.muslim-web.com/cgi-bin/";
+# use lib "/websites/quran.muslim-web.com/cgi-bin/";
+use File::Basename;
+use lib dirname(__FILE__);
+
 use qutils;
 use HTTP::Date;
 
