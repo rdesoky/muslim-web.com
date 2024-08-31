@@ -1,6 +1,9 @@
 #!/usr/bin/perl
 
-use lib "/usr/bin/perl/lib";
+# use lib "/usr/bin/perl/lib";
+use File::Basename;
+use lib dirname(__FILE__);
+
 use CGI qw/:standard/;
 
 my $print_count;

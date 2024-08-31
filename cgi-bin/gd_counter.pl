@@ -1,5 +1,8 @@
 #!/usr/bin/perl
 
+use File::Basename;
+use lib dirname(__FILE__);
+
 #use CGI qw( :standard );
 
 my $print_count;
