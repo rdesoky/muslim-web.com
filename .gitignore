@@ -5,6 +5,8 @@ hpages/Thumbs.db
 pages/Thumbs.db
 hpages/Picasa.ini
 qtext/*
+!qtext/sura_*.html
+.kilo
 .vstags
 pg_map_old/*.json
 .idea

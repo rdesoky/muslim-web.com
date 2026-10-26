@@ -693,5 +693,8 @@ function IsChildOf( oChild, oParent )
 }
 
 function SwitchLang( sCurrLang ){
-	window.location.replace( "?lang=" + ( ( sCurrLang == "ar" ) ? "en" : "ar" ) );
+	var nextLang = ( sCurrLang == "ar" ) ? "en" : "ar";
+	var exp = new Date( (new Date()).getTime() + 1000 * 60 * 60 * 24 * 365 * 5 );
+	document.cookie = "lang=" + nextLang + "; path=/; expires=" + exp.toGMTString() + ";";
+	window.location.reload();
 }

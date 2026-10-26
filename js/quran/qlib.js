@@ -96,12 +96,6 @@ function openReciter( url, suraNum, reciter_id, pageNum )
 	var newWindow = window.open (url, "telawa", "width=320,height=80");
 	newWindow.focus();
 
-	// openReciter.wnd = window.open(
-	// 	appRoot() + "reciter.php?auto=0&url=" + escape(url) + "&sura=" + suraNum + "&reciter=" + reciter_id + (pageNum? "&pg=" + pageNum : "" ), 
-	// 	"telawa", 
-	// 	"width=340,height=200,centerscreen=yes,menubar=no,toolbar=no,location=no,re,resizable=yes"
-	// );
-
 	// if(openReciter.wnd){
 	// 	openReciter.wnd.focus();
 	// }

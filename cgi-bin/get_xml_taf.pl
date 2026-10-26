@@ -32,7 +32,7 @@ Expires: $expiry;
 <html>
 	<head>
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-		<link rel="StyleSheet" href="/tafseer.css.php"/>
+		<link rel="StyleSheet" href="/tafseer.css"/>
 	</head>
 	<body>
 	$xml->{sura}->{$sura}->{aya}->{$aya}->{text};

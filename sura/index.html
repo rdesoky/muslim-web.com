@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+
+<html>
+	<head>
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=8" />
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title data-str="holy_quran">Quran</title>
+		<link type="text/css" rel="stylesheet" href="../css/quran/sheader.css?v=20261025.111701"/>
+		<link type="text/css" rel="stylesheet" href="../css/quran/base.css?v=20261025.111701"/>
+		<link type="text/css" rel="stylesheet" href="../css/quran/sura.css?v=20261025.111701"/>
+		<link type="text/css" rel="stylesheet" href="../css/menu.css?v=20261025.111701"/>
+		<script type="text/javascript" src="../js/common/ScriptLoader.js?v=20261025.111703"></script>
+
+		<script type="text/javascript">
+			// bootstrap: resolve language before any other script runs
+			window.gBuildVer = "20261026.102428";
+			(function () {
+				var lang = "";
+				var qm = window.location.search.match(/[?&]lang=(ar|en)/i);
+				if (qm) {
+					lang = qm[1].toLowerCase();
+					var exp = new Date(Date.now() + 3600 * 24 * 365 * 5 * 1000);
+					document.cookie = "lang=" + lang + "; path=/; expires=" + exp.toGMTString();
+				} else {
+					var cookie = document.cookie.split(";");
+					for (var i = 0; i < cookie.length; i++) {
+						var pair = cookie[i].split("=");
+						if (pair[0].trim() == "lang") {
+							var v = decodeURIComponent(pair[1]).trim();
+							if (v == "ar" || v == "en") lang = v;
+							break;
+						}
+					}
+				}
+				if (lang != "ar" && lang != "en") lang = "ar";
+				window.gLang = lang;
+				document.documentElement.lang = lang;
+				document.documentElement.dir = lang == "ar" ? "rtl" : "ltr";
+				document.write(
+					'<scr' + 'ipt type="text/javascript" src="../js_strings_' + lang +
+					'.js?v=' + window.gBuildVer + '"></scr' + 'ipt>'
+				);
+			})();
+		</script>
+
+		<script type="text/javascript">
+
+			var JSLoaderBase = "/cgi-bin/",
+			CGIBase = "/cgi-bin/";
+
+			window.onload=function()
+			{
+ScriptLoader.loadScripts ( {
+						QuranTextData:			"../js/quran/qtext_data.js?v=20261026.110210",
+						DefineJClass:			"../js/common/jclass.js?v=20261025.111703",
+						Utils:					"../js/common/utils.js?v=20261025.111703",
+						addAya:					"../js/quran/tlib.js?v=20261025.111703",
+						uncompressMem:			"../js/quran/lib.js?v=20261026.102457",
+						GetSaveURL:				"../js/quran/qlib.js?v=20261026.102823",
+						QData:					"../js/quran/qdata.js?v=20261025.111703",
+						RecitersInfo:			"../js/quran/audio_data.js?v=20261025.111703",
+						JCQuranViewer:			"../js/quran/JCQuranViewer.js?v=20261025.111703",
+						DisplaySuraHeaderInfo:	"../js/quran/sheader.js?v=20261026.102523",
+						initSura:				"../js/quran/sura.js?v=20261025.111703",
+						createMenu:				"../js/quran/menu.js?v=20261025.111703",
+						JCSettings:				"../js/common/JCSettings.js?v=20261025.111703",
+						LocalCGI:				"../js/quran/local_cgi.js?v=20261026.111937"
+					},function(){
+						populateStrings();
+						initHeader();
+						initPage();
+						_E("idIndex").innerHTML=SideIndex.mGetHTML();
+					}
+				);
+			}
+
+			var gPagesServer= ""; 
+			var gTafBase = "https://tafseer.muslim-web.com/";
+			var gSuraTextHost = "";
+			var gImgHost = "../";
+			var gAppRoot = "../";
+
+		</script>
+
+		<script type="text/javascript">
+			function populateStrings() {
+				var S = window.gStrings;
+				if (typeof S == "undefined") return;
+				var els = document.querySelectorAll("[data-str]");
+				for (var i = 0; i < els.length; i++) {
+					var el = els[i];
+					var key = el.getAttribute("data-str");
+					if (typeof S[key] == "undefined") continue;
+					if (el.tagName == "INPUT" || el.tagName == "TEXTAREA") {
+						el.value = S[key];
+					} else {
+						el.textContent = S[key];
+					}
+				}
+				var titles = document.querySelectorAll("[data-str-title]");
+				for (i = 0; i < titles.length; i++) {
+					el = titles[i];
+					key = el.getAttribute("data-str-title");
+					if (typeof S[key] == "undefined") continue;
+					el.title = S[key];
+				}
+				if (typeof S.page_title == "string") document.title = S.page_title;
+				document.body.lang = window.gLang;
+			}
+		</script>
+	</head>
+	<body lang="ar">
+		<div id="HeaderFrame">
+
+			<table cellspacing="1" id="SuraTopMenuTable">
+			<tr>
+				<td class="imposed">
+					<span class="home_link" onclick="window.location.href='../'" data-str="home"></span>
+				</td>
+
+				<td class="imposed">
+					<table cellspacing="0">
+					<tr>
+						<td id="idRecite">
+							<span class="btn playBtn" onclick="reciteSura()">&nbsp;</span>&nbsp;
+							<!-- <a class="saveBtn" id="idSaveURL">&nbsp;</a> -->
+						</td>
+						<td><div id="RecitersList">&nbsp;</div></td>
+					</tr>
+					</table>
+				</td>
+
+				<td align="center" width="100%" id="idTitle">
+					<b><font face="Traditional Arabic" size="3"></font></b>
+				</td>
+				<td><input type="button" data-str="mem_review" id="BtnReview" onclick="ToggleReviewMode()"></td>
+				<td class="imposed">
+					<div class="mem_chart">
+						<div class='line_chart' id="idSMemChart">&nbsp;</div>
+					</div>
+				</td>
+				<td class="imposed">
+					<div class="mem_chart">
+						<div class='line_chart' id="idQMemChart">&nbsp;</div>
+					</div>
+				</td>
+			</tr>
+			</table>
+
+			<div class="suraChart"><span data-str="verses"></span> [<span id="idMemChart">...</span>]</div>
+			<div id="idPagesChart">&nbsp;</div>
+		
+		</div>
+
+		<div id="idAyaPreview" style="display:none"></div>
+
+		<table id=QuranViewer class="hidden">
+		<tr>
+			<td ><div class=pageHeader id=LeftPageHeader>&nbsp;</div></td>
+			<td ><div class=pageHeader id=RightPageHeader>&nbsp;</div></td>
+		</tr>
+		<tr>
+			<td class=leftSide id=LeftPage></td>
+			<td class=rightSide id=RightPage></td>
+		</tr>
+		</table>
+		
+		<table id="SuraLayout" cellspacing="0" cellpadding="0"><tr>
+			<td id="SideIndexContainer">
+				<div style="overflow-y:auto;height:600px;width:120px;overflow-x:hidden;" id="idSideIndex" >
+					<div id="SortPanel" class="listItem" onclick="changeSort()">
+						<input id="CheckSort" type="checkbox"/>&nbsp;<span id="SortTitle" data-str="sorted"></span>
+					</div>
+					<div id="idIndex" style="padding-top:5px">&nbsp;</div>
+				</div>
+			</td>
+			<td id="SuraFrameContainer">&nbsp;</td>
+			<td id="TafseerFrame" style="display:none">
+				<div id="TafHeader">
+					<select onchange="Tafseer.chgSource(_E('SelTaf').value)" id="SelTaf">
+						<option value=KATHEER data-str="katheer"></option>
+						<option value=GALALEEN data-str="galaleen"></option>
+						<option value=TABARY data-str="tabary"></option>
+						<option value=KORTOBY data-str="kortoby"></option>
+						<option value='en_yusufali'>English</option>
+						<option value='fr_hamidullah'>FranÃ§ais</option>
+						<option value='de_bubenheim'>Deutsch</option>
+						<option value='tr_ozturk'>Turkish</option>
+						<option value='id_muntakhab'>Indoneisan</option>
+						<option value='ms_basmeih'>Malayu</option>
+					</select>
+					<span class="arrowBtn right" onclick="Tafseer.prevAya()"></span>
+					<span class="href" onclick="Tafseer.gotoAya()"><span data-str="aya"></span>: <span id="TafAya">1</span></span>
+					<span class="arrowBtn left" onclick="Tafseer.nextAya()"></span>
+					<span class="button" onclick="Tafseer.close()" data-str="close"></span>
+				</div>
+
+				<div id="TafseerData"><span data-str="loading"></span>...</div>
+			</td>
+		</tr></table>
+		<div id="HiddenUI" style="display:none">
+			<div id="CopyText">
+				<div><textarea id="CopyTextArea" style="width:100%;box-sizing:border-box;height:150px"></textarea></div>
+				<div class="buttonsBar">
+					<input type="button" data-str="copy_selected" onclick="doCopyText();"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
