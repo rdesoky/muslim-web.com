@@ -16,13 +16,14 @@ server (nginx/Apache container) must do.
 - qtext sura pages are static: `qtext/sura_001.html` … `qtext/sura_114.html`.
 - Cache-busting `?v=` on css/js URLs and the `gBuildVer` tag are produced at build time
   by `tools/deno/build_static.ts`.
-- **The Perl/CGI backend is no longer needed.** The former CGI endpoints
-  (`search.pl`, `get_aya_utf8.js.pl`, `get_aya_list_utf8.js.pl`, `get_sura_text.pl`,
-  `js_get_html.pl`, `getimg.pl`, `js_load.pl`, `js_load_utf8.pl`, `login.pl`,
-  `newuser.pl`, `loadmem.pl`, `savemem.pl`, `recite.pl`, `counter.js.pl`) are replaced
-  by client-side code in `js/quran/local_cgi.js`, which serves the same payloads from
-  `js/quran/qtext_data.js` (bundled Quran text + search) and local state.
-- `cgi-bin/` is left in the repo for reference but is **not required** at runtime.
+- **The Perl/CGI backend has been removed.** The former CGI endpoints
+(`search.pl`, `get_aya_utf8.js.pl`, `get_aya_list_utf8.js.pl`, `get_sura_text.pl`,
+`js_get_html.pl`, `getimg.pl`, `js_load.pl`, `js_load_utf8.pl`, `login.pl`,
+`newuser.pl`, `loadmem.pl`, `savemem.pl`, `recite.pl`, `counter.js.pl`) are replaced
+by client-side code in `js/quran/local_cgi.js`, which serves the same payloads from
+`js/quran/qtext_data.js` (bundled Quran text + search) and local state.
+- `cgi-bin/` and all other `.pl`/`.php` files have been deleted from the repo —
+no server-side scripting remains.
 
 ## Steps
 
@@ -30,7 +31,7 @@ server (nginx/Apache container) must do.
    The site has no PHP files left, so nothing should be routed through PHP.
 
 2. **Deploy the static tree.** Copy the repo contents to the document root as before.
-   The Perl CGI directory is optional; if it is included it will simply be unused.
+   There is no server-side scripting — every request is served as a static file.
 
 3. **Run the build after each deploy** so cache-busting versions reflect the new files:
 
