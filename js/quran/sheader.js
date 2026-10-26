@@ -453,7 +453,7 @@ function initPage() {
 
   document.title = mytitle;
 
-  sura_page = "/qtext/sura_" + sura.toStringEx(3) + ".php";
+  sura_page = "/qtext/sura_" + sura.toStringEx(3) + ".html";
 
   var urlInfo = window.location.href.split("?");
 

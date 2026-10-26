@@ -62,7 +62,7 @@ print qq{
     <!DOCTYPE html>
     <html>
     <head>
-        <link rel="StyleSheet" href="tafseer.css.php"/>
+        <link rel="StyleSheet" href="tafseer.css"/>
         <meta name="viewport" content="width=device-width"/>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1256"/>
         <title>${title}</title>

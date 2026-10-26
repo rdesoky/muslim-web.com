@@ -58,39 +58,14 @@ var MemApp = {
 
     //_E("idAction").focus();
 
-    this.loadSettings();
   },
 
   loadSettings: function () {
-    LoadJSON(
-      "/memorizer/get_user_info.php?" + MemApp.pageParams,
-      function (jsr) {
-        if (Defined(jsr) && jsr.success) {
-          DU.show("idScoreBoard");
-          MemApp.userID = jsr.user_id;
-          _E("idSelectLevel").value = Defined(jsr.info.lvl)
-            ? jsr.info.lvl
-            : "0";
-          MemApp.score = Defined(jsr.info.score) ? jsr.info.score : "0";
-          MemApp.totalChars = Defined(jsr.info.total) ? jsr.info.total : "0";
-          ScoreUI.show();
-        }
-      },
-      "jsr"
-    );
+    // settings are kept in cookies; the PHP-backed scoreboard was removed
   },
 
   saveSettings: function (params) {
-    if (MemApp.userID) {
-      LoadJSON(
-        "save_user_info.php?user_id=" +
-          MemApp.userID +
-          "&" +
-          params +
-          "&" +
-          MemApp.pageParams
-      );
-    }
+    // settings are kept in cookies; the PHP-backed scoreboard was removed
   },
 
   loadQuranXML: function () {
@@ -654,6 +629,7 @@ var MemAppUI = {
     var sURL =
       sURL +
       (int(MemApp.ayaInfo.sura) + 1).toStringEx(3) +
+      "/" +
       (int(MemApp.ayaInfo.aya) + 1).toStringEx(3) +
       ".html";
     DU.show("InfoFrame");
@@ -667,11 +643,25 @@ var MemAppUI = {
   },
 
   explainAya: function () {
-    this.showAyaInfo("/cgi-bin/get_taf2.pl?/tafseer/KATHEER/");
+    this.showAyaInfo(gTafBase + "KATHEER/");
   },
 
   translateAya: function () {
-    this.showAyaInfo("http://www.reciter.org/ENGLISH/");
+    var sURL =
+      gTafBase +
+      "en_yusufali/" +
+      (int(MemApp.ayaInfo.sura) + 1).toStringEx(3) +
+      "/" +
+      (int(MemApp.ayaInfo.aya) + 1).toStringEx(3) +
+      ".html";
+    DU.show("InfoFrame");
+    SetHTML(
+      "InfoFrame",
+      "<iframe frameborder='0' width='100%' height=160 src='" +
+        sURL +
+        "'></iframe>"
+    );
+    MemExercise.cancel();
   },
 
   populateChapters: function () {
