@@ -23,7 +23,7 @@
 
 	<script type="text/javascript">
 		// bootstrap: resolve language before any other script runs
-		window.gBuildVer = "20261026.102428";
+		window.gBuildVer = "20261026.124812";
 		(function () {
 			var lang = "";
 			var qm = window.location.search.match(/[?&]lang=(ar|en)/i);
@@ -127,6 +127,13 @@
 				key = el.getAttribute("data-str-title");
 				if (typeof S[key] == "undefined") continue;
 				el.title = S[key];
+			}
+			var htmlEls = document.querySelectorAll("[data-str-html]");
+			for (i = 0; i < htmlEls.length; i++) {
+				el = htmlEls[i];
+				key = el.getAttribute("data-str-html");
+				if (typeof S[key] == "undefined") continue;
+				el.innerHTML = S[key];
 			}
 			if (typeof S.page_title == "string") document.title = S.page_title;
 			var ap = document.getElementById("AppStore");
@@ -527,7 +534,7 @@
 										</tr>
 									</table>
 									<div id='TafText'>
-										<div class="litePadding" data-str="taf_prompt"></div>
+										<div class="litePadding" data-str-html="taf_prompt"></div>
 									</div>
 								</div>
 							</div>
