@@ -268,7 +268,7 @@ _S = gStrings = {
 		"113":"الناس"
 	},
 	recite:"تلاوة",
-	tafseer:"تفسير &amp; Translations",
+	tafseer:"تفسير & Translations",
 	katheer:"ابن كثير",
 	galaleen:"الجلالين",
 	tabary:"الطبري",
