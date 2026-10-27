@@ -36,6 +36,7 @@ are required, only Node.js >= 18 (`node --version`):
 | `tools/build/build_qtext_data.mjs` | generates `js/quran/qtext_data.js` from `qtext/sura_*.html` |
 | `tools/build/dump_qtext.mjs` | re-fetches the 114 static qtext sura pages from production |
 | `tools/build/gen_tafseer.mjs` | downloads tafsir JSON into `tafseer/` |
+| `tools/build/mirror_tafseer.mjs` | mirrors the tafseer/translation HTML pages into `tafseer/` (resumable) |
 | `tools/build/test_local_cgi.mjs` | headless smoke test of `js/quran/local_cgi.js` (CI gate) |
 | `tools/gh-pages/build_site.mjs` | assembles the publishable `_site/` tree for GitHub Pages |
 
@@ -192,18 +193,49 @@ python -m http.server 8000 --directory /tmp/preview
 
 Project sites are served from `/<repo>/`, so a root-absolute URL such as `/hpages/001.jpg`
 resolves to `https://<user>.github.io/hpages/001.jpg` and 404s. Every asset path in the app is
-therefore built from a per-page relative-root global declared in the entry pages, and must
-**not** start with `/`:
+therefore built from `appBase()` — a helper in [`js/quran/lib.js`](js/quran/lib.js) that derives
+the relative prefix back to the app root at runtime:
 
-| Global | `index.html` | `sura/index.html` | Used for |
-| --- | --- | --- | --- |
-| `gImgHost` | `""` | `"../"` | all image assets: `images/*.gif`, `hpages/*.jpg`, `pages/p*.gif` |
-| `gSuraTextHost` | `""` | `"../"` | `qtext/sura_NNN.html` |
+```js
+// index.html   loads    "js/common/ScriptLoader.js"   -> appBase() === ""
+// sura/index.html loads "../js/common/ScriptLoader.js" -> appBase() === "../"
+var src = appBase() + "hpages/" + page + ".jpg";
+```
 
-`gImgHost` is the single site-root prefix for images — the viewer modules wrap it in `imgBase()`
-(`js/quran/JCQuranViewer.js`, `js/quran/JCSuraViewer.js`), so page images resolve as
-`imgBase() + "hpages/" + page + ".jpg"`. The former `gPagesServer` variable was removed; do not
-reintroduce a second prefix, and never hard-code `"/images/…"`.
+It scans the document `<script src>` attributes for the first one containing `js/` and keeps
+everything before it, so neither entry page has to declare a base URL. Because `lib.js` is loaded
+by both pages before any consumer, `appBase()` is always available.
+
+Rules for new code:
+
+- Build asset paths as `appBase() + "<path from app root>"`; never hard-code `"/images/…"` or
+  any other leading `/`.
+- Do **not** reintroduce per-page base-URL globals. `gTafBase`, `gImgHost`, `gSuraTextHost`,
+  `gAppRoot`, `gsAyatImageURL` and `gPagesServer` were all removed; each page used to declare
+  its own copy (differing only by `""` vs `"../"`), which is exactly the duplication `appBase()`
+  eliminates.
+- Tafseer (commentary) pages live in the repo under `tafseer/` and are referenced relatively
+  through `getTafseerPageURL(source, sura, aya)` in `js/quran/lib.js`. Do not point them at an
+  external host — the former `https://tafseer.muslim-web.com/` base is gone. Note the on-disk
+  layout is `tafseer/<SOURCE>/<SSS>/<SSSAAA>.html` (sura repeated in the filename), e.g.
+  `tafseer/KATHEER/002/002255.html`, which is why the URL is not built inline.
+- `tafseer/` holds **all ten** sources the `#SelTaf` dropdown offers: the four Arabic
+  commentaries (`KATHEER`, `TABARY`, `GALALEEN`, `KORTOBY`) and the six translations
+  (`en_yusufali`, `fr_hamidullah`, `de_bubenheim`, `tr_ozturk`, `id_muntakhab`, `ms_basmeih`).
+  The whole tree is committed, so the site has no runtime dependency on the old host.
+  Regenerate/extend it with [`tools/build/mirror_tafseer.mjs`](tools/build/mirror_tafseer.mjs):
+
+  ```sh
+  node tools/build/mirror_tafseer.mjs --dry-run      # report what is missing
+  node tools/build/mirror_tafseer.mjs                # fill the gaps (resumable)
+  node tools/build/mirror_tafseer.mjs --sources tr_ozturk --concurrency 4
+  ```
+
+  It only downloads files that do not exist yet, so it is safe to re-run. Remember that
+  `.gitignore` contains `**/tafseer/*`: new pages need `git add -f tafseer`.
+- The one intentional absolute base is the ayah preview image host
+  (`www.elazhar.com/quran/image/`) — a third party with no local mirror. It is produced by
+  `getAyaImageURL(nSura, nAya)` in `js/quran/qlib.js` rather than a global.
 
 CSS is the exception: `url()` in a stylesheet resolves against the stylesheet, so
 `css/quran/*.css` uses `url(../../images/…)`, which is depth-independent. Absolute `/cgi-bin/*`

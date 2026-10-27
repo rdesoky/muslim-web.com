@@ -1,5 +1,5 @@
 function imgBase() {
-  return gImgHost || "";
+  return appBase();
 }
 
 function JCSuraViewer() {

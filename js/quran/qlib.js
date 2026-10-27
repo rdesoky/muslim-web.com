@@ -1,5 +1,5 @@
 function appRoot(){
-	return gAppRoot || "";
+	return appBase();
 }
 
 function GetChapterProgress( nChapter, nPageNo )
@@ -18,7 +18,11 @@ function GetSuraProgress( nSura, nPageNo )
 	return ( ( nPageNo - startPage ) * 100 ) / ( endPage - startPage );
 }
 
-var gsAyatImageURL = "http://www.elazhar.com/quran/image/";
+// Ayah preview images are served by a third party; there is no local copy.
+function getAyaImageURL( nSura, nAya )
+{
+	return "http://www.elazhar.com/quran/image/" + nSura + "_" + toStringEx( nAya, 3 ) + ".gif";
+}
 
 
 function WindowReload( time )
