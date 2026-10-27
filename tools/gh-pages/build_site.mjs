@@ -54,7 +54,10 @@ const EXCLUDED_TOP_LEVEL = new Set([
 const EXCLUDED_FILE = /^(?:\.htaccess|x\.htaccess|\.DS_Store|Thumbs\.db|Picasa\.ini)$|\.(?:php|pl|sql)$/i;
 
 // Files the site cannot work without; failing loudly beats publishing a broken site.
+// CNAME pins the custom domain (quran.muslim-web.com) on every publish — without it
+// Pages falls back to https://rdesoky.github.io/muslim-web.com/.
 const REQUIRED = [
+	"CNAME",
 	"index.html",
 	"sura/index.html",
 	"js_strings_ar.js",
