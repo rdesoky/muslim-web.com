@@ -248,8 +248,10 @@ made. When adding an asset reference, run the local sub-path preview above befor
   small HTML redirect stubs if bookmarked `.php` links matter.
 - No custom cache headers; Pages sets `Cache-Control: max-age=600` for everything, and the
   committed `?v=` stamps do the cache-busting instead.
-- A custom domain (e.g. `quran.muslim-web.com`) requires a `CNAME` file in the published tree
-  plus DNS records — not configured here.
+- The custom domain `quran.muslim-web.com` is pinned by the committed [`CNAME`](CNAME) file at
+  the repository root. `build_site.mjs` copies it into `_site/` and fails the build if it is
+  missing, so every publish keeps the domain configured. DNS (`CNAME` record for `quran` →
+  `rdesoky.github.io`) and the Pages custom-domain setting are one-time repository/DNS setup.
 - Scripts, styles and the tafseer/translation corpora are now same-origin: the corpora live in
   `tafseer/` in this repo instead of a second host. Pages is HTTPS-only, so any `http://` asset is
   blocked as mixed content — that is why the old Flash badge (which pointed at `www.adobe.com`)
