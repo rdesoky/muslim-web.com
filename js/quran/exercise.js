@@ -43,8 +43,6 @@ var MemApp = {
 
     //this.loadQuranXML();
 
-    //Mp3Player.init("flashContent");
-
     MemAppUI.populateChapters();
 
     _E("idSelectSura").value = getCookie("src", "0");

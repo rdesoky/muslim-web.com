@@ -11,14 +11,6 @@
 	position:relative;
 }
 
-#flashContent{
-	display:none;
-}
-#QPlayer{
-	width:240px;
-	height:24px;
-}
-
 .fake_combobox{
 	padding:2px;
 	border:solid 1px silver;

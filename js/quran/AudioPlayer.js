@@ -49,17 +49,6 @@ var AudioPlayer = {
 
 	},
 	
-	// onPlayerReady:function(){
-	// 	this.obj = getFlexApp("QPlayer");
-	// 	this.obj.addModelListener("state","stateTracker");
-	// 	this.obj.addControllerListener("volume","VolumeTracker");
-	// 	this.obj.addControllerListener("mute","MuteTracker");
-	// 	_E("VolumeCtrl").setVolume(this.obj.getConfig().volume);
-	// 	_E("VolumeCtrl").setMute(this.obj.getConfig().mute);
-	// 	DU.show("AudioControls");
-	// 	DU.hide("GetFlash");
-	// },
-	
 	playQuranPart:function(partNum){
 		var pInfo = QData.parts[partNum-1];
 		this.playRange(1, {sura:pInfo.s, aya:pInfo.a}, {sura:pInfo.es, aya:pInfo.ea} );
@@ -316,23 +305,3 @@ var PlayList = {
 		return reciterID;
 	}
 };
-
-function getFlexApp(appName)
-{
-	if ( navigator.appName.indexOf ("Microsoft") !=-1 ){
-		return window[appName];
-	} 
-	else{
-		return document[appName];
-	}
-}
-	
-//Called by Flash Plugin 
-// function playerReady( obj ){
-// 	setTimeout(
-// 		function(){
-// 			AudioPlayer.onPlayerReady(obj);
-// 		},
-// 		1 
-// 	);
-// };

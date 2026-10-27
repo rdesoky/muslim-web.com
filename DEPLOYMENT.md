@@ -250,3 +250,9 @@ made. When adding an asset reference, run the local sub-path preview above befor
   committed `?v=` stamps do the cache-busting instead.
 - A custom domain (e.g. `quran.muslim-web.com`) requires a `CNAME` file in the published tree
   plus DNS records — not configured here.
+- Scripts, styles and the tafseer/translation corpora are now same-origin: the corpora live in
+  `tafseer/` in this repo instead of a second host. Pages is HTTPS-only, so any `http://` asset is
+  blocked as mixed content — that is why the old Flash badge (which pointed at `www.adobe.com`)
+  and the Flash player paths were removed. Recitation audio is still streamed from
+  `https://download.quranicaudio.com`, the only remaining off-origin dependency; keep new asset
+  references relative and same-origin.

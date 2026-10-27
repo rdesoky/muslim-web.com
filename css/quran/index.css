@@ -25,11 +25,6 @@
   white-space: nowrap;
 }
 
-#GetFlash img {
-  height: 22px;
-  vertical-align: middle;
-}
-
 /* #idPageViewAudio{
 } */
 
@@ -57,18 +52,8 @@
   margin: 0px;
 }
 
-#flashContent {
-  display: none;
-}
 #Repeat {
   width: 24px;
-}
-#QPlayer {
-  width: 240px;
-  height: 24px;
-  vertical-align: bottom;
-  position: absolute;
-  top: -24px;
 }
 #RepeatCounter {
   color: green;
