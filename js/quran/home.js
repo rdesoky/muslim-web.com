@@ -586,10 +586,11 @@ var IMember = {
   },
   showGuestInfo: function () {
     //_E("idCurrentUserName").innerHTML = _S.login_form;
-    _E("UserInfoPanel").innerHTML =
-      "<span class='href' onclick='IMember.showUI()'>" +
-      _S.login_form +
-      "</span>";
+    // Members Login span temporarily commented out (kept in source)
+    // _E("UserInfoPanel").innerHTML =
+    //   "<span class='href' onclick='IMember.showUI()'>" +
+    //   _S.login_form +
+    //   "</span>";
   },
   showUserInfo: function () {
     gUserID = getCookie("user", "");

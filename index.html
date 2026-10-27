@@ -1,0 +1,644 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+
+<html host="localhost">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta name="keywords" content="Koran Islam book Mohamed memorizing Quran Koraan Quraan reciting" />
+	<meta property="fb:admins" content="890570346" />
+
+	<title data-str="page_title">Quran</title>
+
+	<link type="text/css" rel="StyleSheet" href="css/quran/base.css?v=20261025.195423" />
+	<link type="text/css" rel="StyleSheet" href="css/quran/index.css?v=20261026.220633" />
+	<link type="text/css" rel="StyleSheet" href="css/keyboard.css?v=20261025.195423" />
+	<link type="text/css" rel="StyleSheet" href="css/spin_edit.css?v=20261025.195423" />
+	<link type="text/css" rel="StyleSheet" href="css/quran/memorizer.css?v=20261025.195423" />
+	<link type="text/css" rel="stylesheet" href="css/menu.css?v=20261025.195423" />
+	<link type="text/css" rel="stylesheet" href="css/chelp.css?v=20261025.195423" />
+
+	<script type="text/javascript" src="js/common/ScriptLoader.js?v=20261025.195426"></script>
+
+	<script type="text/javascript">
+		// bootstrap: resolve language before any other script runs
+		window.gBuildVer = "20261026.220633";
+		(function () {
+			var lang = "";
+			var qm = window.location.search.match(/[?&]lang=(ar|en)/i);
+			if (qm) {
+				lang = qm[1].toLowerCase();
+				var exp = new Date(Date.now() + 3600 * 24 * 365 * 5 * 1000);
+				document.cookie = "lang=" + lang + "; path=/; expires=" + exp.toGMTString();
+			} else {
+				var cookie = document.cookie.split(";");
+				for (var i = 0; i < cookie.length; i++) {
+					var pair = cookie[i].split("=");
+					if (pair[0].trim() == "lang") {
+						var v = decodeURIComponent(pair[1]).trim();
+						if (v == "ar" || v == "en") lang = v;
+						break;
+					}
+				}
+			}
+			if (lang != "ar" && lang != "en") lang = "ar";
+			window.gLang = lang;
+			document.documentElement.lang = lang;
+			document.documentElement.dir = lang == "ar" ? "rtl" : "ltr";
+			document.write(
+				'<scr' + 'ipt type="text/javascript" src="js_strings_' + lang +
+				'.js?v=' + window.gBuildVer + '"></scr' + 'ipt>'
+			);
+		})();
+	</script>
+
+	<script type="text/javascript">
+		var PgMapBase = "/cgi-bin/",
+			JSLoaderBase = "/cgi-bin/",
+			CGIBase = "/cgi-bin/";
+
+		window.onload = function () {
+			ScriptLoader.loadScripts({
+				QuranTextData: "js/quran/qtext_data.js?v=20261026.214202",
+				MemApp: "js/quran/exercise.js?v=20261026.214202",
+				//swfobject:			"js/common/swfobject.js?v=20261025.195426",
+				//PageMp3Player:		"js/quran/PageMp3Player.js?v=20261025.195426",
+				AudioPlayer: "js/quran/AudioPlayer.js?v=20261025.195426",
+				Utils: "js/common/utils.js?v=20261025.195426",
+				DefineJClass: "js/common/jclass.js?v=20261025.195426",
+				QData: "js/quran/qdata.js?v=20261025.195426",
+				RecitersInfo: "js/quran/audio_data.js?v=20261025.195426",
+				uncompressMem: "js/quran/lib.js?v=20261026.214202",
+				GetSaveURL: "js/quran/qlib.js?v=20261026.214202",
+				addAya: "js/quran/tlib.js?v=20261025.195426",
+				GetData: "js/quran/xml_loader.js?v=20261025.195426",
+
+				JCSpinEdit: "js/common/JCSpinEdit.js?v=20261025.195426",
+				PageMap: "js/quran/PageMap.js?v=20261025.195426",
+				JCQuranViewer: "js/quran/JCQuranViewer.js?v=20261025.195426",
+				JCSuraCell: "js/quran/JCSuraCell.js?v=20261025.195426",
+				JCToggler: "js/common/JCShowHideSwitcher.js?v=20261025.195426",
+				JCSuraViewer: "js/quran/JCSuraViewer.js?v=20261025.195426",
+				JCKeyboard: "js/common/JCKeyboard.js?v=20261025.195426",
+				JCTabs: "js/common/JCTabs.js?v=20261025.195426",
+				JCSettings: "js/common/JCSettings.js?v=20261025.195426",
+				createMenu: "js/quran/menu.js?v=20261025.195426",
+
+				HomePage: "js/quran/home.js?v=20261026.220633",
+				QSearch: "js/quran/qsearch.js?v=20261025.195426",
+				LocalCGI: "js/quran/local_cgi.js?v=20261026.214202"
+			},
+				function () {
+					Utils.setupCrossBrowser();
+					populateStrings();
+					HomePage.init();
+				}
+			);
+		}
+
+		var suraCellWidth = 140;
+		var gPageMapVersion = 1;
+		var gPagesServer = "";
+		var gTafBase = "https://tafseer.muslim-web.com/";
+		var gImgHost = "";
+		var gAppRoot = "/";
+
+	</script>
+
+	<script type="text/javascript">
+		function populateStrings() {
+			var S = window.gStrings;
+			if (typeof S == "undefined") return;
+			var els = document.querySelectorAll("[data-str]");
+			for (var i = 0; i < els.length; i++) {
+				var el = els[i];
+				var key = el.getAttribute("data-str");
+				if (typeof S[key] == "undefined") continue;
+				if (el.tagName == "INPUT" || el.tagName == "TEXTAREA") {
+					el.value = S[key];
+				} else {
+					el.textContent = S[key];
+				}
+			}
+			var titles = document.querySelectorAll("[data-str-title]");
+			for (i = 0; i < titles.length; i++) {
+				el = titles[i];
+				key = el.getAttribute("data-str-title");
+				if (typeof S[key] == "undefined") continue;
+				el.title = S[key];
+			}
+			var htmlEls = document.querySelectorAll("[data-str-html]");
+			for (i = 0; i < htmlEls.length; i++) {
+				el = htmlEls[i];
+				key = el.getAttribute("data-str-html");
+				if (typeof S[key] == "undefined") continue;
+				el.innerHTML = S[key];
+			}
+			if (typeof S.page_title == "string") document.title = S.page_title;
+			var ap = document.getElementById("AppStore");
+			if (ap) {
+				ap.src = "images/" + (window.gLang == "ar"
+					? "Download_on_the_App_Store_Badge_AR_RGB_blk_102417.svg"
+					: "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg");
+			}
+			var sw = document.getElementById("LangSwitcher");
+			if (sw) {
+				sw.textContent = S[window.gLang == "ar" ? "english" : "arabic"];
+			}
+			document.body.lang = window.gLang;
+		}
+	</script>
+</head>
+
+<body lang="ar" class="xhelp_on">
+	<div id="LangSwitcher" class="href" onclick="SwitchLang(gLang)"></div>
+
+	<div id="GooglePlayBadge">
+		<a href="https://play.google.com/store/apps/details?id=com.muslim_web.quran" target="_blank"><img id="GooglePlay"
+				src="images/google-play-badge.png" alt="get it on Google Play" /></a>
+		<!-- App Store link temporarily commented out (kept in source)
+		<a href="https://itunes.apple.com/us/app/quran-hafiz/id1384358953?ls=1&mt=8" target="_blank"><img id="AppStore"
+				src="images/Download_on_the_App_Store_Badge_AR_RGB_blk_102417.svg" alt="Download on the App Store" />
+		</a>
+		-->
+	</div>
+
+	<table id="TopPanel" cellpadding="0" class="collapsed">
+		<tr>
+			<td class="top_logo" id="TopLogo">
+				<div id="SiteTitle" class="site_title" data-str="holy_quran"></div>
+				<div style="direction:ltr;font-size:10px" data-str="site_url"></div>
+				<audio id="AudioPlayerElement">
+					Browser doesn't support audio
+				</audio>
+			</td>
+			<td id="Header">
+				<div class="AnnouncementBar"><a href="http://hafiz.muslim-web.com" target="_blank">
+						اضغط هنا لتجربة النسخة الجديدة من الموقع.
+						Click here to try the new version</a>
+				</div>
+				<table id="TopMenu">
+					<tr>
+						<td>
+							<span id="UserInfoPanel" data-str="welcome"></span>
+						</td>
+						<td id="TopMenuSearch">
+							<form id="SearchForm">
+								<span data-str="search"></span>:
+								<input type="text" mClass="JCKeyboard" id="SearchKeyword" name="keyword" size="10" /><input type="image"
+									src="images/search.gif" class="btnSearch" />
+							</form>
+						</td>
+						<td id="SearchTabsRoot">
+							<div mClass="JCTabs" id="SearchTabs" pid="SearchResultsRoot" fast="1"
+								onRemoveAll="DU.hide('SearchResultsRoot')"></div>
+							<div id="SearchResultsRoot" style="display:none"></div>
+						</td>
+						<td style="display:none"><span class="checkTitle" id="cHelp">Help</span></td>
+						<td>
+							<div style="max-height: 18px;overflow:hidden">
+								<a name="fb_share" id="FBShare" type="icon_link" share_url="http://quran.muslim-web.com"
+									href="http://www.facebook.com/sharer.php"></a>
+							</div>
+						</td>
+						<td>
+							<iframe id="FBLike" scrolling="no" frameborder="0" allowTransparency="true"
+								style="border:none; overflow:hidden; width:120px; height:18px;"></iframe>
+						</td>
+					</tr>
+				</table>
+				<div id="TopMenuItems">
+					<span id="RecentReciters"></span>
+					<div class="inline">
+						<div id="GetFlash" style="display:none">
+							<a href='http://www.adobe.com/go/getflashplayer'>
+								<img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif'
+									alt='Get Adobe Flash player' />
+							</a>
+						</div>
+
+						<table id="AudioControls" cellspacing="0" class="idle" cellspadding="0" style="display:none">
+							<tr>
+								<td>&nbsp;<a id="PlayerSura" onClick="QViewer.onclickSuraTitle(PlayList.current.sura)"></a></td>
+								<td id="PlayerStatus"></td>
+								<td><span tabIndex="0" id="BtnPlay" class="btn playBtn" onClick="AudioPlayer.play(true);"></span> <span
+										tabIndex="0" id="BtnStop" class="btn playStop" disabled onclick="AudioPlayer.stop()"></span>
+								</td>
+								<td id="VolumeCtrl"></td>
+								<td id="SyncOption"><span class="checkTitle" id="SyncCheck" checked="1"
+										onclick="AudioPlayer.syncAudio(1)">
+										<span data-str="view"></span>&nbsp;&nbsp;
+									</span>
+								</td>
+								<td id="ReciteTillEnd"><span class="checkTitle" id="ReciteTillEndCheck" onclick="_TA(this,'checked')">
+										<span data-str="ReciteTillEnd"></span>&nbsp;&nbsp;
+									</span>
+								</td>
+								<td id="RepeatOption">
+									<span id="RepeatCheck" class="checkTitle"
+										onclick="_TA(this,'checked');_E('RepeatBar').style.display=_EA(this,'checked')?'':'none'">
+										<span data-str="repeat"></span>&nbsp;&nbsp;
+									</span>
+								</td>
+								<td id="RepeatBar" style="display:none">
+									<span id="RepeatCounter">1</span><span> : </span>
+									<span id="CustomRepeat">&nbsp;<input type="text" id="Repeat" value="2" /></span>
+									<span class="checkTitle" id="EndlessLoop"
+										onclick="_TA(this,'checked');_E('CustomRepeat').style.display=_EA(this,'checked')?'none':''">
+										<span data-str="endless"></span>
+									</span>
+								</td>
+							</tr>
+						</table>
+						<span id="RandomPlayLink" style="display:none" class="href" onclick="ISura.reciteRandom()">
+							<span data-str="rand_sura"></span>
+						</span>
+
+					</div>
+				</div>
+				<table id="ControlBar" cellpadding="0">
+					<tr>
+						<td id="idViewTabs" mClass="JCTabs" changeHandler="onChangeView" pid="MainIndex"><span tid="index"
+								pid="idQuranIndex" data-str="index"></span><span tid="pages" pid="idPageViews" class="pages_tab"
+								data-str="pages"></span><span tid="mem" pid="MemReport" class="left_align">
+								<span data-str="mem_percent"></span>: <span id="idMemorized">0</span>%<br />
+							</span><span tid="exercise" pid="Trainer" data-str="writing_exercise"></span></td>
+						<td>&nbsp;
+							<span onclick="QViewer.onClickReview(this)" id="MemReviewTitle" class="checkTitle"
+								data-str="mem_review"></span>&nbsp;
+							<span id="idPageMarks">&nbsp;</span>
+							<span id="idRecentSuras">&nbsp;</span>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+	<div id="MainIndex">
+		<div id="RightMenu">
+			<div class="sideBox">
+				<div mClass="JCToggler" mTargetElement="AdsFrame">
+					<span cid="bullet" class="arrowBtn down"></span>
+					<span data-str="ads"></span>
+				</div>
+				<div id="AdsFrame">
+					<div id="idKoboolAd" onclick="window.open('http://www.kobool.com','_blank')">
+						<div>هل تريد أن تحصن نفسك؟</div>
+						<div style="font-size:14px;color:brown">موقع (قبــول) للزواج</div>
+						<div>من شبكة المسلم</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="sideBox">
+				<div>التلاوات والتفسير من:</div>
+				<div>
+					<a target="_blank" href="http://www.versebyversequran.com">everyayah.com</a><br>
+				</div>
+			</div>
+
+		</div>
+		<div id="Trainer" style="display:none;">
+			<div id="MemOptions" class="sub_ctrl_bar">
+				<span>
+					<select id="idSelectSura" onchange="OC.changeSource(event)">
+						<option selected value="0" data-str="random_verse"></option>
+					</select>
+				</span>
+				<span id="idByLevel">
+					<span style="font-size:12px" NOWRAP id="LevelTitle">&nbsp;
+						<span data-str="training_level"></span>:
+					</span>
+					<select id="idSelectLevel" onchange="OC.changeLevel()">
+						<option value="0" data-str="beginner"></option>
+						<option value="1" data-str="intermediate"></option>
+						<option value="2" data-str="good"></option>
+						<option value="3" data-str="advanced"></option>
+						<option value="4" data-str="excellent"></option>
+					</select>
+				</span>
+				<span id="AyaNumberOption" style="display:none;">
+					<span><select id="PageList" onchange="OC.changePage(event)"><option value="0" selected
+								data-str="select_page"></option>
+					</select></span>
+					<span style="white-space:nowrap"><span data-str="aya"></span>: <input type="text" id="AyaNumber"
+							value="1" style="width:30px" /></span>
+					<span id="Preview" class="checkTitle" onclick="OC.clickPreview()" data-str="preview"></span>
+				</span>
+			</div>
+			<div id="ExercisePanel">
+				<table style="width:100%">
+					<tr>
+						<td id="idAyaHeader" class="aya_title">&nbsp;</td>
+						<td id="ActionTitle" class="sub_title">&nbsp;</td>
+					</tr>
+				</table>
+
+				<div id="TrainingViewer">
+					<div id="idAyaDisplay" class="aya_view" style="padding:2px;border:solid 1px silver;display:none;">&nbsp;</div>
+					<textarea id="idAnswer" class="aya_view" style="display:none;">&nbsp;</textarea>
+				</div>
+
+				<table>
+					<tr>
+						<td id="AnswerButtons" style="display:none;white-space:nowrap">
+							<input type="button" class="actionBtn" data-str="ok" onclick="OC.ok(event)">
+							<input type="button" class="actionBtn" id="idGiveUp" data-str="cancel" onclick='OC.cancel(event)'>
+						</td>
+						<td id="QuickStart" style="display:none;white-space:nowrap">
+							<input type="button" id="QuickStartBtn" class="actionBtn" data-str="start_writing" onclick='OC.quickStart(event)'>
+							<input type="button" class="actionBtn" data-str="cancel" onclick='OC.cancel(event)'>
+						</td>
+						<td>
+							<input type="button" id="BtnNextAya" class="actionBtn" onclick="OC.nextAya(event)" data-str="next_verse" style="display:none" />
+							<input type="button" id="idAction" class="actionBtn" data-str="start" onclick="OC.action(event)" />
+							<input type="button" id="BtnRandom" class="actionBtn" data-str="random_verse" onclick="OC.random(event)" />
+						</td>
+						<td id="Retry" style="display:none">
+							<input class="actionBtn" id="RetryBtn" type="button" onclick="OC.retry(event)" data-str="retry">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="MemReport" style="display:none"></div>
+		<div id="idQuranIndex">
+			<div mClass="JCQuranIndex">
+				<!-- Index goes here -->
+				<div id="SiteIntro">
+					<div style="direction:rtl">
+						موقع القرآن الكريم من شبكة المسلم يحتوي على برنامج لعرض سور وصفحات القرآن الكريم وربطها بالتفسير والتراجم
+						لعدة لغات وتلاوات للعديد من مشاهير القراء. بالإضافة الى خدمات البحث والتدريب على حفظ القرآن الكريم وتسجيل
+						ماتم حفظة لسرعة المتابعة والمراجعة.
+					</div>
+					<hr />
+					<div style="direction:ltr">
+						Holy Quran website from muslim-web network contains an application used to browse the Quran chapters and
+						verses and links them with different translations and explanations and the recitations of famous reciters.
+						In addition to Search capabilities and memorization tools that train the user and can save the memorized
+						verses for fast review and follow up.
+					</div>
+				</div>
+				<div id="ProgressPanel">
+					<div id="WaitingMsg" data-str="page_loading"></div>
+
+					<div id="ProgressBarPanel">
+						<div id="ProgressBar">
+							<div id="ProgressText"><span id="ProgressValue">0</span>%</div>&nbsp;
+						</div>
+					</div>
+
+					<div style="color:gray;padding-top:5px" data-str="page_load_help"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="idPageViews" mClass="JCQuranViewer" style="display:none;">
+			<div id="SuraBar">
+				<div id="SuraTools">
+					<input type="image" id="ZoomButton" src="images/space.gif" /><input type="image" id="ShowTextBtn"
+						src="images/noon2.jpg" onclick="QViewer.openSuraText()" />
+				</div>
+				<div id="PagesViewControls">
+					<div id="PageSpinTable" class="inline" tabindex="0"><span class="inline_title"><span
+								data-str="p"></span>:
+						</span><span mClass="JCSpinEdit" min="1" max="604" id="gPageSpin"></span></div><input type="button"
+						id="SpinnerBtn" data-str="goto" />
+					<div id="idPages" title="Current Sura Pages"></div>
+				</div>
+				<div onclick='QViewer.prevSura()' class='arrowBtn right'></div>
+				<div id="SuraTitle"><span id='ViewerSuraName'></span></div>
+				<div onclick='QViewer.nextSura()' class='arrowBtn left'></div>
+				<div id='idPageViewAudio'></div>
+				<div class="inline">
+					<div id="AyatChart"></div>
+				</div>
+				<div id="SelectionViewer" data-str="selection_help"></div>
+			</div>
+			<table id="idPagesTable" cellpadding="0">
+				<tr>
+					<td valign="top">
+						<div class="anchor">
+							<div id="VerseMask">
+								<div id="Mask_0"></div>
+								<div id="Mask_1"></div>
+							</div>
+							<div id="Memorized">
+								<div id="Memorized_0"></div>
+								<div id="Memorized_1"></div>
+							</div>
+							<div id="Pending">
+								<div id="Pending_0"></div>
+								<div id="Pending_1"></div>
+							</div>
+							<div id="VerseSelect">
+								<div id="Selection_0"></div>
+								<div id="Selection_1"></div>
+							</div>
+							<div id="VerseHover"></div>
+						</div>
+
+						<table cellspacing="0" cellpadding="0" style="direction:ltr" id="PageViewer">
+							<tr>
+								<td id="PageSide_1">
+									<table class="page_header_tbl">
+										<tr>
+											<td id="idPageSuraName_1" class="full_width"></td>
+											<td id="PageMarkCell_1"></td>
+											<td id="idPageChapter_1" class="nowrap" style="text-align:right"></td>
+										</tr>
+									</table>
+
+									<div id="idPageViewFrame_1" class="pageViewFrame" side="1"></div>
+
+									<table class="pageFooter" id="PageFooter_1">
+										<tr>
+											<td id="LeftNavCell" class="pageNavigator">
+												<img src='images/next.gif' border='0' />
+												<span data-str="next"></span>
+											</td>
+											<td style='width:100%;height:16px;text-align:center'>
+												<span class='btn playBtn res' data-str-title="recite_page"
+													onclick="QViewer.reciteSide(1)"></span>&nbsp;
+												<span id="idPageNo_1"></span>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td id="PageSide_0">
+									<table class="page_header_tbl">
+										<tr>
+											<td id="idPageSuraName_0" class="full_width">
+											</td>
+											<td id="PageMarkCell_0"><span id="idBtnPageMark" class="button"></span></td>
+											<td id="idPageChapter_0" class="nowrap" style="text-align:right">
+											</td>
+										</tr>
+									</table>
+
+									<div id="idPageViewFrame_0" side="0" class="pageViewFrame">
+									</div>
+
+									<table class="pageFooter" id="PageFooter_0">
+										<tr>
+											<td style="text-align:center;width:100%;height:16px;">
+												<span class='btn playBtn res' data-str-title="recite_page"
+													onclick="QViewer.reciteSide(0)"></span>&nbsp;
+												<span id="idPageNo_0"></span>
+											</td>
+											<td id="RightNavCell" class="pageNavigator">
+												<span data-str="prev"></span> <img src="images/prev.gif" border="0" />
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<!-- vertical index -->
+					<td id="IndexPanel">
+						<div mClass="JCTabs" id="idSelectVerticalIndex" pid="VerticalIndex"
+							changeHandler="VerticalIndex.onChange()"><span tid="p" pid="Parts" sel="1"
+								data-str="parts"></span><span tid="s" pid="Chapters" data-str="chapters"></span><span tid="taf"
+								pid="Tafseer" data-str="tafseer"></span><span tid="edit" pid="Editor" id="EditTab"
+								style="display:none">edit</span></div>
+						<div id="VerticalIndex">
+							<div id="Parts"></div>
+							<div id="Chapters"></div>
+							<div id="Tafseer">
+								<div id="TafFrame">
+									<table cellspacing="0" cellpadding="0" style="margin-bottom:3px">
+										<tr>
+											<td>
+												<select id='SelTaf'>
+													<option value='KATHEER' data-str="katheer"></option>
+													<option value='TABARY' data-str="tabary"></option>
+													<option value='GALALEEN' data-str="galaleen"></option>
+													<option value='KORTOBY' data-str="kortoby"></option>
+													<option value='en_yusufali'>English</option>
+													<option value='fr_hamidullah'>Français</option>
+													<option value='de_bubenheim'>Deutsch</option>
+													<option value='tr_ozturk'>Turkish</option>
+													<option value='id_muntakhab'>Indoneisan</option>
+													<option value='ms_basmeih'>Malayu</option>
+												</select>
+											</td>
+											<td>
+												<div id="TafNav" style="display:none">
+													<span onclick="TafPage.decrement()" class="arrowBtn right"></span><span id="TafAyaCell"><span
+															class="href" onclick="TafPage.gotoAyaPage()" id="TafAya"></span></span><span
+														onclick="TafPage.increment()" class="arrowBtn left"></span><span class="tafBtn"
+														id="OpenTafBtn"><img src="images/new_window.jpg" /></span>
+												</div>
+											</td>
+										</tr>
+									</table>
+									<div id='TafText'>
+										<div class="litePadding" data-str-html="taf_prompt"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div id="Footer" style="border-top:solid 1px silver">
+		<table>
+			<tr>
+				<td>
+					<span class="href" onclick="HomePage.showHelp()" data-str="help"></span>
+				</td>
+				<td> | <a href="https://www.facebook.com/quran.hafiz.page" target="_blank" data-str="guest_page"></a></td>
+				<td id="FeedbackInfo"> |
+					<span>
+						<span data-str="footer_note"></span>
+						<A href="mailto:webmaster@muslim-web.com">webmaster@muslim-web.com</A>
+					</span> |
+					<span id="PrayRequest" data-str="prayer_request"></span>
+				</td>
+			</tr>
+		</table>
+		<div id="fb-root"></div>
+	</div>
+
+	<div id="HelpBox" style="display:none">
+		<div id="HelpFrame">
+			<div class="helpTopic" data-str="help_topic_4"></div>
+			<hr />
+			<div class="helpTopic" data-str="help_topic_1"></div>
+			<hr />
+			<div class="helpTopic" data-str="help_topic_2"></div>
+			<hr />
+			<div class="helpTopic">
+				<span data-str="help_topic_3_1"></span>
+				<a target="_blank"
+					href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">
+					Real&nbsp;Player</a>.<br />
+				<span data-str="help_topic_3_2"></span>,
+				<a target="_blank"
+					href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">
+					<span data-str="click_here"></span>
+				</a>
+				<span data-str="help_topic_3_3"></span>.
+			</div>
+		</div>
+	</div>
+
+	<div id="HiddenUI" style="display:none">
+		<div id="ConfirmUpdate">
+			<div class="popupMsg" data-str="update_mem_desc"></div>
+			<div class="buttonsBar">
+				<input type="button" data-str="ok" onclick="IMember.syncMemorization();" />
+			</div>
+		</div>
+		<div id="CopyText">
+			<div><textarea id="CopyTextArea" style="width:100%;box-sizing:border-box;height:150px"></textarea></div>
+			<div class="buttonsBar">
+				<input type="button" data-str="copy_selected" onclick="doCopyText();" />
+			</div>
+		</div>
+		<div id="idRecitersPanel">
+			<div id="idRecentReciters"></div>
+			<div id="idListFilters" style="padding:2px;"></div>
+			<div id="idReciterList"></div>
+			<div id="RecitersFootnote" data-str="reciter_footnote"></div>
+		</div>
+		<div id="UserOptions">
+			<div class='menu_item' onclick="IMember.showLoginForm();" data-str="other_user"></div>
+			<div class='menu_item' onclick="IMember.showNewUserForm();" data-str="new_user"></div>
+			<div class='menu_item' onclick="IMember.logout()" data-str="logout"></div>
+		</div>
+
+		<div id="LoginPanel">
+			<div id="LoginFormPanel">
+				<form id="idLoginForm" onsubmit="return IMember.login(this)">
+					<div><span data-str="login_name"></span><input name="lname" type="text" /></div>
+					<div><span data-str="password"></span><input name="pw" type="password" /></div>
+					<div><input name="newuser" type="checkbox" onclick="IMember.toggleNewUser(this.checked)" />
+						<span data-str="new_member"></span>
+					</div>
+					<div id="idEmail" style="display:none">
+						<input name="keepdata" type="checkbox" checked="1" />
+						<span data-str="keep_mem_data"></span>
+						<div><span data-str="email"></span><input name="email" type="text" /></div>
+					</div>
+					<div class="buttonsBar">
+						<input type="submit" id="idBtnLogin" data-str="login" />
+						<input id="idCancelLogin" type="button" data-str="cancel" />
+					</div>
+				</form>
+			</div>
+			<div id="LoginProgress" style="color:green;display:none">
+				<span data-str="contacting_db"></span>..
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
