@@ -349,6 +349,44 @@ function MessageBox(sText, sTitle)
 	window.showModalDialog ("msg.htm", args, "dialogHeight: 120px; dialogWidth: 300px; dialogTop: px; dialogLeft: px; edge: Raised; center: Yes; help: Yes; resizable: No; status: No;scroll: No");
 }
 
+// Relative prefix from the current document back to the app root ("" or "../").
+// Derived from the src of our own scripts, so no page has to declare a base URL.
+var g_appBase;
+
+function appBase ()
+{
+	if (g_appBase == undefined)
+	{
+		var sSrc = "";
+		var aScripts = document.getElementsByTagName("script");
+
+		for (var i = 0; i < aScripts.length; ++i)
+		{
+			sSrc = aScripts[i].getAttribute("src") || "";
+
+			if (sSrc.indexOf("js/") >= 0)
+				break;
+
+			sSrc = "";
+		}
+
+		var nIndex = sSrc.indexOf("js/");
+
+		g_appBase = (nIndex > 0) ? sSrc.substring(0, nIndex) : "";
+	}
+
+	return g_appBase;
+}
+
+// Tafseer (commentary) pages are mirrored under the app root as
+// <source>/<sura>/<sura+aya>.html, e.g. tafseer/KATHEER/002/002255.html.
+function getTafseerPageURL (sSource, nSura, nAya)
+{
+	var sSura = toStringEx( nSura, 3 );
+
+	return appBase() + "tafseer/" + sSource + "/" + sSura + "/" + sSura + toStringEx( nAya, 3 ) + ".html";
+}
+
 function getBaseURL (sURL)
 {
 	var baseURL;

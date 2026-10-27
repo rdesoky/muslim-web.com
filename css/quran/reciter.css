@@ -18,7 +18,7 @@
 }
 
 .speaker.icon{
-	background:url(/images/speaker.gif) no-repeat center;
+	background:url(../../images/speaker.gif) no-repeat center;
 }
 
 #idAudioTitle{
@@ -39,7 +39,7 @@
 }
 
 body{
-	background:#efefe7 url(/images/bg_caption.gif) repeat-x;
+	background:#efefe7 url(../../images/bg_caption.gif) repeat-x;
 	margin:0;
 	border:0;
 }

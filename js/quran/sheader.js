@@ -245,16 +245,16 @@ var QViewer = {
       DU.addClass("LeftPage", "wait");
       _E("LeftPage").innerHTML =
         "<img id='LeftPageImage' class='pageImage' onload=\"DU.removeClass('LeftPage','wait')\" src=" +
-        gPagesServer +
-        "/pages/p" +
+        appBase() +
+        "pages/p" +
         (nRightPage + 1).toStringEx(3) +
         ".gif />";
       _E("LeftPageHeader").innerHTML = nRightPage + 1;
       DU.addClass("RightPage", "wait");
       _E("RightPage").innerHTML =
         "<img id='RightPageImage' class='pageImage' onload=\"DU.removeClass('RightPage','wait')\" src=" +
-        gPagesServer +
-        "/pages/p" +
+        appBase() +
+        "pages/p" +
         nRightPage.toStringEx(3) +
         ".gif />";
       _E("RightPageHeader").innerHTML = nRightPage;
@@ -453,7 +453,7 @@ function initPage() {
 
   document.title = mytitle;
 
-  sura_page = "/qtext/sura_" + sura.toStringEx(3) + ".html";
+  sura_page = "qtext/sura_" + sura.toStringEx(3) + ".html";
 
   var urlInfo = window.location.href.split("?");
 
@@ -470,13 +470,13 @@ function initPage() {
 
   _E("SuraFrameContainer").innerHTML =
     "<div id='idSuraFrame'><img src='" +
-    gImgHost +
-    "/images/wait.gif'>&nbsp;" +
+    appBase() +
+    "images/wait.gif'>&nbsp;" +
     _S.loading +
     "...</div>";
 
   ScriptLoader.loadJScript(
-    gSuraTextHost + sura_page,
+    appBase() + sura_page,
     function () {
       _E("idSuraFrame").innerHTML = gResponseHTML;
       initSura(_E("idSuraFrame"));
@@ -494,7 +494,6 @@ var bShowTafseer = true;
 
 var Tafseer = {
   //source:"KATHEER",
-  baseURL: "/tafseer/",
   width: 280,
 
   gotoAya: function () {
@@ -534,15 +533,7 @@ var Tafseer = {
 
   getPageURL: function (sura, aya) {
     // if (this.isTafseer()) {
-    return (
-      gTafBase +
-      this.source +
-      "/" +
-      sura.toStringEx(3) +
-      "/" +
-      aya.toStringEx(3) +
-      ".html"
-    );
+    return getTafseerPageURL(this.source, sura, aya);
     // } else {
     //   //return( "http://www.reciter.org/" + _E("SelTaf").value + "/" + sura.toStringEx(3) + aya.toStringEx(3) + ".html" );
     //   return (

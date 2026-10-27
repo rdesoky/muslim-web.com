@@ -134,8 +134,7 @@ var gImageTimer = null;
 
 function displayAya(suraNo, ayaNo) {
   idAyaPic.style.top = document.body.scrollTop + 4;
-  idAyaPic.src =
-    gsAyatImageURL + suraNo.toString(10) + "_" + toStringEx(ayaNo, 3) + ".gif";
+  idAyaPic.src = getAyaImageURL(suraNo, ayaNo);
   //idAyaPic.src = "http://12.234.87.231/ayaimage/" + suraNo.toString(10) + "_" + toStringEx(ayaNo,3) + ".gif";
   ShowElement("idAyaPic", 1000);
 }

@@ -10,7 +10,7 @@ body {
 
 #Header{
 	height:60px;
-	background-image:url(/images/bg_qcaption.gif);
+	background-image:url(../../images/bg_qcaption.gif);
 	background-repeat:repeat-x;
 }
 
