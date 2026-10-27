@@ -453,7 +453,7 @@ function initPage() {
 
   document.title = mytitle;
 
-  sura_page = "/qtext/sura_" + sura.toStringEx(3) + ".php";
+  sura_page = "/qtext/sura_" + sura.toStringEx(3) + ".html";
 
   var urlInfo = window.location.href.split("?");
 
@@ -536,7 +536,7 @@ var Tafseer = {
     // if (this.isTafseer()) {
     return (
       gTafBase +
-      _E("SelTaf").value +
+      this.source +
       "/" +
       sura.toStringEx(3) +
       "/" +
@@ -562,13 +562,28 @@ var Tafseer = {
     }
 
     if (Defined(source)) {
-      CK.set("taf", source, true);
       this.source = source;
     } else {
       this.source = CK.get("taf", "KATHEER");
     }
 
-    _E("SelTaf").value = this.source;
+    // The source can come from a stale cookie or an old menu entry. Only keep
+    // values that exist in the source list, otherwise the select ends up empty
+    // and the built URL (e.g. ...//002/005.html) returns 404.
+    var sel = _E("SelTaf");
+    var validSource = false;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value == this.source) {
+        validSource = true;
+        break;
+      }
+    }
+    if (!validSource) {
+      this.source = "KATHEER";
+    }
+
+    CK.set("taf", this.source, true);
+    sel.value = this.source;
     _E("TafAya").innerHTML = this.aya.toString();
 
     var pageURL = this.getPageURL(gSuraNo, this.aya);
