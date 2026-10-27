@@ -925,7 +925,7 @@ var QViewer = {
     var extention = gHighResolution ? ".jpg" : ".gif";
 
     var src =
-      gPagesServer +
+      imgBase() +
       folder +
       pageNum.toStringEx(3) +
       extention +

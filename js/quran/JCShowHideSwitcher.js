@@ -53,7 +53,7 @@ function JCShowHideSwitcher()
 
 		if( targetElement = document.getElementById( this.m_target_element ) ){
 			targetElement.style.display = "";
-			eval( this.sID + "Btn.src='/images/collapse_up.gif'" );
+			eval( this.sID + "Btn.src=(window.gImgHost||'')+'images/collapse_up.gif'" );
 			if(this.mOnShow){
 				window.setTimeout(this.mOnShow, 1);
 			}
@@ -65,7 +65,7 @@ function JCShowHideSwitcher()
 		if( targetElement = document.getElementById( this.m_target_element ) )
 		{
 			targetElement.style.display = "none";
-			eval( this.sID + "Btn.src='/images/expand_down.gif'" );
+			eval( this.sID + "Btn.src=(window.gImgHost||'')+'images/expand_down.gif'" );
 			//window.SHSetting[this.m_target_element] = 0;
 		}
 	};
