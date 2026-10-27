@@ -262,19 +262,19 @@ function fileDate(p: string): string {
 }
 
 function stampFileUrl(url: string, htmlDir: string): string {
-	if (url.includes("?v=")) return url;
 	if (/^(https?:)?\/\//.test(url)) return url;
 	if (url.startsWith("/cgi-bin/")) return url;
-	if (!/(^|\/)(css|js)\//.test(url) && !/js_strings_(ar|en)\.js$/.test(url)) {
+	const bare = url.split("?")[0];
+	if (!/(^|\/)(css|js)\//.test(bare) && !/js_strings_(ar|en)\.js$/.test(bare)) {
 		return url;
 	}
-	const rel = url.replace(/^\//, "");
+	const rel = bare.replace(/^\//, "");
 	const abs = path.resolve(htmlDir, rel);
 	if (!existsSync(abs)) {
 		console.warn(`  WARNING: ${abs} not found — no version stamped`);
 		return url;
 	}
-	return `${url}?v=${fileDate(abs)}`;
+	return `${bare}?v=${fileDate(abs)}`;
 }
 
 function stampHtml(htmlPath: string, buildVer: string): void {
