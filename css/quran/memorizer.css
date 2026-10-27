@@ -49,15 +49,6 @@
 #ActionTitle{
 	height:34px;
 }
-#QPlayer{
-/*	top: -30px;
-	position:absolute;*/
-}
-
-#QPlayer.visible{
-	position:static;
-}
-
 #Options span{
 	display:inline-block;
 	vertical-align:middle;
