@@ -118,14 +118,14 @@ var JCSpinEdit = DefineJClass({
         window.clearTimeout(self.hTimer);
         self.hTimer = 0;
       }
-      self.ctrls.image.src = "/images/spin_btns.gif";
+      self.ctrls.image.src = appBase() + "images/spin_btns.gif";
     };
 
     this.ctrls.uBtn.onmousedown = function (e) {
       if (self.disabled == true) return;
 
       self.onSpinUp();
-      self.ctrls.image.src = "/images/spin_btns_up.gif";
+      self.ctrls.image.src = appBase() + "images/spin_btns_up.gif";
       self.hTimer = window.setTimeout(function () {
         self.scroll("onSpinUp");
       }, 500);
@@ -137,7 +137,7 @@ var JCSpinEdit = DefineJClass({
       if (self.disabled == true) return;
 
       self.onSpinDown();
-      self.ctrls.image.src = "/images/spin_btns_down.gif";
+      self.ctrls.image.src = appBase() + "images/spin_btns_down.gif";
       self.hTimer = window.setTimeout(function () {
         self.scroll("onSpinDown");
       }, 500);

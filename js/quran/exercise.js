@@ -43,8 +43,6 @@ var MemApp = {
 
     //this.loadQuranXML();
 
-    //Mp3Player.init("flashContent");
-
     MemAppUI.populateChapters();
 
     _E("idSelectSura").value = getCookie("src", "0");
@@ -625,13 +623,12 @@ var MemAppUI = {
     }
   },
 
-  showAyaInfo: function (sURL) {
-    var sURL =
-      sURL +
-      (int(MemApp.ayaInfo.sura) + 1).toStringEx(3) +
-      "/" +
-      (int(MemApp.ayaInfo.aya) + 1).toStringEx(3) +
-      ".html";
+  showAyaInfo: function (sSource) {
+    var sURL = getTafseerPageURL(
+      sSource,
+      int(MemApp.ayaInfo.sura) + 1,
+      int(MemApp.ayaInfo.aya) + 1
+    );
     DU.show("InfoFrame");
     SetHTML(
       "InfoFrame",
@@ -643,25 +640,11 @@ var MemAppUI = {
   },
 
   explainAya: function () {
-    this.showAyaInfo(gTafBase + "KATHEER/");
+    this.showAyaInfo("KATHEER");
   },
 
   translateAya: function () {
-    var sURL =
-      gTafBase +
-      "en_yusufali/" +
-      (int(MemApp.ayaInfo.sura) + 1).toStringEx(3) +
-      "/" +
-      (int(MemApp.ayaInfo.aya) + 1).toStringEx(3) +
-      ".html";
-    DU.show("InfoFrame");
-    SetHTML(
-      "InfoFrame",
-      "<iframe frameborder='0' width='100%' height=160 src='" +
-        sURL +
-        "'></iframe>"
-    );
-    MemExercise.cancel();
+    this.showAyaInfo("en_yusufali");
   },
 
   populateChapters: function () {

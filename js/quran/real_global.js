@@ -214,18 +214,3 @@ function urlHexEncode( str )
     }
     return ret;
 }
-
-
-function RPOnStateChange(play_state){
-    if (document.getElementById("flash")){
-        switch(play_state) {
-            case 0:
-                // stopped state
-                flash.Play();
-                break
-            case 3:
-                // playing state
-                flash.StopPlay();
-                break;
-        }
-    }

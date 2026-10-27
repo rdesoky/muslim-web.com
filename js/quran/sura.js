@@ -710,7 +710,7 @@ function showAyaImage(ayaNo) {
     image.style.display = image.style.display == "" ? "none" : "";
     return;
   }
-  var imgSRC = gsAyatImageURL + gSuraNo + "_" + toStringEx(ayaNo, 3) + ".gif";
+  var imgSRC = getAyaImageURL(gSuraNo, ayaNo);
 
   var eAya = gAya[ayaNo - 1];
   image = document.createElement("img");
