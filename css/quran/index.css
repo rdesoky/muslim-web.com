@@ -787,6 +787,10 @@ div[side="1"].pageViewFrame.wait,
   min-width: 64px;
   text-align: center;
   line-height: 24px;
+  /* Tab labels are filled from data-str after all scripts load. Without this,
+     empty tabs align on the box bottom edge while populated ones align on the
+     text baseline, so the row visibly jumps during loading. */
+  vertical-align: bottom;
 }
 
 #idViewTabs img {
