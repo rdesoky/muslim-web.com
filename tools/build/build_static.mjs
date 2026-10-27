@@ -1,5 +1,5 @@
 /**
- * build_static.ts — replaces the PHP runtime (index.php, sura/index.php, js_strings.php, filesver.php).
+ * build_static.mjs — replaces the PHP runtime (index.php, sura/index.php, js_strings.php, filesver.php).
  *
  * 1. Parses {ar,en}_strings.php $Str arrays into js_strings_ar.js / js_strings_en.js bundles
  *    (same output format as the old js_strings.php: `var _S, gStrings; _S = gStrings = {...}; var GS = ...`).
@@ -8,8 +8,9 @@
  * 3. Sets gBuildVer in the shells (used by the shells to load the language bundle).
  *
  * Run from the repository root:
- *   deno run --allow-read --allow-write tools/deno/build_static.ts
- *   (or: node tools/deno/build_static.ts)
+ *   node tools/build/build_static.mjs
+ *
+ * Plain Node.js (>= 18), no runtime dependencies.
  *
  * After this migration the *_strings.php files are deleted; the generated
  * js_strings_ar.js / js_strings_en.js bundles are the source of truth.
@@ -23,14 +24,12 @@ const root = process.cwd();
 const LANGS = ["ar", "en"];
 const HTML_SHELLS = ["index.html", "sura/index.html"];
 
-type StrEntry = string | Record<string, string>;
-
 // ---------------------------------------------------------------------------
 // PHP string parsing
 // ---------------------------------------------------------------------------
 
 /** Unescape a PHP double-quoted string literal body. */
-function phpUnescape(s: string): string {
+function phpUnescape(s) {
 	if (!s.startsWith("\\")) return s;
 	const ch = s[1];
 	switch (ch) {
@@ -45,7 +44,7 @@ function phpUnescape(s: string): string {
 }
 
 /** Read a double-quoted PHP string starting at src[i] (i must point at '"'). */
-function readPhpString(src: string, i: number): { value: string; end: number } {
+function readPhpString(src, i) {
 	i++; // skip opening quote
 	let value = "";
 	while (i < src.length) {
@@ -64,7 +63,7 @@ function readPhpString(src: string, i: number): { value: string; end: number } {
 	throw new Error("Unterminated PHP string literal");
 }
 
-function skipWs(src: string, i: number): number {
+function skipWs(src, i) {
 	while (i < src.length && /\s/.test(src[i])) i++;
 	return i;
 }
@@ -73,13 +72,13 @@ function skipWs(src: string, i: number): number {
  * Parse a PHP array literal body into a flat object (last-wins, like PHP).
  * Nested arrays (reciters, reciter_filters, sura_names) become objects.
  */
-function parsePhpArrayBody(src: string): Record<string, StrEntry> {
-	const out: Record<string, StrEntry> = {};
+function parsePhpArrayBody(src) {
+	const out = {};
 
-	type Frame = { container: Record<string, string> | null; key?: string };
-	const frames: Frame[] = [{ container: null }];
+	// frame: { container: object|null, key?: string }
+	const frames = [{ container: null }];
 
-	const attach = (f: Frame, key: string, value: StrEntry) => {
+	const attach = (f, key, value) => {
 		if (f.container === null) {
 			out[key] = value; // top level: last-wins like PHP
 		} else {
@@ -107,7 +106,7 @@ function parsePhpArrayBody(src: string): Record<string, StrEntry> {
 		}
 
 		if (ch === ")") {
-			const f = frames.pop()!;
+			const f = frames.pop();
 			if (frames.length === 0) throw new Error("Unbalanced PHP array");
 			const parent = frames[frames.length - 1];
 			if (f.container !== null) {
@@ -171,11 +170,11 @@ function parsePhpArrayBody(src: string): Record<string, StrEntry> {
 }
 
 /** Strip PHP open/close tags, parse `$Str = array( ... );`. */
-function parseStringsPhp(file: string): Record<string, StrEntry> {
+function parseStringsPhp(file) {
 	const src = readFileSync(file, "utf8");
 	const m = src.match(/\$Str\s*=\s*array\s*\(/);
 	if (!m) throw new Error(`${file}: $Str = array( not found`);
-	const start = m.index! + m[0].length;
+	const start = m.index + m[0].length;
 
 	// find the matching ")" — string and comment aware
 	let depth = 1;
@@ -211,23 +210,23 @@ function parseStringsPhp(file: string): Record<string, StrEntry> {
 // JS bundle emission (mirrors the old js_strings.php output)
 // ---------------------------------------------------------------------------
 
-function jsKey(key: string): string {
+function jsKey(key) {
 	const trimmed = key.trim();
 	return /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(trimmed)
 		? trimmed
 		: JSON.stringify(trimmed);
 }
 
-function emitValue(v: StrEntry, indent = ""): string {
+function emitValue(v, indent = "") {
 	if (typeof v === "string") return JSON.stringify(v);
-	const parts: string[] = [];
+	const parts = [];
 	for (const [k, val] of Object.entries(v)) {
 		parts.push(`${indent}\t${jsKey(k)}:${emitValue(val, indent + "\t")}`);
 	}
 	return `{\n${parts.join(",\n")}\n${indent}}`;
 }
 
-function emitBundle(str: Record<string, StrEntry>): string {
+function emitBundle(str) {
 	const body = emitValue(str);
 	return [
 		"var _S, gStrings;",
@@ -247,21 +246,21 @@ function emitBundle(str: Record<string, StrEntry>): string {
 // mtime version stamping (replaces filesver.php)
 // ---------------------------------------------------------------------------
 
-function fileDateFromMs(ms: number): string {
+function fileDateFromMs(ms) {
 	const d = new Date(ms);
-	const pad = (n: number) => String(n).padStart(2, "0");
+	const pad = (n) => String(n).padStart(2, "0");
 	return (
 		`${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}` +
-		`.` +
+		"." +
 		`${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`
 	);
 }
 
-function fileDate(p: string): string {
+function fileDate(p) {
 	return fileDateFromMs(statSync(p).mtimeMs);
 }
 
-function stampFileUrl(url: string, htmlDir: string): string {
+function stampFileUrl(url, htmlDir) {
 	if (/^(https?:)?\/\//.test(url)) return url;
 	if (url.startsWith("/cgi-bin/")) return url;
 	const bare = url.split("?")[0];
@@ -277,19 +276,19 @@ function stampFileUrl(url: string, htmlDir: string): string {
 	return `${bare}?v=${fileDate(abs)}`;
 }
 
-function stampHtml(htmlPath: string, buildVer: string): void {
+function stampHtml(htmlPath, buildVer) {
 	let html = readFileSync(htmlPath, "utf8");
 	const htmlDir = path.dirname(path.resolve(htmlPath));
 
 	html = html.replace(
 		/(href|src)="([^"]+)"/g,
-		(m, name: string, url: string) => `${name}="${stampFileUrl(url, htmlDir)}"`,
+		(m, name, url) => `${name}="${stampFileUrl(url, htmlDir)}"`,
 	);
 
 	// version the css/js URLs that appear inside JS string literals (e.g. ScriptLoader lists)
 	html = html.replace(
 		/(["'])((?:\.\.\/)*(?:css|js)\/[^"']+)\1/g,
-		(m, q: string, url: string) => `${q}${stampFileUrl(url, htmlDir)}${q}`,
+		(m, q, url) => `${q}${stampFileUrl(url, htmlDir)}${q}`,
 	);
 
 	if (!/(var |window\.)gBuildVer = "[^"]*";/.test(html)) {
@@ -309,9 +308,9 @@ function stampHtml(htmlPath: string, buildVer: string): void {
 // main
 // ---------------------------------------------------------------------------
 
-function main(): void {
+function main() {
 	// 1. strings → bundles
-	const keySets: Record<string, Set<string>> = {};
+	const keySets = {};
 
 	for (const lang of LANGS) {
 		const phpFile = path.join(root, `${lang}_strings.php`);
