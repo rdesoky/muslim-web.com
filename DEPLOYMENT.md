@@ -179,6 +179,33 @@ python -m http.server 8000 --directory _site
 # http://localhost:8000/sura/index.html
 ```
 
+To reproduce the project-site sub-path exactly (`…/muslim-web.com/`), mount `_site` one level
+deep and browse the sub-directory:
+
+```sh
+mkdir -p /tmp/preview && ln -s "$PWD/_site" /tmp/preview/muslim-web.com
+python -m http.server 8000 --directory /tmp/preview
+# http://localhost:8000/muslim-web.com/
+```
+
+### Asset URLs must be relative (no leading `/`)
+
+Project sites are served from `/<repo>/`, so a root-absolute URL such as `/hpages/001.jpg`
+resolves to `https://<user>.github.io/hpages/001.jpg` and 404s. Every asset path in the app is
+therefore built from a per-page relative-root global declared in the entry pages, and must
+**not** start with `/`:
+
+| Global | `index.html` | `sura/index.html` | Used for |
+| --- | --- | --- | --- |
+| `gImgHost` | `""` | `"../"` | `images/*.gif` |
+| `gPagesServer` | `""` | `"../"` | `hpages/*.jpg`, `pages/p*.gif` |
+| `gSuraTextHost` | `""` | `"../"` | `qtext/sura_NNN.html` |
+
+CSS is the exception: `url()` in a stylesheet resolves against the stylesheet, so
+`css/quran/*.css` uses `url(../../images/…)`, which is depth-independent. Absolute `/cgi-bin/*`
+strings are still safe because `js/quran/local_cgi.js` intercepts them before any request is
+made. When adding an asset reference, run the local sub-path preview above before deploying.
+
 ### Differences from the nginx/Apache deployment
 
 - No server-side redirects: the old `.php` URLs from step 5 above return 404 on Pages. Add
