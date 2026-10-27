@@ -245,7 +245,7 @@ var QViewer = {
       DU.addClass("LeftPage", "wait");
       _E("LeftPage").innerHTML =
         "<img id='LeftPageImage' class='pageImage' onload=\"DU.removeClass('LeftPage','wait')\" src=" +
-        gPagesServer +
+        gImgHost +
         "pages/p" +
         (nRightPage + 1).toStringEx(3) +
         ".gif />";
@@ -253,7 +253,7 @@ var QViewer = {
       DU.addClass("RightPage", "wait");
       _E("RightPage").innerHTML =
         "<img id='RightPageImage' class='pageImage' onload=\"DU.removeClass('RightPage','wait')\" src=" +
-        gPagesServer +
+        gImgHost +
         "pages/p" +
         nRightPage.toStringEx(3) +
         ".gif />";

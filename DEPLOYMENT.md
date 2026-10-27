@@ -197,9 +197,13 @@ therefore built from a per-page relative-root global declared in the entry pages
 
 | Global | `index.html` | `sura/index.html` | Used for |
 | --- | --- | --- | --- |
-| `gImgHost` | `""` | `"../"` | `images/*.gif` |
-| `gPagesServer` | `""` | `"../"` | `hpages/*.jpg`, `pages/p*.gif` |
+| `gImgHost` | `""` | `"../"` | all image assets: `images/*.gif`, `hpages/*.jpg`, `pages/p*.gif` |
 | `gSuraTextHost` | `""` | `"../"` | `qtext/sura_NNN.html` |
+
+`gImgHost` is the single site-root prefix for images — the viewer modules wrap it in `imgBase()`
+(`js/quran/JCQuranViewer.js`, `js/quran/JCSuraViewer.js`), so page images resolve as
+`imgBase() + "hpages/" + page + ".jpg"`. The former `gPagesServer` variable was removed; do not
+reintroduce a second prefix, and never hard-code `"/images/…"`.
 
 CSS is the exception: `url()` in a stylesheet resolves against the stylesheet, so
 `css/quran/*.css` uses `url(../../images/…)`, which is depth-independent. Absolute `/cgi-bin/*`
