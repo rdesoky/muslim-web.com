@@ -8,7 +8,7 @@ var gPageWidth = 264;
 var gPageHeight = 402;
 
 function imgBase() {
-  return gImgHost || "";
+  return appBase();
 }
 
 var vKeys = (vK = {
@@ -1366,15 +1366,7 @@ var TafPage = {
 
   getPageURL: function (sura, aya) {
     // if (this.isTafseer()) {
-    return (
-      gTafBase +
-      _E("SelTaf").value +
-      "/" +
-      sura.toStringEx(3) +
-      "/" +
-      aya.toStringEx(3) +
-      ".html"
-    );
+    return getTafseerPageURL(_E("SelTaf").value, sura, aya);
     // } else {
     //   //return( "http://www.reciter.org/" + _E("SelTaf").value + "/" + TafPage.sura.toStringEx(3) + TafPage.aya.toStringEx(3) + ".html" );
     //   return (
