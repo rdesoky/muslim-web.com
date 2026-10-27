@@ -8,6 +8,8 @@ qtext/*
 !qtext/sura_*.html
 .kilo
 .vstags
+_site/
+build/pages/
 pg_map_old/*.json
 .idea
 .history

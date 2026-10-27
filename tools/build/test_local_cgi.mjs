@@ -1,4 +1,7 @@
 // Headless smoke test for local_cgi.js endpoints using the generated data.
+//
+// Run from repo root:  node tools/build/test_local_cgi.mjs
+// Exits non-zero when a check fails (used by CI).
 import { readFileSync } from "node:fs";
 
 const tick = () => new Promise((r) => setTimeout(r, 4));
@@ -100,7 +103,7 @@ await (async () => {
   // 6. login/newuser disabled
   {
     window.__got = "";
-    await loadData("/cgi-bin/login.pl?user=x&password=y");
+    await loadData("/cgi-bin/login.pl?user=x&******");
     await tick();
     eq("login disabled success=0", /success="0"/.test(window.__got), true);
   }

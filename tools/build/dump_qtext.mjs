@@ -5,19 +5,21 @@
 // fetches the raw rendered page, extracts the <body> content, and writes a
 // clean, self-contained .html document for static serving.
 //
-// Run from repo root:  node tools/deno/dump_qtext.ts
-import { execSync } from "node:child_process";
+// Run from repo root:  node tools/build/dump_qtext.mjs
 import { writeFileSync } from "node:fs";
 
 const RAW_BASE = "http://quran.muslim-web.com/qtext/sura_";
 const OUT = "qtext";
+const TIMEOUT_MS = 20000;
 
-function fetchSura(n) {
+async function fetchSura(n) {
   const s = String(n).padStart(3, "0");
   const url = `${RAW_BASE}${s}.php`;
   let out;
   try {
-    out = execSync(`curl.exe -sS --max-time 20 "${url}"`, { encoding: "utf8" }).trim();
+    const res = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    out = (await res.text()).trim();
   } catch (e) {
     console.log(`FAIL ${s}: ${e.message}`);
     return;
@@ -40,4 +42,4 @@ function fetchSura(n) {
   console.log(`ok sura_${s} (${body.length} bytes)`);
 }
 
-for (let n = 1; n <= 114; n++) fetchSura(n);
+for (let n = 1; n <= 114; n++) await fetchSura(n);
