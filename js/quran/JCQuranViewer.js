@@ -921,7 +921,7 @@ var QViewer = {
     }
     var activeSide = this.pageSide(pageNum);
 
-    var folder = gHighResolution ? "/hpages/" : "/pages/p";
+    var folder = gHighResolution ? "hpages/" : "pages/p";
     var extention = gHighResolution ? ".jpg" : ".gif";
 
     var src =

@@ -246,7 +246,7 @@ var QViewer = {
       _E("LeftPage").innerHTML =
         "<img id='LeftPageImage' class='pageImage' onload=\"DU.removeClass('LeftPage','wait')\" src=" +
         gPagesServer +
-        "/pages/p" +
+        "pages/p" +
         (nRightPage + 1).toStringEx(3) +
         ".gif />";
       _E("LeftPageHeader").innerHTML = nRightPage + 1;
@@ -254,7 +254,7 @@ var QViewer = {
       _E("RightPage").innerHTML =
         "<img id='RightPageImage' class='pageImage' onload=\"DU.removeClass('RightPage','wait')\" src=" +
         gPagesServer +
-        "/pages/p" +
+        "pages/p" +
         nRightPage.toStringEx(3) +
         ".gif />";
       _E("RightPageHeader").innerHTML = nRightPage;
@@ -453,7 +453,7 @@ function initPage() {
 
   document.title = mytitle;
 
-  sura_page = "/qtext/sura_" + sura.toStringEx(3) + ".html";
+  sura_page = "qtext/sura_" + sura.toStringEx(3) + ".html";
 
   var urlInfo = window.location.href.split("?");
 
@@ -471,7 +471,7 @@ function initPage() {
   _E("SuraFrameContainer").innerHTML =
     "<div id='idSuraFrame'><img src='" +
     gImgHost +
-    "/images/wait.gif'>&nbsp;" +
+    "images/wait.gif'>&nbsp;" +
     _S.loading +
     "...</div>";
 
