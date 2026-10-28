@@ -342,6 +342,18 @@
 	background-image:none;
 	background:var(--bg-panel);
 }
+
+/* --- quran index sura cells ------------------------------------------- */
+
+[data-theme="dark"] .sura_cell {
+	border-color:#55616E #333E4A #333E4A #55616E;
+}
+[data-theme="dark"] .sura_cell.makki {
+	background:#1F2A33;
+}
+[data-theme="dark"] .sura_cell.madani {
+	background:#20262B;
+}
 [data-theme="dark"] #Footer { border-top-color:var(--border-soft); }
 [data-theme="dark"] #idFooter td,
 [data-theme="dark"] #FooterAdsPanel td { border-color:#333E4A #222a32 #222a32 #333E4A; }
