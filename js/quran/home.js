@@ -82,18 +82,6 @@ var HomePage = {
       QViewer.onGotoPage(_E("gPageSpin").getValue());
     };
 
-    _E("ZoomButton").onclick = function (e) {
-      setCookie("hr", gHighResolution ? "0" : "1");
-      QViewer.updateResolution();
-      Hover.hide();
-      QViewer.gotoPage();
-      PageLayout.update();
-      PageMap.refresh();
-      if (Mask.active) {
-        QViewer.cancelReviewMode(); //TODO: refresh mask instead of removing it
-      }
-    };
-
     _E("RightNavCell").onclick = function (e) {
       if (Mask.active) {
         Mask.decrement();
@@ -204,12 +192,7 @@ var HomePage = {
 var PageLayout = {
   update: function () {
     width = document.body.offsetWidth;
-    minWidth =
-      _E("idViewTabs").getSelectedTab() == "index"
-        ? 756
-        : gHighResolution
-        ? 1000
-        : 940;
+    minWidth = _E("idViewTabs").getSelectedTab() == "index" ? 756 : 1000;
     if (width < minWidth) {
       DU.hide("RightMenu");
     } else {

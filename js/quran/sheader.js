@@ -153,7 +153,7 @@ function showSelection(nStart, nEnd) {
     if (nStart == -1 || i < nStart || i > nEnd) {
       chNodes[i].style.backgroundColor = "";
     } else {
-      chNodes[i].style.backgroundColor = "yellow";
+      chNodes[i].style.backgroundColor = "var(--sel-bg)";
     }
   }
 }
@@ -246,17 +246,17 @@ var QViewer = {
       _E("LeftPage").innerHTML =
         "<img id='LeftPageImage' class='pageImage' onload=\"DU.removeClass('LeftPage','wait')\" src=" +
         appBase() +
-        "pages/p" +
+        "hpages/" +
         (nRightPage + 1).toStringEx(3) +
-        ".gif />";
+        ".jpg />";
       _E("LeftPageHeader").innerHTML = nRightPage + 1;
       DU.addClass("RightPage", "wait");
       _E("RightPage").innerHTML =
         "<img id='RightPageImage' class='pageImage' onload=\"DU.removeClass('RightPage','wait')\" src=" +
         appBase() +
-        "pages/p" +
+        "hpages/" +
         nRightPage.toStringEx(3) +
-        ".gif />";
+        ".jpg />";
       _E("RightPageHeader").innerHTML = nRightPage;
       this.rightPage = nRightPage;
     }
