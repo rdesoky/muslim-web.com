@@ -347,6 +347,7 @@
 [data-theme="dark"] #SuraFrameContainer { background:#1B2128; }
 [data-theme="dark"] #idSuraFrame p { color:var(--text-default); }
 [data-theme="dark"] #idSuraFrame p[aya] { border-color:#3A434F; }
+[data-theme="dark"] #idSuraFrame p[aya] { background:#20262E !important; }
 [data-theme="dark"] p[aya] span.ps { color:#E8B08C; }
 [data-theme="dark"] .basm { color:#E8B08C; }
 [data-theme="dark"] span[akey] { color:#E8B08C; border-color:var(--border-soft); }
