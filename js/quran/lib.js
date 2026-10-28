@@ -378,13 +378,14 @@ function appBase ()
 	return g_appBase;
 }
 
-// Tafseer (commentary) pages are mirrored under the app root as
-// <source>/<sura>/<sura+aya>.html, e.g. tafseer/KATHEER/002/002255.html.
+// Tafseer (commentary) and translation pages are served by the separate
+// tafseer.muslim-web.com site, which lays them out as <source>/<sura>/<aya>.html
+// with three-digit sura and aya, e.g. https://tafseer.muslim-web.com/KATHEER/002/255.html.
+var gTafseerBase = "https://tafseer.muslim-web.com/";
+
 function getTafseerPageURL (sSource, nSura, nAya)
 {
-	var sSura = toStringEx( nSura, 3 );
-
-	return appBase() + "tafseer/" + sSource + "/" + sSura + "/" + sSura + toStringEx( nAya, 3 ) + ".html";
+	return gTafseerBase + sSource + "/" + toStringEx( nSura, 3 ) + "/" + toStringEx( nAya, 3 ) + ".html";
 }
 
 function getBaseURL (sURL)
