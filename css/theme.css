@@ -137,6 +137,25 @@
 	background:#3A4754;
 }
 
+/* --- vertical index pane ---------------------------------------------- */
+
+[data-theme="dark"] #VerticalIndex {
+	background:var(--bg-panel);
+}
+[data-theme="dark"] .vIndexCell {
+	border-color:#55616E #333E4A #333E4A #55616E;
+	color:var(--text-default);
+	background:var(--bg-panel);
+}
+[data-theme="dark"] .vIndexCell:hover {
+	background:#232B34;
+}
+[data-theme="dark"] .vIndexCell.active {
+	border-color:#333E4A #55616E #55616E #333E4A;
+	background:#32404E;
+	color:var(--text-default);
+}
+
 /* --- announcement bar -------------------------------------------------- */
 
 [data-theme="dark"] .AnnouncementBar {
