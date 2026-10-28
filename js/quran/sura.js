@@ -659,7 +659,7 @@ function DrawSelection() {
   if (gStartSelection == -1) return;
 
   for (var i = gStartSelection; i <= gEndSelection; i++) {
-    gAya[i].style.backgroundColor = "#FFFFCC";
+    gAya[i].style.backgroundColor = "var(--sel-bg)";
   }
 }
 
