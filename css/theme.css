@@ -20,6 +20,7 @@
 	--border-soft:#c0c0c0;
 	--accent-green:#008000;
 	--accent-orange:#ffa500;
+	--sel-bg:#FFFFCC;
 }
 
 [data-theme="dark"] {
@@ -37,6 +38,7 @@
 	--border-soft:#333E4A;
 	--accent-green:#74D69C;
 	--accent-orange:#F0A35E;
+	--sel-bg:#3A4754;
 }
 
 /* --- base surfaces ----------------------------------------------------- */
@@ -347,7 +349,7 @@
 [data-theme="dark"] #SuraFrameContainer { background:#1B2128; }
 [data-theme="dark"] #idSuraFrame p { color:var(--text-default); }
 [data-theme="dark"] #idSuraFrame p[aya] { border-color:#3A434F; }
-[data-theme="dark"] #idSuraFrame p[aya] { background:#20262E !important; }
+[data-theme="dark"] #idSuraFrame p[aya] { background:#20262E; }
 [data-theme="dark"] p[aya] span.ps { color:#E8B08C; }
 [data-theme="dark"] .basm { color:#E8B08C; }
 [data-theme="dark"] span[akey] { color:#E8B08C; border-color:var(--border-soft); }
