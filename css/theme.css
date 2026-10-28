@@ -426,6 +426,18 @@
 	border-color:var(--border-strong);
 	border-style:solid;
 }
+[data-theme="dark"] #ProgressPanel {
+	background:var(--bg-panel);
+}
+[data-theme="dark"] #WaitingMsg {
+	color:var(--text-muted);
+}
+[data-theme="dark"] #ProgressBarPanel {
+	border-color:var(--border-strong);
+}
+[data-theme="dark"] #ProgressBar {
+	background:#3A4754;
+}
 [data-theme="dark"] #QuranIndex { border-color:#333E4A; }
 [data-theme="dark"] #QuranIndex span[sura] { color:#81B4F7; border-color:#55616E #333E4A #333E4A #55616E; }
 [data-theme="dark"] #QuranIndex span[sura]:hover { background:#2A323B; border-color:#333E4A #55616E #55616E #333E4A; }
