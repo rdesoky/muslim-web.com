@@ -164,6 +164,16 @@
 [data-theme="dark"] #TafNext:hover {
 	background:#262E37;
 }
+[data-theme="dark"] #TafAyaCell {
+	background:var(--bg-panel);
+	color:var(--text-default);
+	border:1px solid var(--border-soft);
+	border-radius:3px;
+	padding:0 3px;
+}
+[data-theme="dark"] .arrowBtn {
+	filter:brightness(0) invert(1);
+}
 
 /* --- menus ------------------------------------------------------------- */
 
