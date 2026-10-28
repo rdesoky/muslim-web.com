@@ -429,8 +429,11 @@
 [data-theme="dark"] #ProgressPanel {
 	background:var(--bg-panel);
 }
-[data-theme="dark"] #WaitingMsg {
+#WaitingMsg {
 	color:var(--text-muted);
+}
+[data-theme="dark"] #WaitingMsg {
+	color:var(--text-default);
 }
 [data-theme="dark"] #ProgressBarPanel {
 	border-color:var(--border-strong);
@@ -438,8 +441,11 @@
 [data-theme="dark"] #ProgressBar {
 	background:#3A4754;
 }
+[data-theme="dark"] #ProgressText {
+	color:var(--text-default);
+}
 .page_load_help {
-	color:#808080;
+	color:var(--text-muted);
 	padding-top:5px;
 }
 [data-theme="dark"] .page_load_help {
