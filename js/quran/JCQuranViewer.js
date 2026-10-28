@@ -761,7 +761,7 @@ var QViewer = {
   gotoPageText: function (pageNum) {
     var sura = QData.pagesInfo[pageNum - 1].s;
     //var aya  = QData.pagesInfo[nPage-1].a;
-    window.location.href = "sura/?s=" + sura + "&p=" + pageNum.toString();
+    window.location.href = "/sura/?s=" + sura + "&p=" + pageNum.toString();
   },
 
   gotoPage: function (pageNum, bReload) {
