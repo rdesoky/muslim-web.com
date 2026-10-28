@@ -8,7 +8,7 @@ var gRevMode = false,
   gRevStart = 0,
   gFirstRevAlert = true;
 var gFirstPage, gLastPage, gSuraNo;
-var gAya, gAyaKeys, gAyaMBtns, gPageBtns, gMenuBtns, gMenu;
+var gAya, gAyaKeys, gAyaMBtns, gPageBtns, gMenu;
 var gViewRoot;
 
 function initSura(eRoot) {
@@ -20,20 +20,10 @@ function initSura(eRoot) {
 
   gSuraNo = parseInt(U.param("s", "1"), 10);
   gAya = getElementsByAttribute(eRoot, "aya");
-  gMenuBtns = getElementsByAttribute(eRoot, "amenu");
   gAyaKeys = getElementsByAttribute(eRoot, "akey");
   gPageBtns = getElementsByAttribute(eRoot, "pageNo");
 
   var menu = (gMenu = createMenu(GetSuraMenu(), "MainMenu"));
-
-  for (var i = 0, len = gMenuBtns.length; i < len; i++) {
-    gMenuBtns[i].onclick = function (e) {
-      U.ieEvent(e).stopPropagation();
-      Tafseer.show(this.getAttribute("amenu"));
-      stopTimer("hAttach", menu);
-      menu.detach();
-    };
-  }
 
   for (var i = 0, len = gAya.length; i < len; i++) {
     gAya[i].onclick = onAyaClick;
@@ -65,9 +55,7 @@ function initSura(eRoot) {
 
   for (var i = 0, len = gAyaKeys.length; i < len; i++) {
     gAyaKeys[i].onclick = function (e) {
-      if (!gRevMode) {
-        showAyaImage(parseInt(this.getAttribute("akey"), 10));
-      }
+      Tafseer.show(this.getAttribute("akey"));
     };
   }
 
