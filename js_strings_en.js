@@ -374,7 +374,11 @@ _S = gStrings = {
 	register:"registration",
 	page_ctrl_help:"to turn pages use mouse wheel or keyboad movement keys",
 	ads:"Advertisements",
-	welcome:"Assalam Alykom"
+	welcome:"Assalam Alykom",
+	theme_title:"Theme",
+	theme_light:"Light",
+	theme_dark:"Dark",
+	theme_system:"System"
 };
 
 var GS = function(sID){

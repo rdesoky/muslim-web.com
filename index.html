@@ -11,19 +11,20 @@
 
 	<title data-str="page_title">Quran</title>
 
-	<link type="text/css" rel="StyleSheet" href="css/quran/base.css?v=20261027.072035" />
-	<link type="text/css" rel="StyleSheet" href="css/quran/index.css?v=20261027.072032" />
-	<link type="text/css" rel="StyleSheet" href="css/keyboard.css?v=20261026.222713" />
-	<link type="text/css" rel="StyleSheet" href="css/spin_edit.css?v=20261026.222713" />
-	<link type="text/css" rel="StyleSheet" href="css/quran/memorizer.css?v=20261027.072303" />
-	<link type="text/css" rel="stylesheet" href="css/menu.css?v=20261026.222713" />
-	<link type="text/css" rel="stylesheet" href="css/chelp.css?v=20261026.222713" />
+	<link type="text/css" rel="StyleSheet" href="css/quran/base.css?v=20261027.180923" />
+	<link type="text/css" rel="StyleSheet" href="css/quran/index.css?v=20261027.180923" />
+	<link type="text/css" rel="StyleSheet" href="css/keyboard.css?v=20261027.180923" />
+	<link type="text/css" rel="StyleSheet" href="css/spin_edit.css?v=20261027.180923" />
+	<link type="text/css" rel="StyleSheet" href="css/quran/memorizer.css?v=20261027.180923" />
+	<link type="text/css" rel="stylesheet" href="css/menu.css?v=20261027.180923" />
+	<link type="text/css" rel="stylesheet" href="css/chelp.css?v=20261027.180923" />
+	<link type="text/css" rel="stylesheet" href="css/theme.css?v=20261027.192250" />
 
-	<script type="text/javascript" src="js/common/ScriptLoader.js?v=20261026.222716"></script>
+	<script type="text/javascript" src="js/common/ScriptLoader.js?v=20261027.180924"></script>
 
 	<script type="text/javascript">
 		// bootstrap: resolve language before any other script runs
-		window.gBuildVer = "20261026.222716";
+		window.gBuildVer = "20261027.181403";
 		(function () {
 			var lang = "";
 			var qm = window.location.search.match(/[?&]lang=(ar|en)/i);
@@ -54,38 +55,58 @@
 	</script>
 
 	<script type="text/javascript">
+		// theme bootstrap: apply saved/effective theme before first paint
+		(function () {
+			var KEY = "theme";
+			function getCookie(name) {
+				var m = ("; " + document.cookie).split("; " + name + "=");
+				return m.length === 2 ? m[1].split(";")[0] : "";
+			}
+			function resolve(pref) {
+				if (pref !== "dark" && pref !== "light" && pref !== "system") pref = "system";
+				if (pref === "system") {
+					pref = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+						? "dark" : "light";
+				}
+				return pref;
+			}
+			document.documentElement.setAttribute("data-theme", resolve(getCookie(KEY)));
+		})();
+	</script>
+
+	<script type="text/javascript">
 		var PgMapBase = "/cgi-bin/",
 			JSLoaderBase = "/cgi-bin/",
 			CGIBase = "/cgi-bin/";
 
 		window.onload = function () {
 			ScriptLoader.loadScripts({
-				QuranTextData: "js/quran/qtext_data.js?v=20261026.223246",
-				MemApp: "js/quran/exercise.js?v=20261027.072019",
-				AudioPlayer: "js/quran/AudioPlayer.js?v=20261027.072016",
-				Utils: "js/common/utils.js?v=20261026.222716",
-				DefineJClass: "js/common/jclass.js?v=20261026.222716",
-				QData: "js/quran/qdata.js?v=20261026.222716",
-				RecitersInfo: "js/quran/audio_data.js?v=20261026.222716",
-				uncompressMem: "js/quran/lib.js?v=20261026.231944",
-				GetSaveURL: "js/quran/qlib.js?v=20261026.231333",
-				addAya: "js/quran/tlib.js?v=20261026.222716",
-				GetData: "js/quran/xml_loader.js?v=20261026.222716",
+				QuranTextData: "js/quran/qtext_data.js?v=20261027.180923",
+				MemApp: "js/quran/exercise.js?v=20261027.180924",
+				AudioPlayer: "js/quran/AudioPlayer.js?v=20261027.180924",
+				Utils: "js/common/utils.js?v=20261027.180924",
+				DefineJClass: "js/common/jclass.js?v=20261027.180924",
+				QData: "js/quran/qdata.js?v=20261027.180923",
+				RecitersInfo: "js/quran/audio_data.js?v=20261027.180924",
+				uncompressMem: "js/quran/lib.js?v=20261027.180923",
+				GetSaveURL: "js/quran/qlib.js?v=20261027.180923",
+				addAya: "js/quran/tlib.js?v=20261027.180924",
+				GetData: "js/quran/xml_loader.js?v=20261027.180924",
 
-				JCSpinEdit: "js/common/JCSpinEdit.js?v=20261026.222716",
-				PageMap: "js/quran/PageMap.js?v=20261026.222716",
-				JCQuranViewer: "js/quran/JCQuranViewer.js?v=20261026.232000",
-				JCSuraCell: "js/quran/JCSuraCell.js?v=20261026.222716",
-				JCToggler: "js/common/JCShowHideSwitcher.js?v=20261026.222716",
-				JCSuraViewer: "js/quran/JCSuraViewer.js?v=20261026.231347",
-				JCKeyboard: "js/common/JCKeyboard.js?v=20261026.222716",
-				JCTabs: "js/common/JCTabs.js?v=20261026.222716",
-				JCSettings: "js/common/JCSettings.js?v=20261026.222716",
-				createMenu: "js/quran/menu.js?v=20261026.222716",
+				JCSpinEdit: "js/common/JCSpinEdit.js?v=20261027.180924",
+				PageMap: "js/quran/PageMap.js?v=20261027.180924",
+				JCQuranViewer: "js/quran/JCQuranViewer.js?v=20261027.180924",
+				JCSuraCell: "js/quran/JCSuraCell.js?v=20261027.180924",
+				JCToggler: "js/common/JCShowHideSwitcher.js?v=20261027.180924",
+				JCSuraViewer: "js/quran/JCSuraViewer.js?v=20261027.180924",
+				JCKeyboard: "js/common/JCKeyboard.js?v=20261027.180924",
+				JCTabs: "js/common/JCTabs.js?v=20261027.180924",
+				JCSettings: "js/common/JCSettings.js?v=20261027.180924",
+				createMenu: "js/quran/menu.js?v=20261027.180923",
 
-				HomePage: "js/quran/home.js?v=20261026.222716",
-				QSearch: "js/quran/qsearch.js?v=20261026.222716",
-				LocalCGI: "js/quran/local_cgi.js?v=20261026.222716"
+				HomePage: "js/quran/home.js?v=20261027.180924",
+				QSearch: "js/quran/qsearch.js?v=20261027.180923",
+				LocalCGI: "js/quran/local_cgi.js?v=20261027.180923"
 			},
 				function () {
 					Utils.setupCrossBrowser();
@@ -147,6 +168,11 @@
 
 <body lang="ar" class="xhelp_on">
 	<div id="LangSwitcher" class="href" onclick="SwitchLang(gLang)"></div>
+
+	<div id="ThemeSwitcherHost">
+		<span id="ThemeSwitcher" class="theme_switcher" role="button" tabindex="0"
+			aria-label="Theme"><span id="ThemeSwitcherVal">◐</span></span>
+	</div>
 
 	<div id="GooglePlayBadge">
 		<a href="https://play.google.com/store/apps/details?id=com.muslim_web.quran" target="_blank"><img id="GooglePlay"
@@ -377,7 +403,7 @@
 						</div>
 					</div>
 
-					<div style="color:gray;padding-top:5px" data-str="page_load_help"></div>
+					<div class="page_load_help" data-str="page_load_help"></div>
 				</div>
 			</div>
 		</div>
@@ -626,6 +652,7 @@
 		</div>
 	</div>
 
+	<script type="text/javascript" src="js/common/theme.js?v=20261027.181357"></script>
 </body>
 
 </html>
