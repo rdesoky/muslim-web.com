@@ -324,6 +324,7 @@
 [data-theme="dark"] .sura_bar_chart span:hover { background:#33414E; }
 [data-theme="dark"] .pageNavigator:hover { background:#33414E; }
 [data-theme="dark"] .pageButton { border-color:#222a32 #4A5563 #4A5563 #222a32; }
+[data-theme="dark"] span[pageNo]:hover { background:#33414E; }
 [data-theme="dark"] .upBtn:hover,
 [data-theme="dark"] .dnBtn:hover { background-color:#33414E; }
 
