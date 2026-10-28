@@ -111,18 +111,49 @@
 
 /* --- tabs -------------------------------------------------------------- */
 
-[data-theme="dark"] *[tid] {
+[data-theme="dark"] *[tid],
+[data-theme="dark"] #idViewTabs *[tid],
+[data-theme="dark"] #idSelectVerticalIndex span[tid] {
 	border-color:#55616E #333E4A #333E4A #55616E;
 	color:var(--text-default);
-	background:transparent;
+	background:var(--bg-panel);
 }
 [data-theme="dark"] *[tid].sel,
-[data-theme="dark"] *[tid].sel:hover {
-	background:#2A323B;
+[data-theme="dark"] *[tid].sel:hover,
+[data-theme="dark"] #idViewTabs *[tid].sel,
+[data-theme="dark"] #idViewTabs *[tid].sel:hover,
+[data-theme="dark"] #SearchTabs *[tid].sel,
+[data-theme="dark"] #SearchTabs *[tid].sel:hover {
+	background:#32404E;
 	border-color:#333E4A #55616E #55616E #333E4A;
 }
-[data-theme="dark"] *[tid]:hover {
+[data-theme="dark"] *[tid]:hover,
+[data-theme="dark"] #idViewTabs *[tid]:hover,
+[data-theme="dark"] #idSelectVerticalIndex span[tid]:hover {
 	background:#232B34;
+	cursor:pointer;
+}
+[data-theme="dark"] #SearchTabs *[tid]:hover {
+	background:#3A4754;
+}
+
+/* --- announcement bar -------------------------------------------------- */
+
+[data-theme="dark"] .AnnouncementBar {
+	background:#2C2A20;
+	color:var(--text-default);
+	border-bottom:1px solid var(--border-soft);
+}
+[data-theme="dark"] .AnnouncementBar a {
+	color:#F0C060;
+}
+
+/* --- tafseer panel ----------------------------------------------------- */
+
+[data-theme="dark"] #TafFrame select {
+	background:var(--bg-panel);
+	color:var(--text-default);
+	border-color:var(--border-soft);
 }
 
 /* --- menus ------------------------------------------------------------- */
