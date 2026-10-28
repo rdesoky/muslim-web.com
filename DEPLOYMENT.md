@@ -91,7 +91,7 @@ and serves the following locally:
 | `get_sura_text.pl` | range text/copy from `QuranTextData` |
 | `search.pl` | substring search over normalized plain text (XML response) |
 | `js_get_html.pl?/qtext/sura_NNN.html` | static qtext page body |
-| `getimg.pl?/hpages/NNN.jpg` | direct static image (`/hpages/NNN.jpg`, `/pages/pNNN.gif`) |
+| `getimg.pl?/hpages/NNN.jpg` | direct static image (`/hpages/NNN.jpg`) |
 | `js_load.pl` / `js_load_utf8.pl` | bypassed — data is produced in-page |
 | `login.pl` / `newuser.pl` / `loadmem.pl` / `savemem.pl` | disabled stub (members migrate to Firebase) |
 | `recite.pl` | range played through the mp3 `AudioPlayer` |
