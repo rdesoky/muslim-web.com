@@ -349,10 +349,10 @@
 	border-color:#55616E #333E4A #333E4A #55616E;
 }
 [data-theme="dark"] .sura_cell.makki {
-	background:#1F2A33;
+	background:#29424E;
 }
 [data-theme="dark"] .sura_cell.madani {
-	background:#20262B;
+	background:#1E1B16;
 }
 [data-theme="dark"] #Footer { border-top-color:var(--border-soft); }
 [data-theme="dark"] #idFooter td,
