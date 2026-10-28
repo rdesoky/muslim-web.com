@@ -739,7 +739,7 @@ var ISura = {
 
   openText: function (suraNum) {
     if (suraNum >= 1 && suraNum <= 114) {
-      window.location.href = "sura/?s=" + suraNum;
+      window.location.href = "/sura/?s=" + suraNum;
     }
   },
 };
