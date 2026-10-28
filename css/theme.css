@@ -1,0 +1,358 @@
+/* Theme system: light (default) and dark. The resolved theme lives on
+ * <html data-theme="light|dark">, set before first paint by the inline
+ * bootstrap in each HTML shell and kept in sync by js/common/theme.js.
+ * "system" preference resolves to the OS setting at runtime.
+ */
+
+:root {
+	/* light */
+	color-scheme: light;
+	--bg-body:#ffffff;
+	--bg-panel:#ffffff;
+	--bg-subtle:#F0F0F0;
+	--bg-hover:#CFE6A6;
+	--bg-menu:#D4DBD2;
+	--text-default:#000000;
+	--text-muted:#555555;
+	--text-link:#003399;
+	--text-link-hover:#800000;
+	--border-strong:#808080;
+	--border-soft:#c0c0c0;
+	--accent-green:#008000;
+	--accent-orange:#ffa500;
+}
+
+[data-theme="dark"] {
+	color-scheme: dark;
+	--bg-body:#14181D;
+	--bg-panel:#1B2128;
+	--bg-subtle:#232B34;
+	--bg-hover:#33414E;
+	--bg-menu:#20262E;
+	--text-default:#E3E8ED;
+	--text-muted:#9AA6B3;
+	--text-link:#81B4F7;
+	--text-link-hover:#F0AB78;
+	--border-strong:#55616E;
+	--border-soft:#333E4A;
+	--accent-green:#74D69C;
+	--accent-orange:#F0A35E;
+}
+
+/* --- base surfaces ----------------------------------------------------- */
+
+[data-theme="dark"] html,
+[data-theme="dark"] body {
+	background:var(--bg-body);
+	color:var(--text-default);
+}
+
+[data-theme="dark"] A:link,
+[data-theme="dark"] .href {
+	color:var(--text-link);
+}
+[data-theme="dark"] A:visited {
+	color:var(--text-link);
+}
+[data-theme="dark"] A:hover,
+[data-theme="dark"] .href:hover {
+	color:var(--text-link-hover);
+}
+
+[data-theme="dark"] select {
+	background:#14181D;
+	color:var(--text-default);
+	border-color:var(--border-soft);
+}
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="password"],
+[data-theme="dark"] input[type="edit"],
+[data-theme="dark"] textarea {
+	background:#14181D;
+	color:var(--text-default);
+	border-color:var(--border-soft);
+}
+
+[data-theme="dark"] .silver_bg { background:#3E4854; }
+[data-theme="dark"] .gray_bg { background:#4A5563; }
+[data-theme="dark"] .white_bg { background:var(--bg-panel); }
+[data-theme="dark"] .box { border-color:var(--border-strong); }
+
+/* --- buttons ----------------------------------------------------------- */
+
+[data-theme="dark"] .button {
+	background:#2A323B;
+	border-color:#55616E #222a32 #222a32 #55616E;
+	color:var(--text-default);
+}
+[data-theme="dark"] .button:hover {
+	background:#34404C;
+	border-color:#222a32 #55616E #55616E #222a32;
+}
+
+[data-theme="dark"] .btn {
+	color:#9FACB9;
+	border-color:#9FACB9;
+}
+[data-theme="dark"] .btn:hover {
+	background-color:#33414E;
+}
+[data-theme="dark"] .playBtn.res {
+	color:var(--accent-green);
+	border-color:var(--accent-green);
+}
+[data-theme="dark"] .paused .playBtn {
+	color:#14181D;
+	background-color:#9FACB9;
+}
+
+[data-theme="dark"] .btnSearch { background:#2A323B; }
+[data-theme="dark"] .btnSearch:hover { background:#38444F; }
+
+/* --- tabs -------------------------------------------------------------- */
+
+[data-theme="dark"] *[tid] {
+	border-color:#55616E #333E4A #333E4A #55616E;
+	color:var(--text-default);
+	background:transparent;
+}
+[data-theme="dark"] *[tid].sel,
+[data-theme="dark"] *[tid].sel:hover {
+	background:#2A323B;
+	border-color:#333E4A #55616E #55616E #333E4A;
+}
+[data-theme="dark"] *[tid]:hover {
+	background:#232B34;
+}
+
+/* --- menus ------------------------------------------------------------- */
+
+[data-theme="dark"] .aMenu {
+	background:#20262E;
+	border-color:#55616E #171b20 #171b20 #55616E;
+}
+[data-theme="dark"] .mhover {
+	background:#3A4754;
+	color:var(--text-default);
+}
+[data-theme="dark"] .menu_item {
+	background:#262E37;
+	color:#A9C6F2;
+	border-bottom-color:#14181D;
+}
+[data-theme="dark"] .menu_item:hover {
+	background:#33414E;
+}
+[data-theme="dark"] .sMenu {
+	background:var(--bg-panel);
+	border-color:var(--border-strong);
+}
+
+[data-theme="dark"] .checkTitle:hover {
+	background-color:#263039;
+}
+[data-theme="dark"] .arrowBtn:hover {
+	background-color:#3E4854;
+}
+
+/* --- popups / helpers -------------------------------------------------- */
+
+[data-theme="dark"] .popupClient {
+	background:var(--bg-panel);
+}
+[data-theme="dark"] #HelpFrame {
+	background:var(--bg-panel);
+}
+[data-theme="dark"] #HelpBox {
+	background:#2B2720;
+	border-color:var(--border-strong);
+}
+[data-theme="dark"] #TafseerData {
+	background:#211F19;
+	color:var(--text-default);
+}
+[data-theme="dark"] .memChart {
+	background:#2B2720;
+	color:var(--text-default);
+}
+[data-theme="dark"] .fake_combobox {
+	border-color:var(--border-soft);
+}
+[data-theme="dark"] .fake_combobox:hover {
+	background-color:#263039;
+	border-color:var(--border-strong);
+}
+
+/* --- main app page (index.html) ---------------------------------------- */
+
+[data-theme="dark"] #SuraBar,
+[data-theme="dark"] .sub_ctrl_bar {
+	background:var(--bg-panel);
+	border-bottom-color:#332E24;
+}
+[data-theme="dark"] #AudioControls {
+	background:var(--bg-panel);
+	border-color:var(--border-soft);
+}
+[data-theme="dark"] .focus {
+	background:#252D1F;
+}
+[data-theme="dark"] #SearchResultsRoot {
+	background:var(--bg-panel);
+	border-color:var(--border-strong);
+}
+[data-theme="dark"] #TafText {
+	background:#211F19;
+	color:var(--text-default);
+}
+[data-theme="dark"] .result_item:hover {
+	color:#14181D;
+	background:#9FACB9;
+}
+[data-theme="dark"] #SelectionViewer .fake_combobox {
+	background-color:#263039;
+}
+[data-theme="dark"] #VerseMask .map_item {
+	background-color:#4A5563;
+	border-bottom-color:var(--border-soft);
+}
+[data-theme="dark"] #idPageViews .pageViewFrame,
+[data-theme="dark"] #idPageViews div[side="1"].pageViewFrame {
+	background-image:none;
+	background-color:#1B2128;
+}
+[data-theme="dark"] #idPageViews.hres .pageViewFrame {
+	background-image:none;
+}
+[data-theme="dark"] #idPageViews .pageViewFrame.mask,
+[data-theme="dark"] #idPageViews.hres .pageViewFrame.mask,
+[data-theme="dark"] #idPageViews.hres div[side="1"].pageViewFrame.mask {
+	background:#2C3540;
+}
+[data-theme="dark"] .mem_chart *[state="no"] { background:#39434E; }
+[data-theme="dark"] .mem_chart *[state="no"]:hover { background:#4A5563; }
+[data-theme="dark"] .mem_chart *[state="yes"] { background:#4E6E52; }
+[data-theme="dark"] .mem_chart *[state="yes"]:hover { background:var(--accent-green); }
+[data-theme="dark"] .mem_chart *[state="pnd"] { background:#8A6234; }
+[data-theme="dark"] .mem_chart *[state="pnd"]:hover { background:var(--accent-orange); }
+
+[data-theme="dark"] .sresults_scroller { background:#2A323B; }
+[data-theme="dark"] .sresults_scroller:hover { background:#3E4854; }
+[data-theme="dark"] .sresultsTopOffset { background:#3E4854; }
+[data-theme="dark"] .sresultsTopOffset:hover,
+[data-theme="dark"] .sresultsBottomOffset:hover { background:#4A5563; }
+[data-theme="dark"] .scrollButton:hover { background:#4A5563; }
+[data-theme="dark"] .tabRemoveBtn:hover { background:#7A3B3B; }
+[data-theme="dark"] .sura_bar_chart span:hover { background:#33414E; }
+[data-theme="dark"] .pageNavigator:hover { background:#33414E; }
+[data-theme="dark"] .pageButton { border-color:#222a32 #4A5563 #4A5563 #222a32; }
+[data-theme="dark"] .upBtn:hover,
+[data-theme="dark"] .dnBtn:hover { background-color:#33414E; }
+
+[data-theme="dark"] #RepeatCounter { color:var(--accent-green); }
+[data-theme="dark"] #PrayRequest { color:var(--accent-green); }
+[data-theme="dark"] #MemReport .full_mem { color:var(--accent-green); }
+[data-theme="dark"] #MemReport .full_mem:hover { background:var(--accent-green); color:#14181D; }
+[data-theme="dark"] #MemReport .part_mem:hover { background:var(--accent-orange); }
+[data-theme="dark"] #idKoboolAd [style] { color:var(--text-default) !important; }
+
+[data-theme="dark"] #Footer { border-top-color:var(--border-soft); }
+[data-theme="dark"] #idFooter td,
+[data-theme="dark"] #FooterAdsPanel td { border-color:#333E4A #222a32 #222a32 #333E4A; }
+[data-theme="dark"] .imposed { border-color:#55616E #333E4A #333E4A #55616E; }
+[data-theme="dark"] .mem_report_line { border-top-color:var(--bg-panel); border-bottom-color:var(--border-soft); }
+
+/* --- sura page (sura/index.html + injected qtext) ----------------------- */
+
+[data-theme="dark"] #SuraFrameContainer { background:#1B2128; }
+[data-theme="dark"] #idSuraFrame p { color:var(--text-default); }
+[data-theme="dark"] #idSuraFrame p[aya] { border-color:#3A434F; }
+[data-theme="dark"] p[aya] span.ps { color:#E8B08C; }
+[data-theme="dark"] .basm { color:#E8B08C; }
+[data-theme="dark"] span[akey] { color:#E8B08C; border-color:var(--border-soft); }
+[data-theme="dark"] span[akey]:hover { background:#33414E; border-color:var(--border-strong); }
+[data-theme="dark"] .ayaBtn { color:#E8B08C; border-color:#3A434F; }
+[data-theme="dark"] .SuraTitle { color:var(--text-muted); }
+[data-theme="dark"] .SuraCell { color:#A9C6F2; }
+[data-theme="dark"] .commandcell { color:var(--text-muted); border-color:#4A5563 #222a32 #222a32 #4A5563; }
+[data-theme="dark"] .tafseerView { background:#2B2720; color:var(--text-default); border-color:#222a32 #4A5563 #4A5563 #222a32; }
+[data-theme="dark"] #idContextMenu { background:#2B2720; color:var(--text-default); border-color:#333E4A #55616E #55616E #333E4A; }
+[data-theme="dark"] #idMenuFrame { background:#262E37; border-color:#222a32 #4A5563 #4A5563 #222a32; }
+[data-theme="dark"] .listItem { background:#262E37; color:#A9C6F2; border-color:#55616E #333E4A #333E4A #55616E; }
+[data-theme="dark"] .suraLink { color:#A9C6F2; border-bottom-color:var(--border-soft); }
+[data-theme="dark"] .suraLink:hover { background:#262E37; }
+[data-theme="dark"] .home_link { color:#A9C6F2; }
+
+[data-theme="dark"] .line_chart { background:#2B2720; }
+[data-theme="dark"] #idAyaPreview { background:#2B2720; color:var(--text-default); border-color:#2A323B #4A5563 #4A5563 #2A323B; }
+[data-theme="dark"] #idPagesChart span { border-color:#55616E #333E4A #333E4A #55616E; }
+[data-theme="dark"] #idPagesChart span:hover { background:#232B34; }
+[data-theme="dark"] #idMemChart span[state="mem"] { color:var(--accent-green); }
+[data-theme="dark"] #idMemChart span[state="bnd"] { color:var(--accent-orange); }
+
+/* --- legacy alternate pages --------------------------------------------- */
+
+[data-theme="dark"] #Header { background-color:var(--bg-panel); background-image:none; }
+[data-theme="dark"] #QuranIndex { border-color:#333E4A; }
+[data-theme="dark"] #QuranIndex span[sura] { color:#81B4F7; border-color:#55616E #333E4A #333E4A #55616E; }
+[data-theme="dark"] #QuranIndex span[sura]:hover { background:#2A323B; border-color:#333E4A #55616E #55616E #333E4A; }
+[data-theme="dark"] #QuranIndex span[madani] { color:var(--accent-green); }
+[data-theme="dark"] #QuranIndex span[buttons] { background:#2A323B; border-color:#333E4A #55616E #55616E #333E4A; }
+[data-theme="dark"] .toolbar_button { background:#2D3A2B; color:#A9C6F2; border-color:#222a32 #333E4A #333E4A #222a32; }
+
+/* --- keyboard ----------------------------------------------------------- */
+
+[data-theme="dark"] .keyboard { border-color:var(--border-soft); }
+[data-theme="dark"] .keyButton { background:#2A323B; border-color:#55616E #333E4A #333E4A #55616E; color:var(--text-default); }
+[data-theme="dark"] .keyButton:hover { background:#4A4230; }
+[data-theme="dark"] .keyPressedButton { background:#38444F; border-color:#333E4A #55616E #55616E #333E4A; color:var(--text-default); }
+
+/* --- memorizer / spin edit ---------------------------------------------- */
+
+[data-theme="dark"] .gradientV { background:#262E37; }
+[data-theme="dark"] #idAnswer { color:#7FB2FF; }
+[data-theme="dark"] .small_title { color:var(--text-default); }
+[data-theme="dark"] .aya_title, [data-theme="dark"] .aya_title a, [data-theme="dark"] .aya_title span { color:#E8B08C; }
+[data-theme="dark"] .counter { color:#E57A7A; }
+[data-theme="dark"] #FooterFrame { border-color:#3A434F; }
+
+[data-theme="dark"] *[mClass="JCSpinEdit"] { border-color:#7F9DB9; }
+[data-theme="dark"] *[mClass="JCSpinEdit"] table td input[type="text"] { background:#14181D; color:var(--text-default); }
+
+/* --- theme toggle control ------------------------------------------------ */
+
+.theme_switcher {
+	display:inline-block;
+	padding:1px 6px;
+	border:solid 1px;
+	border-color:white gray gray white;
+	background:#EFEFE7;
+	color:#000;
+	cursor:pointer;
+	font-weight:bold;
+	white-space:nowrap;
+	vertical-align:top;
+}
+.theme_switcher:hover {
+	background:#CFE6A6;
+}
+[data-theme="dark"] .theme_switcher {
+	background:#232B34;
+	border-color:#55616E #222a32 #222a32 #55616E;
+	color:var(--text-default);
+}
+[data-theme="dark"] .theme_switcher:hover {
+	background:#33414E;
+}
+
+#ThemeSwitcherHost #ThemeSwitcher {
+	position:absolute;
+	top:3px;
+	z-index:10;
+}
+*:lang(ar) #ThemeSwitcherHost #ThemeSwitcher {
+	left:52px;
+}
+*:lang(en) #ThemeSwitcherHost #ThemeSwitcher {
+	right:52px;
+}

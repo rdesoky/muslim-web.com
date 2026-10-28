@@ -6,15 +6,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=8" />
 		<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title data-str="holy_quran">Quran</title>
-		<link type="text/css" rel="stylesheet" href="../css/quran/sheader.css?v=20261026.222713"/>
-		<link type="text/css" rel="stylesheet" href="../css/quran/base.css?v=20261027.072035"/>
-		<link type="text/css" rel="stylesheet" href="../css/quran/sura.css?v=20261026.222713"/>
-		<link type="text/css" rel="stylesheet" href="../css/menu.css?v=20261026.222713"/>
-		<script type="text/javascript" src="../js/common/ScriptLoader.js?v=20261026.222716"></script>
+		<link type="text/css" rel="stylesheet" href="../css/quran/sheader.css?v=20261027.180923"/>
+		<link type="text/css" rel="stylesheet" href="../css/quran/base.css?v=20261027.180923"/>
+		<link type="text/css" rel="stylesheet" href="../css/quran/sura.css?v=20261027.180923"/>
+		<link type="text/css" rel="stylesheet" href="../css/menu.css?v=20261027.180923"/>
+		<link type="text/css" rel="stylesheet" href="../css/theme.css?v=20261027.181357"/>
+		<script type="text/javascript" src="../js/common/ScriptLoader.js?v=20261027.180924"></script>
 
 		<script type="text/javascript">
 			// bootstrap: resolve language before any other script runs
-			window.gBuildVer = "20261026.222716";
+			window.gBuildVer = "20261027.181403";
 			(function () {
 				var lang = "";
 				var qm = window.location.search.match(/[?&]lang=(ar|en)/i);
@@ -45,6 +46,26 @@
 		</script>
 
 		<script type="text/javascript">
+			// theme bootstrap: apply saved/effective theme before first paint
+			(function () {
+				var KEY = "theme";
+				function getCookie(name) {
+					var m = ("; " + document.cookie).split("; " + name + "=");
+					return m.length === 2 ? m[1].split(";")[0] : "";
+				}
+				function resolve(pref) {
+					if (pref !== "dark" && pref !== "light" && pref !== "system") pref = "system";
+					if (pref === "system") {
+						pref = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+							? "dark" : "light";
+					}
+					return pref;
+				}
+				document.documentElement.setAttribute("data-theme", resolve(getCookie(KEY)));
+			})();
+		</script>
+
+		<script type="text/javascript">
 
 			var JSLoaderBase = "/cgi-bin/",
 			CGIBase = "/cgi-bin/";
@@ -52,20 +73,20 @@
 			window.onload=function()
 			{
 ScriptLoader.loadScripts ( {
-						QuranTextData:			"../js/quran/qtext_data.js?v=20261026.223246",
-						DefineJClass:			"../js/common/jclass.js?v=20261026.222716",
-						Utils:					"../js/common/utils.js?v=20261026.222716",
-						addAya:					"../js/quran/tlib.js?v=20261026.222716",
-						uncompressMem:			"../js/quran/lib.js?v=20261026.231944",
-						GetSaveURL:				"../js/quran/qlib.js?v=20261026.231333",
-						QData:					"../js/quran/qdata.js?v=20261026.222716",
-						RecitersInfo:			"../js/quran/audio_data.js?v=20261026.222716",
-						JCQuranViewer:			"../js/quran/JCQuranViewer.js?v=20261026.232000",
-						DisplaySuraHeaderInfo:	"../js/quran/sheader.js?v=20261026.231952",
-						initSura:				"../js/quran/sura.js?v=20261026.231337",
-						createMenu:				"../js/quran/menu.js?v=20261026.222716",
-						JCSettings:				"../js/common/JCSettings.js?v=20261026.222716",
-						LocalCGI:				"../js/quran/local_cgi.js?v=20261026.222716"
+						QuranTextData:			"../js/quran/qtext_data.js?v=20261027.180923",
+						DefineJClass:			"../js/common/jclass.js?v=20261027.180924",
+						Utils:					"../js/common/utils.js?v=20261027.180924",
+						addAya:					"../js/quran/tlib.js?v=20261027.180924",
+						uncompressMem:			"../js/quran/lib.js?v=20261027.180923",
+						GetSaveURL:				"../js/quran/qlib.js?v=20261027.180923",
+						QData:					"../js/quran/qdata.js?v=20261027.180923",
+						RecitersInfo:			"../js/quran/audio_data.js?v=20261027.180924",
+						JCQuranViewer:			"../js/quran/JCQuranViewer.js?v=20261027.180924",
+						DisplaySuraHeaderInfo:	"../js/quran/sheader.js?v=20261027.180924",
+						initSura:				"../js/quran/sura.js?v=20261027.180924",
+						createMenu:				"../js/quran/menu.js?v=20261027.180923",
+						JCSettings:				"../js/common/JCSettings.js?v=20261027.180924",
+						LocalCGI:				"../js/quran/local_cgi.js?v=20261027.180923"
 					},function(){
 						populateStrings();
 						initHeader();
@@ -110,6 +131,10 @@ ScriptLoader.loadScripts ( {
 			<tr>
 				<td class="imposed">
 					<span class="home_link" onclick="window.location.href='../'" data-str="home"></span>
+				</td>
+				<td class="imposed">
+					<span id="ThemeSwitcher" class="theme_switcher" role="button" tabindex="0"
+						aria-label="Theme"><span id="ThemeSwitcherVal">◐</span></span>
 				</td>
 
 				<td class="imposed">
@@ -200,5 +225,6 @@ ScriptLoader.loadScripts ( {
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript" src="../js/common/theme.js?v=20261027.181357"></script>
 	</body>
 </html>
