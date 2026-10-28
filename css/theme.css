@@ -155,6 +155,15 @@
 	color:var(--text-default);
 	border-color:var(--border-soft);
 }
+[data-theme="dark"] #TafFrame select option {
+	background:var(--bg-panel);
+	color:var(--text-default);
+}
+[data-theme="dark"] .tafBtn:hover,
+[data-theme="dark"] #TafPrev:hover,
+[data-theme="dark"] #TafNext:hover {
+	background:#262E37;
+}
 
 /* --- menus ------------------------------------------------------------- */
 
