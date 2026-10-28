@@ -338,6 +338,10 @@
 }
 [data-theme="dark"] #idKoboolAd [style] { color:var(--text-default) !important; }
 
+[data-theme="dark"] .top_logo {
+	background-image:none;
+	background:var(--bg-panel);
+}
 [data-theme="dark"] #Footer { border-top-color:var(--border-soft); }
 [data-theme="dark"] #idFooter td,
 [data-theme="dark"] #FooterAdsPanel td { border-color:#333E4A #222a32 #222a32 #333E4A; }
