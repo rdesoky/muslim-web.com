@@ -384,7 +384,11 @@ _S = gStrings = {
 	register:"تسجيل",
 	page_ctrl_help:"لقلب الصفحات استخدم عجلة الماوس أو مفاتيح الحركة",
 	ads:"اعلانـــــــــــات",
-	welcome:"السلام عليكم"
+	welcome:"السلام عليكم",
+	theme_title:"المظهر",
+	theme_light:"فاتح",
+	theme_dark:"داكن",
+	theme_system:"تلقائي"
 };
 
 var GS = function(sID){
