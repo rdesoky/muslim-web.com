@@ -410,6 +410,13 @@
 /* --- legacy alternate pages --------------------------------------------- */
 
 [data-theme="dark"] #Header { background-color:var(--bg-panel); background-image:none; }
+[data-theme="dark"] #TopMenuSearch {
+	background:#20262E;
+	color:var(--text-default);
+}
+[data-theme="dark"] #TopMenuSearch input {
+	color:var(--text-default);
+}
 [data-theme="dark"] #QuranIndex { border-color:#333E4A; }
 [data-theme="dark"] #QuranIndex span[sura] { color:#81B4F7; border-color:#55616E #333E4A #333E4A #55616E; }
 [data-theme="dark"] #QuranIndex span[sura]:hover { background:#2A323B; border-color:#333E4A #55616E #55616E #333E4A; }
