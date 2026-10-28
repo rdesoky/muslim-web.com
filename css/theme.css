@@ -330,6 +330,10 @@
 [data-theme="dark"] #MemReport .full_mem { color:var(--accent-green); }
 [data-theme="dark"] #MemReport .full_mem:hover { background:var(--accent-green); color:#14181D; }
 [data-theme="dark"] #MemReport .part_mem:hover { background:var(--accent-orange); }
+[data-theme="dark"] #idKoboolAd {
+	background:#2C2A20;
+	border-color:var(--border-soft);
+}
 [data-theme="dark"] #idKoboolAd [style] { color:var(--text-default) !important; }
 
 [data-theme="dark"] #Footer { border-top-color:var(--border-soft); }
