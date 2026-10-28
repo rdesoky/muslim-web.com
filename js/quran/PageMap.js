@@ -29,12 +29,11 @@ var PageMap = {
 	},
 
 	getLinesY:function(){
-		return gHighResolution ? [0,29,57,86,114,143,172,200,229,258,287,315,344,373,401,432] : 
-								[0,27,53,80,107,134,161,188,214,241,268,295,322,348,375,404];
+		return [0,29,57,86,114,143,172,200,229,258,287,315,344,373,401,432];
 	},
 	
 	getPageHeight:function(){
-		return gHighResolution ? 432:404;
+		return 432;
 	},
 	
 	yPos2LineNum:function( ypos ){
@@ -65,8 +64,7 @@ var PageMap = {
 		Selection.hide(nSide);
 		Hover.hide();
 
-		//this.lnHeight = gHighResolution ? 28.9 : 27;
-		this.lnWidth  = gHighResolution ? 292 : 266;
+		this.lnWidth  = 292;
 
 		if( !sOnload ){
 			sOnload = "";

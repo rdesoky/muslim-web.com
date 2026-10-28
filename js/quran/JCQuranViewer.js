@@ -3,10 +3,6 @@ DefineVars({
 });
 var gMouseOffsetX, gCapture, gShiftX;
 
-var gHighResolution = 0;
-var gPageWidth = 264;
-var gPageHeight = 402;
-
 function imgBase() {
   return appBase();
 }
@@ -921,14 +917,11 @@ var QViewer = {
     }
     var activeSide = this.pageSide(pageNum);
 
-    var folder = gHighResolution ? "hpages/" : "pages/p";
-    var extention = gHighResolution ? ".jpg" : ".gif";
-
     var src =
       imgBase() +
-      folder +
+      "hpages/" +
       pageNum.toStringEx(3) +
-      extention +
+      ".jpg" +
       (bRedo ? "&" + new Date().getTime().toString() : "");
 
     _E("idPageViewFrame_" + activeSide).innerHTML =
@@ -1149,16 +1142,7 @@ var QViewer = {
   },
 
   updateResolution: function () {
-    gHighResolution = parseInt(getCookie("hr", "1"), 10);
-    _E("ZoomButton").src =
-      imgBase() + "images/zoom-" + (gHighResolution ? "out" : "in") + ".gif";
-    gPageWidth = gHighResolution ? 290 : 264;
-
-    if (gHighResolution) {
-      DU.addClass("idPageViews", "hres");
-    } else {
-      DU.removeClass("idPageViews", "hres");
-    }
+    DU.addClass("idPageViews", "hres");
     this.setPage();
   },
 };

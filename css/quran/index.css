@@ -370,7 +370,6 @@
   text-align: right;
 }
 
-#ZoomButton,
 #ShowTextBtn {
   width: 16px;
   height: 16px;
@@ -379,7 +378,6 @@
   border-color: #b6c2b4;
 }
 
-#ZoomButton:hover,
 #ShowTextBtn:hover {
   border-color: white;
 }
