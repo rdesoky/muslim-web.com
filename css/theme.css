@@ -21,6 +21,7 @@
 	--accent-green:#008000;
 	--accent-orange:#ffa500;
 	--sel-bg:#FFFFCC;
+	--mask-color:#efefde;
 }
 
 [data-theme="dark"] {
@@ -39,6 +40,7 @@
 	--accent-green:#74D69C;
 	--accent-orange:#F0A35E;
 	--sel-bg:#3A4754;
+	--mask-color:#20262E;
 }
 
 /* --- base surfaces ----------------------------------------------------- */
