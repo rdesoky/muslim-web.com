@@ -171,6 +171,13 @@
 	border-radius:3px;
 	padding:0 3px;
 }
+[data-theme="dark"] #TafNav {
+	background:#20262E;
+	color:var(--text-default);
+	border:1px solid var(--border-soft);
+	border-radius:3px;
+	padding:0 4px;
+}
 [data-theme="dark"] .arrowBtn {
 	filter:brightness(0) invert(1);
 }
