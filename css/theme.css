@@ -329,6 +329,9 @@
 
 [data-theme="dark"] #RepeatCounter { color:var(--accent-green); }
 [data-theme="dark"] #PrayRequest { color:var(--accent-green); }
+[data-theme="dark"] .memPercent {
+	background:#3A3A26;
+}
 [data-theme="dark"] #MemReport .full_mem { color:var(--accent-green); }
 [data-theme="dark"] #MemReport .full_mem:hover { background:var(--accent-green); color:#14181D; }
 [data-theme="dark"] #MemReport .part_mem:hover { background:var(--accent-orange); }
