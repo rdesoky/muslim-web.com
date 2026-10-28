@@ -468,7 +468,7 @@ function UpdateReviewColors(bInit) {
       // hide
       if (gAya[i].style.backgroundColor.length)
         gAya[i].style.color = gAya[i].style.backgroundColor;
-      else gAya[i].style.color = "#efefde";
+      else gAya[i].style.color = "var(--mask-color)";
     }
   }
 }
