@@ -35,8 +35,6 @@ are required, only Node.js >= 18 (`node --version`):
 | `tools/build/build_static.mjs` | regenerates `js_strings_*.js` (if the PHP sources exist), stamps `?v=` and `gBuildVer` |
 | `tools/build/build_qtext_data.mjs` | generates `js/quran/qtext_data.js` from `qtext/sura_*.html` |
 | `tools/build/dump_qtext.mjs` | re-fetches the 114 static qtext sura pages from production |
-| `tools/build/gen_tafseer.mjs` | downloads tafsir JSON into `tafseer/` |
-| `tools/build/mirror_tafseer.mjs` | mirrors the tafseer/translation HTML pages into `tafseer/` (resumable) |
 | `tools/build/test_local_cgi.mjs` | headless smoke test of `js/quran/local_cgi.js` (CI gate) |
 | `tools/gh-pages/build_site.mjs` | assembles the publishable `_site/` tree for GitHub Pages |
 
@@ -214,25 +212,18 @@ Rules for new code:
   `gAppRoot`, `gsAyatImageURL` and `gPagesServer` were all removed; each page used to declare
   its own copy (differing only by `""` vs `"../"`), which is exactly the duplication `appBase()`
   eliminates.
-- Tafseer (commentary) pages live in the repo under `tafseer/` and are referenced relatively
-  through `getTafseerPageURL(source, sura, aya)` in `js/quran/lib.js`. Do not point them at an
-  external host — the former `https://tafseer.muslim-web.com/` base is gone. Note the on-disk
-  layout is `tafseer/<SOURCE>/<SSS>/<SSSAAA>.html` (sura repeated in the filename), e.g.
-  `tafseer/KATHEER/002/002255.html`, which is why the URL is not built inline.
-- `tafseer/` holds **all ten** sources the `#SelTaf` dropdown offers: the four Arabic
+- Tafseer (commentary) and translation pages are **not** bundled. They are served by the
+  separate site <https://tafseer.muslim-web.com/> and loaded in an iframe (or a popup) through
+  `getTafseerPageURL(source, sura, aya)` in `js/quran/lib.js`. That helper is the only place the
+  external base lives (`gTafseerBase`); do not build the URL inline. The upstream layout is
+  `<SOURCE>/<SSS>/<AAA>.html` — three-digit sura and aya, e.g.
+  `https://tafseer.muslim-web.com/KATHEER/002/255.html`.
+- The `#SelTaf` dropdown offers **all ten** sources the upstream site serves: the four Arabic
   commentaries (`KATHEER`, `TABARY`, `GALALEEN`, `KORTOBY`) and the six translations
   (`en_yusufali`, `fr_hamidullah`, `de_bubenheim`, `tr_ozturk`, `id_muntakhab`, `ms_basmeih`).
-  The whole tree is committed, so the site has no runtime dependency on the old host.
-  Regenerate/extend it with [`tools/build/mirror_tafseer.mjs`](tools/build/mirror_tafseer.mjs):
-
-  ```sh
-  node tools/build/mirror_tafseer.mjs --dry-run      # report what is missing
-  node tools/build/mirror_tafseer.mjs                # fill the gaps (resumable)
-  node tools/build/mirror_tafseer.mjs --sources tr_ozturk --concurrency 4
-  ```
-
-  It only downloads files that do not exist yet, so it is safe to re-run. Remember that
-  `.gitignore` contains `**/tafseer/*`: new pages need `git add -f tafseer`.
+  Adding a source only needs an `<option>` in both `index.html` and `sura/index.html`; there is
+  no local corpus to mirror. The former `tafseer/` tree, `tafseer.css` and the
+  `mirror_tafseer.mjs` / `gen_tafseer.mjs` / `gen_tafseer.py` tools were removed with it.
 - The one intentional absolute base is the ayah preview image host
   (`www.elazhar.com/quran/image/`) — a third party with no local mirror. It is produced by
   `getAyaImageURL(nSura, nAya)` in `js/quran/qlib.js` rather than a global.
@@ -252,9 +243,9 @@ made. When adding an asset reference, run the local sub-path preview above befor
   the repository root. `build_site.mjs` copies it into `_site/` and fails the build if it is
   missing, so every publish keeps the domain configured. DNS (`CNAME` record for `quran` →
   `rdesoky.github.io`) and the Pages custom-domain setting are one-time repository/DNS setup.
-- Scripts, styles and the tafseer/translation corpora are now same-origin: the corpora live in
-  `tafseer/` in this repo instead of a second host. Pages is HTTPS-only, so any `http://` asset is
-  blocked as mixed content — that is why the old Flash badge (which pointed at `www.adobe.com`)
-  and the Flash player paths were removed. Recitation audio is still streamed from
-  `https://download.quranicaudio.com`, the only remaining off-origin dependency; keep new asset
-  references relative and same-origin.
+- Scripts and styles are same-origin. Pages is HTTPS-only, so any `http://` asset is blocked as
+  mixed content — that is why the old Flash badge (which pointed at `www.adobe.com`) and the
+  Flash player paths were removed. Off-origin dependencies are limited to
+  `https://tafseer.muslim-web.com/` (tafseer/translation iframes, HTTPS) and
+  `https://download.quranicaudio.com` (recitation audio); keep new asset references relative and
+  same-origin.
