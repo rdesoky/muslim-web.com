@@ -404,11 +404,7 @@ var Hover={
 				}
 			};
 
-			mapItem.onmousewheel=WheelScrollPages;
-
-			if( window.addEventListener ){//For Firefox
-				mapItem.addEventListener("DOMMouseScroll", WheelScrollPages, false);
-			}
+			U.addWheelListener( mapItem, WheelScrollPages );
 
 			mapItem.onselectstart = function(e){
 				var evt = U.ieEvent(e);
@@ -608,11 +604,7 @@ var Selection ={
 		for( var mapItem=_E(sContainer).firstChild; mapItem; mapItem=mapItem.nextSibling ){
 			if( mapItem ){
 				mapItem.onmousemove = Hover.handleEvent;
-				mapItem.onmousewheel = WheelScrollPages;
-
-				if( window.addEventListener ){
-					mapItem.addEventListener("DOMMouseScroll", WheelScrollPages, false);
-				}
+				U.addWheelListener( mapItem, WheelScrollPages );
 			}
 		}
 	}
@@ -803,11 +795,7 @@ var Mask ={
 				mapItem.onclick = function(e){
 					Mask.increment();
 				};
-				mapItem.onmousewheel = WheelScrollPages;
-
-				if( window.addEventListener ){
-					mapItem.addEventListener("DOMMouseScroll", WheelScrollPages, false);
-				}
+				U.addWheelListener( mapItem, WheelScrollPages );
 			}
 		}
 	},
