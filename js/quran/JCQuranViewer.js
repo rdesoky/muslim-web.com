@@ -1,10 +1,15 @@
 DefineVars({
   gRangeReciter: "/cgi-bin/recite.pl",
+  gPageImageBase: "https://hafiz.muslim-web.com/qpages_1260/page",
 });
 var gMouseOffsetX, gCapture, gShiftX;
 
 function imgBase() {
   return appBase();
+}
+
+function pageImageURL(pageNum) {
+  return gPageImageBase + pageNum.toStringEx(3) + ".png";
 }
 
 var vKeys = (vK = {
@@ -106,22 +111,8 @@ var JCQuranViewer = DefineJClass({
       };
     }
 
-    if (window.addEventListener) {
-      _E("idPageViewFrame_0").addEventListener(
-        "DOMMouseScroll",
-        WheelScrollPages,
-        false
-      );
-      _E("idPageViewFrame_1").addEventListener(
-        "DOMMouseScroll",
-        WheelScrollPages,
-        false
-      );
-    }
-
-    _E("idPageViewFrame_0").onmousewheel = _E(
-      "idPageViewFrame_1"
-    ).onmousewheel = WheelScrollPages;
+    U.addWheelListener(_E("idPageViewFrame_0"), WheelScrollPages);
+    U.addWheelListener(_E("idPageViewFrame_1"), WheelScrollPages);
 
     //U.disableSelection(this);
   },
@@ -918,11 +909,8 @@ var QViewer = {
     var activeSide = this.pageSide(pageNum);
 
     var src =
-      imgBase() +
-      "hpages/" +
-      pageNum.toStringEx(3) +
-      ".jpg" +
-      (bRedo ? "&" + new Date().getTime().toString() : "");
+      pageImageURL(pageNum) +
+      (bRedo ? "?" + new Date().getTime().toString() : "");
 
     _E("idPageViewFrame_" + activeSide).innerHTML =
       "<img id=idPageView_" +
@@ -1406,19 +1394,37 @@ var PageMarks = {
   },
 };
 
+// wheel deltas are accumulated so that both a single mouse wheel notch
+// (about 120 units) and the small deltas of a trackpad trigger a page change
+var gWheelAccum = 0;
+var gWheelAccumTimer = null;
+
 function WheelScrollPages(e) {
   var event = U.ieEvent(e);
   event.preventDefault();
 
   var wDelta = event.wheelDelta;
+  if (!wDelta) {
+    return false;
+  }
 
-  if (wDelta < -100) {
+  gWheelAccum += wDelta;
+  if (gWheelAccumTimer) {
+    clearTimeout(gWheelAccumTimer);
+  }
+  gWheelAccumTimer = setTimeout(function () {
+    gWheelAccum = 0;
+  }, 200);
+
+  if (gWheelAccum <= -100) {
+    gWheelAccum = 0;
     if (Mask.active) {
       Mask.increment();
     } else {
       QViewer.nextPage();
     }
-  } else if (wDelta > 100) {
+  } else if (gWheelAccum >= 100) {
+    gWheelAccum = 0;
     if (Mask.active) {
       Mask.decrement();
     } else {

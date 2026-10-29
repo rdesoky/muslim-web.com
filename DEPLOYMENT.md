@@ -91,7 +91,7 @@ and serves the following locally:
 | `get_sura_text.pl` | range text/copy from `QuranTextData` |
 | `search.pl` | substring search over normalized plain text (XML response) |
 | `js_get_html.pl?/qtext/sura_NNN.html` | static qtext page body |
-| `getimg.pl?/hpages/NNN.jpg` | direct static image (`/hpages/NNN.jpg`) |
+| `getimg.pl?/hpages/NNN.jpg` | direct static image (`/hpages/NNN.jpg`); the main page now loads `https://hafiz.muslim-web.com/qpages_1260/pageNNN.png` instead |
 | `js_load.pl` / `js_load_utf8.pl` | bypassed — data is produced in-page |
 | `login.pl` / `newuser.pl` / `loadmem.pl` / `savemem.pl` | disabled stub (members migrate to Firebase) |
 | `recite.pl` | range played through the mp3 `AudioPlayer` |
@@ -199,6 +199,14 @@ the relative prefix back to the app root at runtime:
 // sura/index.html loads "../js/common/ScriptLoader.js" -> appBase() === "../"
 var src = appBase() + "hpages/" + page + ".jpg";
 ```
+
+The one exception is the main page's Quran page image, which is fetched from the `hafiz` host
+instead of the repo. `QViewer.setPage` in
+[`js/quran/JCQuranViewer.js`](js/quran/JCQuranViewer.js) builds it with `pageImageURL()`, which
+prefixes `gPageImageBase` (`https://hafiz.muslim-web.com/qpages_1260/page`) and appends the
+zero-padded page number plus `.png`. `sura/index.html` keeps using the local `hpages/NNN.jpg`
+files through its own `QViewer` in [`js/quran/sheader.js`](js/quran/sheader.js), which loads
+after `JCQuranViewer.js` and therefore wins.
 
 It scans the document `<script src>` attributes for the first one containing `js/` and keeps
 everything before it, so neither entry page has to declare a base URL. Because `lib.js` is loaded
