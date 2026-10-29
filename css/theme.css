@@ -309,11 +309,13 @@
 [data-theme="dark"] #idPageViews.hres div[side="1"].pageViewFrame.mask {
 	background:#2C3540;
 }
-/* Scanned page images (hpages/*.jpg) are white/cream paper with blue and red
- * annotations. The images are never modified on disk; the recolor is done at
- * runtime with CSS filters. A partial invert keeps the paper a dark grey
- * instead of pure black, and the hue rotation brings the blue and red marks
- * back to a readable hue instead of the olive/teal that plain invert yields. */
+/* Scanned page images (hpages/*.jpg on the sura page, qpages_1260/*.png on the
+ * main page) are white/cream paper with blue and red annotations. The images
+ * are never modified on disk; the recolor is done at runtime with CSS filters.
+ * A partial invert keeps the paper a dark grey instead of pure black, and the
+ * hue rotation brings the blue and red marks back to a readable hue instead of
+ * the olive/teal that plain invert yields. The qpages PNGs have a transparent
+ * background, so the dark frame colour shows through as the "paper". */
 [data-theme="dark"] #idPageViews .pageViewFrame img:not([src*="space.gif"]),
 [data-theme="dark"] #idPageViews.hres .pageViewFrame img:not([src*="space.gif"]),
 [data-theme="dark"] .pageImage {

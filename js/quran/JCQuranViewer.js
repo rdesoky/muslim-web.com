@@ -1,10 +1,15 @@
 DefineVars({
   gRangeReciter: "/cgi-bin/recite.pl",
+  gPageImageBase: "https://hafiz.muslim-web.com/qpages_1260/page",
 });
 var gMouseOffsetX, gCapture, gShiftX;
 
 function imgBase() {
   return appBase();
+}
+
+function pageImageURL(pageNum) {
+  return gPageImageBase + pageNum.toStringEx(3) + ".png";
 }
 
 var vKeys = (vK = {
@@ -918,11 +923,8 @@ var QViewer = {
     var activeSide = this.pageSide(pageNum);
 
     var src =
-      imgBase() +
-      "hpages/" +
-      pageNum.toStringEx(3) +
-      ".jpg" +
-      (bRedo ? "&" + new Date().getTime().toString() : "");
+      pageImageURL(pageNum) +
+      (bRedo ? "?" + new Date().getTime().toString() : "");
 
     _E("idPageViewFrame_" + activeSide).innerHTML =
       "<img id=idPageView_" +
