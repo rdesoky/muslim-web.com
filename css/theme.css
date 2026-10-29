@@ -309,6 +309,75 @@
 [data-theme="dark"] #idPageViews.hres div[side="1"].pageViewFrame.mask {
 	background:#2C3540;
 }
+/* Scanned page images (hpages/*.jpg) are white/cream paper with blue and red
+ * annotations. The images are never modified on disk; the recolor is done at
+ * runtime with CSS filters. A partial invert keeps the paper a dark grey
+ * instead of pure black, and the hue rotation brings the blue and red marks
+ * back to a readable hue instead of the olive/teal that plain invert yields. */
+[data-theme="dark"] #idPageViews .pageViewFrame img:not([src*="space.gif"]),
+[data-theme="dark"] #idPageViews.hres .pageViewFrame img:not([src*="space.gif"]),
+[data-theme="dark"] .pageImage {
+	filter:invert(0.88) hue-rotate(180deg) saturate(1.5);
+}
+[data-theme="dark"] #idPageView_0,
+[data-theme="dark"] #idPageView_1,
+[data-theme="dark"] .pageImage {
+	border-color:var(--border-soft);
+}
+[data-theme="dark"] .active .pageImage {
+	border-color:var(--accent-orange);
+}
+/* The animated wait.gif is a light grey spinner that shows up as a bright
+ * square on a dark page, so the .wait state gets a CSS-only spinner instead. */
+[data-theme="dark"] .pageViewFrame.wait,
+[data-theme="dark"] div[side="1"].pageViewFrame.wait,
+[data-theme="dark"] #idPageViews.hres .pageViewFrame.wait,
+[data-theme="dark"] #idPageViews.hres div[side="1"].pageViewFrame.wait,
+[data-theme="dark"] .wait {
+	background:var(--bg-panel);
+}
+[data-theme="dark"] .pageViewFrame.wait::after,
+[data-theme="dark"] div[side="1"].pageViewFrame.wait::after,
+[data-theme="dark"] #idPageViews.hres .pageViewFrame.wait::after,
+[data-theme="dark"] #idPageViews.hres div[side="1"].pageViewFrame.wait::after,
+[data-theme="dark"] .wait::after {
+	content:"";
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:28px;
+	height:28px;
+	margin:-15px 0 0 -15px;
+	border:2px solid var(--border-strong);
+	border-top-color:var(--accent-orange);
+	border-radius:50%;
+	animation:theme-spinner 0.8s linear infinite;
+}
+@keyframes theme-spinner {
+	to { transform:rotate(360deg); }
+}
+@media (prefers-reduced-motion:reduce) {
+	[data-theme="dark"] .pageViewFrame.wait::after,
+	[data-theme="dark"] div[side="1"].pageViewFrame.wait::after,
+	[data-theme="dark"] #idPageViews.hres .pageViewFrame.wait::after,
+	[data-theme="dark"] #idPageViews.hres div[side="1"].pageViewFrame.wait::after,
+	[data-theme="dark"] .wait::after {
+		animation:none;
+		border-top-color:var(--border-strong);
+	}
+}
+/* Inline wait.gif images (sura text, search status, audio buffering) are
+ * light grey on transparent, so invert them to sit on the dark background. */
+[data-theme="dark"] img[src*="wait.gif"] {
+	filter:invert(1) brightness(0.9);
+}
+[data-theme="dark"] .leftSide,
+[data-theme="dark"] .rightSide {
+	background-image:none;
+	background-color:var(--bg-panel);
+	/* the .wait spinner is absolutely positioned, so it needs a containing block */
+	position:relative;
+}
 [data-theme="dark"] .mem_chart *[state="no"] { background:#39434E; }
 [data-theme="dark"] .mem_chart *[state="no"]:hover { background:#4A5563; }
 [data-theme="dark"] .mem_chart *[state="yes"] { background:#4E6E52; }
