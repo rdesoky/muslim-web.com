@@ -272,6 +272,30 @@ var DU = {
 	}
 };
 
+// normalize the wheel direction/amount of any mouse wheel event flavor:
+// "wheel" (DOM3), "mousewheel" (legacy) or "DOMMouseScroll" (old Firefox)
+// the result uses the legacy scale: about 120 per wheel notch, positive = scroll up
+function GetWheelDelta( e ){
+	if( !e ){
+		return 0;
+	}
+	if( e.deltaY !== undefined && e.deltaY !== 0 ){
+		// DOM3: deltaMode 0 = pixels, 1 = lines, 2 = pages
+		// the factors map one wheel notch to the legacy 120 units
+		var nFactor = e.deltaMode === 1 ? 40 : ( e.deltaMode === 2 ? 800 : 1.2 );
+		return -e.deltaY * nFactor;
+	}
+	if( e.wheelDelta !== undefined ){
+		// legacy: positive when scrolling up
+		return e.wheelDelta;
+	}
+	if( e.detail ){
+		// DOMMouseScroll: positive when scrolling down
+		return e.detail * -100;
+	}
+	return 0;
+}
+
 var U = Utils = 
 {
 	d: DU,
@@ -280,6 +304,30 @@ var U = Utils =
 		for( var item in classDef )
 		{
 			obj[item] = classDef[item];
+		}
+	},
+
+	// registers a wheel handler using the event supported by the current browser
+	addWheelListener:function( el, handler ){
+		if( !el ){
+			return;
+		}
+		if( el.addEventListener && "onwheel" in el ){
+			// passive:false is required for the handler to be able to prevent scrolling
+			try{
+				el.addEventListener( "wheel", handler, { passive:false } );
+			}
+			catch( err ){
+				el.addEventListener( "wheel", handler, false );
+			}
+		}
+		else if( el.addEventListener ){
+			// old firefox
+			el.addEventListener( "DOMMouseScroll", handler, false );
+			el.onmousewheel = handler;
+		}
+		else{
+			el.onmousewheel = handler;
 		}
 	},
 	
@@ -340,15 +388,15 @@ var U = Utils =
 				ctrlKey: e.ctrlKey,
 				altKey: e.altKey,
 				shiftKey: e.shiftKey,
-				wheelDelta: e.detail ? e.detail * (-100) : e.wheelDelta,
+				wheelDelta: GetWheelDelta(e),
 				screenX: e.screenX,
 				screenY: e.screenY,
 				// relative to browser client area
 				clientX: e.clientX,
 				clientY: e.clientY,
 				// relative to element firing the event
-				offsetX: e.offsetX || (e.layerX - e.currentTarget.offsetLeft),
-				offsetY: e.offsetY || (e.layerY - e.currentTarget.offsetTop),
+				offsetX: e.offsetX || (e.currentTarget ? e.layerX - e.currentTarget.offsetLeft : 0),
+				offsetY: e.offsetY || (e.currentTarget ? e.layerY - e.currentTarget.offsetTop : 0),
 				// offset to closest parent with "relative" position
 				x:e.x,
 				y:e.y,
