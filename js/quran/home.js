@@ -725,7 +725,7 @@ var ISura = {
 
     AudioPlayer.stop(true);
 
-    //Fallback to Real Player popup
+    //Fallback to the reciter popup
     var url = GetAudioURL(selReciter, suraNum);
     openReciter(url, suraNum, selReciter);
 

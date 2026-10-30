@@ -966,7 +966,7 @@ var QViewer = {
             (GetChapterProgress(nChapter, newPage) * barWidth) / 100
           ).toString() +
           "px",
-        "background:#99CC00",
+        "background:var(--progress-bar)",
       ].join(";") +
       "'>&nbsp;</div>" +
       "<div style='" +
@@ -1007,7 +1007,7 @@ var QViewer = {
         (GetSuraProgress(this.currSuraNum - 1, this.currPageNum) * barWidth) /
           100
       ).toString() +
-      "px;background:#99CC00'>&nbsp;</div>" +
+      "px;background:var(--progress-bar)'>&nbsp;</div>" +
       "<div style='position:absolute;width:48px'>" +
       sTitle +
       "</div>&nbsp;";

@@ -18,7 +18,7 @@
 	<link type="text/css" rel="StyleSheet" href="css/quran/memorizer.css?v=20261027.180923" />
 	<link type="text/css" rel="stylesheet" href="css/menu.css?v=20261027.180923" />
 	<link type="text/css" rel="stylesheet" href="css/chelp.css?v=20261027.180923" />
-	<link type="text/css" rel="stylesheet" href="css/theme.css?v=20261027.192250" />
+	<link type="text/css" rel="stylesheet" href="css/theme.css?v=20261030.104000" />
 
 	<script type="text/javascript" src="js/common/ScriptLoader.js?v=20261027.180924"></script>
 
@@ -80,6 +80,10 @@
 			CGIBase = "/cgi-bin/";
 
 		window.onload = function () {
+			// safety net: never leave the header hidden forever if loading stalls
+			window.setTimeout(function () {
+				if (window.DU) DU.removeClass(document.body, "xloading");
+			}, 15000);
 			ScriptLoader.loadScripts({
 				QuranTextData: "js/quran/qtext_data.js?v=20261027.180923",
 				MemApp: "js/quran/exercise.js?v=20261027.180924",
@@ -109,9 +113,14 @@
 				LocalCGI: "js/quran/local_cgi.js?v=20261027.180923"
 			},
 				function () {
-					Utils.setupCrossBrowser();
-					populateStrings();
-					HomePage.init();
+					try {
+						Utils.setupCrossBrowser();
+						populateStrings();
+						HomePage.init();
+					} finally {
+						// scripts are ready: reveal the header content
+						DU.removeClass(document.body, "xloading");
+					}
 				}
 			);
 		}
@@ -166,7 +175,7 @@
 	</script>
 </head>
 
-<body lang="ar" class="xhelp_on">
+<body lang="ar" class="xhelp_on xloading">
 	<div id="LangSwitcher" class="href" onclick="SwitchLang(gLang)"></div>
 
 	<div id="ThemeSwitcherHost">
@@ -570,7 +579,7 @@
 				<td id="FeedbackInfo"> |
 					<span>
 						<span data-str="footer_note"></span>
-						<A href="mailto:webmaster@muslim-web.com">webmaster@muslim-web.com</A>
+						<A href="mailto:rdesoky@gmail.com">rdesoky@gmail.com</A>
 					</span> |
 					<span id="PrayRequest" data-str="prayer_request"></span>
 				</td>
@@ -584,21 +593,6 @@
 			<div class="helpTopic" data-str="help_topic_4"></div>
 			<hr />
 			<div class="helpTopic" data-str="help_topic_1"></div>
-			<hr />
-			<div class="helpTopic" data-str="help_topic_2"></div>
-			<hr />
-			<div class="helpTopic">
-				<span data-str="help_topic_3_1"></span>
-				<a target="_blank"
-					href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">
-					Real&nbsp;Player</a>.<br />
-				<span data-str="help_topic_3_2"></span>,
-				<a target="_blank"
-					href="http://www.real.com/realcom/R?href=http%3A%2F%2Fforms.real.com%2Freal%2Frealone%2Frealone.html%3Ftype%3Ddlrhap_bb&pageid=realplayerPage&pageregion=right_bottom_text&src=downloadr%2Crpchoice%2Crealplayer_8020&pcode=rn&opage=realplayer_8020">
-					<span data-str="click_here"></span>
-				</a>
-				<span data-str="help_topic_3_3"></span>.
-			</div>
 		</div>
 	</div>
 
