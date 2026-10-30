@@ -580,7 +580,6 @@
 }
 
 #FeedbackInfo,
-#RealPlayerInfo,
 #BackToOld {
   padding: 3px;
 }
@@ -901,7 +900,7 @@ span {
 }
 
 .site_title {
-  color: green;
+  color: var(--accent-green);
   font-family: Arabic Transparent;
   font-size: 16px;
   font-weight: bold;
@@ -910,6 +909,12 @@ span {
 
 #TopPanel {
   width: 100%;
+}
+
+/* Do not render the header content while the page scripts are still loading
+   (body gains the xloading class before script load and loses it on init). */
+body.xloading #Header {
+  visibility: hidden;
 }
 
 #TopLogo audio {
@@ -1348,7 +1353,7 @@ span {
 
 #GooglePlayBadge {
   position: absolute;
-  top: 26px;
+  top: 44px;
   right: 0;
   /* width:210px; */
 }
