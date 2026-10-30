@@ -82,13 +82,14 @@ var UI = {
 
 		this.getScreenBlocker();
 		DU.show( "ScreenBlocker" );
-		popup.style.left = ( ( document.body.offsetWidth - popup.offsetWidth ) / 2 ).toString() + "px";
-		popup.style.top = ( document.body.offsetHeight / 10 ).toString() + "px";
 
 		if(contents){
 			DU.removeChildren(popup.client);
 			popup.client.appendChild(contents);
 		}
+		popup.style.left = Math.max( 10, ( window.innerWidth - popup.offsetWidth ) / 2 ).toString() + "px";
+		popup.style.top = Math.max( 10, ( window.innerHeight - popup.offsetHeight ) / 2 ).toString() + "px";
+
 		return popup.client;
 	},
 	
@@ -947,6 +948,8 @@ function CreateVolumeBar( sID, listenerContext ){
 	DU.applyStyles(eRoot,{
 		//display:"inline-block",
 		direction:"ltr",
+		paddingLeft:"5px",
+		paddingRight:"5px"
 		//height:"12px",
 		//verticalAlign:"middle",
 		//backgroundColor:"#FFFFFF",
@@ -954,34 +957,43 @@ function CreateVolumeBar( sID, listenerContext ){
 	});
 		
 	var eSpeeker = eRoot.appendChild( document.createElement("span") );
+	eSpeeker.className = "vol-speaker";
 	DU.applyStyles(eSpeeker,{
 		display:"inline-block",
 		width:"14px",
 		height:"12px",
-		verticalAlign:"middle",
-		backgroundImage:"url(images/common/volume_speaker.gif)",
-		backgroundRepeat:"no-repeat"
+		verticalAlign:"middle"
 	});
+	eSpeeker.innerHTML =
+		'<svg viewBox="0 0 14 12" xmlns="http://www.w3.org/2000/svg">' +
+			'<path class="vol-speaker-body" d="M1 4.5 L4.5 4.5 L7.5 2 L7.5 10 L4.5 7.5 L1 7.5 Z"/>' +
+			'<path class="vol-wave vol-wave-small" d="M9.5 4 A2.8 2.8 0 0 1 9.5 8"/>' +
+			'<path class="vol-wave vol-wave-large" d="M12 3 A4.6 4.6 0 0 1 12 9"/>' +
+		'</svg>';
+
 	var eBg = eRoot.appendChild( document.createElement("span") );
+	eBg.className = "vol-bar";
 	DU.applyStyles(eBg,{
 		position:"relative",
 		display:"inline-block",
 		width:"24px",
 		height:"12px",
-		verticalAlign:"middle",
-		backgroundImage:"url(images/common/volume_bg.gif)",
-		backgroundRepeat:"no-repeat"
+		verticalAlign:"middle"
 	});
 
-	var eScale = eBg.appendChild( document.createElement("span") );
-	DU.applyStyles(eScale,{
-		display:"inline-block",
-		width:"24px",
-		height:"12px",
-		//verticalAlign:"middle",
-		backgroundImage:"url(images/common/volume_scale.gif)",
-		backgroundRepeat:"no-repeat"
-	});
+	// Ascending bar segments (staircase meter)
+	var BAR_COUNT = 8;
+	var bars = "";
+	var eLitBars = [];
+	for (var i=0; i<BAR_COUNT; i++){
+		var x = 0.5 + i*3;
+		var h = 3 + i*0.95;
+		var y = 12 - h;
+		bars += '<rect class="vol-bar vol-bar-track" x="'+x.toFixed(2)+'" y="'+y.toFixed(2)+'" width="2" height="'+h.toFixed(2)+'" rx="0.6"/>';
+		bars += '<rect class="vol-bar vol-bar-lit" data-on="0" x="'+x.toFixed(2)+'" y="'+y.toFixed(2)+'" width="2" height="'+h.toFixed(2)+'" rx="0.6"/>';
+	}
+	eBg.innerHTML = '<svg viewBox="0 0 24 12" xmlns="http://www.w3.org/2000/svg">' + bars + '</svg>';
+	eLitBars = Array.prototype.slice.call(eBg.querySelectorAll(".vol-bar-lit"));
 
 	eRoot.setVolume=function(value){
 		if(value==undefined){
@@ -989,20 +1001,19 @@ function CreateVolumeBar( sID, listenerContext ){
 		}else{
 			this.setAttribute("vol", value);
 		}
-		eBg.style.backgroundPosition = "-" + (24-value*24/100).toString() + "px 0px";
-		if(value>50){
-			eSpeeker.style.backgroundPosition = "0px 0px";
-		}else if(value>0){
-			eSpeeker.style.backgroundPosition = "-14px 0px";
-		}else{
-			eSpeeker.style.backgroundPosition = "-28px 0px";
+		var lit = Math.round(Math.max(0, Math.min(100, value)) * BAR_COUNT / 100);
+		for (var i=0; i<BAR_COUNT; i++){
+			eLitBars[i].setAttribute("data-on", i < lit ? "1" : "0");
 		}
+		eSpeeker.firstChild.setAttribute("data-level", value>50 ? "high" : (value>0 ? "low" : "none"));
 	};
 
 	eRoot.setMute=function(bMute){
 		if(bMute){
-			eSpeeker.style.backgroundPosition = "-28px 0px";
-			eBg.style.backgroundPosition = "-24px 0px";
+			for (var i=0; i<BAR_COUNT; i++){
+				eLitBars[i].setAttribute("data-on", "0");
+			}
+			eSpeeker.firstChild.setAttribute("data-level", "none");
 		}else{
 			this.setVolume();
 		}
@@ -1020,7 +1031,7 @@ function CreateVolumeBar( sID, listenerContext ){
 		}
 	};
 
-	eScale.onclick = function(e){
+	eBg.onclick = function(e){
 		var event = U.ieEvent(e);
 		var newVolume = event.offsetX*100/24;
 		eRoot.setVolume(newVolume);
