@@ -1,0 +1,96 @@
+#ExercisePanel{
+	width:600px;
+	padding:0px 10px 10px 10px;
+}
+#ExercisePanel input[type="button"]{
+	height:32px;
+	font-size:11pt;
+}
+
+#MemOptions
+{
+	/*background:#EEEEEE;*/
+	/*border-bottom:solid 1px silver;*/
+}
+
+#MemOptions span{
+	line-height:14px;
+}
+
+.actionBtn{
+	height:24px;
+	width:90px;
+}
+
+.gradientV {
+/* thanks to http://blog.fakedarren.com/2010/01/cross-browser-css-gradients/ */
+/* fallback (Opera) */
+	background: #EEEEEE;
+/* Chrome, Safari:*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#DDDDDD));
+/* Mozilla: */
+	background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+/* MSIE */
+	filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#FFFFFF', EndColorStr='#DDDDDD', GradientType=0);
+}
+
+#idAnswer{
+	padding:2px;
+	/*overflow:visible;*/
+	width:99%;
+	color:blue;
+}
+
+#FooterFrame{
+	border:solid 1px #DDDDDD;
+	border-radius: 6px;
+}
+
+#ActionTitle{
+	height:34px;
+}
+#Options span{
+	display:inline-block;
+	vertical-align:middle;
+}
+
+#AyaNumberOption *{
+	vertical-align:middle;
+}
+
+.small_title{
+	font-weight:bold;
+	font-size:12px;
+	color:black;
+}
+
+.aya_title, .aya_title a, .aya_title span
+{
+	font-size:16px;
+	color:maroon;
+	padding:3px;
+	display:inline-block;
+	cursor:pointer;
+}
+
+.sub_title, .sub_title span{
+	font-weight:bold;
+	font-size:16px;
+}
+
+.aya_view, .aya_view span, .aya_view a{
+	font-family:Traditional Arabic;
+	font-size:26px;
+	font-weight:bold;
+}
+
+textarea.aya_view{
+	height:180px;
+}
+
+.counter{
+	font-size:23px;
+	font-weight:bold;
+	color:red;
+	font-family:Tahoma;
+}

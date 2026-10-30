@@ -1,0 +1,175 @@
+#idSuraFrame{
+	overflow-y:auto;
+}
+#idSuraFrame p{
+	direction:rtl;
+}
+
+#HeaderFrame{
+	height:80px;
+}
+
+#BtnReview{
+	
+}
+
+#SuraTopMenuTable td{
+	vartical-align:top;
+}
+
+td.imposed, .imposed td{
+	padding:2px;
+}
+
+.mem_chart{
+	width:120px;
+}
+.line_chart{
+	white-space:nowrap;
+	background:#FFFFCC;
+	width:0%;
+}
+
+#idSMemChart, #idQMemChart
+{
+	line-height:19px;
+}
+
+#SortTitle{
+	vertical-align:top;	
+	line-height:15px;
+}
+html
+{
+	overflow:hidden;
+}
+body{
+	background:#D4DBD2;
+	margin:0px 0px 0px 0px;
+	font-family:Tahoma;
+	font-size:12px;
+	overflow:hidden;
+}
+
+#idAyaPreview
+{
+	position:absolute;
+	width:200px;
+	background:#FFFFCC;
+	padding:4px;
+	border:solid 2px;
+	border-color:#EEEEEE gray Gray #EEEEEE;
+	font-size:16px;
+	font-family:Arabic Transparent;
+	top:81px;
+	left:0px;
+}
+
+#idPagesChart
+{
+	text-align:center;
+}
+
+#idPagesChart span
+{
+	display:inline-block;
+	font-size:9px;
+	cursor:pointer;
+	border: solid 1px;
+	border-color:white gray gray white;
+	min-width:12px;
+	text-align:center;
+}
+
+#idPagesChart span:hover
+{
+	background:white;
+}
+
+
+.suraChart
+{
+	text-align:center;
+}
+#idRecite
+{
+	white-space:nowrap;
+}
+#idMemChart span
+{
+	font-family:tahoma;
+	display:inline-block;
+	width:2px;
+	font-size:9px;
+	cursor:pointer;
+}
+
+#idMemChart span[state="mem"]
+{
+	color:green;
+}
+
+#idMemChart span[state="bnd"]
+{
+	color:orange;
+}
+
+.listItem	{cursor:pointer;
+	padding:1px;
+	color:#003399;
+	border:solid 1px;
+	border-color:White Gray Gray White;
+	background:#efefde;
+}
+.suraLink
+{
+	cursor:pointer;
+	border-bottom:solid 1px silver;
+	padding: 1px 0px 1px 0px;
+	font-size:10px;
+	color:#003399
+}
+.suraLink:hover{background:#efefde;font-weight:bold}
+.spacer		{font-size:1px}
+
+#idReciter
+{
+	/*width:150px;*/
+}
+
+.home_link{
+	width:auto;
+	color:#003399;
+	height:20px;
+	line-height:18px;
+	display:block;
+	cursor:pointer;
+}
+
+*[lang=ar] .home_link{
+	padding-right:20px;
+	background:url(../../images/home.gif) right no-repeat;
+}
+*[lang=en] .home_link{
+	padding-left:20px;
+	background:url(../../images/home.gif) left no-repeat;
+}
+
+
+#SuraLayout
+{
+	width:100%;
+}
+
+#SideIndexContainer
+{
+}
+#SuraFrameContainer{
+	width:100%;
+}
+
+#TafseerFrameContainer
+{
+	width:180px;
+	vertical-align:top;
+}

@@ -1,0 +1,128 @@
+*{
+	font-size:8pt;
+	font-family:tahoma;
+}
+
+body {
+	margin:0px;
+	background:#EFEFE7;
+}
+
+#Header{
+	height:60px;
+	background-image:url(../../images/bg_qcaption.gif);
+	background-repeat:repeat-x;
+}
+
+#QuranTitle{
+	font-size:25px;
+	padding:4px;
+	font-weight:bold;
+	font-family:Traditional Arabic;
+}
+
+#QBody{
+	white-space: nowrap;
+}
+
+#Sidebar{
+	padding:0 2px;
+	width:140px;
+	height:300px;
+	display:inline-block;
+	vertical-align:top;
+}
+
+#Sidebar .ad_box{
+	width:120px;
+	padding:2px;
+	border:solid 1px silver;
+	display:block;
+}
+
+#Sidebar .ad_frame{
+	width:120px;
+	padding-bottom:2px;
+	display:block;
+}
+
+
+#QuranIndex{
+	
+	border: solid 1px #B6C2B4;
+	width:584px;
+	padding:2px;
+	display:inline-block;
+}
+
+#QuranIndex div{
+	white-space: nowrap;
+	width:100%;
+}
+
+#QuranIndex span[sura]{
+	padding: 2px;
+	border: solid 1px;
+	border-color:white gray gray white;
+	width:140px;
+	height:14px;
+	display:inline-block;
+	color: blue;
+	cursor:default;
+}
+
+#QuranIndex span[sura]:hover{
+	border-color:gray white white gray;
+	background:#E0E0E0;
+}
+
+#QuranIndex span[madani] {
+	color:green;
+}
+
+#QuranIndex span[controls]{
+	position:absolute;
+	width:140px;
+}
+
+#QuranIndex span[chart]{
+	width:100px;
+	height:14px;
+	display:inline-block;
+}
+
+#QuranIndex span[buttons]{
+	width:38px;
+	height:12px;
+	display:inline-block;
+	vertical-align:top;
+	background:#E0E0E0;
+	border:solid 1px;
+	border-color:silver white white silver;
+	visibility:visible;
+}
+
+#QuranIndex span[buttons]:hover{
+}
+
+#QuranIndex span[chart] img{
+	xbackground: #FFFFCC;
+	height:12px;
+	xborder:solid 1px silver;
+}
+
+#QuranIndex span[stitle]{
+	position:absolute;
+	width:140px;
+}
+
+*[dir="rtlx"] #QuranIndex span 
+{
+	border-right-color:silver;
+}
+
+*[dir="ltrx"] #QuranIndex span
+{
+	border-left-color:silver;
+}
+
