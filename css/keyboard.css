@@ -1,0 +1,41 @@
+.keyboard
+{
+	direction:ltr;
+	width:343px;
+	position:absolute;
+	z-index:10000;
+	border:solid 1px silver;
+}
+
+.keyButton{
+	height:18px;
+	font-family:tahoma;
+	font-size:11px;
+	font-weight:bold;
+	text-align:center;
+	border:solid 1px;
+	border-color:white Gray Gray White;
+	width:20px;
+	cursor:default;
+	background:#DDDDDD;
+	color:black;
+}
+
+.keyButton:hover
+{
+	background:#FFFFBB;
+}
+
+.keyPressedButton{
+	height:18px;
+	font-family:tahoma;
+	font-size:11px;
+	text-align:center;
+	border-top:solid 1px gray;
+	border-left:solid 1px gray;
+	border-bottom:solid 1px white;
+	border-right:solid 1px white;
+	width:20px;
+	cursor:default;
+	background:#EEEEEE;
+}

@@ -1,0 +1,74 @@
+
+body{
+	background:#dcdcb6;
+	margin-left:4px;
+	margin-top:3px;
+	direction:rtl;
+
+}
+
+#idAyaPic{
+	border-top:solid 2px white;
+	border-left:solid 2px white;
+	border-bottom:solid 2px gray;
+	border-right:solid 2px gray;
+	position:absolute;
+	left:4px;
+	top:4px;
+	filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=80)
+}
+
+A{ 
+	text-decoration:none;
+}
+
+A:link{
+	color:#003399; 
+}
+
+A:visited{
+	color:#003399; 
+}
+
+A:hover{ 
+	color:maroon;
+}
+
+td{
+	font-size:11px;
+	font-family:tahoma;
+}
+
+body{
+	font-size:9pt;
+	font-family:tahoma;
+}
+
+input,textarea{
+	font-family:tahoma;
+	font-size:12px;
+}
+
+select{
+	font-family:tahoma;
+	font-size:12px; 
+	color:green; 
+	width:120;
+}
+
+.toolbar_button{
+	color:#003399;
+	padding:1px;
+	padding-left:3px;
+	padding-right:3px;
+	border-top:solid 2px white;
+	border-left:solid 2px white;
+	border-bottom:solid 2px silver;	
+	border-right:solid 2px silver;
+	cursor:pointer;
+	background:#E4EBCD;	
+	height:20px;
+	vertical-align:middle;
+	text-align:center;
+	font-size:10px
+}

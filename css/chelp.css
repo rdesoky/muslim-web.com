@@ -1,0 +1,131 @@
+.help_anchor{
+	visibility: hidden;
+	background:url("../images/help_5x5.png") no-repeat;
+	height:5px;
+	width:5px;
+	z-index: 1000;
+	opacity: 0.9;
+}
+
+:lang(ar) .help_anchor{
+	/*background-image: url("/images/red_tr_tri_5x5.png");*/
+}
+
+.help_on .help_anchor,
+:hover>.help_anchor,
+:hover>.help_anchor .h_arrow,
+:hover>.help_anchor .h_frame
+{
+	visibility: visible;
+}
+
+.h_frame, .h_arrow, .help_anchor{
+	position: absolute;
+	visibility: hidden;
+}
+
+:hover>.help_anchor .h_frame{
+	border-color:#666;
+	min-height:50px;
+}
+.h_frame{
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	-webkit-transition-delay: 0.5s;
+	text-align: left;
+	border-style: solid;
+	border-width:1px;
+	border-color:#666;
+	background-color:#FFD;
+	width:160px;
+	overflow:auto;
+	color:#555;
+	padding:4px;
+	font-family: tahoma;
+	font-size: 9pt;
+}
+.h_left .h_frame, .h_right .h_frame{
+	top:-10px;
+}
+
+.h_left .h_frame,
+:lang(ar) .h_right .h_frame
+{
+	left:auto;
+	right:10px;
+}
+
+.h_left .h_arrow,
+:lang(ar) .h_right .h_arrow{
+	left:auto;
+	right:5px;
+	top:-6px;
+	width:6px;
+	background-image: url(../images/right.png);
+}
+
+.h_right .h_frame,
+:lang(ar) .h_left .h_frame
+{
+	right:auto;
+	left:10px;
+}
+
+.h_right .h_arrow,
+:lang(ar) .h_left .h_arrow{
+	top:-6px;
+	right:-6px;
+	left:auto;
+	width:6px;
+	background-image: url(../images/left.png);
+}
+
+.h_top .h_frame{
+	bottom:10px;
+	left:-10px;
+	right:auto;
+}
+:lang(ar) .h_top .h_frame{
+	left:auto;
+	right:-10px;
+}
+.h_top .h_arrow{
+	top:-6px;
+	left:-6px;
+	right:auto;
+	background-image: url(../images/down.png);
+	height:6px;
+}
+
+.h_bottom .h_frame{
+	top:10px;
+	left:-10px;
+	right:auto;
+}
+
+:lang(ar) .h_bottom .h_frame{
+	left:auto;
+	right:-10px;
+}
+
+.h_bottom .h_arrow{
+	left:-6px;
+	right:auto;
+	bottom:-6px;
+	height:6px;
+	background-image: url(../images/up.png);
+}
+
+:lang(ar) .h_bottom .h_arrow{
+	left:auto;
+	right:-6px;
+}
+
+
+.h_arrow{
+	background-repeat: no-repeat;
+	background-position: center;
+	width:16px;
+	height:16px;
+}
+

@@ -1,0 +1,1388 @@
+.help_on #cHelp.checkTitle {
+  background-image: url(../../images/checkbox_on.gif);
+}
+
+#Trainer {
+  min-height: 300px;
+}
+#RecitersFootnote {
+  padding-top: 3px;
+  border-top: solid 1px silver;
+}
+#AudioControls {
+  display: inline-table;
+  border: solid 1px silver;
+  background: #fff;
+  vertical-align: middle;
+  border-collapse: separate;
+  border-radius: 3px;
+}
+#AudioControls td {
+  /* background:white; */
+  /*padding:0px 2px 0px 2px;*/
+  /*height:20px;*/
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* #idPageViewAudio{
+} */
+
+#BtnPlay {
+  /* width:30px; */
+}
+
+#PlayerStatus {
+  width: 20px;
+  vertical-align: bottom;
+  overflow: hidden;
+  text-align: center;
+  /*
+	height:20px;
+	white-space:nowrap;
+*/
+}
+
+#AudioControls input[type="button"] {
+  margin: 0px;
+}
+
+#AudioControls input {
+  vertical-align: middle;
+  margin: 0px;
+}
+
+#Repeat {
+  width: 24px;
+}
+#RepeatCounter {
+  color: green;
+}
+
+/* #MemReviewTitle{
+	cursor:pointer;
+	background-color:#DDDDDD;
+	border:solid 1px;
+	border-color: white silver silver white;
+	padding:2px 4px;
+} */
+
+/* #MemReviewTitle.checked{
+	background:gray;
+	color:white;
+	border-color: silver white white silver;
+} */
+
+#SelectionViewer {
+  height: 18px;
+  vertical-align: top;
+  font-size: 10px;
+}
+#SelectionViewer span {
+  font-size: 10px;
+}
+
+#SelectionViewer .fake_combobox {
+  background-color: #d9ecd9;
+}
+
+#VerseHover,
+#VerseMask,
+#VerseSelect,
+#Memorized,
+#Pending {
+  position: absolute;
+  top: 18px;
+  width: 532px;
+  direction: ltr;
+  z-index: 1100;
+}
+
+.hres #VerseHover,
+.hres #VerseMask,
+.hres #VerseSelect,
+.hres #Memorized,
+.hres #Pending {
+  width: 584px;
+}
+.map_item {
+  position: absolute;
+}
+
+#VerseMask .map_item {
+  background-color: gray;
+  border-bottom: solid 1px silver;
+}
+
+#VerseHover .map_item {
+  background: blue;
+  border-bottom: solid 1px white;
+  /*IE*/
+  filter: alpha(opacity=12);
+  /*Firefox, Chrom*/
+  opacity: 0.12;
+}
+
+#VerseSelect .map_item {
+  background-color: green;
+  /*IE*/
+  filter: alpha(opacity=15);
+  /*Firefox, Chrom*/
+  opacity: 0.15;
+}
+
+#Memorized .map_item {
+  border-bottom: solid 1px #9c0;
+}
+
+#Pending .map_item {
+  border-bottom: solid 1px orange;
+}
+
+.hres .page_map {
+  width: 292px;
+}
+
+#idSelectVerticalIndex span[tid] {
+  height: 17px;
+}
+
+.page_header_tbl {
+  width: 100%;
+  border-spacing: 0px;
+  height: 18px;
+}
+
+.focus {
+  background-color: #ffffee;
+}
+
+.page_header_tbl td {
+  padding: 1px 4px;
+  vertical-align: top;
+}
+
+#idBtnPageMark {
+  font-size: 9px;
+  padding: 1px 4px;
+}
+/*#SuraTools{
+	vertical-align:top;
+}*/
+
+#AudioButtons {
+  padding: 1px;
+}
+
+.chapters_index_columns {
+  border-spacing: 0px;
+}
+
+.chapters_index_columns td {
+  padding: 0px;
+  vertical-align: top;
+}
+.mem_report_line {
+  border-top: solid 1px white;
+  border-bottom: solid 1px silver;
+  white-space: nowrap;
+}
+#MemReport {
+  padding: 8px;
+  width: 560px;
+  min-height: 400px;
+}
+
+#MemReport .mem_chart {
+  vertical-align: top;
+}
+
+#MemReport .full_mem {
+  color: green;
+  width: 80px;
+  height: 13px;
+  font-size: 10px;
+}
+#MemReport .full_mem:hover {
+  background: green;
+  color: white;
+}
+
+#MemReport .part_mem {
+  width: 80px;
+  height: 13px;
+  font-size: 10px;
+}
+
+#MemReport .part_mem:hover {
+  background: orange;
+}
+
+.mem_chart {
+  width: 480px;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.mem_chart *[state] {
+  padding: 0px;
+  height: 14px;
+}
+
+#SuraBar .mem_chart *[state] {
+  height: 18px;
+}
+
+#SuraBar > div {
+  display: inline-block;
+}
+.mem_chart *[state="pnd"] {
+  background: orange;
+}
+
+.mem_chart *[state="pnd"]:hover {
+  background: maroon;
+}
+
+.mem_chart *[state="yes"] {
+  background: #9c0;
+}
+.mem_chart *[state="yes"]:hover {
+  background: green;
+}
+
+.mem_chart *[state="no"] {
+  background: #dddddd;
+}
+.mem_chart *[state="no"]:hover {
+  background: #aaaaaa;
+}
+
+/* #AyatChart{
+	border:solid 1px silver;
+} */
+
+#AyatChart .mem_chart {
+  width: 320px;
+}
+
+#LangSwitcher {
+  position: absolute;
+  top: 3px;
+  padding: 2px;
+  font-weight: bold;
+}
+
+*:lang(ar) #LangSwitcher {
+  left: 6px;
+}
+
+*:lang(en) #LangSwitcher {
+  right: 6px;
+}
+
+*:lang(ar) .keyboard {
+  right: 65px;
+}
+
+.pageFooter {
+  width: 100%;
+  border-spacing: 0px;
+}
+
+#SearchTabsRoot {
+  padding: 0px 4px;
+}
+
+.sura_bar_chart span {
+  font-family: tahoma;
+  display: inline-block;
+  width: 3px;
+  font-size: 9px;
+  cursor: pointer;
+  color: gray;
+}
+
+.sura_bar_chart[sura="2"] span {
+  width: 2px;
+}
+
+.sura_bar_chart span:hover {
+  background: #cfe6a6;
+}
+
+.sura_bar_chart span[state="mem"] {
+  color: green;
+}
+
+.sura_bar_chart span[state="bnd"] {
+  color: orange;
+}
+
+#SuraBar,
+.sub_ctrl_bar {
+  background: white;
+  border-bottom: solid 3px #eee8aa;
+  /*height:18px;*/
+  white-space: nowrap;
+  padding: 3px 0px;
+}
+
+.sub_ctrl_bar > * {
+  vertical-align: middle;
+}
+
+.btnSearch {
+  background: #efefe7;
+}
+.btnSearch:hover {
+  background: white;
+}
+#SiteIntro {
+  padding: 20px;
+  width: 500px;
+  font-size: 13px;
+}
+
+#idReciterList .menu_item {
+  display: block;
+}
+#UserInfoSwitcher {
+  width: 170px;
+}
+
+/*
+#idLogin{
+	position:absolute;
+	z-index:100;
+	width:160px;
+	background:#efefe7;
+}
+*/
+*:lang(ar) .rightAlign,
+.leftAlign {
+  text-align: left;
+}
+
+*:lang(ar) .leftAlign,
+.rightAlign {
+  text-align: right;
+}
+
+#ShowTextBtn {
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+  border: solid 1px;
+  border-color: #b6c2b4;
+}
+
+#ShowTextBtn:hover {
+  border-color: white;
+}
+
+#ControlBar {
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+#idPagesTable {
+  border-spacing: 0px;
+}
+
+#TopMenuItems {
+  border-top: solid 2px white;
+  padding: 2px 0px;
+  /* height:22px; */
+}
+
+#TopMenuItems select {
+  font-size: 12px;
+}
+#RecentReciters {
+  vertical-align: middle;
+}
+
+/*
+#TopMenuItems table{
+	border-spacing:2px;
+	border-collapse:separate;
+}
+*/
+/*
+#TopMenuItems span, #TopMenuItems a{
+	vertical-align:middle;
+}
+*/
+#TopMenu {
+  border-spacing: 0px;
+}
+#TopMenu td {
+  white-space: nowrap;
+}
+
+.sresultsTopOffset {
+  background: silver;
+  cursor: default;
+}
+
+.sresults_scroller {
+  background: #dddddd;
+  cursor: default;
+  text-align: center;
+  height: 50px;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.sresults_scroller:hover {
+  background: silver;
+}
+
+.sresultsTopOffset:hover,
+.sresultsBottomOffset:hover {
+  background: gray;
+}
+
+.sresults_layout {
+  border-spacing: 0px;
+  width: 100%;
+}
+
+.sresults_layout td {
+  white-space: nowrap;
+  padding: 0px;
+}
+
+.sresults_list {
+  vertical-align: top;
+  width: 100%;
+}
+
+.vNavigator {
+  border-spacing: 0px;
+}
+
+.scrollDummyButton {
+  height: 12px;
+}
+
+.scrollButton {
+  cursor: pointer;
+  text-align: center;
+  height: 12px;
+}
+
+.scrollButton:hover {
+  background: gray;
+  cursor: pointer;
+}
+
+.tabRemoveBtn {
+  cursor: pointer;
+}
+
+.tabRemoveBtn:hover {
+  background: pink;
+}
+
+.pageNav {
+  padding-top: 4px;
+}
+
+.pageButton {
+  border: solid 1px gray;
+  font-size: 8px;
+  text-align: center;
+  cursor: default;
+  vertical-align: middle;
+}
+
+.selectedPageButton {
+  padding: 2px;
+  min-width: 15px;
+  text-align: center;
+}
+
+#SearchTabs span {
+  height: 19px;
+}
+
+#SearchResultsRoot {
+  position: absolute;
+  padding: 0px;
+  z-index: 3000;
+  height: 76px;
+  width: 760px;
+  overflow: hidden;
+  background: white;
+  border: solid 2px gray;
+  border-top: none;
+  border-left: none;
+  cursor: default;
+}
+
+*:lang(en) #SearchResultsRoot {
+  left: 64px;
+}
+
+*:lang(ar) #SearchResultsRoot {
+  right: 64px;
+}
+
+*:lang(ar) .search_results {
+  padding-right: 2px;
+}
+
+*:lang(en) .search_results {
+  padding-left: 2px;
+}
+
+.result_item {
+  cursor: pointer;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.result_item:hover {
+  color: white;
+  background: gray;
+}
+
+#TafText {
+  /*overflow-y:auto;*/
+  background: #ffffee;
+  height: 396px;
+  width: 200px;
+}
+
+#TafText * {
+  font-size: 13px;
+  line-height: 19px;
+}
+
+#SuraTitle {
+  width: 82px;
+  text-align: center;
+}
+
+#ViewerSuraName {
+  margin-top: 1px;
+  text-align: center;
+}
+
+#TopMenuTable td {
+  padding: 3px;
+}
+.collapsed {
+  border-collapse: collapse;
+}
+
+#FeedbackInfo,
+#BackToOld {
+  padding: 3px;
+}
+
+#PrayRequest {
+  color: green;
+  text-align: center;
+}
+
+#FooterAds {
+  margin-top: 3px;
+  border: solid 1px silver;
+  display: none;
+}
+
+#idFooter {
+  width: 100%;
+  margin-top: 6px;
+}
+#idFooter td,
+#FooterAdsPanel td {
+  border: solid 1px;
+  border-color: white silver silver white;
+  vertical-align: top;
+  padding: 2px;
+}
+
+#FooterAdsPanel table {
+  width: 100%;
+}
+
+#idFooter td {
+  width: 25%;
+}
+
+#idLoginForm div {
+  white-space: nowrap;
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+
+#LoginFormPanel {
+  padding-top: 10px;
+}
+.buttonsBar {
+  padding: 2px;
+  text-align: center;
+}
+
+#idLoginForm div input[type="text"],
+#idLoginForm div input[type="password"] {
+  width: 83px;
+}
+
+#idLoginForm input[type="submit"],
+#idLoginForm input[type="button"] {
+  width: 60px;
+}
+
+#idLoginForm div span {
+  display: inline-block;
+  width: 70px;
+}
+
+.pageNavigator {
+  white-space: nowrap;
+  cursor: default;
+}
+
+.pageNavigator:hover {
+  background: #cfe6a6;
+}
+
+.pageViewFrame {
+  background: url(../../images/r_page.jpg) repeat-y;
+  text-align: left;
+  width: 266px;
+  height: 404px;
+  position: relative;
+}
+
+.pageViewFrame img {
+  height: 402px;
+  width: 264px;
+}
+
+#idPageViews.hres .pageViewFrame {
+  width: 292px;
+  height: 432px;
+  background: url(../../images/r_hpage.jpg) repeat-y;
+}
+
+#idPageViews.hres .pageViewFrame img {
+  height: 430px;
+  width: 290px;
+}
+
+div[side="1"].pageViewFrame {
+  background: url(../../images/l_page.jpg) repeat-y;
+  text-align: right;
+}
+
+.pageViewFrame.mask img {
+  visibility: hidden;
+}
+
+#idPageViews.hres div[side="1"].pageViewFrame {
+  background: url(../../images/l_hpage.jpg) repeat-y;
+}
+
+#idPageViews .pageViewFrame.mask,
+#idPageViews.hres .pageViewFrame.mask,
+#idPageViews.hres div[side="1"].pageViewFrame.mask {
+  background: #b6c2b4;
+}
+
+.pageViewFrame.wait,
+div[side="1"].pageViewFrame.wait,
+#idPageViews.hres .pageViewFrame.wait,
+#idPageViews.hres div[side="1"].pageViewFrame.wait {
+  background: white url(../../images/wait.gif) no-repeat center;
+}
+
+#idPageView_0,
+#idPageView_1 {
+  border: solid 1px;
+  /*border-color:white #444444 #444444 white;*/
+  border-color: silver;
+}
+
+.focus #idPageView_0,
+.focus #idPageView_1 {
+  /*border-color: silver #003399 #003399 silver;*/
+  /*border-color: pink maroon maroon pink;*/
+  border-color: black;
+}
+
+.page_grid {
+  position: absolute;
+  width: 264px;
+  height: 402px;
+  z-index: -1;
+
+  /*IE*/
+  background: rgb(0, 0, 255);
+  filter: alpha(opacity=20);
+  /*Firefox, Chrom*/
+  opacity: 0.2;
+}
+
+#xidRecitersPanel {
+  position: absolute;
+  background: white;
+  width: 198px;
+  z-index: 2000;
+  border: solid 1px silver;
+  border-top: none;
+}
+
+#idReciterHelp {
+  padding: 4px;
+  background: #ffffdd;
+}
+
+#idReciterHelp div {
+  font-size: 10px;
+}
+
+#idReciter {
+  font-weight: bold;
+  /*width:160px;*/
+}
+
+/* #IndexCaption
+{
+} */
+
+#idViewTabs {
+  vertical-align: bottom;
+  /*border-collapse:collapse;*/
+}
+
+#idViewTabs *[tid] {
+  height: 24px;
+  background: #dddddd;
+  border-radius: 8px 8px 0px 0px;
+  min-width: 64px;
+  text-align: center;
+  line-height: 24px;
+  /* Tab labels are filled from data-str after all scripts load. Without this,
+     empty tabs align on the box bottom edge while populated ones align on the
+     text baseline, so the row visibly jumps during loading. */
+  vertical-align: bottom;
+}
+
+#idViewTabs img {
+  vertical-align: middle;
+}
+
+#idViewTabs *[tid]:hover {
+  color: navy;
+  background: #eeeeee;
+}
+
+#idViewTabs *[tid].sel {
+  background: #b0c4de;
+  font-weight: bold;
+}
+
+#SearchTabs *[tid].sel,
+#SearchTabs *[tid].sel:hover {
+  background: white;
+}
+
+#SearchTabs *[tid]:hover {
+  background: #ffffaa;
+}
+
+#ColorChart {
+  position: absolute;
+  top: 0px;
+  background: silver;
+}
+*:lang(ar) #ColorChart {
+  left: 0px;
+}
+*:lang(en) #ColorChart {
+  right: 0px;
+}
+
+#ColorChart td {
+  background: white;
+  border: none;
+}
+
+#SearchTool td {
+  border: none;
+  white-space: nowrap;
+}
+
+body {
+  background: #efefe7;
+  margin: 2px 6px;
+  font-family: Tahoma;
+  overflow-y: scroll;
+}
+span {
+  display: inline-block;
+}
+
+#VerticalIndex {
+  background: #e0e0e0;
+  padding-top: 2px;
+}
+
+.vIndexCell {
+  width: 48px;
+  cursor: default;
+  border: solid 1px;
+  border-color: white Silver Silver white;
+  font-size: 9px;
+  position: relative;
+}
+
+*:lang(ar) .vIndexCell {
+  font-size: 10px;
+}
+
+.vIndexCell.chapter {
+  width: 100%;
+}
+
+.vIndexCell div {
+  top: 0;
+  font-size: 10px;
+}
+
+.vIndexCell.active {
+  border-color: gray white white gray;
+  background: white;
+}
+
+.suraAction,
+.tinyBtn {
+  border: solid 1px;
+  border-color: silver gray gray silver;
+  background: white;
+  cursor: default;
+  text-align: center;
+}
+
+.suraAction {
+  width: 14px;
+  height: 12px;
+}
+
+.suraAction:hover,
+.tinyBtn:hover {
+  border-color: gray silver silver gray;
+  background: #ffffcc;
+}
+
+.vIndexCell:hover {
+  cursor: default;
+  background: white;
+}
+
+#IndexPanel {
+  vertical-align: top;
+}
+
+.top_logo {
+  background: url(../../images/bg_caption.gif) repeat-x;
+  width: 64px;
+  height: 40px;
+  padding: 2px;
+  text-align: center;
+}
+
+.site_title {
+  color: var(--accent-green);
+  font-family: Arabic Transparent;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px;
+}
+
+#TopPanel {
+  width: 100%;
+}
+
+/* Do not render the header content while the page scripts are still loading
+   (body gains the xloading class before script load and loses it on init). */
+body.xloading #Header {
+  visibility: hidden;
+}
+
+#TopLogo audio {
+  width: 100px;
+  visibility: hidden;
+}
+
+#TopLogo audio[src] {
+  visibility: visible;
+}
+
+#UserInfoPanel {
+  padding: 0px 6px;
+}
+
+#TopMenuSearch {
+  background: gray;
+  color: white;
+  padding: 2px;
+}
+#TopMenuSearch input {
+  vertical-align: top;
+  height: 16px;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  color: blue;
+}
+.menuSpacer {
+  height: 3px;
+}
+
+#LeftMenu {
+  padding: 0px 0px 0px 0px;
+  vertical-align: top;
+  width: 180px;
+}
+#MainIndex {
+  vertical-align: top;
+  border-top: solid 3px #b0c4de;
+}
+
+#ProgressPanel {
+  background: #efefe7;
+  padding: 20px;
+  height: 240px;
+}
+
+#ProgressBar {
+  background: silver;
+  width: 0px;
+}
+
+#ProgressText {
+  position: absolute;
+  width: 200px;
+  text-align: center;
+}
+
+#ProgressBarPanel {
+  /*direction:ltr;*/
+  width: 200px;
+  border: solid 1px gray;
+  text-align: left;
+  padding: 2px;
+}
+
+#WaitingMsg {
+  font-size: 20px;
+  color: silver;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+#IndexTitle {
+  font-family: Traditional Arabic;
+  font-size: 16px;
+  background-image: url(../../images/bg_caption.gif);
+  background-repeat: repeat-x;
+  text-align: center;
+  height: 28px;
+}
+
+#IndexTitle img {
+  vertical-align: middle;
+  width: 11px;
+  height: 22px;
+}
+
+#TopMenuPanel {
+  padding: 0px 0px 3px 0px;
+}
+
+/* #TopMenuPanel Table
+{
+} */
+
+#TopMenuPanel td {
+  border: solid 1px;
+  border-color: White silver Silver white;
+  padding: 3px;
+}
+
+#idMemChart {
+  z-index: -1;
+  border: solid 1px silver;
+  background: #ffffcc;
+  height: 14px;
+}
+
+#SearchBoxTitle {
+  font-weight: bold;
+}
+
+#CriticalMsg {
+  padding: 2px;
+  color: red;
+  font-weight: bold;
+  background: white;
+  text-align: center;
+}
+
+/* #idPageViews
+{
+} */
+
+.adframe {
+  border: solid 2px #e0e0e0;
+  padding: 1px;
+}
+
+/* .quranIndex
+{
+} */
+
+.indexColumn {
+  vertical-align: top;
+}
+
+.suraCellName {
+  padding: 1px;
+  position: absolute;
+  height: 14px;
+  font-size: 10px;
+}
+
+.cell_actions {
+  position: absolute;
+  border-spacing: 0px;
+}
+.cell_actions td {
+  padding: 1px;
+}
+.memPercent {
+  height: 14px;
+  background: #ffffcc;
+  width: 0px;
+}
+
+.suraMenu {
+  position: absolute;
+  padding-top: 16px;
+  border: solid 1px black;
+}
+
+.sura_cell {
+  height: 16px;
+  vertical-align: top;
+  border: solid 1px;
+  border-color: white silver silver white;
+}
+
+.sura_cell:hover {
+  border-color: black;
+}
+
+.sura_cell.makki {
+  background: #cedede;
+}
+
+.sura_cell.madani {
+  background: #efefe7;
+}
+
+.suraMenuItem {
+  font-size: 10px;
+  cursor: pointer;
+  padding: 1px;
+  border-top: solid 1px white;
+  background: #f0f0f0;
+  color: navy;
+}
+
+.suraMenuItem:hover {
+  background: #cfe6a6;
+}
+
+.sideBox {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 3px;
+  border: solid 1px silver;
+}
+
+#ReciterListToggler.sideBox {
+  white-space: nowrap;
+}
+
+#idFaceBookAd.sideBox {
+  padding: 10px;
+  border-color: #3b5998;
+  text-align: center;
+  cursor: pointer;
+}
+
+#idRecentReciters {
+  color: green;
+}
+
+#idRecentSuras select {
+  width: 100%;
+}
+#idSubMenuItem {
+  padding: 1px;
+  padding-right: 22px;
+  border-top: solid 2px white;
+  border-bottom: solid 2px silver;
+  border-left: solid 2px white;
+  border-right: solid 2px silver;
+  font-family: Tahoma;
+  font-size: 11px;
+  font-weight: normal;
+  height: 20px;
+}
+
+.PageButton {
+  color: #003399;
+  font-size: 9px;
+  font-family: Tahoma;
+  cursor: pointer;
+  border: solid 1px;
+  border-color: white gray gray white;
+  background: #dddddd;
+  text-align: center;
+}
+
+.PageButton.active {
+  color: #003399;
+  cursor: default;
+  border-color: gray white white gray;
+  background: silver;
+}
+
+.PageButton:hover {
+  background: white;
+}
+
+#SuraButtons {
+  border-style: solid;
+  border-color: gray;
+  border-width: 0px 1px 1px 1px;
+}
+
+#SuraButtons .PageButton {
+  font-size: 9px;
+}
+
+#SuraButtons table {
+  width: 100%;
+}
+
+#PagesViewControls {
+  display: inline-block;
+}
+#PagesViewControls:lang(en) {
+  padding-left: 1px;
+}
+#PagesViewControls:lang(ar) {
+  padding-right: 1px;
+}
+#idPages {
+  width: 96px;
+  position: absolute;
+  z-index: 10000;
+}
+#PagesViewControls > #idPages {
+  display: none;
+}
+#PagesViewControls:hover > #idPages {
+  display: block;
+}
+/* #PagesViewControls .PageButton
+{
+	width:100px;
+} */
+#PagesViewControls > * {
+  vertical-align: top;
+}
+#PageSpinTable {
+  width: 64px;
+}
+#PageSpinTable:lang(ar) {
+  text-align: left;
+}
+#PageSpinTable:lang(en) {
+  text-align: right;
+}
+
+/* .sViewer
+{
+	width:134px;
+} */
+
+#PageButtons {
+  border-spacing: 0px;
+  direction: rtl;
+  background-color: #eee;
+}
+
+#PageButtons td {
+  width: 50%;
+}
+
+.suraQViewer {
+  background: #cfe6a6;
+  padding: 2px;
+  padding-bottom: 0px;
+  border: solid 1px white;
+}
+
+.suraQViewerText {
+  background: #f0f0f0;
+  background-image: url(../../images/bg_sviewer.gif);
+  background-repeat: repeat-x;
+  overflow-y: auto;
+  height: 100px;
+  color: green;
+  padding: 2px;
+}
+
+#idMenuItem,
+.MenuItem {
+  padding: 2px;
+  border: solid 1px;
+  border-color: white Silver Silver White;
+  font-family: Tahoma;
+  font-size: 11px;
+  white-space: nowrap;
+  color: Black;
+  font-weight: normal;
+  vertical-align: top;
+}
+
+#AlterBookmarks {
+  margin-top: 10px;
+  display: none;
+  padding: 2px;
+  font-size: 11px;
+  background: #ffffcc;
+  color: brown;
+  text-align: center;
+  border: dotted 1px silver;
+}
+
+#AddThisBox .box_title {
+  color: blue;
+  margin-bottom: 5px;
+}
+
+#AdsFrame {
+  text-align: center;
+}
+
+#idKoboolAd {
+  margin-top: 3px;
+  padding: 2px;
+  border: solid 2px #cccccc;
+  background: #ffffcc;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#RightMenu {
+  padding: 6px;
+  padding-top: 26px;
+  position: absolute;
+  width: 180px;
+}
+
+*:lang(ar) #RightMenu {
+  left: 0px;
+}
+*:lang(en) #RightMenu {
+  right: 0px;
+}
+
+#PageCtrlGuide {
+  padding: 4px;
+  color: green;
+}
+
+.tafBtn,
+#TafPrev,
+#TafNext {
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.tafBtn:hover,
+#TafPrev:hover,
+#TafNext:hover {
+  background: white;
+}
+
+#TafNav {
+  white-space: nowrap;
+}
+
+#TafNav td {
+  white-space: nowrap;
+}
+
+#TafAyaCell {
+  width: 65px;
+  text-align: center;
+}
+
+#SuraBar > * {
+  vertical-align: top;
+  height: 18px;
+}
+
+#AudioControls td > span {
+  vertical-align: middle;
+}
+
+#GooglePlayBadge {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  /* width:210px; */
+}
+
+*:lang(ar) #GooglePlayBadge {
+  left: 0;
+  right: auto;
+}
+
+#GooglePlayBadge img {
+  width: 100px;
+  height: 40px;
+}
+#idReciterList {
+  height: 260px;
+  overflow-y: scroll;
+}
+
+.pages_tab::before {
+  content: "\1F4D6  ";
+}
+
+.AnnouncementBar {
+  background-color: rgb(255, 255, 173);
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 60px 5px 5px;
+}
+
+*:lang(ar) .AnnouncementBar {
+  padding: 5px 5px 5px 60px;
+}

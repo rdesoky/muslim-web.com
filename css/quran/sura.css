@@ -1,0 +1,232 @@
+#idAyaPreview span[amenu]{
+	background:none;
+	width:0px;
+}
+#SuraFrameContainer{
+	background:#efefe7;
+}
+
+#idSuraFrame p{
+	margin: 8px 6px 8px 6px;
+	cursor:default;
+	/*position:relative;*/
+}
+
+#idSuraFrame p[aya]
+{
+	font-family:Traditional Arabic;
+	font-size:28px;
+	border:solid 1px #D5D5D5;
+	clear:both;
+}
+
+span[akey]
+{
+	border:solid 1px;
+	color:Maroon;
+	padding:0px 3px 0px 3px;
+	white-space:nowrap;
+	border-color:silver;
+}
+
+span[akey]:hover
+{
+	border-color:gray;
+	background:#CFE6A6;
+}
+
+.aya_preview
+{
+	float:left;
+	border:solid 2px;
+	border-color:White Silver Silver White;
+}
+
+
+p[aya] span
+{
+	font-family:Simplified Arabic;
+	font-size:15px;
+}
+
+p[aya] span.ps{
+	font-size:22px;
+	font-family:Simplified Arabic;
+	color:maroon;
+}
+
+.upBtn{
+	vertical-align:middle;
+	width:18px;
+	height:18px;
+	background:url(../../images/top.gif) no-repeat center;
+	cursor:pointer;
+	display:inline-block;
+}
+
+.dnBtn
+{
+	vertical-align:middle;
+	width:18px;
+	height:18px;
+	background:url(../../images/down.gif) no-repeat center;
+	cursor:pointer;
+	display:inline-block;
+}
+
+.upBtn:hover, .dnBtn:hover{
+	background-color:#CFE6A6;
+}
+
+.pageButton
+{
+	display:inline-block;
+	border: solid 2px;
+	border-color:White Gray Gray White;
+	font-size:14px;
+}
+
+span[pageNo]
+{
+	display:inline-block;
+	height:19px;
+}
+span[pageNo]:hover
+{
+	background:#CFE6A6;
+}
+
+span[amenu]
+{
+	vertical-align:top;
+	width:14px;
+	height:14px;
+	cursor:pointer;
+	display:inline-block;
+	background:url(../../images/bullet2.gif) no-repeat center;
+}
+
+span[amenu]:hover
+{
+/*	background:url(../../images/bullet.gif) no-repeat center;*/
+}
+
+.commandcell
+{
+	color: #555555;
+	font-size:11px;
+	border: solid 1px;
+	border-color:white gray Gray white;
+}
+.SuraCell
+{
+	color:#003399;
+	font-size:10px ;
+	font-family:Tahoma;
+	cursor:hand;
+	font-weight:bold;
+}
+
+.ayaBtn{
+	font-size:15px ;
+	font-family:Tahoma ;
+	cursor:default;
+	border: solid 1px #D0D0D0;
+	padding:2px;
+	text-align:center;
+	color:maroon;	
+	white-space:nowrap;
+}
+
+.SuraTitle
+{
+	COLOR: #555555;
+	FONT-SIZE:16px;
+}
+
+#idContextMenu
+{
+	font-family:tahoma;
+	font-size:11px;
+	position:absolute;
+	border:solid 1;
+	border-color:#CCCCCC #222222 #222222 #CCCCCC;
+	background:#FFFFDD;
+	cursor:default;
+	z-index:1000;
+}
+
+#idMenuFrame
+{
+	cursor:default;
+	background:#dcdcb6;
+	border:solid 1;
+	border-color: white Gray Gray white;
+}
+
+#idMenuItem
+{
+	cursor:hand;
+	font-size:11px ;
+	font-family:Tahoma;
+}
+
+#idGMenuItem
+{
+	cursor:default;
+	font-size:11px ;
+	font-family:Tahoma;
+}
+
+.AKey
+{
+	font-family:Tahoma;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:overline underline;
+}
+
+.basm
+{
+	font-family:Traditional Arabic,Arabic Transparent,Arial;
+	font-size:18px;
+	font-weight:bold;
+	color:maroon;
+	text-align:center;
+	padding:2px;
+}
+
+.tafseerView
+{
+	font-size:12px;
+	background:#FFFFCC;
+	color:black;
+	width:320px;
+	height:209px;
+	overflow-y:scroll;
+	border:solid 1;
+	border-color: white Gray Gray white;
+}
+
+.listItem	{cursor:pointer;
+	padding:1px;
+	color:#003399;
+	border:solid 1px;
+	border-color:White Gray Gray White;
+	background:#efefde;
+	text-align:center;
+}
+.suraLink
+{
+	cursor:pointer;
+	border-bottom:solid 1px silver;
+	padding: 1px 0px 1px 0px;
+	font-size:10px;
+	color:#003399
+}
+.suraLink:hover
+{
+	background:#efefde;
+	font-weight:bold
+}
+.spacer		{font-size:1px}

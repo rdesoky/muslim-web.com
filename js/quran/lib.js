@@ -1,0 +1,739 @@
+var XMLParser = function(text) {
+	var xmlRoot;
+	if( window.DOMParser ){
+		parser=new DOMParser();
+		xmlRoot=parser.parseFromString(text,"text/xml");
+	}
+	else{// IE
+		xmlRoot=new ActiveXObject("Microsoft.XMLDOM");
+		xmlRoot.async=false;
+		xmlRoot.loadXML(text); 
+	} 
+
+	return {
+		xmlDoc:xmlRoot,
+		queryResults:{},
+		selectNode:function(query){
+			var saveResults = this.queryResults;
+			this.selectNodes(query || "/*");
+			var ret = this.getItem(0);
+			this.queryResults = saveResults;
+			return ret;
+		},
+		selectNodes:function(query){
+			try{
+				this.queryResults = this.xmlDoc.selectNodes(query);
+			}catch(e){
+				this.queryResults = this.xmlDoc.evaluate( query, this.xmlDoc, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null ); 
+			}
+		},
+		resultsCount:function(){
+			if( this.queryResults.snapshotLength != undefined ){
+				return this.queryResults.snapshotLength;
+			}else{
+				return this.queryResults.length;
+			}
+		},
+		getItem:function(index){
+			if( this.queryResults.snapshotItem != undefined ){
+				return this.queryResults.snapshotItem(index);
+			}else{
+				return this.queryResults.item(index);
+			}
+		}
+	}
+};
+
+function NumToString (numValue, digits)
+{
+	var retValue = numValue.toString (10);
+
+	while (retValue.length < digits){
+		retValue = "0" + retValue;
+	}
+
+	return retValue;
+}
+
+
+function uncompressMem(memorized)
+{
+	var newMemorized = "";
+	
+	if(memorized.length==0){
+		for(i=0;i<114;i++)
+			newMemorized += "$";
+	
+		return newMemorized;
+	}
+
+	mem_suras = memorized.split('$');
+
+	for (s=0;s<mem_suras.length;s++)
+	{
+		mem_ayas = mem_suras[s].split('|');
+
+		mem_suras[s] = "";
+
+		for (a=0;a<mem_ayas.length;a++)
+		{
+			if (mem_ayas[a].length==0)
+				continue;
+
+			range = mem_ayas[a].split(',');
+			
+			if (range.length>1)
+			{
+				mystart=parseInt(range[0],10);
+				myend  =parseInt(range[1],10);
+				
+				for(r=mystart;r<=myend;r++)
+				{
+					if (mem_suras[s].length>0)
+						mem_suras[s] += "|";
+							
+					mem_suras[s] += r;
+				}
+			}
+			else
+			{
+				myAyaNo = parseInt(mem_ayas[a],10);
+		
+				if (mem_suras[s].length>0)
+					mem_suras[s] += "|";
+						
+				mem_suras[s] += myAyaNo;
+			}
+		}
+
+		if (s>0)
+			newMemorized += '$';
+
+		newMemorized += mem_suras[s];
+	}
+	
+	return newMemorized;
+}
+
+function compressMem(memorized)
+{
+	newMemorized = "";
+	mem_suras = memorized.split('$');
+
+	for (s=0;s<mem_suras.length;s++)
+	{
+		mem_ayas = mem_suras[s].split('|');
+
+		startAya=parseInt(mem_ayas[0]);
+		range=0;
+		mem_suras[s] = "";
+		
+		for (a=0;a<mem_ayas.length;a++)
+		{
+			if (mem_ayas[a].length==0)
+				continue;
+				
+			myAyaNo = parseInt(mem_ayas[a],10);
+			if((myAyaNo-startAya) == (range+1))
+			{//
+				range++;
+			}
+			else
+			{
+				if(range>0)
+				{
+					mem_suras[s] += "," + (startAya+range);
+				}
+				if (mem_suras[s].length>0)
+					mem_suras[s] += "|";
+					
+				mem_suras[s] += myAyaNo;
+
+				startAya=myAyaNo;
+				range=0;
+			}
+		}
+
+		if(range>0)
+		{
+			mem_suras[s] += "," + (startAya+range);
+		}
+		
+		if (s>0)
+			newMemorized += '$';
+		newMemorized += mem_suras[s];
+	}
+	//alert(newMemorized);
+	return newMemorized;
+	//return memorized;
+}
+
+function parameter(name,default_value)
+{
+	var arg = name + "=";
+	var myurl = window.location.href.split('?');
+	
+	if (myurl.length > 1)
+	{	
+		var params= myurl[1].split('&');
+
+		for (var i = 0; i < params.length; i++)
+		{
+			if(params[i].indexOf(arg) == 0)
+			{
+				var retVal = params[i].substring(arg.length,params[i].length);
+				//return myDecodeURI(retVal);
+				return decodeURI(retVal).replace(/\+/g," ");
+			}
+		}
+	}
+
+	if (default_value)
+	{
+		return default_value;
+	}
+
+	return "";
+}
+
+function myDecodeURI(sText)
+{
+	//alert("debug");
+	var sRetText= "";
+
+	for(var i=0;i<sText.length;i++)
+	{
+		var sCurrChar = sText.substring(i,i+1); 
+
+		if ( sCurrChar == "%")
+		{
+			var sCharCode = sText.substring( i+1, i+3 );
+			var charCode = parseInt( sCharCode , 16);
+			sCurrChar = String.fromCharCode(charCode);
+			i+=2;
+		}
+		else if (sCurrChar=="+")
+		{
+			sCurrChar = " ";
+		}
+		
+		sRetText += sCurrChar;
+	}
+	return ConvertCP1256ToUnicode(sRetText);
+}
+//------------------------------------------------------------------------------
+function filterQuery(filter)
+{
+	var newQuery="";
+	
+	var params = filter.split(',');
+	
+	for (var i = 0; i < params.length; i++)
+	{
+		var value=param(params[i]);
+		
+		if (value.length>0)		{
+			if(newQuery.length>0)
+			{
+				newQuery += "&" + params[i] + "=" + escape(value);
+			}
+			else
+			{
+				newQuery = params[i] + "=" + escape(value);
+			}
+		}
+	}
+
+	return newQuery;
+
+}
+function setCookie(name,value)
+{
+	var tenYearsAhead = new Date( (new Date()).getTime() + 1000 * 60 * 60 * 24 * 365 * 10 );
+
+	document.cookie = name + "=" + value + "; path=/; expires=" + tenYearsAhead.toGMTString() + ";";
+	//TODO: check the problem with frames alert( "[" + name + ":" + value + "]" + document.cookie );
+}
+
+function writeCookie(name,value)
+{
+	setCookie(name, value);
+}
+
+function readCookie(name,defValue)
+{
+	if( document.location.pathname.indexOf( "/", 1 ) >= 0 ){// subfolders are not allowed try the parent frame
+		return window.parent.getCookie(name,defValue);
+	}
+
+	var retVal = getCookie(name,defValue);
+
+	return retVal;
+}
+
+function getCookie(name, default_value)
+{
+	var mycookies = document.cookie.split(";" + " ");
+	
+	for( var i=0, len=mycookies.length; i<len ; i++ )
+	{
+		var mycookie = mycookies[i].split("=");
+		if( mycookie[0] == name )
+		{
+			if (mycookie.length>1){
+				return mycookie[1];
+			}
+		}
+	}
+
+	if( default_value != undefined ){
+		return default_value;
+	}
+	
+	return undefined;
+}
+
+function toStringEx(value,length)
+{
+	var theString;
+	theString = value.toString(10);
+	while( theString.length < length){
+		theString = "0" + theString;
+	}
+	return theString;
+}
+
+function GetIEVersion()
+{
+	var userAgent, ieLocation, retValue;
+	var ieSignature;
+
+	retValue = 0;
+	ieSignature = "MSIE";
+	
+	userAgent  = navigator.userAgent;
+
+	ieLocation = userAgent.search(ieSignature);
+	
+	if (ieLocation >= 0)
+	{
+		var userAgentTokens, sPostFix;
+		
+		userAgentTokens = userAgent.split(")");
+
+		if (userAgentTokens.length > 0)
+		{
+			sPostFix= userAgentTokens[1];
+		}
+		
+		if ( 0 == sPostFix.length )
+		{// no third party browser signature
+			ieLocation = ieLocation + ieSignature.length + 1; // skip the signature to read the version number
+			
+			userAgent = userAgent.substr(ieLocation);
+			
+			retValue = parseFloat(userAgent);
+		}
+	}
+
+	return retValue;
+}
+//TODO: unused
+function MessageBox(sText, sTitle)
+{
+	var args = new Object();
+	
+	args.Title = sTitle;
+	args.Text  = sText;
+	
+	window.showModalDialog ("msg.htm", args, "dialogHeight: 120px; dialogWidth: 300px; dialogTop: px; dialogLeft: px; edge: Raised; center: Yes; help: Yes; resizable: No; status: No;scroll: No");
+}
+
+// Relative prefix from the current document back to the app root ("" or "../").
+// Derived from the src of our own scripts, so no page has to declare a base URL.
+var g_appBase;
+
+function appBase ()
+{
+	if (g_appBase == undefined)
+	{
+		var sSrc = "";
+		var aScripts = document.getElementsByTagName("script");
+
+		for (var i = 0; i < aScripts.length; ++i)
+		{
+			sSrc = aScripts[i].getAttribute("src") || "";
+
+			if (sSrc.indexOf("js/") >= 0)
+				break;
+
+			sSrc = "";
+		}
+
+		var nIndex = sSrc.indexOf("js/");
+
+		g_appBase = (nIndex > 0) ? sSrc.substring(0, nIndex) : "";
+	}
+
+	return g_appBase;
+}
+
+// Tafseer (commentary) and translation pages are served by the separate
+// tafseer.muslim-web.com site, which lays them out as <source>/<sura>/<aya>.html
+// with three-digit sura and aya, e.g. https://tafseer.muslim-web.com/KATHEER/002/255.html.
+var gTafseerBase = "https://tafseer.muslim-web.com/";
+
+function getTafseerPageURL (sSource, nSura, nAya)
+{
+	return gTafseerBase + sSource + "/" + toStringEx( nSura, 3 ) + "/" + toStringEx( nAya, 3 ) + ".html";
+}
+
+function getBaseURL (sURL)
+{
+	var baseURL;
+	
+	if (sURL == null)
+		sURL = window.location.href;
+	baseURL = new String(sURL);
+	// eleminate the quer
+	baseURL = baseURL.split("?")[0];
+	baseURL = baseURL.substring(0, baseURL.lastIndexOf("/"));
+
+	return baseURL;
+}
+
+function getBasePath (sURL)
+{
+	var basePath;
+	var pathIndex;
+	
+	if (sURL == null)
+		sURL = window.location.href;
+
+	basePath = getBaseURL(sURL);
+	pathIndex = basePath.indexOf("/", 8);
+	
+	if (-1 == pathIndex)
+		return "/";
+		
+	basePath  = basePath.substring( pathIndex ) + "/";
+
+	return basePath;
+}
+
+function CPageParamsItem(key)
+{
+	return (this.values[key]);
+}
+
+function CPageParams()
+{
+	var i;
+
+	this.keys   = [];
+	this.values = [];
+	this.item   = CPageParamsItem;
+	
+	var aUrlItems = window.location.href.split('?');
+	
+	if (aUrlItems.length < 2)
+	{
+		return this;
+	}
+	var sQuery = aUrlItems[1];
+	var aQueryItems = sQuery.split("&");
+	
+	for (i=0; i< aQueryItems.length; i++)
+	{
+		var aParamPair = aQueryItems[i].split("=");
+		
+		this.keys[i] = aParamPair[0];
+
+		if (aParamPair.length > 1)
+		{
+			this.values[aParamPair[0]] = aParamPair[1];
+		}
+		else
+		{
+			this.values[aParamPair[0]] = true;
+		}
+	}
+	return this;
+}
+
+function CDialogArgs()
+{
+	var myArgs = window.dialogArguments.split("&");
+	
+	for (i = 0 ; i<myArgs.length; i++)
+	{
+		var myParamPair = myArgs[i].split("=");
+		eval ("this." + myParamPair[0] + "=\"" + myParamPair[1] + "\"");
+	}
+	
+	return this;
+}
+
+var gZIndex = 1;
+
+function ShowElement( sID, delay )
+{
+	var el;
+
+	if( sID.constructor == String ){
+		el = document.getElementById(sID);
+	}
+
+	if( null == el )
+		return;
+
+	stopTimer( "idDelayedShowHide", el );
+
+	if(! delay ){
+		el.style.display = "";
+	}
+	else{
+		el.idDelayedShowHide = window.setTimeout(
+			function(){
+				el.idDelayedShowHide = 0;
+				ShowElement(el);
+			},	
+			delay
+		);
+	}
+}
+
+function HideElement( sID, delay )
+{
+	var el;
+
+	if( sID.constructor == String ){
+		el = document.getElementById(sID);
+	}
+
+	if( null == el )
+		return;
+
+	stopTimer( "idDelayedShowHide", el );
+
+	if(! delay ){
+		el.style.display = "none";
+	}
+	else{
+		el.idDelayedShowHide = window.setTimeout(
+			function(){
+				el.idDelayedShowHide = 0;
+				HideElement(el);
+			},	
+			delay
+		);
+	}
+}
+
+function LoadXMLDoc( data, sRootNode )
+{
+	var xmlParser = U.getDomParser();
+	var xmlDoc = xmlParser.parseFromString(data, "text/xml");
+	if( xmlDoc )
+	{
+		if( sRootNode && sRootNode.length > 0 )// && xmlDoc.selectNodes )
+		{
+			//return xmlDoc.selectNodes(sRootNode)[0];
+			return xmlDoc.getElementsByTagName(sRootNode)[0];
+		}
+		return xmlDoc;
+	}
+
+	return null;
+	
+}
+
+
+function openPopupWindow(x,y,width,height,sContents)
+{
+	if (GetIEVersion()<5.5)
+		return null;
+
+	var popupWindow = window.createPopup();
+	if (popupWindow)
+	{
+		popupWindow.document.body.style.border = "solid black 1px";
+		popupWindow.document.body.style.color = "silver";
+
+		if( sContents && sContents.length>0 )
+		{
+			popupWindow.document.body.innerHTML = sContents;
+		}
+		popupWindow.show(x,y,width,height,document.body);
+		return popupWindow;
+	}
+
+	return null;
+}
+
+
+var CP1256ToUnicode = [
+0x0000,0x0001,0x0002,0x0003,0x0004,0x0005,0x0006,0x0007,0x0008,0x0009,0x000A,0x000B,0x000C,0x000D,0x000E,0x000F,
+0x0010,0x0011,0x0012,0x0013,0x0014,0x0015,0x0016,0x0017,0x0018,0x0019,0x001A,0x001B,0x001C,0x001D,0x001E,0x001F,
+0x0020,0x0021,0x0022,0x0023,0x0024,0x0025,0x0026,0x0027,0x0028,0x0029,0x002A,0x002B,0x002C,0x002D,0x002E,0x002F,
+0x0030,0x0031,0x0032,0x0033,0x0034,0x0035,0x0036,0x0037,0x0038,0x0039,0x003A,0x003B,0x003C,0x003D,0x003E,0x003F,
+0x0040,0x0041,0x0042,0x0043,0x0044,0x0045,0x0046,0x0047,0x0048,0x0049,0x004A,0x004B,0x004C,0x004D,0x004E,0x004F,
+0x0050,0x0051,0x0052,0x0053,0x0054,0x0055,0x0056,0x0057,0x0058,0x0059,0x005A,0x005B,0x005C,0x005D,0x005E,0x005F,
+0x0060,0x0061,0x0062,0x0063,0x0064,0x0065,0x0066,0x0067,0x0068,0x0069,0x006A,0x006B,0x006C,0x006D,0x006E,0x006F,
+0x0070,0x0071,0x0072,0x0073,0x0074,0x0075,0x0076,0x0077,0x0078,0x0079,0x007A,0x007B,0x007C,0x007D,0x007E,0x007F,
+0x20AC,0x067E,0x201A,0x0192,0x201E,0x2026,0x2020,0x2021,0x02C6,0x2030,0x0679,0x2039,0x0152,0x0686,0x0698,0x0688,
+0x06AF,0x2018,0x2019,0x201C,0x201D,0x2022,0x2013,0x2014,0x06A9,0x2122,0x0691,0x203A,0x0153,0x200C,0x200D,0x06BA,
+0x00A0,0x060C,0x00A2,0x00A3,0x00A4,0x00A5,0x00A6,0x00A7,0x00A8,0x00A9,0x06BE,0x00AB,0x00AC,0x00AD,0x00AE,0x00AF,
+0x00B0,0x00B1,0x00B2,0x00B3,0x00B4,0x00B5,0x00B6,0x00B7,0x00B8,0x00B9,0x061B,0x00BB,0x00BC,0x00BD,0x00BE,0x061F,
+0x06C1,0x0621,0x0622,0x0623,0x0624,0x0625,0x0626,0x0627,0x0628,0x0629,0x062A,0x062B,0x062C,0x062D,0x062E,0x062F,
+0x0630,0x0631,0x0632,0x0633,0x0634,0x0635,0x0636,0x00D7,0x0637,0x0638,0x0639,0x063A,0x0640,0x0641,0x0642,0x0643,
+0x00E0,0x0644,0x00E2,0x0645,0x0646,0x0647,0x0648,0x00E7,0x00E8,0x00E9,0x00EA,0x00EB,0x0649,0x064A,0x00EE,0x00EF,
+0x064B,0x064C,0x064D,0x064E,0x00F4,0x064F,0x0650,0x00F7,0x0651,0x00F9,0x0652,0x00FB,0x00FC,0x200E,0x200F,0x06D2
+];
+
+function ConvertCP1256ToUnicode(sText)
+{
+	var sRetValue = "";
+
+	for (var i=0; i< sText.length; i++)
+	{
+		var charCode = sText.charCodeAt(i);
+		if( charCode > 127 ){
+			if( charCode < 0xFF )
+			{
+				charCode = CP1256ToUnicode[charCode];
+			}
+			else{
+				charCode = charCode;// to debug	
+			}
+		}
+		sRetValue += String.fromCharCode( charCode );
+	}	
+
+	return	sRetValue;
+}
+
+function UnicodeCharToCP1256(aChar)
+{
+	for (var i=0; i<256; i++)
+	{
+		if (aChar == CP1256ToUnicode[i])
+		{
+			return i;
+		}
+	}
+
+	return aChar;
+}
+
+function ConvertUnicodeToCP1256(sText)
+{
+	var sRetValue = "";
+
+	for (var i=0; i< sText.length; i++)
+	{
+		sRetValue += String.fromCharCode( UnicodeCharToCP1256(sText.charCodeAt(i)) );
+
+	}	
+
+	return	sRetValue;
+}
+
+function GetVSpacer(height){
+	return "<div style='font-size:1px;height:" + height.toString() + "px'>&nbsp;</div>";
+}
+
+function GetHSpacer(width)
+{
+	return "<span style='font-size:1px;width:" + width.toString() + "px'>&nbsp;</span>";
+}
+
+///////////////////////////////////////////////////////
+//function PreloadImages(image_srcs, load_events)
+//{
+//	var my_images = [];
+//	for (i=0; i<image_srcs.length ; i++ )
+//	{
+//		my_images[i] = new Image();
+//		if (load_events && load_events[i])
+//		{
+//			my_images[i].onload = load_events[i];
+//		}
+//		my_images[i].src = image_srcs[i];	
+//	}
+//	return my_images;
+//}
+
+var gDataResponse="no_data";
+
+function LoadData( sURL, sOnLoadEvent, bForceUTF )
+{
+	var myScript  = document.createElement("script"); 
+	myScript.type = "text/javascript"; 
+	//set the script file name
+	var sLoader = JSLoaderBase + ( bForceUTF ? "js_load_utf8.pl" : "js_load.pl" );
+	myScript.src  = sLoader + "?url=" + escape( sURL ) + "&callback=" + escape( sOnLoadEvent ) ;
+	//append the script to the document, that will execute the script
+	var header = document.getElementsByTagName("head")[0];
+	header.appendChild( myScript );
+}
+
+function XMLDoc( xmlString )
+{
+	var xmlParser = U.getDomParser();
+	return xmlParser.parseFromString(xmlString, "text/xml");
+}
+
+function StopDragging(e)
+{
+	var event = U.ieEvent(e);
+	event.stopPropagation();
+}
+
+function DeleteArrayElements( myArray, index, count)
+{
+	var retArray = [];
+
+	for(i = 0; i< index; i++)
+	{
+		retArray[i] = myArray[i];
+	}
+
+	for (i = index + count; i< myArray.length ; i ++)
+	{
+		retArray[ i - count ] = myArray[ i ];
+	}
+
+	return retArray;
+}
+
+function IsChildOf( oChild, oParent )
+{
+	if(!oChild || !oParent)
+		return false;
+
+	if( oChild == oParent)
+		return true;
+
+	try
+	{
+		var theParent = oChild.parentNode;
+		while( theParent )
+		{
+			if(theParent == oParent )
+				return true;
+
+			theParent = theParent.parentNode;
+		}
+	}
+	catch (e){
+	}
+	return false;
+}
+
+function SwitchLang( sCurrLang ){
+	var nextLang = ( sCurrLang == "ar" ) ? "en" : "ar";
+	var exp = new Date( (new Date()).getTime() + 1000 * 60 * 60 * 24 * 365 * 5 );
+	document.cookie = "lang=" + nextLang + "; path=/; expires=" + exp.toGMTString() + ";";
+	window.location.reload();
+}

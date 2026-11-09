@@ -1,0 +1,75 @@
+#idSuraName, 
+#idReciterName,
+#idToAya,
+#idFromAya{
+	font-weight:bold;
+}
+
+#ReciterOptions
+{
+	border-collapse:collapse;
+	width:100%;
+}
+
+.icon{
+	width:16px;
+	height:16px;
+	display:inline-block;
+}
+
+.speaker.icon{
+	background:url(../../images/speaker.gif) no-repeat center;
+}
+
+#idAudioTitle{
+	padding:2px;
+	text-align:center;
+}
+
+#idAudioTitle .text{
+	vertical-align:top;
+	font-size:16px;
+	line-height:18px;
+	font-weight:bold;
+	font-family:Arabic Transparent;
+}
+
+.white_shadow{
+	text-shadow: 0.12em 0.12em white;/*works on Safari, Chrome*/
+}
+
+body{
+	background:#efefe7 url(../../images/bg_caption.gif) repeat-x;
+	margin:0;
+	border:0;
+}
+
+body[lang=ar]{
+	direction:rtl;
+}
+
+.reciterOption
+{
+	cursor:default;
+	padding:2px;
+}
+
+.reciterOption table
+{
+	border-collapse:collapse;
+}
+
+.reciterOption table td
+{
+	padding:0px;
+}
+
+.reciterOption:hover
+{
+	background:#FFFFCC;
+}
+
+#RPlayerEmbed, #idPlayer{
+	height:64px;
+	width:100%;
+}

@@ -1,0 +1,23 @@
+*[mClass="JCSpinEdit"]
+{
+	border:solid 1px #7F9DB9;
+	display:inline-block;
+}
+
+*[mClass="JCSpinEdit"] table
+{
+	border-collapse:collapse;
+}
+
+*[mClass="JCSpinEdit"] table td
+{
+	padding:0px;
+}
+
+*[mClass="JCSpinEdit"] table td input[type="text"]
+{
+	height:14px;
+	width:25px;
+	font-size:11px;
+	border-width:0px;
+}
